@@ -9,3 +9,7 @@ apps:
 # homebrew cask apps
 cask_apps:
   - google-chrome
+  - spotify
+  - spectacle
+  - osxfuse
+  - veracrypt
