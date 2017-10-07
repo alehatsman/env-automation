@@ -1,0 +1,17 @@
+---
+- name: Ensure homebrew is updated 
+  homebrew:
+    state: latest
+    update_homebrew: yes
+
+- name: Install homebrew applications
+  homebrew:
+    name: "{{item}}"
+    state: latest
+  with_items: "{{apps}}"
+
+- name: Install homebrew cask applications
+  homebrew_cask:
+    name: "{{item}}"
+    state: present
+  with_items: "{{cask_apps}}"

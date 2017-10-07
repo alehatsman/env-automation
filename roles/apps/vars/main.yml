@@ -1,0 +1,11 @@
+---
+# homebrew apps
+apps:
+  - wget
+  - tree
+  - zsh
+  - ag
+
+# homebrew cask apps
+cask_apps:
+  - google-chrome
