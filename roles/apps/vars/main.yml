@@ -13,3 +13,4 @@ cask_apps:
   - spectacle
   - osxfuse
   - veracrypt
+  - telegram
