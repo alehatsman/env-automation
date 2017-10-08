@@ -7,14 +7,24 @@ apps:
   - zsh-completions
   - ag
   - tig
+  - sbt
+  - htop
 
 # homebrew cask apps
 cask_apps:
+  # Browsers
   - google-chrome
+
+  # Media
   - spotify
+  - vlc
+
+  # Dev
+  - iterm2
+  - java
+
+  # Miscellaneous
   - spectacle
   - osxfuse
   - veracrypt
   - telegram
-  - vlc
-  - iterm2
