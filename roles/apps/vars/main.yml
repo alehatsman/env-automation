@@ -4,7 +4,9 @@ apps:
   - wget
   - tree
   - zsh
+  - zsh-completions
   - ag
+  - tig
 
 # homebrew cask apps
 cask_apps:
@@ -14,3 +16,5 @@ cask_apps:
   - osxfuse
   - veracrypt
   - telegram
+  - vlc
+  - iterm2
