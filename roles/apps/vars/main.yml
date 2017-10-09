@@ -32,3 +32,4 @@ cask_apps:
   - osxfuse
   - veracrypt
   - telegram
+  - transmission
