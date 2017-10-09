@@ -19,6 +19,9 @@ cask_apps:
   - spotify
   - vlc
 
+  # VPN
+  - private-internet-access
+
   # Dev
   - iterm2
   - java
