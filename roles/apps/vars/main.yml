@@ -20,7 +20,7 @@ cask_apps:
   - vlc
 
   # VPN
-  - private-internet-access
+  - tunnelblick
 
   # Dev
   - iterm2
