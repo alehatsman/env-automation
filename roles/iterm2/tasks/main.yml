@@ -1,0 +1,10 @@
+---
+- name: Install iterm2
+  homebrew_cask:
+    name: iterm2
+    state: present
+
+- name: Set config
+  template:
+    src: templates/com.googlecode.iterm2.plist.j2
+    dest: ~/.config/iterm2/com.googlecode.iterm2.plist

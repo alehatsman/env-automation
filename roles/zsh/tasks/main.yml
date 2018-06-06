@@ -1,0 +1,32 @@
+---
+- name: Install zsh from brew
+  homebrew:
+    name: "{{item}}"
+    state: latest
+  with_items: 
+    - zsh
+    - zsh-completions
+
+- name: Install oh my zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+- name: Install dracula theme
+  git:
+    repo: "https://github.com/dracula/zsh.git"
+    dest: "~/dracula-zsh"
+
+- name: Copy dracula files
+  copy: 
+    remote_src: true
+    src: "~/dracula-zsh/dracula.zsh-theme"
+    dest: "{{ OH_MY_ZSH }}/themes/dracula.zsh-theme"
+
+- name: Delete dracula repo
+  file:
+    path: "~/dracula-zsh"
+    state: absent
+
+- name: Install config
+  template:
+    src: templates/.zshrc.j2
+    dest: ~/.zshrc

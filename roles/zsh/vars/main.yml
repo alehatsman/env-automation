@@ -1,0 +1,17 @@
+---
+OH_MY_ZSH: /Users/alehatsman/.oh-my-zsh
+ZSH_PLUGINS:
+ - docker 
+ - kubectl
+ - git 
+ - golang 
+ - lein 
+ - node 
+ - osx 
+ - postgres 
+ - redis-cli 
+ - ssh-agent 
+ - terraform 
+ - vi-mode 
+ - web-search
+ - dotenv

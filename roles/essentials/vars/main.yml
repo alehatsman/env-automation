@@ -1,17 +1,26 @@
 ---
 # homebrew apps
 apps:
+  # Cli tools
   - wget
   - tree
-  - zsh
-  - zsh-completions
-  - ag
-  - tig
-  - sbt
   - htop
+  - jq
+  - tor
+
+  # Devops
+  - git
+  
+  - ansible
+  - terraform
+  - terraform-inventory
+
+  - node
 
 # homebrew cask apps
 cask_apps:
+  - kdiff3
+
   # Browsers
   - google-chrome
 
@@ -21,11 +30,6 @@ cask_apps:
 
   # VPN
   - tunnelblick
-
-  # Dev
-  - iterm2
-  - java
-  - intellij-idea-ce
 
   # Miscellaneous
   - spectacle

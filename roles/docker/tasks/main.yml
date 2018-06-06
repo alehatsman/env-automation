@@ -1,0 +1,15 @@
+---
+- name: Make sure docker is installed
+  homebrew_cask:
+    name: docker
+    state: present
+
+- name: Make sure kubecli is installed
+  homebrew:
+    name: kubernetes-cli
+    state: present
+
+- name: Make sure minikube is installed
+  homebrew_cask:
+    name: minikube
+    state: present

@@ -1,4 +1,13 @@
 ---
 - hosts: local
+  vars_files:
+    - vars/global_env.yml
   roles:
-    - apps
+    - brew
+    - essentials
+    - zsh
+    - iterm2
+    - vim
+    - golang
+    - jvm
+    - docker

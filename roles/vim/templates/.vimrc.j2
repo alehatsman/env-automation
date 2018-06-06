@@ -1,0 +1,121 @@
+set nocompatible
+
+" >> Vundle setup start
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'pangloss/vim-javascript'
+Plugin 'honza/vim-snippets'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'paredit.vim'
+Plugin 'dracula/vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'fatih/vim-go'
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+Plugin 'zchee/deoplete-go'
+call vundle#end()
+" >> Vundle setup end
+
+filetype indent plugin on
+filetype plugin on
+
+syntax on
+
+set langmenu=en_US
+set hidden
+set showcmd
+set hlsearch
+set autoindent
+set nostartofline
+set ruler
+set laststatus=2
+set confirm
+set number
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set shiftwidth=2
+set smarttab
+
+set mouse=nv
+
+set clipboard=unnamed
+
+set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
+
+set splitbelow
+set splitright
+
+" Dracula theme settings
+let g:dracula_colorterm=0
+colorscheme dracula
+color dracula
+
+let NERDTreeShowHidden=1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:statline_syntastic = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+let g:syntastic_mode_map = { "mode": "active",
+                           \ "active_filetypes": [],
+                           \ "passive_filetypes": ["scala"] }
+
+let g:deoplete#enable_at_startup = 1
+
+" Vim gitgutter
+set updatetime=100
+
+" -----------------
+" Code
+" -----------------
+"go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>co <Plug>(go-coverage)
+au FileType go setl shiftwidth=4 softtabstop=4
+
+au BufRead,BufNewFile *.boot set filetype=clojure
+
+set rtp+=/usr/local/opt/fzf

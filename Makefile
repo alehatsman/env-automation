@@ -1,2 +1,2 @@
 install:
-	ansible-playbook -i hosts playbook.yml
+	ansible-playbook --vault-id @prompt -i hosts playbook.yml

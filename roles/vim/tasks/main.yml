@@ -1,0 +1,23 @@
+---
+- name: Make sure nvim is installed
+  homebrew:
+    name: "{{ item }}"
+    state: latest
+  with_items: 
+    - neovim
+    - the_silver_searcher
+
+- name: Make sure vundle is installed
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git 
+    dest: ~/.config/nvim/bundle/Vundle.vim
+
+- name: Make sure deoplete python module is installed
+  pip:
+    name: neovim
+    state: latest
+
+- name: Make sure vimrc is in sync
+  template:
+    src: templates/.vimrc.j2
+    dest: ~/.config/nvim/init.vim

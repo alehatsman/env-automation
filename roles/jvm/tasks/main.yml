@@ -1,0 +1,24 @@
+---
+- name: Make sure java is installed
+  homebrew_cask:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - java
+    - visualvm
+
+- name: Make sure clojure tools are installed
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - leiningen
+    - boot-clj
+
+- name: Make sure scala is installled
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - scala
+    - sbt
