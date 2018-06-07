@@ -27,6 +27,7 @@ else
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
 Plugin 'zchee/deoplete-go'
+Plugin 'mileszs/ack.vim'
 call vundle#end()
 " >> Vundle setup end
 
@@ -60,6 +61,10 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
 endif
 
 set splitbelow

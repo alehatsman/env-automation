@@ -7,7 +7,7 @@
     - essentials
     - zsh
     - iterm2
-    - vim
+    - {role: 'vim', tags: 'vim'}
     - golang
     - jvm
     - docker
