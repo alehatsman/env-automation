@@ -3,11 +3,11 @@
   vars_files:
     - vars/global_env.yml
   roles:
-    - brew
-    - essentials
-    - zsh
-    - iterm2
+    - {role: 'brew', tags: 'brew'}
+    - {role: 'essentials', tags: 'essentials'}
+    - {role: 'zsh', tags: 'zsh'}
+    - {role: 'iterm2', tags: 'iterm2'}
     - {role: 'vim', tags: 'vim'}
-    - golang
-    - jvm
-    - docker
+    - {role: 'golang', tags: 'golang'}
+    - {role: 'jvm', tags: 'jvm'}
+    - {role: 'docker', tags: 'docker'}
