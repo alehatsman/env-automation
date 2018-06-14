@@ -7,6 +7,8 @@ apps:
   - htop
   - jq
   - tor
+  - node
+  - imagemagick
 
   # Devops
   - git
@@ -15,8 +17,7 @@ apps:
   - terraform
   - terraform-inventory
 
-  - node
-
+  
 # homebrew cask apps
 cask_apps:
   - kdiff3
@@ -37,3 +38,4 @@ cask_apps:
   - veracrypt
   - telegram
   - transmission
+  - insomniax
