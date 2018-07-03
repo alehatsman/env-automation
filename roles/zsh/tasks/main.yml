@@ -1,7 +1,7 @@
 ---
 - name: Install zsh from brew
   homebrew:
-    name: "{{item}}"
+    name: "{{ item }}"
     state: latest
   with_items: 
     - zsh
