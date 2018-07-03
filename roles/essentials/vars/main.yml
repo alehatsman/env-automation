@@ -9,6 +9,7 @@ apps:
   - tor
   - node
   - imagemagick
+  - autoenv
 
   # Devops
   - git
