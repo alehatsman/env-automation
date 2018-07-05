@@ -15,7 +15,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'honza/vim-snippets'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath.git'
 Plugin 'paredit.vim'
 Plugin 'dracula/vim'
 Plugin 'derekwyatt/vim-scala'
@@ -28,6 +27,7 @@ else
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
 Plugin 'zchee/deoplete-go'
+Plugin 'clojure-vim/async-clj-omni'
 Plugin 'mileszs/ack.vim'
 call vundle#end()
 " >> Vundle setup end
@@ -60,8 +60,7 @@ set clipboard=unnamed
 set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-set completeopt=menu
-set completeopt+=preview
+set completeopt=menu,preview
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if executable('ag')
@@ -95,6 +94,8 @@ let g:syntastic_mode_map = { "mode": "active",
                            \ "passive_filetypes": ["scala"] }
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 " Vim gitgutter
 set updatetime=100
