@@ -1,10 +1,13 @@
 ---
 OH_MY_ZSH: /Users/alehatsman/.oh-my-zsh
 ZSH_PLUGINS:
+ - aws
  - docker 
- - kubectl
+ - dotenv
+ - encode64
  - git 
  - golang 
+ - kubectl
  - lein 
  - node 
  - osx 
@@ -14,4 +17,3 @@ ZSH_PLUGINS:
  - terraform 
  - vi-mode 
  - web-search
- - dotenv

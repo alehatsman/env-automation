@@ -1,45 +1,31 @@
+# ZSH configuration
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
 export ZSH="{{ OH_MY_ZSH }}"
-export EDITOR=/usr/local/bin/nvim
-export GPG_TTY=$(tty)
-
-export GOPATH=~/Projects/go-workspace
-export GCPATH=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
-export PATH=$PATH:$GCPATH/bin:$GOPATH/bin
-
-# Global env variables
-{% for k, v in ENVS.items() %}
-export {{ k }}={{ v }}
-{% endfor %}
 
 ZSH_THEME="dracula"
 
-# Uncomment the following line to use case-sensitive completion.
+# Case-Sensitive completion
 CASE_SENSITIVE="false"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
+# Hyphen-Insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="false"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="false"
-
-# Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=13
 
-# Uncomment the following line to disable colors in ls.
+# Disable colors in ls.
 DISABLE_LS_COLORS="false"
 
-# Uncomment the following line to disable auto-setting terminal title.
+# Disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="false"
 
-# Uncomment the following line to enable command auto-correction.
+# Enable command auto-correction.
 ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
+# Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -59,16 +45,27 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=({{ ZSH_PLUGINS|join (' ') }})
+plugins=(docker kubectl git golang lein node osx postgres redis-cli ssh-agent terraform vi-mode web-search dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# Path to your oh-my-zsh installation.
+export EDITOR=/usr/local/bin/nvim
+export GPG_TTY=$(tty)
+
+export GOPATH=~/Projects/go-workspace
+export GCPATH=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+export PATH=$PATH:$GCPATH/bin:$GOPATH/bin
+
+# Global env variables
+{% for k, v in ENVS.items() %}
+export {{ k }}={{ v }}
+{% endfor %}
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
