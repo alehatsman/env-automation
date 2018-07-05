@@ -15,6 +15,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'honza/vim-snippets'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath.git'
 Plugin 'paredit.vim'
 Plugin 'dracula/vim'
 Plugin 'derekwyatt/vim-scala'
@@ -60,6 +61,8 @@ set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 set completeopt=menu
+set completeopt+=preview
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
