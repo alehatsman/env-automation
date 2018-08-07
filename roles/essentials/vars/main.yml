@@ -7,9 +7,10 @@ apps:
   - htop
   - jq
   - tor
-  - node
   - imagemagick
   - autoenv
+
+  - watchman
 
   # Devops
   - git

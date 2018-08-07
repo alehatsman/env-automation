@@ -1,0 +1,12 @@
+---
+- name: Install nodejs
+  homebrew:
+    name: node
+    state: latest
+
+- name: Install npm modules
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items:
+    - webpack

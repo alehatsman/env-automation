@@ -13,3 +13,4 @@
     - {role: 'jvm', tags: 'jvm'}
     - {role: 'clojure', tags: 'clojure'}
     - {role: 'docker', tags: 'docker'}
+    - {role: 'node', tags: 'node'}
