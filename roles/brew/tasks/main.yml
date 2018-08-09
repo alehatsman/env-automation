@@ -5,5 +5,18 @@
 
 - name: Tap homebrew homebrew/cask 
   homebrew_tap:
-    name: homebrew/cask
+    name: "{{ item }}"
     state: present
+  with_items "{{ taps }}"
+
+- name: Install homebrew applications
+  homebrew:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ apps }}"
+
+- name: Install homebrew cask applications
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ cask_apps }}"

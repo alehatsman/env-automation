@@ -1,4 +1,8 @@
 ---
+taps:
+  - homebrew/cask
+  - jesseduffield/lazygit
+
 # homebrew apps
 apps:
   # Cli tools
@@ -14,6 +18,7 @@ apps:
 
   # Devops
   - git
+  - lazygit
   
   - ansible
   - terraform

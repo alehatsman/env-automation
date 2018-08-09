@@ -5,7 +5,6 @@
   roles:
     - {role: 'brew', tags: 'brew'}
     - {role: 'python', tags: 'python'}
-    - {role: 'essentials', tags: 'essentials'}
     - {role: 'zsh', tags: 'zsh'}
     - {role: 'iterm2', tags: 'iterm2'}
     - {role: 'vim', tags: 'vim'}
