@@ -28,6 +28,7 @@ apps:
 # homebrew cask apps
 cask_apps:
   - kdiff3
+  - visual-studio-code
 
   # Browsers
   - google-chrome
