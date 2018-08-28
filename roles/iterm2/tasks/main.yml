@@ -3,6 +3,11 @@
   homebrew_cask:
     name: iterm2
     state: present
+    
+- name: Make sure config directory exists
+  file:
+    path: ~/.config/iterm2
+    state: directory
 
 - name: Set config
   template:
