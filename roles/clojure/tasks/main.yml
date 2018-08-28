@@ -7,6 +7,11 @@
     - leiningen
     - boot-clj
 
+- name: Make sure .lein folder present
+  file:
+    path: ~/.lein
+    state: directory
+
 - name: Create global user profile
   template:
     src: templates/.profile.clj.j2
