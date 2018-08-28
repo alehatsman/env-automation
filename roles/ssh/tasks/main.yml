@@ -1,0 +1,5 @@
+---
+- name: Make sure .ssh folder exists
+  file:
+    path: ~/.ssh
+    state: directory
