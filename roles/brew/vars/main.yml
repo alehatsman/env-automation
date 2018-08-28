@@ -17,14 +17,10 @@ apps:
   - watchman
 
   # Devops
-  - git
-  - lazygit
-  
   - ansible
   - terraform
   - terraform-inventory
 
-  
 # homebrew cask apps
 cask_apps:
   - kdiff3
