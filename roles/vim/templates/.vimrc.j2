@@ -5,6 +5,7 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
@@ -31,6 +32,8 @@ endif
 Plugin 'zchee/deoplete-go'
 Plugin 'clojure-vim/async-clj-omni'
 Plugin 'mileszs/ack.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'zchee/deoplete-jedi'
 call vundle#end()
 " >> Vundle setup end
 
@@ -91,42 +94,25 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
-let g:syntastic_mode_map = { "mode": "active",
-                           \ "active_filetypes": [],
-                           \ "passive_filetypes": ["scala"] }
+let g:syntastic_mode_map = {
+        \ "mode": "active",
+        \ "active_filetypes": [],
+        \ "passive_filetypes": ["scala", "go"] }
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 " Vim gitgutter
 set updatetime=100
-
-" -----------------
-" Code
-" -----------------
-"go
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-au FileType go nmap <Leader>s <Plug>(go-implements)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>e <Plug>(go-rename)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader>co <Plug>(go-coverage)
-au FileType go setl shiftwidth=4 softtabstop=4
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-
-au BufRead,BufNewFile *.boot set filetype=clojure
-
 set rtp+=/usr/local/opt/fzf
+
+let g:python_host_prog = "{{ python_venv_path | expanduser }}/bin/python"
+let g:python3_host_prog = "{{ python3_venv_path | expanduser }}/bin/python"
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF

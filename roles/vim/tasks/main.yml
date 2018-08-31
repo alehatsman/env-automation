@@ -10,7 +10,7 @@
 - name: Make sure vundle is installed
   git:
     repo: https://github.com/VundleVim/Vundle.vim.git 
-    dest: ~/.config/nvim/bundle/Vundle.vim
+    dest: "{{ config_path }}/bundle/Vundle.vim"
 
 - name: Make sure deoplete python module is installed
   pip:
@@ -20,4 +20,37 @@
 - name: Make sure vimrc is in sync
   template:
     src: templates/.vimrc.j2
-    dest: ~/.config/nvim/init.vim
+    dest: "{{ config_path }}/init.vim"
+
+- name: Make sure venvs are created for python2 and python3
+  shell: |
+    virtualenv -p python {{ python_venv_path }}
+    virtualenv -p python3 {{ python3_venv_path }}
+
+- name: Make sure neovim libs are intalled to python venv
+  pip:
+    virtualenv: "{{ python_venv_path }}"
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ python_libs }}"
+    
+- name: Make sure neovim libs are intalled to python3 venv
+  pip:
+    virtualenv: "{{ python3_venv_path }}"
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ python_libs }}"
+
+- name: Make sure ftplugin folder exists
+  file:
+    path: "{{ ftplugin_path }}"
+    state: directory
+
+- name: Make sure ftplugin configs generated
+  template:
+    src: "templates/ftplugin/{{ item }}"
+    dest: "{{ config_path }}/ftplugin/{{ item }}"
+  with_items:
+    - clojure.vim
+    - go.vim
+    - python.vim

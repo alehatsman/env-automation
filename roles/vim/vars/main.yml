@@ -1,0 +1,10 @@
+---
+config_path: ~/.config/nvim
+
+ftplugin_path: "{{ config_path }}/ftplugin"
+
+python_venv_path: "{{ config_path }}/python_venv"
+python3_venv_path: "{{ config_path }}/python3_venv"
+python_libs:
+  - neovim
+  - flake8
