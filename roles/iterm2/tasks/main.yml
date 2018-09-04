@@ -6,10 +6,10 @@
     
 - name: Make sure config directory exists
   file:
-    path: ~/.config/iterm2
+    path: "{{ iterm2_config_path }}"
     state: directory
 
 - name: Set config
   template:
     src: templates/com.googlecode.iterm2.plist.j2
-    dest: ~/.config/iterm2/com.googlecode.iterm2.plist
+    dest: "{{ iterm2_config_path }}/com.googlecode.iterm2.plist"
