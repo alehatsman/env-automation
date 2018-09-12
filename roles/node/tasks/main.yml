@@ -10,3 +10,6 @@
     global: yes
   with_items:
     - webpack
+    - eslint
+    - prettier
+    - import-js
