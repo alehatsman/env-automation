@@ -1,64 +1,59 @@
 set nocompatible
-filetype off
 
 " >> Vundle setup start
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
+call plug#begin('~/.vim/plugged')
 " General
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'dracula/vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'dracula/vim'
 
 " File explorer and tabs
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " Git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Syntax / Linter
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " Status bar
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 " Navigation
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
 
 " Autocomplete
-Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim'
 
 " Quoting/Parenthesizing
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Golang
-Plugin 'fatih/vim-go'
-Plugin 'fatih/vim-go'
-Plugin 'zchee/deoplete-go'
+Plug 'fatih/vim-go', { 'for':  'go' }
+Plug 'fatih/vim-go', { 'for':  'go' }
+Plug 'zchee/deoplete-go', { 'for':  'go' }
 
 " JavaScript
-Plugin 'pangloss/vim-javascript'
-Plugin 'styled-components/vim-styled-components'
-Plugin 'posva/vim-vue'
-Plugin 'honza/vim-snippets'
+Plug 'pangloss/vim-javascript', { 'for':  'javascript' }
+Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for':  'javascript' }
+Plug 'posva/vim-vue', { 'for':  'javascript' }
+Plug 'honza/vim-snippets', { 'for':  'javascript' }
 
 " Clojure
-Plugin 'tpope/vim-fireplace'
-Plugin 'venantius/vim-cljfmt'
-Plugin 'paredit.vim'
-Plugin 'clojure-vim/async-clj-omni'
+Plug 'tpope/vim-fireplace', { 'for':  'clojure' }
+Plug 'venantius/vim-cljfmt', { 'for':  'clojure' }
+Plug 'paredit.vim', { 'for':  'clojure' }
+Plug 'clojure-vim/async-clj-omni', { 'for':  'clojure' }
 
 " Python
-Plugin 'nvie/vim-flake8'
-Plugin 'zchee/deoplete-jedi'
+Plug 'nvie/vim-flake8', { 'for':  'python' }
+Plug 'zchee/deoplete-jedi', { 'for':  'python' }
 
 " Scala
-Plugin 'derekwyatt/vim-scala'
-call vundle#end()
-" >> Vundle setup end
+Plug 'derekwyatt/vim-scala', { 'for':  'scala' }
+call plug#end()
 
 filetype indent plugin on
 filetype plugin on
