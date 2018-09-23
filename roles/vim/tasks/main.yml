@@ -7,10 +7,15 @@
     - neovim
     - the_silver_searcher
 
+- name: Make sure autoload directory exists
+  file:
+    path: "{{ autoload_path }}"
+    state: directory
+
 - name: Make sure vim-plug is installed
-  shell: |
-    curl -fLo {{ config_path }}/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ autoload_path }}/plug.vim"
 
 - name: Make sure vimrc is in sync
   template:

@@ -5,6 +5,8 @@ plug_path: "{{ config_path }}/plugged"
 
 ftplugin_path: "{{ config_path }}/ftplugin"
 
+autoload_path: "{{ config_path }}/autoload"
+
 python_venv_path: "{{ config_path }}/python_venv"
 python3_venv_path: "{{ config_path }}/python3_venv"
 python_libs:
