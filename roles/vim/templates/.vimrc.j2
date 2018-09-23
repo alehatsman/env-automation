@@ -1,40 +1,62 @@
 set nocompatible
+filetype off
 
 " >> Vundle setup start
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+
+" General
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'dracula/vim'
+
+" File explorer and tabs
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'airblade/vim-gitgutter'
+
+" Git
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
+Plugin 'airblade/vim-gitgutter'
+
+" Syntax / Linter
 Plugin 'w0rp/ale'
-Plugin 'tpope/vim-surround'
-Plugin 'ctrlpvim/ctrlp.vim'
+
+" Status bar
 Plugin 'bling/vim-airline'
+
+" Navigation
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+
+" Autocomplete
+Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Quoting/Parenthesizing
+Plugin 'tpope/vim-surround'
+
+" Golang
+Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
+Plugin 'zchee/deoplete-go'
+
+" JavaScript
 Plugin 'pangloss/vim-javascript'
+Plugin 'styled-components/vim-styled-components'
 Plugin 'posva/vim-vue'
 Plugin 'honza/vim-snippets'
-Plugin 'editorconfig/editorconfig-vim'
+
+" Clojure
 Plugin 'tpope/vim-fireplace'
 Plugin 'venantius/vim-cljfmt'
 Plugin 'paredit.vim'
-Plugin 'dracula/vim'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'fatih/vim-go'
-if has('nvim')
-  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
-endif
-Plugin 'zchee/deoplete-go'
 Plugin 'clojure-vim/async-clj-omni'
-Plugin 'mileszs/ack.vim'
+
+" Python
 Plugin 'nvie/vim-flake8'
 Plugin 'zchee/deoplete-jedi'
+
+" Scala
+Plugin 'derekwyatt/vim-scala'
 call vundle#end()
 " >> Vundle setup end
 
@@ -91,18 +113,6 @@ let NERDTreeShowHidden=1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-let g:statline_syntastic = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-let g:syntastic_mode_map = {
-        \ "mode": "active",
-        \ "active_filetypes": [],
-        \ "passive_filetypes": ["scala", "go"] }
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#keyword_patterns = {}
