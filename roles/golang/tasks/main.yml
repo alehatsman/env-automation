@@ -39,6 +39,7 @@
     - github.com/uudashr/gopkgs/cmd/gopkgs
     - github.com/davidrjenni/reftools/cmd/fillstruct
     - github.com/alecthomas/gometalinter
+  changed_when: false
 
 - name: Install linters
   shell: |

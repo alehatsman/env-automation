@@ -3,7 +3,7 @@
   homebrew_cask:
     name: iterm2
     state: present
-    
+
 - name: Make sure config directory exists
   file:
     path: "{{ iterm2_config_path }}"

@@ -1,7 +1,7 @@
 set nocompatible
 
 " >> Vundle setup start
-call plug#begin('~/.vim/plugged')
+call plug#begin('{{ plug_path }}')
 " General
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dracula/vim'
@@ -44,7 +44,7 @@ Plug 'honza/vim-snippets', { 'for':  'javascript' }
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for':  'clojure' }
 Plug 'venantius/vim-cljfmt', { 'for':  'clojure' }
-Plug 'paredit.vim', { 'for':  'clojure' }
+Plug 'vim-scripts/paredit.vim', { 'for':  'clojure' }
 Plug 'clojure-vim/async-clj-omni', { 'for':  'clojure' }
 
 " Python
@@ -126,3 +126,5 @@ if 'VIRTUAL_ENV' in os.environ:
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
   execfile(activate_this, dict(__file__=activate_this))
 EOF
+
+let g:ale_fix_on_save = 1

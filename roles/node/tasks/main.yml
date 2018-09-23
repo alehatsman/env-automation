@@ -7,7 +7,7 @@
 - name: Install npm modules
   npm:
     name: "{{ item }}"
-    global: yes
+    global: true
   with_items:
     - webpack
     - eslint

@@ -3,7 +3,7 @@
   homebrew:
     name: "{{ item }}"
     state: latest
-  with_items: 
+  with_items:
     - neovim
     - the_silver_searcher
 
@@ -28,7 +28,7 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ python_libs }}"
-    
+
 - name: Make sure neovim libs are intalled to python3 venv
   pip:
     virtualenv: "{{ python3_venv_path }}"

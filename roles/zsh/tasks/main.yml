@@ -3,12 +3,13 @@
   homebrew:
     name: "{{ item }}"
     state: latest
-  with_items: 
+  with_items:
     - zsh
     - zsh-completions
 
 - name: Install oh my zsh
-  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  shell: |
+    sh -c "$(curl -fsSL {{ ZSH_INSTALL_URL }})"
 
 - name: Install dracula theme
   git:
@@ -16,7 +17,7 @@
     dest: "~/dracula-zsh"
 
 - name: Copy dracula files
-  copy: 
+  copy:
     remote_src: true
     src: "~/dracula-zsh/dracula.zsh-theme"
     dest: "{{ OH_MY_ZSH }}/themes/dracula.zsh-theme"

@@ -1,19 +1,23 @@
 ---
 OH_MY_ZSH: /Users/alehatsman/.oh-my-zsh
+
+ZSH_INSTALL_URL: |
+  https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+
 ZSH_PLUGINS:
  - aws
- - docker 
+ - docker
  - dotenv
  - encode64
- - git 
- - golang 
+ - git
+ - golang
  - kubectl
- - lein 
- - node 
- - osx 
- - postgres 
- - redis-cli 
- - ssh-agent 
- - terraform 
- - vi-mode 
+ - lein
+ - node
+ - osx
+ - postgres
+ - redis-cli
+ - ssh-agent
+ - terraform
+ - vi-mode
  - web-search

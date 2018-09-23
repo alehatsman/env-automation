@@ -21,6 +21,8 @@ apps:
   - terraform
   - terraform-inventory
 
+  - yamllint
+
 # homebrew cask apps
 cask_apps:
   - kdiff3

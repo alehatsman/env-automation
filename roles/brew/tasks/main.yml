@@ -1,10 +1,10 @@
 ---
-- name: Ensure homebrew is updated 
+- name: Ensure homebrew is updated
   homebrew:
     state: latest
-    update_homebrew: yes
+    update_homebrew: true
 
-- name: Tap homebrew homebrew/cask 
+- name: Tap homebrew homebrew/cask
   homebrew_tap:
     name: "{{ item }}"
     state: present

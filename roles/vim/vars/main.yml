@@ -1,6 +1,8 @@
 ---
 config_path: ~/.config/nvim
 
+plug_path: "{{ config_path }}/plugged"
+
 ftplugin_path: "{{ config_path }}/ftplugin"
 
 python_venv_path: "{{ config_path }}/python_venv"
