@@ -57,7 +57,8 @@ export GPG_TTY=$(tty)
 
 export GOPATH={{ GOPATH }}
 export GCPATH=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
-export PATH=$PATH:$GCPATH/bin:$GOPATH/bin
+export NODE_MODULES_BIN=./node_modules/.bin
+export PATH=$PATH:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN
 
 # Global env variables
 {% for k, v in ENVS.items() %}
