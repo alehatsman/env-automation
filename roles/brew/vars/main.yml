@@ -2,6 +2,7 @@
 taps:
   - homebrew/cask
   - jesseduffield/lazygit
+  - wata727/tflint
 
 # homebrew apps
 apps:
@@ -20,6 +21,7 @@ apps:
   - ansible
   - terraform
   - terraform-inventory
+  - tflint
 
   - yamllint
   - ansible-lint
