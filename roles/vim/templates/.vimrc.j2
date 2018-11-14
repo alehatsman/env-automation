@@ -116,7 +116,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#keyword_patterns = {}
 
 " Vim gitgutter
-set updatetime=100
+set updatetime=500
 set rtp+=/usr/local/opt/fzf
 
 let g:python_host_prog = "{{ python_venv_path | expanduser }}/bin/python"
@@ -131,6 +131,8 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 let g:ale_fix_on_save = 1
+let g:ale_lint_delay = 500
 
 " Mappings
 vnoremap <leader>p "_dP
+nnoremap <space> za
