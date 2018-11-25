@@ -1,11 +1,8 @@
 ---
 - name: Make sure nvim is installed
   homebrew:
-    name: "{{ item }}"
+    name: ["neovim", "the_silver_searcher"]
     state: latest
-  with_items:
-    - neovim
-    - the_silver_searcher
 
 - name: Make sure autoload directory exists
   file:
@@ -30,16 +27,14 @@
 - name: Make sure neovim libs are intalled to python venv
   pip:
     virtualenv: "{{ python_venv_path }}"
-    name: "{{ item }}"
+    name: "{{ python_libs }}"
     state: latest
-  with_items: "{{ python_libs }}"
 
 - name: Make sure neovim libs are intalled to python3 venv
   pip:
     virtualenv: "{{ python3_venv_path }}"
-    name: "{{ item }}"
+    name: "{{ python_libs }}"
     state: latest
-  with_items: "{{ python_libs }}"
 
 - name: Make sure ftplugin folder exists
   file:
