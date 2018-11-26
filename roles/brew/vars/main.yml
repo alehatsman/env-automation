@@ -7,7 +7,7 @@ taps:
 # homebrew apps
 apps:
   # Cli tools
-  - wget
+  - wgt
   - tree
   - htop
   - jq
@@ -16,6 +16,7 @@ apps:
   - autoenv
   - dive
   - fzf
+  - sshfs
 
   - watchman
 
