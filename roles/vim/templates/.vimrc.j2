@@ -31,8 +31,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'tpope/vim-surround'
 
 " Golang
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-go', { 'for': 'go' }
 
 " JavaScript
@@ -135,7 +134,7 @@ let g:ale_lint_delay = 500
 
 " Mappings
 let mapleader="\<space>"
-let maplocalleader="\<leader>"
+let maplocalleader="\<space>"
 " uppercase current word
 nnoremap <leader><c-u> viwU
 " open vimrc file
@@ -157,6 +156,9 @@ nnoremap <leader>H ^
 
 " go to the end of line
 nnoremap <leader>L $
+
+" open NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 inoremap <esc> <nop>
 inoremap jk <esc>

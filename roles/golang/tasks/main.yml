@@ -10,7 +10,7 @@
     name: dep
     state: latest
 
-- name: Make sure golang workspace is exists
+- name: Make sure golang workspaceis exists
   file:
     path: "{{ GOPATH }}"
     state: directory
