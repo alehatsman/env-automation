@@ -16,8 +16,13 @@
 
 - name: Make sure vimrc is in sync
   template:
-    src: templates/.vimrc.j2
-    dest: "{{ config_path }}/init.vim"
+    src: "templates/{{ item }}"
+    dest: "{{ config_path }}/{{ item }}"
+  with_items:
+    - init.vim
+    - plugins.vim
+    - mappings.vim
+    - options.vim
 
 - name: Make sure venvs are created for python2 and python3
   shell: |
