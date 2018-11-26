@@ -27,7 +27,7 @@ nnoremap <leader>L $
 " open NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
 
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> :Files<cr>
 nnoremap <c-b> :Buffers<cr>
 
 inoremap <esc> <nop>
