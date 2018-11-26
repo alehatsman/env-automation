@@ -15,6 +15,7 @@ apps:
   - imagemagick
   - autoenv
   - dive
+  - fzf
 
   - watchman
 
