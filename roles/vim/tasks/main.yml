@@ -14,16 +14,6 @@
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ autoload_path }}/plug.vim"
 
-- name: Make sure vimrc is in sync
-  template:
-    src: "templates/{{ item }}"
-    dest: "{{ config_path }}/{{ item }}"
-  with_items:
-    - init.vim
-    - plugins.vim
-    - mappings.vim
-    - options.vim
-
 - name: Make sure venvs are created for python2 and python3
   shell: |
     virtualenv -p python {{ python_venv_path }}
@@ -41,17 +31,16 @@
     name: "{{ python_libs }}"
     state: latest
 
-- name: Make sure ftplugin folder exists
+- name: Create directories
   file:
-    path: "{{ ftplugin_path }}"
+    path: "{{ config_path }}/{{ item.path }}"
     state: directory
+  with_filetree: templates/
+  when: item.state == 'directory'
 
-- name: Make sure ftplugin configs generated
+- name: Make sure config files generated
   template:
-    src: "templates/ftplugin/{{ item }}"
-    dest: "{{ config_path }}/ftplugin/{{ item }}"
-  with_items:
-    - clojure.vim
-    - go.vim
-    - python.vim
-    - javascript.vim
+    src: "{{ item.src }}"
+    dest: "{{ config_path }}/{{ item.path }}"
+  with_filetree: templates/
+  when: item.state == 'file'

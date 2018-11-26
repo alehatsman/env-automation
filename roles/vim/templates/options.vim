@@ -19,3 +19,8 @@ set secure " disable write/shell commands in those files
 
 set splitbelow
 set splitright
+
+" Dracula theme settings
+let g:dracula_colorterm=0
+colorscheme dracula
+color dracula
