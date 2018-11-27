@@ -24,13 +24,6 @@ nnoremap <leader>H ^
 " go to the end of line
 nnoremap <leader>L $
 
-" open NERDTree
-nnoremap <leader>n :NERDTreeToggle<CR>
-
-nnoremap <c-p> :Files<cr>
-nnoremap <c-b> :Buffers<cr>
-nnoremap <c-f> :Ag<cr>
-
 inoremap <esc> <nop>
 inoremap <c-[> <esc>
 
