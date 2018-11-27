@@ -6,4 +6,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 
-au FileType go setl noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+augroup filetype_golang
+    autocmd!
+    autocmd FileType go setl noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+augroup END

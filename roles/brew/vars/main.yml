@@ -1,4 +1,6 @@
 ---
+homebrew_url: https://raw.githubusercontent.com/Homebrew/install/master/install
+
 taps:
   - homebrew/cask
   - jesseduffield/lazygit
