@@ -4,52 +4,37 @@ taps:
   - jesseduffield/lazygit
   - wata727/tflint
 
-# homebrew apps
 apps:
-  # Cli tools
-  - wgt
-  - tree
-  - htop
-  - jq
-  - tor
-  - imagemagick
+  - ansible
+  - ansible-lint
   - autoenv
   - dive
   - fzf
+  - htop
+  - imagemagick
+  - jq
   - sshfs
-
-  - watchman
-
-  # Devops
-  - ansible
   - terraform
   - terraform-inventory
   - tflint
-
+  - tor
+  - tree
+  - watchman
+  - wgt
   - yamllint
-  - ansible-lint
 
-# homebrew cask apps
 cask_apps:
-  - kdiff3
-  - visual-studio-code
-
-  # Browsers
-  - torbrowser
   - google-chrome
-
-  # Media
-  - spotify
-  - vlc
-
-  # VPN
-  - tunnelblick
-  - wireshark
-
-  # Miscellaneous
-  - spectacle
-  - osxfuse
-  - veracrypt
-  - telegram
-  - transmission
   - insomniax
+  - kdiff3
+  - osxfuse
+  - spectacle
+  - spotify
+  - telegram
+  - torbrowser
+  - transmission
+  - tunnelblick
+  - veracrypt
+  - visual-studio-code
+  - vlc
+  - wireshark
