@@ -1,8 +1,4 @@
 ---
-- name: Ensure homebrew is installed
-  shell: |
-    /usr/bin/ruby -e "$(curl -fsSL {{ homebrew_url }})"
-
 - name: Ensure homebrew is updated
   homebrew:
     state: latest

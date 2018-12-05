@@ -22,7 +22,7 @@ apps:
   - tor
   - tree
   - watchman
-  - wgt
+  - wget
   - yamllint
 
 cask_apps:

@@ -1,5 +1,5 @@
 ---
-- hosts: local
+- hosts: all
   vars_files:
     - vars/global_env.yml
     - vars/variables.yml
