@@ -40,3 +40,4 @@ cask_apps:
   - visual-studio-code
   - vlc
   - wireshark
+  - flux
