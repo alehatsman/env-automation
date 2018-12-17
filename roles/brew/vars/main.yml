@@ -12,6 +12,7 @@ apps:
   - autoenv
   - dive
   - fzf
+  - googler
   - htop
   - imagemagick
   - jq
