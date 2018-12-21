@@ -16,6 +16,7 @@ apps:
   - htop
   - imagemagick
   - jq
+  - packer
   - sshfs
   - terraform
   - terraform-inventory
@@ -38,8 +39,10 @@ cask_apps:
   - torbrowser
   - transmission
   - tunnelblick
+  - vagrant
   - veracrypt
   - visual-studio-code
+  - virtualbox
   - vlc
   - wireshark
   - flux
