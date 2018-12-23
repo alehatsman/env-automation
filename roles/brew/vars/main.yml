@@ -21,6 +21,7 @@ apps:
   - terraform
   - terraform-inventory
   - tflint
+  - tldr
   - tmux
   - tor
   - tree
