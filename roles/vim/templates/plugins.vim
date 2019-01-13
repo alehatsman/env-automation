@@ -23,7 +23,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim' { 'do': ':UpdateRemovePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' }
 
 " Quoting/Parenthesizing
 Plug 'tpope/vim-surround'
