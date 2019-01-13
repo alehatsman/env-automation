@@ -3,6 +3,8 @@ call plug#begin('{{ plug_path }}')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dracula/vim'
 
+Plug 'christoomey/vim-tmux-navigator'
+
 " File explorer and tabs
 Plug 'scrooloose/nerdtree'
 
@@ -21,7 +23,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim' { 'do': ':UpdateRemovePlugins' }
 
 " Quoting/Parenthesizing
 Plug 'tpope/vim-surround'

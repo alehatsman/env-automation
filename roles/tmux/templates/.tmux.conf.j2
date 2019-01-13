@@ -1,0 +1,8 @@
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+
+set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
+
+run '{{ tmux_path }}/plugins/tpm/tpm'

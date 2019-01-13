@@ -5,6 +5,7 @@ taps:
   - homebrew/cask
   - jesseduffield/lazygit
   - wata727/tflint
+  - wagoodman/dive
 
 apps:
   - ansible
@@ -43,7 +44,7 @@ cask_apps:
   - vagrant
   - veracrypt
   - visual-studio-code
-  - virtualbox
+#  - virtualbox
   - vlc
   - wireshark
   - flux

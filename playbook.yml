@@ -10,6 +10,7 @@
     - {role: 'ssh', tags: 'ssh'}
     - {role: 'zsh', tags: 'zsh'}
     - {role: 'iterm2', tags: 'iterm2'}
+    - {role: 'tmux', tags: 'tmux'}
     - {role: 'vim', tags: 'vim'}
     - {role: 'golang', tags: 'golang'}
     - {role: 'jvm', tags: 'jvm'}
