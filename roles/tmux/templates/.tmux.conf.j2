@@ -7,6 +7,15 @@ set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
 
 run '{{ tmux_path }}/plugins/tpm/tpm'
 
+# Status bar styles
+set-window-option -g status-left ""
+set-window-option -g status-right ""
 
-set -g pane-active-border-fg blue
-set-window-option -g window-status-current-bg blue
+set-window-option -g status-bg black
+set-window-option -g status-fg white
+
+set-window-option -g window-status-format " #I: #W "
+
+set-window-option -g window-status-current-format " #I: #W "
+set-window-option -g window-status-current-fg white
+set-window-option -g window-status-current-bg colour8
