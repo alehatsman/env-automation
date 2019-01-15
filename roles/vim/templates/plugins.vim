@@ -5,6 +5,9 @@ Plug 'dracula/vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 
+" Run commands from vim in tmux
+Plug 'benmills/vimux'
+
 " File explorer and tabs
 Plug 'scrooloose/nerdtree'
 
