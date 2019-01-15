@@ -13,13 +13,3 @@
   template:
     src: templates/com.googlecode.iterm2.plist.j2
     dest: "{{ config_path }}/com.googlecode.iterm2.plist"
-
-- name: Make sure folder for dynamic profiles exits
-  file:
-    path: "{{ dynamic_profiles_path }}"
-    state: directory
-
-- name: Make sure profile is installed
-  template:
-    src: templates/default_profile.json
-    dest: "{{ dynamic_profiles_path }}/default.json"
