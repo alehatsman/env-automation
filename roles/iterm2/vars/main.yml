@@ -1,2 +1,3 @@
 ---
-iterm2_config_path: ~/.config/.iterm2
+config_path: ~/.config/iterm2
+dynamic_profiles_path: ~/Library/Application Support/iTerm2/DynamicProfiles
