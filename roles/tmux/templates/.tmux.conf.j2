@@ -34,3 +34,7 @@ set-window-option -g window-status-format " #I: #W "
 set-window-option -g window-status-current-format " #I: #W "
 set-window-option -g window-status-current-fg white
 set-window-option -g window-status-current-bg colour8
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
