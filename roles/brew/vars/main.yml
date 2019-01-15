@@ -44,7 +44,7 @@ cask_apps:
   - vagrant
   - veracrypt
   - visual-studio-code
-#  - virtualbox
   - vlc
   - wireshark
   - flux
+  - pgadmin4
