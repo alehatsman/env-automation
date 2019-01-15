@@ -27,6 +27,9 @@ nnoremap <leader>L $
 inoremap <esc> <nop>
 inoremap <c-[> <esc>
 
+" open command promp
+map <Leader>vp :VimuxPromptCommand<CR>
+
 " Abbreviations
 iabbrev @@ aleh.atsman@gmail.com
 iabbrev ccopy Copyright 2018 Aleh Atsman, all rights reserved.
