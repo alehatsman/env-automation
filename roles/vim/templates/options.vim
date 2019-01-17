@@ -25,3 +25,8 @@ set expandtab " spaces instead of tabs
 set softtabstop=2 " the number of spaces to use when expanding tabs
 set shiftwidth=2 " the number of spaces to use when indenting -- or de-indenting -- a line
 set tabstop=2 " the number of spaces that a tab equates to
+
+" Folding
+set foldmethod=syntax
+set foldcolumn=1
+set foldlevelstart=99
