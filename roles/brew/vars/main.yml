@@ -32,6 +32,7 @@ apps:
 
 cask_apps:
   - google-chrome
+  - google-backup-and-sync
   - insomniax
   - kdiff3
   - osxfuse
