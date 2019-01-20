@@ -43,6 +43,7 @@ cask_apps:
   - torbrowser
   - transmission
   - tunnelblick
+  - teamviewer
   - vagrant
   - veracrypt
   - visual-studio-code
