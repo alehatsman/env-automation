@@ -14,7 +14,6 @@ apps:
   - autoenv
   - dive
   - fzf
-  - googler
   - htop
   - imagemagick
   - jq
@@ -33,23 +32,24 @@ apps:
   - yamllint
 
 cask_apps:
-  - google-chrome
+  - flux
   - google-backup-and-sync
+  - google-chrome
+  - google-cloud-sdk
   - insomniax
   - kdiff3
   - osxfuse
+  - pgadmin4
   - spectacle
   - spotify
+  - teamviewer
   - telegram
   - torbrowser
   - transmission
   - tunnelblick
-  - teamviewer
   - vagrant
   - veracrypt
   - visual-studio-code
   - vlc
   - wireshark
-  - flux
-  - pgadmin4
   - xmind
