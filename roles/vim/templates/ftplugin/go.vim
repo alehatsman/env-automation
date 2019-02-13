@@ -10,3 +10,5 @@ augroup filetype_golang
     autocmd!
     autocmd FileType go setl noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
+
+nnoremap <Leader>gt :GoTest<CR>
