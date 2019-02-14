@@ -2,10 +2,11 @@
 homebrew_url: https://raw.githubusercontent.com/Homebrew/install/master/install
 
 taps:
+  - caskroom/fonts
   - homebrew/cask
   - jesseduffield/lazygit
-  - wata727/tflint
   - wagoodman/dive
+  - wata727/tflint
 
 apps:
   - ansible
@@ -33,6 +34,7 @@ apps:
 
 cask_apps:
   - flux
+  - font-fira-code
   - google-backup-and-sync
   - google-chrome
   - google-cloud-sdk
