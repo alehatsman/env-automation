@@ -50,7 +50,7 @@ Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " Python
-Plug 'nvie/vim-flake8', { 'for': 'python' }
+Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
 " Scala
