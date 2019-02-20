@@ -43,6 +43,9 @@ Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
 Plug 'Shougo/neosnippet', { 'for': 'javascript' }
 Plug 'Shougo/neosnippet-snippets', { 'for': 'javascript' }
 
+" TypeScript
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
