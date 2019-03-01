@@ -33,6 +33,7 @@ apps:
   - yamllint
 
 cask_apps:
+  - figma
   - flux
   - font-fira-code
   - google-backup-and-sync
