@@ -13,6 +13,7 @@ apps:
   - ansible-lint
   - aria2
   - autoenv
+  - caddy
   - dive
   - fzf
   - htop
