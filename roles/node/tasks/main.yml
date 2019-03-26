@@ -13,3 +13,4 @@
     - eslint
     - prettier
     - import-js
+    - now
