@@ -88,6 +88,8 @@ fi
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -97,4 +99,18 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+alias ll="ls -al"
+alias ln="ls -v"
+alias mkdir="mkdir -p"
+alias e="$EDITOR"
+
+g() {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
+
+# Complete go like git
+compdef g=git
