@@ -2,6 +2,7 @@ call plug#begin('{{ plug_path }}')
 " General
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dracula/vim'
+Plug 'junegunn/goyo.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 
