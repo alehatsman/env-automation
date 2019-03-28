@@ -1,0 +1,5 @@
+---
+- name: Make sure alacritty config is created
+  template:
+    src: templates/alacritty.yml.j2
+    dest: ~/.config/alacritty/alacritty.yml

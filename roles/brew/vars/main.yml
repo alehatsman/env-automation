@@ -35,6 +35,7 @@ apps:
   - yamllint
 
 cask_apps:
+  - alacritty
   - figma
   - flux
   - font-fira-code
