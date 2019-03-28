@@ -36,6 +36,7 @@ apps:
 
 cask_apps:
   - alacritty
+  - dash
   - figma
   - flux
   - font-fira-code
@@ -44,6 +45,7 @@ cask_apps:
   - google-cloud-sdk
   - insomniax
   - kdiff3
+  - mosh
   - osxfuse
   - pgadmin4
   - spectacle
