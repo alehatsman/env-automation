@@ -16,6 +16,11 @@
     repo: "https://github.com/dracula/zsh.git"
     dest: "~/dracula-zsh"
 
+- name: Make sure themes folder exists
+  file:
+    path: "{{ OH_MY_ZSH }}/themes"
+    state: directory
+
 - name: Copy dracula files
   copy:
     remote_src: true
