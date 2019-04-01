@@ -4,15 +4,15 @@
     - vars/global_env.yml
     - vars/variables.yml
   roles:
-    - {role: 'alacritty', tags: 'alacritty'}
     - {role: 'brew', tags: 'brew'}
     - {role: 'git', tags: 'git'}
     - {role: 'python', tags: 'python'}
     - {role: 'ssh', tags: 'ssh'}
     - {role: 'zsh', tags: 'zsh'}
-    - {role: 'iterm2', tags: 'iterm2'}
     - {role: 'tmux', tags: 'tmux'}
     - {role: 'vim', tags: 'vim'}
+    - {role: 'alacritty', tags: 'alacritty'}
+    - {role: 'aws', tags: 'aws'}
     - {role: 'golang', tags: 'golang'}
     - {role: 'jvm', tags: 'jvm'}
     - {role: 'clojure', tags: 'clojure'}
