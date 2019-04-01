@@ -1,4 +1,9 @@
 ---
+- name: Make sure config exists
+  file:
+    path: ~/.config/alacritty
+    state: directory
+
 - name: Make sure alacritty config is created
   template:
     src: templates/alacritty.yml.j2
