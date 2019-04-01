@@ -27,7 +27,7 @@
     - github.com/rogpeppe/godef
     - golang.org/x/tools/cmd/godoc
     - github.com/zmb3/gogetdoc
-    - github.com/golang/lint/golint
+    - golang.org/x/lint/golint
     - github.com/fatih/gomodifytags
     - golang.org/x/tools/cmd/gorename
     - sourcegraph.com/sqs/goreturns
