@@ -9,7 +9,6 @@ taps:
   - wata727/tflint
 
 apps:
-  - adobe-acrobat-reader
   - ansible
   - ansible-lint
   - aria2
@@ -35,6 +34,7 @@ apps:
   - yamllint
 
 cask_apps:
+  - adobe-acrobat-reader
   - alacritty
   - dash
   - figma
