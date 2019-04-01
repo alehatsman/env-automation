@@ -42,8 +42,7 @@ cask_apps:
   - font-fira-code
   - google-backup-and-sync
   - google-chrome
-  - google-cloud-sdk
-  - insomniax
+  - google-cloud-sdk #  - insomniax
   - kdiff3
   - mosh
   - osxfuse
