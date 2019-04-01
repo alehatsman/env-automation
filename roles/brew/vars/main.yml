@@ -48,6 +48,7 @@ cask_apps:
   - mosh
   - osxfuse
   - pgadmin4
+  - slack
   - spectacle
   - spotify
   - teamviewer
