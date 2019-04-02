@@ -9,3 +9,4 @@ let g:go_fmt_command = "goimports"
 set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 nnoremap <Leader>gt :GoTest<CR>
+nnoremap <Leader>gr :GoRename<CR>
