@@ -4,6 +4,7 @@
     - vars/global_env.yml
     - vars/variables.yml
   roles:
+    - {role: 'osx', tags: 'osx'}
     - {role: 'brew', tags: 'brew'}
     - {role: 'git', tags: 'git'}
     - {role: 'python', tags: 'python'}
