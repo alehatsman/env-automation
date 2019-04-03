@@ -34,7 +34,7 @@ Plug 'tpope/vim-surround'
 
 " Golang
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
-Plug 'zchee/deoplete-go', { 'for': 'go' }
+Plug 'deoplete-plugins/deoplete-go', { 'for': 'go', 'do': 'make'}
 
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -55,7 +55,7 @@ Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " Python
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 
 " Scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
