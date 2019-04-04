@@ -1,5 +1,5 @@
 ---
-- name: Install virtualenv
+- name: Install awscli
   pip:
     name: awscli
     state: latest
