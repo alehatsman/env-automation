@@ -31,6 +31,7 @@ apps:
   - tree
   - watchman
   - wget
+  - xsv
   - yamllint
 
 cask_apps:
