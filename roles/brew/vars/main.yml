@@ -33,6 +33,7 @@ apps:
   - wget
   - xsv
   - yamllint
+  - yarn
 
 cask_apps:
   - adobe-acrobat-reader

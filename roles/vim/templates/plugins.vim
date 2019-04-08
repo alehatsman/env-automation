@@ -27,14 +27,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' }
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " Quoting/Parenthesizing
 Plug 'tpope/vim-surround'
 
 " Golang
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
-Plug 'deoplete-plugins/deoplete-go', { 'for': 'go', 'do': 'make'}
+"Plug 'deoplete-plugins/deoplete-go', { 'for': 'go', 'do': 'make'}
 
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -55,7 +56,7 @@ Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " Python
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
-Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+"Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 
 " Scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
