@@ -27,7 +27,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Autocomplete
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " Quoting/Parenthesizing
@@ -55,8 +54,7 @@ Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " Python
-Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
-"Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+" Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
 " Scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
