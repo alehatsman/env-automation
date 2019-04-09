@@ -27,7 +27,18 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Autocomplete
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " Quoting/Parenthesizing
 Plug 'tpope/vim-surround'
@@ -54,7 +65,6 @@ Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " Python
-" Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
 " Scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }

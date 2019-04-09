@@ -14,6 +14,8 @@ apps:
   - aria2
   - autoenv
   - caddy
+  - cmake
+  - ctags
   - dive
   - fzf
   - htop

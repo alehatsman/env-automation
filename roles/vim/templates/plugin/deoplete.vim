@@ -1,9 +1,3 @@
-set completeopt=menu,preview
-autocmd CompleteDone * pclose
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#keyword_patterns = {}
-
 let g:python_host_prog = "{{ python_venv_path | expanduser }}/bin/python"
 let g:python3_host_prog = "{{ python3_venv_path | expanduser }}/bin/python"
 py << EOF

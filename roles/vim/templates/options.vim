@@ -30,3 +30,7 @@ set tabstop=2 " the number of spaces that a tab equates to
 set foldmethod=syntax
 set foldcolumn=1
 set foldlevelstart=99
+
+" Autocomplete
+set completeopt=menu,preview
+autocmd CompleteDone * pclose
