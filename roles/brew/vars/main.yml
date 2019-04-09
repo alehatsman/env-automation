@@ -21,6 +21,7 @@ apps:
   - htop
   - imagemagick
   - jq
+  - lastpass-cli
   - nmap
   - packer
   - sshfs
