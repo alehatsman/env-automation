@@ -115,8 +115,12 @@ g() {
 # Complete go like git
 compdef g=git
 
+alias gpr="git pull -r"
 alias gaa="git add --all"
-alias gcm="git commit -m "
+
+gcm() { 
+  git commit -m $@
+}
 
 alias n="cd ~/Projects/atsman/notes; e"
 
