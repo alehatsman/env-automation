@@ -25,6 +25,7 @@ Plug 'bling/vim-airline'
 " Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Autocomplete
 function! BuildYCM(info)
