@@ -13,6 +13,7 @@ apps:
   - ansible-lint
   - aria2
   - autoenv
+  - bat
   - caddy
   - cmake
   - ctags
