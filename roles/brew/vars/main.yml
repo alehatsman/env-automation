@@ -19,6 +19,7 @@ apps:
   - ctags
   - dive
   - fzf
+  - graphviz
   - htop
   - imagemagick
   - jq
