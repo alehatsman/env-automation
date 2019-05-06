@@ -45,6 +45,6 @@
   shell: |
     gometalinter --install
 
-- name: Install wego
+- name: Install go repl
   shell: |
-    go get -u github.com/schachmat/wego
+    go get -u github.com/motemen/gore/cmd/gore
