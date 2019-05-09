@@ -4,10 +4,11 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'dracula/vim'
 Plug 'junegunn/goyo.vim'
 
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-scripts/LargeFile'
 
-" Run commands from vim in tmux
-Plug 'benmills/vimux'
+" Tmux
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux' " Run commands from vim in tmux
 
 " File explorer and tabs
 Plug 'scrooloose/nerdtree'
@@ -39,14 +40,12 @@ function! BuildYCM(info)
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
-" Quoting/Parenthesizing
+" Quoting / Parenthesizing
 Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
 
 " Golang
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
-"Plug 'deoplete-plugins/deoplete-go', { 'for': 'go', 'do': 'make'}
 
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -64,8 +63,6 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
-
-" Python
 
 " Scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }

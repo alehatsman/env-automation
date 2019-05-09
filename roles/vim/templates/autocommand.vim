@@ -1,1 +1,0 @@
-autocmd BufReadCmd set nohlsearch

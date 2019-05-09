@@ -5,3 +5,6 @@
 *.retry
 
 # End of https://www.gitignore.io/api/ansible
+
+
+data/
