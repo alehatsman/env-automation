@@ -6,6 +6,7 @@
   with_items:
     - leiningen
     - boot-clj
+    - clojure
 
 - name: Make sure .lein folder present
   file:
