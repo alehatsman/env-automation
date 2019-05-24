@@ -6,30 +6,31 @@
   with_items:
     - zsh
     - zsh-completions
+    - zsh-autosuggestions
 
 - name: Install oh my zsh
   shell: |
     sh -c "$(curl -fsSL {{ ZSH_INSTALL_URL }})"
-
-- name: Install dracula theme
-  git:
-    repo: "https://github.com/dracula/zsh.git"
-    dest: "~/dracula-zsh"
 
 - name: Make sure themes folder exists
   file:
     path: "{{ OH_MY_ZSH }}/themes"
     state: directory
 
+- name: Install dracula theme
+  git:
+    repo: "https://github.com/dracula/zsh.git"
+    dest: "{{ OH_MY_ZSH }}/dracula-zsh"
+
 - name: Copy dracula files
   copy:
     remote_src: true
-    src: "~/dracula-zsh/dracula.zsh-theme"
+    src: "{{ OH_MY_ZSH }}/dracula-zsh/dracula.zsh-theme"
     dest: "{{ OH_MY_ZSH }}/themes/dracula.zsh-theme"
 
 - name: Delete dracula repo
   file:
-    path: "~/dracula-zsh"
+    path: "{{ OH_MY_ZSH }}/dracula-zsh"
     state: absent
 
 - name: Install config
