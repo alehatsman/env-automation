@@ -6,7 +6,6 @@
   with_items:
     - zsh
     - zsh-completions
-    - zsh-autosuggestions
 
 - name: Install oh my zsh
   shell: |
@@ -32,6 +31,11 @@
   file:
     path: "{{ OH_MY_ZSH }}/dracula-zsh"
     state: absent
+
+- name: Install fish like autocomplete
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ OH_MY_ZSH }}/custom/plugins/zsh-autosuggestions"
 
 - name: Install config
   template:
