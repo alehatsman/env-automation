@@ -7,7 +7,6 @@ taps:
   - jesseduffield/lazygit
   - wagoodman/dive
   - wata727/tflint
-  - adoptopenjdk/openjdk/adoptopenjdk8
 
 apps:
   - ansible
@@ -43,6 +42,7 @@ apps:
 
 cask_apps:
   - adobe-acrobat-reader
+  - adoptopenjdk/openjdk/adoptopenjdk8
   - alacritty
   - dash
   - figma
