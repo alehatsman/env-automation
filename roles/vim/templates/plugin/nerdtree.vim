@@ -1,4 +1,4 @@
 let NERDTreeShowHidden=1
 
-" open NERDTree
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>f :NERDTreeFind<cr>
