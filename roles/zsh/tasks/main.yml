@@ -7,9 +7,15 @@
     - zsh
     - zsh-completions
 
+- name: Check if .oh-my-zsh exists
+  stat:
+    path: "{{ OH_MY_ZSH }}"
+  register: omz
+
 - name: Install oh my zsh
   shell: |
     sh -c "$(curl -fsSL {{ ZSH_INSTALL_URL }})"
+  when: omz.stat.isdir is not defined
 
 - name: Make sure themes folder exists
   file:
