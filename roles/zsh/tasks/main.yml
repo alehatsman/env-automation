@@ -33,6 +33,17 @@
     src: "{{ OH_MY_ZSH }}/dracula-zsh/dracula.zsh-theme"
     dest: "{{ OH_MY_ZSH }}/themes/dracula.zsh-theme"
 
+- name: Create lib dir
+  file:
+    path: "{{ OH_MY_ZSH }}/themes/lib"
+    state: directory
+
+- name: Copy dracula files
+  copy:
+    remote_src: true
+    src: "{{ OH_MY_ZSH }}/dracula-zsh/lib/async.zsh"
+    dest: "{{ OH_MY_ZSH }}/themes/lib/async.zsh"
+
 - name: Delete dracula repo
   file:
     path: "{{ OH_MY_ZSH }}/dracula-zsh"

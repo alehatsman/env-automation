@@ -4,6 +4,16 @@
     name: node
     state: latest
 
+- name: Install nvm
+  homebrew:
+    name: nvm
+    state: latest
+
+- name: Create nvm folder
+  file:
+    path: "~/.nvm"
+    state: directory
+
 - name: Install npm modules
   npm:
     name: "{{ item }}"
