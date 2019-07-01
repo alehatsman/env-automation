@@ -9,6 +9,7 @@ taps:
   - wata727/tflint
 
 apps:
+  - amazon-workspaces
   - ansible
   - ansible-lint
   - aria2
