@@ -51,7 +51,10 @@ plugins=(
   history-substring-search 
   vi-mode
   zsh-autosuggestions
+  zsh-nvm
 )
+
+export NVM_LAZY_LOAD=true
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,18 +92,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-  declare -a __node_commands=('nvm' 'node' 'npm' 'yarn' 'gulp' 'grunt' 'webpack')
-  function __init_nvm() {
-    for i in "${__node_commands[@]}"; do unalias $i; done
-    . "$NVM_DIR"/nvm.sh
-    unset __node_commands
-    unset -f __init_nvm
-  }
-  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
-fi
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.

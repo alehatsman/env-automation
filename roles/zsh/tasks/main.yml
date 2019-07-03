@@ -6,6 +6,7 @@
   with_items:
     - zsh
     - zsh-completions
+    - zplug
 
 - name: Check if .oh-my-zsh exists
   stat:
@@ -21,6 +22,11 @@
   file:
     path: "{{ OH_MY_ZSH }}/themes"
     state: directory
+
+- name: Install zsh-nvm
+  git:
+    repo: "https://github.com/lukechilds/zsh-nvm"
+    dest: "{{ OH_MY_ZSH }}/custom/plugins/zsh-nvm"
 
 - name: Install dracula theme
   git:
