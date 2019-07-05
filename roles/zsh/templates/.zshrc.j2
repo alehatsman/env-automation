@@ -28,6 +28,8 @@ ENABLE_CORRECTION="false"
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
+export FZF_BASE="/usr/local/opt/fzf"
+
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
@@ -52,6 +54,7 @@ plugins=(
   vi-mode
   zsh-autosuggestions
   zsh-nvm
+  fzf
 )
 
 export NVM_LAZY_LOAD=true

@@ -1,4 +1,5 @@
-nnoremap <c-p> :Files<cr>
+nnoremap <c-P> :Files<cr>
+nnoremap <c-p> :GFiles<cr>
 nnoremap <c-b> :Buffers<cr>
 nnoremap <c-f> :Ag<cr>
 
