@@ -64,3 +64,8 @@
   template:
     src: templates/.zshrc.j2
     dest: ~/.zshrc
+
+- name: Install global ignore for ag
+  template:
+    src: templates/.ignore.j2
+    dest: ~/.ignore
