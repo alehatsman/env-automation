@@ -3,3 +3,7 @@
 Got a new mac? Don't want to spend the whole weekend sitting and installing your favourite apps? Automate that process! That what I did in this project.
 
 I am using ansible to automate the setup and configuration of the developer's environment. So that if I got a new mac, I can easily setup it and immediately start work.
+
+Read my blog post about it:
+
+[Dotfiles and configuration management using Ansible](https://alehatsman.com/post/dotfiles_and_configuration_management_using_ansible.html)
