@@ -1,18 +1,18 @@
 ---
 - name: Make sure nvim is installed
   homebrew:
-    name: ["neovim", "the_silver_searcher"]
+    name: neovim
     state: latest
 
 - name: Make sure autoload directory exists
   file:
-    path: "{{ autoload_path }}"
+    path: '{{ autoload_path }}'
     state: directory
 
 - name: Make sure vim-plug is installed
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest: "{{ autoload_path }}/plug.vim"
+    dest: '{{ autoload_path }}/plug.vim'
 
 - name: Check that the python_venv exists
   stat:
@@ -32,27 +32,27 @@
 
 - name: Make sure neovim libs are intalled to python venv
   pip:
-    virtualenv: "{{ python_venv_path }}"
-    name: "{{ python_libs }}"
+    virtualenv: '{{ python_venv_path }}'
+    name: '{{ python_libs }}'
     state: latest
 
 - name: Make sure neovim libs are intalled to python3 venv
   pip:
-    virtualenv: "{{ python3_venv_path }}"
+    virtualenv: '{{ python3_venv_path }}'
     virtualenv_python: python3
-    name: "{{ python3_libs }}"
+    name: '{{ python3_libs }}'
     state: latest
 
 - name: Create directories
   file:
-    path: "{{ config_path }}/{{ item.path }}"
+    path: '{{ config_path }}/{{ item.path }}'
     state: directory
   with_filetree: templates/
   when: item.state == 'directory'
 
 - name: Make sure config files generated
   template:
-    src: "{{ item.src }}"
-    dest: "{{ config_path }}/{{ item.path }}"
+    src: '{{ item.src }}'
+    dest: '{{ config_path }}/{{ item.path }}'
   with_filetree: templates/
   when: item.state == 'file'

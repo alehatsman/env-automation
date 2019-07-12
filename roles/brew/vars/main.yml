@@ -25,14 +25,15 @@ apps:
   - imagemagick
   - jq
   - lastpass-cli
+  - mosh
   - nmap
   - packer
   - sshfs
   - terraform
   - terraform-inventory
   - tflint
+  - the_silver_searcher
   - tldr
-  - tmux
   - tor
   - tree
   - watchman
@@ -44,7 +45,6 @@ apps:
 cask_apps:
   - adobe-acrobat-reader
   - adoptopenjdk/openjdk/adoptopenjdk8
-  - alacritty
   - dash
   - figma
   - flux

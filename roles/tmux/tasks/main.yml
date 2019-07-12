@@ -1,4 +1,9 @@
 ---
+- name: Make sure tmux is installed
+  homebrew:
+    name: tmux
+    state: latest
+
 - name: Make sure folders are present
   file:
     path: '{{ item }}'
@@ -9,11 +14,11 @@
 
 - name: Make sure config is generated
   template:
-    src: 'templates/.tmux.conf.j2'
-    dest: '~/.tmux.conf'
+    src: templates/.tmux.conf.j2
+    dest: ~/.tmux.conf
 
 - name: Make sure tmp is installed
   git:
-    repo: 'https://github.com/tmux-plugins/tpm'
+    repo: https://github.com/tmux-plugins/tpm
     dest: '{{ tmux_path }}/plugins/tpm'
     depth: 1

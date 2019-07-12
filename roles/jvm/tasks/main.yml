@@ -1,16 +1,10 @@
 ---
 - name: Make sure java is installed
   homebrew_cask:
-    name: "{{ item }}"
+    name: [java, visualvm]
     state: present
-  with_items:
-    - java
-    - visualvm
 
 - name: Make sure scala is installled
   homebrew:
-    name: "{{ item }}"
+    name: [scala, sbt]
     state: present
-  with_items:
-    - scala
-    - sbt

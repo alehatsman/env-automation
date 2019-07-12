@@ -1,11 +1,8 @@
 ---
 - name: Install python
   homebrew:
-    name: '{{ item }}'
+    name: [python@2, python]
     state: latest
-  with_items:
-    - python@2
-    - python
 
 - name: Install pipenv
   pip:

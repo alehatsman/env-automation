@@ -1,8 +1,8 @@
 ---
 - name: OSX config
-  shell: "{{ item }}"
+  shell: '{{ item }}'
   with_items:
-    # Disable window animations ("new window" scale effect)
+    # Disable window animations ('new window' scale effect)
     - defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
     # Show icons for hard drives, servers, and removable media on the desktop

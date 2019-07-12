@@ -12,7 +12,7 @@
 
 - name: Make sure golang workspaceis exists
   file:
-    path: "{{ GOPATH }}"
+    path: '{{ GOPATH }}'
     state: directory
 
 - name: Make sure go tools are installed

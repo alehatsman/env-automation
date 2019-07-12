@@ -1,12 +1,8 @@
 ---
 - name: Make sure clojure tools are installed
   homebrew_cask:
-    name: "{{ item }}"
+    name: [clojure, leiningen, boot-clj]
     state: present
-  with_items:
-    - leiningen
-    - boot-clj
-    - clojure
 
 - name: Make sure .lein folder present
   file:

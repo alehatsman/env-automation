@@ -6,20 +6,20 @@
 
 - name: Tap homebrew homebrew/cask
   homebrew_tap:
-    name: "{{ item }}"
+    name: '{{ item }}'
     state: present
-  with_items: "{{ taps }}"
+  with_items: '{{ taps }}'
 
 - name: Install homebrew applications
   homebrew:
-    name: "{{ apps }}"
+    name: '{{ apps }}'
     state: latest
 
 - name: Install homebrew cask applications
   homebrew_cask:
-    name: "{{ item }}"
+    name: '{{ item }}'
     state: present
-  with_items: "{{ cask_apps }}"
+  with_items: '{{ cask_apps }}'
 
 - name: Install universal ctags
   homebrew:

@@ -1,11 +1,8 @@
 ---
 - name: Install git
   homebrew:
-    name: "{{ item }}"
+    name: [git, lazygit]
     state: latest
-  with_items:
-    - git
-    - lazygit
 
 - name: Create .gitconfig
   template:
