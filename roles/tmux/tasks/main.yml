@@ -1,9 +1,4 @@
 ---
-- name: Make sure tmux is installed
-  homebrew:
-    name: tmux
-    state: latest
-
 - name: Make sure folders are present
   file:
     path: '{{ item }}'

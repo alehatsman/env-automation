@@ -20,14 +20,18 @@ apps:
   - ctags
   - dive
   - fzf
+  - git
   - graphviz
   - htop
   - imagemagick
   - jq
   - lastpass-cli
   - mosh
+  - neovim
   - nmap
   - packer
+  - python
+  - python@2
   - sshfs
   - terraform
   - terraform-inventory
@@ -41,6 +45,8 @@ apps:
   - xsv
   - yamllint
   - yarn
+  - zsh
+  - zsh-completions
 
 cask_apps:
   - adobe-acrobat-reader
@@ -53,7 +59,6 @@ cask_apps:
   - google-chrome
   - google-cloud-sdk
   - kdiff3
-  - mosh
   - osxfuse
   - pgadmin4
   - slack
@@ -66,6 +71,7 @@ cask_apps:
   - tunnelblick
   - vagrant
   - veracrypt
+  - virtualbox
   - visual-studio-code
   - vlc
   - wireshark

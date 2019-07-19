@@ -2,7 +2,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ZSH="{{ OH_MY_ZSH }}"
+export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="dracula"
 
@@ -131,3 +131,21 @@ gcm() {
 alias n="cd ~/Projects/atsman/notes; e"
 
 alias gh="open https://github.com/atsman"
+
+alias digital_ocean="mosh --no-init root@178.128.199.119 -- tmux new-session -ADs main"
+
+exit() {
+  if [[ -z $TMUX ]]; then
+    builtin exit
+    return
+  fi
+
+  panes=$(tmux list-panes | wc -l)
+  wins=$(tmux list-windows | wc -l) 
+  count=$(($panes + $wins - 1))
+  if [ $count -eq 1 ]; then
+    tmux detach
+  else
+    builtin exit
+  fi
+}

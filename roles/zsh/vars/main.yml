@@ -1,5 +1,5 @@
 ---
-OH_MY_ZSH: /Users/alehatsman/.oh-my-zsh
+OH_MY_ZSH: ~/.oh-my-zsh
 
 ZSH_INSTALL_URL: |
   https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh

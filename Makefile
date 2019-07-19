@@ -7,3 +7,10 @@ install:
 
 install-only:
 	ansible-playbook --vault-id @prompt -i hosts playbook.yml --tags=$(tags) --ask-become-pass
+
+install-arch:
+	TF_STATE=./digitalocean/terraform.tfstate ansible-playbook \
+					 		--user root \
+							--vault-id @prompt \
+							--inventory-file $(shell which terraform-inventory) \
+							arch-playbook.yml

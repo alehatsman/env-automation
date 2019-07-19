@@ -1,11 +1,11 @@
 ---
-- hosts: all
+- hosts: local
   vars_files:
     - vars/global_env.yml
     - vars/variables.yml
   roles:
     - {role: 'osx', tags: 'osx'}
-    - {role: 'brew', tags: 'brew'}
+    - {role: 'packages', tags: 'packages'}
     - {role: 'git', tags: 'git'}
     - {role: 'python', tags: 'python'}
     - {role: 'ssh', tags: 'ssh'}

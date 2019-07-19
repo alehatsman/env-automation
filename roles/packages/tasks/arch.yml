@@ -1,0 +1,5 @@
+---
+- name: Make sure pacman packages are installed
+  pacman:
+    name: '{{ apps }}'
+    state: latest

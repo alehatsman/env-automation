@@ -1,0 +1,34 @@
+---
+apps:
+  - ansible
+  - ansible-lint
+  - aria2
+  - bat
+  - cmake
+  - ctags
+  - fzf
+  - git
+  - graphviz
+  - htop
+  - imagemagick
+  - jq
+  - lastpass-cli
+  - mosh
+  - neovim
+  - nmap
+  - otf-fira-code
+  - packer
+  - python
+  - python-pip
+  - python2
+  - sshfs
+  - terraform
+  - the_silver_searcher
+  - tldr
+  - tmux
+  - tor
+  - tree
+  - wget
+  - yamllint
+  - yarn
+  - zsh

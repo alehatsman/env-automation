@@ -1,12 +1,6 @@
 ---
-- name: Install zsh from brew
-  homebrew:
-    name: '{{ item }}'
-    state: latest
-  with_items:
-    - zsh
-    - zsh-completions
-    - zplug
+- debug:
+    msg: OH_MY_ZSH {{ OH_MY_ZSH }}
 
 - name: Check if .oh-my-zsh exists
   stat:
@@ -14,9 +8,9 @@
   register: omz
 
 - name: Install oh my zsh
-  shell: |
-    sh -c '$(curl -fsSL {{ ZSH_INSTALL_URL }})'
-  when: omz.stat.isdir is not defined
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: '{{ OH_MY_ZSH }}'
 
 - name: Make sure themes folder exists
   file:

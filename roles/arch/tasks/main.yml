@@ -1,0 +1,11 @@
+---
+- name: Make sure locale is en_US.UTF-8 UTF-8
+  template:
+    src: templates/locale.gen.j2
+    dest: /etc/locale.gen
+
+- name: Make sure locale is generated
+  shell: "locale-gen"
+
+- name: Make sure zsh is default shell
+  shell: "chsh -s $(which zsh)"

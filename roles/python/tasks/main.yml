@@ -1,9 +1,4 @@
 ---
-- name: Install python
-  homebrew:
-    name: [python@2, python]
-    state: latest
-
 - name: Install pipenv
   pip:
     name: pipenv

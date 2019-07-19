@@ -1,0 +1,12 @@
+---
+- name: Make sure variables are included
+  include_vars:
+    file: "{{ ansible_distribution }}.yml"
+
+- include: osx.yml
+  when: ansible_distribution == 'Darwin'
+  tags: packages
+
+- include: arch.yml
+  when: ansible_distribution == 'Archlinux'
+  tags: packages

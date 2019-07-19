@@ -1,9 +1,4 @@
 ---
-- name: Install git
-  homebrew:
-    name: [git, lazygit]
-    state: latest
-
 - name: Create .gitconfig
   template:
     src: templates/.gitconfig.j2
