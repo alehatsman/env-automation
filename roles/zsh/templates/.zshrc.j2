@@ -134,6 +134,8 @@ alias gh="open https://github.com/atsman"
 
 alias digital_ocean="mosh --no-init root@178.128.199.119 -- tmux new-session -ADs main"
 
+alias vimdiff='nvim -d'
+
 exit() {
   if [[ -z $TMUX ]]; then
     builtin exit

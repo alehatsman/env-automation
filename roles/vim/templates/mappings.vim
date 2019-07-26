@@ -30,6 +30,8 @@ inoremap <c-[> <esc>
 " open command promp
 nnoremap <Leader>vp :VimuxPromptCommand<CR>
 
+nnoremap <Leader>p :echo @%<CR>
+
 " Abbreviations
 iabbrev @@ aleh.atsman@gmail.com
 iabbrev ccopy Copyright 2018 Aleh Atsman, all rights reserved.
