@@ -9,7 +9,6 @@ taps:
   - wata727/tflint
 
 apps:
-  - amazon-workspaces
   - ansible
   - ansible-lint
   - aria2
@@ -19,8 +18,10 @@ apps:
   - cmake
   - ctags
   - dive
+  - dep
   - fzf
   - git
+  - go
   - graphviz
   - htop
   - imagemagick
@@ -49,6 +50,7 @@ apps:
   - zsh-completions
 
 cask_apps:
+  - amazon-workspaces
   - adobe-acrobat-reader
   - adoptopenjdk/openjdk/adoptopenjdk8
   - dash

@@ -1,15 +1,4 @@
 ---
-- name: Make sure golang is installed
-  homebrew:
-    name: go
-    state: latest
-    install_options: cross-compile-common
-
-- name: Make sure dep is installed
-  homebrew:
-    name: dep
-    state: latest
-
 - name: Make sure golang workspaceis exists
   file:
     path: '{{ GOPATH }}'

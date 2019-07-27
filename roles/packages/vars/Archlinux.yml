@@ -6,8 +6,10 @@ apps:
   - bat
   - cmake
   - ctags
+  - dep
   - fzf
   - git
+  - go
   - graphviz
   - htop
   - imagemagick
