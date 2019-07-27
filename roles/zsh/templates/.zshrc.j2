@@ -1,69 +1,48 @@
-# ZSH configuration
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+HISTSIZE=50000
+SAVEHIST=50000
+HISTFILE=~/.zsh_history
 
-export ZSH=$HOME/.oh-my-zsh
-
-ZSH_THEME="dracula"
-
-# Case-Sensitive completion
 CASE_SENSITIVE="false"
-
-# Hyphen-Insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="false"
-
 DISABLE_AUTO_UPDATE="false"
-export UPDATE_ZSH_DAYS=13
-
-# Disable colors in ls.
 DISABLE_LS_COLORS="false"
-
-# Disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="false"
-
-# Enable command auto-correction.
 ENABLE_CORRECTION="false"
-
-# Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-export FZF_BASE="/usr/local/opt/fzf"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  dotenv
-  history 
-  history-substring-search 
-  vi-mode
-  zsh-autosuggestions
-  zsh-nvm
-  fzf
-)
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export NVM_LAZY_LOAD=true
 
-source $ZSH/oh-my-zsh.sh
+# Plugins start
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "dracula/zsh", as:theme
+zplug "plugins/history", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/fzf", from:oh-my-zsh
+
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions", depth:1
+
+zplug "lukechilds/zsh-nvm"
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load --verbose
+# End of plugins
 
 # User configuration
 
-# Path to your oh-my-zsh installation.
 export EDITOR=/usr/local/bin/nvim
 export GPG_TTY=$(tty)
 
@@ -72,44 +51,31 @@ export GCPATH=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
 export NODE_MODULES_BIN=./node_modules/.bin
 export PATH=$PATH:"$(yarn global bin)":$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN
 
-# Global env variables
 {% for k, v in ENVS.items() %}
 export {{ k }}={{ v }}
 {% endfor %}
 
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
+# SSH
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-alias ag='ag --path-to-ignore ~/.ignore'
-
+export FZF_BASE="/usr/local/opt/fzf"
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+# Aliases start
+alias ag='ag --path-to-ignore ~/.ignore'
 alias mkdir="mkdir -p"
 alias e="$EDITOR"
 
-g() {
+unalias g
+function g() {
   if [[ $# > 0 ]]; then
     git $@
   else
@@ -117,14 +83,13 @@ g() {
   fi
 }
 
-# Complete go like git
 compdef g=git
 
 alias gpr="git pull -r"
 alias gaa="git add --all"
 alias gp="git push -u origin HEAD"
 
-gcm() { 
+function gcm() { 
   git commit -m $@
 }
 
@@ -132,22 +97,5 @@ alias n="cd ~/Projects/atsman/notes; e"
 
 alias gh="open https://github.com/atsman"
 
-alias digital_ocean="mosh --no-init root@178.128.199.119 -- tmux new-session -ADs main"
-
 alias vimdiff='nvim -d'
-
-exit() {
-  if [[ -z $TMUX ]]; then
-    builtin exit
-    return
-  fi
-
-  panes=$(tmux list-panes | wc -l)
-  wins=$(tmux list-windows | wc -l) 
-  count=$(($panes + $wins - 1))
-  if [ $count -eq 1 ]; then
-    tmux detach
-  else
-    builtin exit
-  fi
-}
+# End of aliases

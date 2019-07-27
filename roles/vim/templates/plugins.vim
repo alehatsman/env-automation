@@ -42,7 +42,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Quoting / Parenthesizing
 Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 " Golang
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }

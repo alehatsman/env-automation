@@ -17,8 +17,8 @@ apps:
   - caddy
   - cmake
   - ctags
-  - dive
   - dep
+  - dive
   - fzf
   - git
   - go
@@ -46,6 +46,7 @@ apps:
   - xsv
   - yamllint
   - yarn
+  - zplug
   - zsh
   - zsh-completions
 
