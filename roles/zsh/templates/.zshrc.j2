@@ -31,14 +31,14 @@ zplug "zsh-users/zsh-completions", depth:1
 
 zplug "lukechilds/zsh-nvm"
 
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
     fi
 fi
 
-zplug load --verbose
+zplug load
 # End of plugins
 
 # User configuration
