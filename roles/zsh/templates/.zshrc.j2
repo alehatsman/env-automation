@@ -50,7 +50,8 @@ export GOPATH={{ GOPATH }}
 export GCPATH={{ GCP_PATH }}
 export JAVA_HOME={{ JAVA_HOME }}
 export NODE_MODULES_BIN=./node_modules/.bin
-export PATH=$PATH:"$(yarn global bin)":$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN
+export CARGO_HOME=~/.cargo
+export PATH=$PATH:"$(yarn global bin)":$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN:$CARGO_HOME/bin
 
 {% for k, v in ENVS.items() %}
 export {{ k }}={{ v }}

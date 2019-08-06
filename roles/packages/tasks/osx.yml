@@ -25,3 +25,5 @@
   homebrew:
     name: universal-ctags/universal-ctags/universal-ctags
     state: head
+
+- include: osx/rust.yml

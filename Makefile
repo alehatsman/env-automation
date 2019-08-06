@@ -14,3 +14,7 @@ install-arch:
 							--vault-id @prompt \
 							--inventory-file $(shell which terraform-inventory) \
 							arch-playbook.yml
+
+ssh-remote:
+	cd ./digitalocean; \
+	ssh root@$(./do_ip.sh)

@@ -38,6 +38,7 @@ apps:
   - python
   - python@2
   - ripgrep
+  - rustup
   - sshfs
   - terraform
   - terraform-inventory
