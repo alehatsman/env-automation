@@ -7,6 +7,8 @@ taps:
   - jesseduffield/lazygit
   - wagoodman/dive
   - wata727/tflint
+  - adoptopenjdk/openjdk
+  - borkdude/brew
 
 apps:
   - ansible
@@ -15,10 +17,12 @@ apps:
   - autoenv
   - bat
   - caddy
+  - clj-kondo
   - cmake
   - ctags
   - dep
   - dive
+  - exa
   - fzf
   - git
   - go
@@ -33,6 +37,7 @@ apps:
   - packer
   - python
   - python@2
+  - ripgrep
   - sshfs
   - terraform
   - terraform-inventory
@@ -53,7 +58,7 @@ apps:
 cask_apps:
   - amazon-workspaces
   - adobe-acrobat-reader
-  - adoptopenjdk/openjdk/adoptopenjdk8
+  - adoptopenjdk8
   - dash
   - figma
   - flux

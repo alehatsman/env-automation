@@ -3,3 +3,6 @@
   pacman:
     name: '{{ apps }}'
     state: latest
+
+- include: arch/yay.yml
+- include: arch/zplug.yml

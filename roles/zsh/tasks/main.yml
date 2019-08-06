@@ -1,4 +1,8 @@
 ---
+- name: Make sure variables are included
+  include_vars:
+    file: "{{ ansible_distribution }}.yml"
+
 - name: Install config
   template:
     src: templates/.zshrc.j2

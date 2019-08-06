@@ -4,6 +4,7 @@ apps:
   - ansible-lint
   - aria2
   - bat
+  - clojure
   - cmake
   - ctags
   - dep
@@ -13,6 +14,7 @@ apps:
   - graphviz
   - htop
   - imagemagick
+  - jdk8-openjdk
   - jq
   - lastpass-cli
   - mosh
@@ -23,6 +25,7 @@ apps:
   - python
   - python-pip
   - python2
+  - rlwrap
   - sshfs
   - terraform
   - the_silver_searcher
@@ -34,3 +37,6 @@ apps:
   - yamllint
   - yarn
   - zsh
+
+aur_apps:
+  - zplug

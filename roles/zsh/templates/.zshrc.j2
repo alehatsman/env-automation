@@ -47,9 +47,10 @@ export EDITOR=/usr/local/bin/nvim
 export GPG_TTY=$(tty)
 
 export GOPATH={{ GOPATH }}
-export GCPATH=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+export GCPATH={{ GCP_PATH }}
+export JAVA_HOME={{ JAVA_HOME }}
 export NODE_MODULES_BIN=./node_modules/.bin
-export PATH=$PATH:"$(yarn global bin)":$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN
+export PATH=$PATH:"$(yarn global bin)":$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN
 
 {% for k, v in ENVS.items() %}
 export {{ k }}={{ v }}
@@ -67,7 +68,7 @@ fi
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 export FZF_BASE="/usr/local/opt/fzf"
-export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
 # Aliases start
 alias ag='ag --path-to-ignore ~/.ignore'
