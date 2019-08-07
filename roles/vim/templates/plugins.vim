@@ -68,4 +68,7 @@ Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 " Scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'ensime/ensime-vim', { 'for': 'scala' }
+
+" Rust
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 call plug#end()

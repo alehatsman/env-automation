@@ -51,3 +51,7 @@
     dest: '{{ config_path }}/{{ item.path }}'
   with_filetree: templates/
   when: item.state == 'file'
+
+- name: Make sure plugins are installed
+  shell:
+    nvim +PlugInstall +qall
