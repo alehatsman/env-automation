@@ -3,33 +3,3 @@
   file:
     path: '{{ GOPATH }}'
     state: directory
-
-- name: Make sure go tools are installed
-  environment:
-    GOPATH: '{{ GOPATH | expanduser }}'
-  shell: |
-    /usr/local/bin/go get -u {{ item }}
-  with_items:
-    - github.com/ramya-rao-a/go-outline
-    - github.com/acroca/go-symbols
-    - github.com/nsf/gocode
-    - github.com/rogpeppe/godef
-    - golang.org/x/tools/cmd/godoc
-    - github.com/zmb3/gogetdoc
-    - golang.org/x/lint/golint
-    - github.com/fatih/gomodifytags
-    - golang.org/x/tools/cmd/gorename
-    - sourcegraph.com/sqs/goreturns
-    - golang.org/x/tools/cmd/goimports
-    - github.com/cweill/gotests/...
-    - golang.org/x/tools/cmd/guru
-    - github.com/josharian/impl
-    - github.com/haya14busa/goplay/cmd/goplay
-    - github.com/uudashr/gopkgs/cmd/gopkgs
-    - github.com/davidrjenni/reftools/cmd/fillstruct
-    - github.com/golangci/golangci-lint/cmd/golangci-lint
-  changed_when: false
-
-- name: Install go repl
-  shell: |
-    go get -u github.com/motemen/gore/cmd/gore

@@ -30,6 +30,7 @@ apps:
   - htop
   - imagemagick
   - jq
+  - kubernetes-cli
   - lastpass-cli
   - mosh
   - neovim
@@ -57,10 +58,14 @@ apps:
   - zsh-completions
 
 cask_apps:
-  - amazon-workspaces
   - adobe-acrobat-reader
   - adoptopenjdk8
+  - alacritty
+  - amazon-workspaces
+  - boot-clj
+  - clojure
   - dash
+  - docker
   - figma
   - flux
   - font-fira-code
@@ -68,6 +73,7 @@ cask_apps:
   - google-chrome
   - google-cloud-sdk
   - kdiff3
+  - leiningen
   - osxfuse
   - pgadmin4
   - slack

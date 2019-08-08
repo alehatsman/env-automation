@@ -26,8 +26,9 @@ Plug 'bling/vim-airline'
 " Navigation
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'easymotion/vim-easymotion'
+
+Plug 'ludovicchabant/vim-gutentags', { 'for': 'python' }
 
 " Autocomplete
 function! BuildYCM(info)
@@ -46,7 +47,7 @@ Plug 'tpope/vim-surround'
 " Plug 'jiangmiao/auto-pairs'
 
 " Golang
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }

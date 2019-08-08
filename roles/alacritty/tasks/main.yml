@@ -1,9 +1,4 @@
 ---
-- name: Make sure alacritty is installed
-  homebrew_cask:
-    name: alacritty
-    state: present
-
 - name: Make sure config exists
   file:
     path: ~/.config/alacritty

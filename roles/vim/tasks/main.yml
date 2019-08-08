@@ -4,39 +4,8 @@
     path: '{{ autoload_path }}'
     state: directory
 
-- name: Make sure vim-plug is installed
-  get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest: '{{ autoload_path }}/plug.vim'
-
-- name: Check that the python_venv exists
-  stat:
-    path: '{{ python_venv_path }}'
-  register: python_venv_present
-
-- name: Check that the python3_venv exists
-  stat:
-    path: '{{ python3_venv_path }}'
-  register: python3_venv_present
-
-- name: Make sure venvs are created for python2 and python3
-  shell: |
-    virtualenv -p python {{ python_venv_path }}
-    virtualenv -p python3 {{ python3_venv_path }}
-  when: not (python_venv_present and python3_venv_path)
-
-- name: Make sure neovim libs are intalled to python venv
-  pip:
-    virtualenv: '{{ python_venv_path }}'
-    name: '{{ python_libs }}'
-    state: latest
-
-- name: Make sure neovim libs are intalled to python3 venv
-  pip:
-    virtualenv: '{{ python3_venv_path }}'
-    virtualenv_python: python3
-    name: '{{ python3_libs }}'
-    state: latest
+- include: vim_plug.yml
+- include: python_venv.yml
 
 - name: Create directories
   file:
@@ -45,7 +14,7 @@
   with_filetree: templates/
   when: item.state == 'directory'
 
-- name: Make sure config files generated
+- name: Make sure config files are generated
   template:
     src: '{{ item.src }}'
     dest: '{{ config_path }}/{{ item.path }}'

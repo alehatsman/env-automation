@@ -1,9 +1,4 @@
 ---
-- name: Make sure clojure tools are installed
-  homebrew_cask:
-    name: [clojure, leiningen, boot-clj]
-    state: present
-
 - name: Make sure .lein folder present
   file:
     path: ~/.lein
