@@ -9,3 +9,13 @@
 
 - name: Make sure zsh is default shell
   shell: "chsh -s $(which zsh)"
+
+- name: Make sure user is created
+  user:
+    name: alehatsman
+    group: root
+    comment: Aleh Atsman
+    create_home: true
+    shell: /usr/bin/zsh
+    append: true
+    state: present
