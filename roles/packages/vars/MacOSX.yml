@@ -74,6 +74,7 @@ cask_apps:
   - google-cloud-sdk
   - kdiff3
   - leiningen
+  - minikube
   - osxfuse
   - pgadmin4
   - slack
