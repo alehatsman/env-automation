@@ -51,14 +51,13 @@ Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+" Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'typescript'] }
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': 'javascript' }
 Plug 'posva/vim-vue', { 'for': 'javascript' }
 Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
 Plug 'Shougo/neosnippet', { 'for': 'javascript' }
 Plug 'Shougo/neosnippet-snippets', { 'for': 'javascript' }
-
-" TypeScript
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }

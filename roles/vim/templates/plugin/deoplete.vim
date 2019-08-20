@@ -1,5 +1,5 @@
-let g:python_host_prog = "{{ python_venv_path }}/bin/python"
-let g:python3_host_prog = "{{ python3_venv_path }}/bin/python"
+let g:python_host_prog = "{{ python_venv_path | expanduser }}/bin/python"
+let g:python3_host_prog = "{{ python3_venv_path | expanduser }}/bin/python"
 py << EOF
 import os
 import sys

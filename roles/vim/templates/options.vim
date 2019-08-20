@@ -34,3 +34,5 @@ set foldlevelstart=99
 " Autocomplete
 set completeopt=menu,preview
 autocmd CompleteDone * pclose
+
+let g:jsx_ext_required = 0
