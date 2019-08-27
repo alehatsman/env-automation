@@ -32,6 +32,9 @@ nnoremap <Leader>vp :VimuxPromptCommand<CR>
 
 nnoremap <Leader>p :echo @%<CR>
 
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+
 " Abbreviations
 iabbrev @@ aleh.atsman@gmail.com
 iabbrev ccopy Copyright 2018 Aleh Atsman, all rights reserved.

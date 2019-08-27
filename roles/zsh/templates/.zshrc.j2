@@ -46,33 +46,33 @@ zplug load
 export EDITOR=/usr/local/bin/nvim
 export GPG_TTY=$(tty)
 
-export GOPATH={{ GOPATH }}
-export GCPATH={{ GCP_PATH }}
-export JAVA_HOME={{ JAVA_HOME }}
+export GOPATH="{{ GOPATH }}"
+export GCPATH="{{ GCP_PATH }}"
+export JAVA_HOME="{{ JAVA_HOME }}"
 export NODE_MODULES_BIN=./node_modules/.bin
 export CARGO_HOME=~/.cargo
 export PATH=$PATH:"$(yarn global bin)":$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN:$CARGO_HOME/bin
 
 {% for k, v in ENVS.items() %}
-export {{ k }}={{ v }}
+export {{ k }}="{{ v }}"
 {% endfor %}
 
 export LANG=en_US.UTF-8
 
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR="vim"
 else
-  export EDITOR='nvim'
+  export EDITOR="nvim"
 fi
 
 # SSH
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 export FZF_BASE="/usr/local/opt/fzf"
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
 
 # Aliases start
-alias ag='ag --path-to-ignore ~/.ignore'
+alias ag="ag --path-to-ignore ~/.ignore"
 alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias ls="exa"
@@ -98,7 +98,7 @@ function gcm() {
 
 fe() {
   local files
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  IFS=$"\n" files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
@@ -113,7 +113,21 @@ fcb() {
 
 flpass() {
   lpass login "aleh.atsman@gmail.com"
-  lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
+  lpass show -c --password $(lpass ls  | fzf | awk "{print $(NF)}" | sed "s/\]//g")
+}
+
+fkill() {
+  local pid 
+  if [ "$UID" != "0" ]; then
+      pid=$(ps -f -u $UID | sed 1d | fzf -m | awk "{print $2}")
+  else
+      pid=$(ps -ef | sed 1d | fzf -m | awk "{print $2}")
+  fi  
+
+  if [ "x$pid" != "x" ]
+  then
+      echo $pid | xargs kill -${1:-9}
+  fi  
 }
 
 alias c="clear"
@@ -122,5 +136,5 @@ alias n="cd ~/Projects/atsman/notes; e"
 
 alias gh="open https://github.com/atsman"
 
-alias vimdiff='nvim -d'
+alias vimdiff="nvim -d"
 # End of aliases
