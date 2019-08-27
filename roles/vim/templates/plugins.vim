@@ -44,7 +44,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Quoting / Parenthesizing
 Plug 'tpope/vim-surround'
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " Golang
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
@@ -62,7 +62,7 @@ Plug 'Shougo/neosnippet-snippets', { 'for': 'javascript' }
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
-Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
+" Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " Scala
