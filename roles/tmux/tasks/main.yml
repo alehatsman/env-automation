@@ -10,7 +10,7 @@
 - name: Make sure config is generated
   template:
     src: templates/.tmux.conf.j2
-    dest: ~/.tmux.conf
+    dest: '{{ tmux_config_path }}'
 
 - name: Make sure tmp is installed
   git:

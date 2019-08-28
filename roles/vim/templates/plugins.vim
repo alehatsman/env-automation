@@ -58,6 +58,7 @@ Plug 'posva/vim-vue', { 'for': 'javascript' }
 Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
 Plug 'Shougo/neosnippet', { 'for': 'javascript' }
 Plug 'Shougo/neosnippet-snippets', { 'for': 'javascript' }
+Plug 'jxnblk/vim-mdx-js', { 'for': 'markdown.mdx' }
 
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }

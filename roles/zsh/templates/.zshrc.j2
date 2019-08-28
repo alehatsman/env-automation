@@ -1,33 +1,63 @@
+#---------------------------------------------
+# Command history configuration
+#---------------------------------------------
+#
 HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE=~/.zsh_history
 
-CASE_SENSITIVE="false"
-HYPHEN_INSENSITIVE="false"
-DISABLE_AUTO_UPDATE="false"
-DISABLE_LS_COLORS="false"
-DISABLE_AUTO_TITLE="false"
-ENABLE_CORRECTION="false"
-COMPLETION_WAITING_DOTS="true"
+CASE_SENSITIVE=false
+HYPHEN_INSENSITIVE=false
+DISABLE_AUTO_UPDATE=false
+DISABLE_LS_COLORS=false
+DISABLE_AUTO_TITLE=false
+ENABLE_CORRECTION=false
+COMPLETION_WAITING_DOTS=true
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+#---------------------------------------------
+# Exports
+#---------------------------------------------
+export GPG_TTY=$(tty)
+export LANG=en_US.UTF-8
 
+export NODE_MODULES_BIN=./node_modules/.bin
+export GOPATH={{ GOPATH }}
+export GCPATH={{ GCP_PATH }}
+export JAVA_HOME={{ JAVA_HOME }}
+export CARGO_HOME=~/.cargo
+export ZPLUG_HOME={{ ZPLUG_HOME }}
+export PATH=$HOME/bin:/usr/local/bin:$PATH:"$(yarn global bin)":$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN:$CARGO_HOME/bin
+
+{% for k, v in ENVS.items() %}
+export {{ k }}="{{ v }}"
+{% endfor %}
+
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR="vim"
+else
+  export EDITOR="nvim"
+fi
+
+export SSH_KEY_PATH=~/.ssh/rsa_id
+
+export FZF_BASE={{ FZF_BASE }}
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
+
+#---------------------------------------------
+# Plugins 
+#---------------------------------------------
 export NVM_LAZY_LOAD=true
-
-# Plugins start
-export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "dracula/zsh", as:theme
-# zplug "plugins/history", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/fzf", from:oh-my-zsh
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-# zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions", depth:1
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
 
 zplug "lukechilds/zsh-nvm"
 
@@ -39,43 +69,23 @@ if ! zplug check; then
 fi
 
 zplug load
-# End of plugins
 
-# User configuration
-
-export EDITOR=/usr/local/bin/nvim
-export GPG_TTY=$(tty)
-
-export GOPATH="{{ GOPATH }}"
-export GCPATH="{{ GCP_PATH }}"
-export JAVA_HOME="{{ JAVA_HOME }}"
-export NODE_MODULES_BIN=./node_modules/.bin
-export CARGO_HOME=~/.cargo
-export PATH=$PATH:"$(yarn global bin)":$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN:$CARGO_HOME/bin
-
-{% for k, v in ENVS.items() %}
-export {{ k }}="{{ v }}"
-{% endfor %}
-
-export LANG=en_US.UTF-8
-
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR="vim"
-else
-  export EDITOR="nvim"
-fi
-
-# SSH
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-export FZF_BASE="/usr/local/opt/fzf"
-export FZF_DEFAULT_COMMAND="rg --files --hidden"
-
-# Aliases start
+#---------------------------------------------
+# Aliases
+#---------------------------------------------
 alias ag="ag --path-to-ignore ~/.ignore"
 alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias ls="exa"
+
+alias c="clear"
+alias n="cd ~/Projects/atsman/notes; e"
+alias gh="open https://github.com/atsman"
+alias vimdiff="nvim -d"
+
+alias gpr="git pull -r"
+alias gaa="git add --all"
+alias gp="git push -u origin HEAD"
 
 unalias g
 function g() {
@@ -85,12 +95,7 @@ function g() {
     git status
   fi
 }
-
 compdef g=git
-
-alias gpr="git pull -r"
-alias gaa="git add --all"
-alias gp="git push -u origin HEAD"
 
 function gcm() { 
   git commit -m $@
@@ -130,18 +135,12 @@ fkill() {
   fi  
 }
 
-fzf-history-widget-accept() {
-  fzf-history-widget
-  zle accept-line
-}
-zle     -N   fzf-history-widget-accept
-bindkey '^ ' fzf-history-widget-accept
+#---------------------------------------------
+# Bindings
+#---------------------------------------------
+bindkey '^ ' fzf-history-widget
 
-alias c="clear"
-
-alias n="cd ~/Projects/atsman/notes; e"
-
-alias gh="open https://github.com/atsman"
-
-alias vimdiff="nvim -d"
-# End of aliases
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down

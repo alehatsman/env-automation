@@ -23,7 +23,7 @@ unbind %
 bind c new-window -c '#{pane_current_path}' # Create new window
 
 # Config reload
-bind r source-file ~/.tmux.conf
+bind r source-file '{{ tmux_config_path }}'
 
 # Status bar styles
 set-window-option -g status-left ""
