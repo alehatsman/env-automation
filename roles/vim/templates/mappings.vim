@@ -35,6 +35,10 @@ nnoremap <Leader>p :echo @%<CR>
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 
+nnoremap <Leader>tt :tabnew<CR>
+nnoremap <Leader>tp :tabprev<CR>
+nnoremap <Leader>tn :tabnext<CR>
+
 " Abbreviations
 iabbrev @@ aleh.atsman@gmail.com
 iabbrev ccopy Copyright 2018 Aleh Atsman, all rights reserved.

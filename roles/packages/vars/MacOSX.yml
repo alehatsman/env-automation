@@ -23,6 +23,7 @@ apps:
   - dep
   - dive
   - exa
+  - fd
   - fzf
   - git
   - go
