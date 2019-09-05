@@ -1,1 +1,1 @@
-set updatetime=100
+set updatetime=500
