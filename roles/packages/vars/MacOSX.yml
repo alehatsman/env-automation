@@ -29,6 +29,7 @@ apps:
   - go
   - graphviz
   - htop
+  - hub
   - imagemagick
   - jq
   - kubernetes-cli
