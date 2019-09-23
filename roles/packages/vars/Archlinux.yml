@@ -6,7 +6,6 @@ apps:
   - bat
   - clojure
   - cmake
-  - ctags
   - dep
   - fzf
   - git

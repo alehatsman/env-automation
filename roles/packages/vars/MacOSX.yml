@@ -19,7 +19,6 @@ apps:
   - caddy
   - clj-kondo
   - cmake
-  - ctags
   - dep
   - dive
   - exa
@@ -40,6 +39,7 @@ apps:
   - packer
   - python
   - python@2
+  - pyenv
   - ripgrep
   - rustup
   - sshfs

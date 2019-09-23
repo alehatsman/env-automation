@@ -21,9 +21,4 @@
     state: present
   with_items: '{{ cask_apps }}'
 
-- name: Install universal ctags
-  homebrew:
-    name: universal-ctags/universal-ctags/universal-ctags
-    state: head
-
 - include: osx/rust.yml
