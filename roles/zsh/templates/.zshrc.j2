@@ -114,8 +114,9 @@ alias gpr="git pull -r"
 alias gl="git log"
 
 alias gp="git push -u origin HEAD"
-alias gpf="git push --force-with-lease"
-alias gpf!="git push --force"
+alias gp!="gp --no-verify"
+alias gpf="gp --force-with-lease"
+alias gpf!="gp! --force-with-lease"
 alias gca="git commit --amend --no-verify"
 
 alias gd="git diff"
