@@ -72,14 +72,14 @@ zplug load
 #---------------------------------------------
 # Aliases
 #---------------------------------------------
+
+# Basic commands
 alias ag="ag --path-to-ignore ~/.ignore"
 alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias ls="exa"
-
 alias c="clear"
 alias n="cd ~/Projects/atsman/notes; e"
-alias gh="open https://github.com/atsman"
 alias vimdiff="nvim -d"
 
 # Git
@@ -101,9 +101,13 @@ alias gc="git commit -v"
 alias gca="git commit -v --amend"
 alias gcm="git commit -v -m"
 
+alias gc!="git commit --no-verify -v"
+alias gca!="git commit --no-verify -v"
+alias gcm!="git commit --no-verify -v -m"
+
 function gcb() {
   if [[ $# > 0 ]]; then
-    git checkout -b $@
+    git checkout $@
   else
     fgcb
   fi
@@ -126,6 +130,8 @@ alias gds="git diff --staged"
 
 alias gf="git fetch"
 alias gfo="git fetch origin"
+
+alias gra="git reset ."
 
 fe() {
   local files
@@ -164,6 +170,8 @@ fkill() {
 tm() {
   tmux attach || tmux new
 }
+
+alias tmks="tmux kill-server"
 
 #---------------------------------------------
 # Bindings

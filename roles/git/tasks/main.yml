@@ -1,4 +1,7 @@
 ---
+- name: Debug
+  debug:
+    msg: "{{ USER_HOME }}"
 - name: Create .gitconfig
   template:
     src: templates/.gitconfig.j2

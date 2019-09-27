@@ -3,6 +3,9 @@
   vars_files:
     - vars/global_env.yml
     - vars/variables.yml
+  pre_tasks:
+    - name: Inport get home dir
+      import_tasks: ./tasks/get-home-dir.yml
   roles:
     - {role: 'osx', tags: 'osx'}
     - {role: 'packages', tags: 'packages'}
