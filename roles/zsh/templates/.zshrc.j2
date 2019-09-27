@@ -105,9 +105,11 @@ function gcb() {
   if [[ $# > 0 ]]; then
     git checkout -b $@
   else
-    fcb
+    fgcb
   fi
 }
+alias gnb="git checkout -b"
+
 alias gcp="git cherry-pick"
 
 alias gpr="git pull -r"
@@ -131,8 +133,8 @@ fe() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
-# gcb - git checkout branch (including remote branches)
-fcb() {
+# fcb - fuzzy git checkout branch (including remote branches)
+fgcb() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
@@ -141,7 +143,7 @@ fcb() {
 }
 
 flpass() {
-  lpass login "aleh.atsman@gmail.com"
+  lpass login {{ EMAIL }}
   lpass show -c --password $(lpass ls  | fzf | awk "{print $(NF)}" | sed "s/\]//g")
 }
 
