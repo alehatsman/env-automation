@@ -133,6 +133,8 @@ alias gfo="git fetch origin"
 
 alias gra="git reset ."
 
+alias gmt="git mergetool"
+
 fe() {
   local files
   IFS=$"\n" files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
