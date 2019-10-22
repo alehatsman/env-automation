@@ -135,6 +135,10 @@ alias gra="git reset ."
 
 alias gmt="git mergetool"
 
+alias gr="git rebase"
+alias grc="git rebase --continue"
+alias gra="git rebase --abort"
+
 fe() {
   local files
   IFS=$"\n" files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))

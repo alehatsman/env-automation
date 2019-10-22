@@ -37,9 +37,9 @@ apps:
   - neovim
   - nmap
   - packer
+  - pyenv
   - python
   - python@2
-  - pyenv
   - ripgrep
   - rustup
   - sshfs
