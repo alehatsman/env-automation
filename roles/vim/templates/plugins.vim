@@ -74,4 +74,12 @@ Plug 'ensime/ensime-vim', { 'for': 'scala' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
+" Generic LSP
+
+"
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
 call plug#end()

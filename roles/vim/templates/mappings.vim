@@ -38,3 +38,6 @@ inoremap <C-@> <C-Space>
 nnoremap <Leader>tt :tabnew<CR>
 nnoremap <Leader>tp :tabprev<CR>
 nnoremap <Leader>tn :tabnext<CR>
+
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gpr :Gpull -r<CR>
