@@ -111,3 +111,5 @@ tm() {
 }
 
 alias tmks="tmux kill-server"
+
+alias jcsm="jest --changedSince master"
