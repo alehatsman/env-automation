@@ -4,3 +4,18 @@ let g:ale_lint_delay = 1000
 nnoremap <leader>al :ALELint<cr>
 nnoremap <leader>af :ALEFix<cr>
 nnoremap <leader>ad :ALEDetail<cr>
+
+let g:ale_linters = {
+      \ 'clojure': ['clj-kondo', 'joker'],
+      \ 'typescript': ['eslint', 'tsserver'],
+      \ 'rust': ['rls'],
+      \ 'yaml': ['yamllint'],
+      \ 'python': ['flake8', 'pyls']}
+
+let g:ale_fixers = {
+      \ 'typescript': ['prettier', 'eslint'],
+      \ 'javascript': ['standard'],
+      \ 'json': ['jq'],
+      \ 'rust': ['rustfmt'],
+      \ 'scss': ['prettier'],
+      \ 'python': ['autopep8', 'yapf']}
