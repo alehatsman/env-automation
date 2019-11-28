@@ -122,3 +122,7 @@ alias jcsm="jest --changedSince master"
 format_pb_json() {
   pbpaste | jq | pbcopy
 }
+
+function help() {
+  curl cheat.sh/$@
+}
