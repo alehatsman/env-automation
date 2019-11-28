@@ -9,6 +9,7 @@ alias ls="exa"
 alias c="clear"
 alias n="cd ~/Projects/atsman/notes; e"
 alias vimdiff="nvim -d"
+alias r="source ~/.zshrc"
 
 # Docker
 alias docker_clean="docker system prune --all --volumes"
