@@ -28,6 +28,7 @@ compdef g=git
 
 alias ga="git add"
 alias gaa="git add --all"
+alias gai="git add --interactive"
 
 alias gb="git branch"
 
@@ -59,6 +60,8 @@ alias gpf="gp --force-with-lease"
 alias gpf!="gp! --force-with-lease"
 alias gca="git commit --amend --no-verify"
 
+alias gs="git show"
+
 alias gd="git diff"
 alias gds="git diff --staged"
 
@@ -70,6 +73,7 @@ alias gra="git reset ."
 alias gmt="git mergetool"
 
 alias gr="git rebase"
+alias gri="git rebase --interactive"
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
 
@@ -113,3 +117,7 @@ tm() {
 alias tmks="tmux kill-server"
 
 alias jcsm="jest --changedSince master"
+
+format_pb_json() {
+  pbpaste | jq | pbcopy
+}
