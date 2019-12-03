@@ -51,6 +51,8 @@ function gcb() {
 alias gcbb="git checkout -b"
 
 alias gcp="git cherry-pick"
+alias gcpa="git cherry-pick --abort"
+alias gcpc="git cherry-pick --continue"
 
 alias gpr="git pull -r"
 alias gl="git log"
