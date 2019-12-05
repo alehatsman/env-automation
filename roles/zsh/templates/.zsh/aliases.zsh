@@ -18,7 +18,7 @@ alias docker_clean="docker system prune --all --volumes"
 # GIT
 #---------------------------------------------
 
-function g() {
+g() {
   if [[ $# > 0 ]]; then
     git $@
   else
@@ -41,7 +41,7 @@ alias gc!="git commit --no-verify -v"
 alias gca!="git commit --amend --no-verify -v"
 alias gcm!="git commit --no-verify -v -m"
 
-function gcb() {
+gcb() {
   if [[ $# > 0 ]]; then
     git checkout $@
   else
@@ -135,6 +135,6 @@ format_pb_json() {
   pbpaste | jq | pbcopy
 }
 
-function help() {
+help() {
   curl cheat.sh/$@
 }
