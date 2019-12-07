@@ -23,6 +23,9 @@ Plug 'w0rp/ale'
 " Status bar
 Plug 'bling/vim-airline'
 
+" Tab number
+Plug 'mkitt/tabline.vim'
+
 " Navigation
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
