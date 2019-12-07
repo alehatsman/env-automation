@@ -80,12 +80,12 @@ alias gri="git rebase --interactive"
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
 
-gdb() { # git delete branch
+gbd() { # git delete branch
   git branch -d $@
   git push origin --delete $@
 }
 
-gdb!() { # git delete branch force 
+gbd!() { # git delete branch force 
   git branch -D $@
   git push origin --delete --force $@
 }
