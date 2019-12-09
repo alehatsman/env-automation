@@ -61,7 +61,6 @@ alias gp="git push -u origin HEAD"
 alias gp!="gp --no-verify"
 alias gpf="gp --force-with-lease"
 alias gpf!="gp! --force-with-lease"
-alias gca="git commit --amend --no-verify"
 
 alias gs="git show"
 
