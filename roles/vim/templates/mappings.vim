@@ -30,7 +30,13 @@ inoremap <c-[> <esc>
 " open command promp
 nnoremap <Leader>vp :VimuxPromptCommand<CR>
 
-nnoremap <Leader>p :echo @%<CR>
+function! g:CopyFilenameToClipboard()
+  let path = expand("%")
+  let @+ = path
+  echo path
+endfunction
+
+nnoremap <Leader>p :call g:CopyFilenameToClipboard()<CR>
 
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
