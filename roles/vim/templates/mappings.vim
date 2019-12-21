@@ -42,8 +42,8 @@ function! g:CopyFilenameToClipboard()
   echo path
 endfunction
 
-nnoremap <Leader>cn :call g:CopyFilepathToClipboard()<CR>
-nnoremap <Leader>cp :call g:CopyFilenameToClipboard()<CR>
+nnoremap <Leader>cn :call g:CopyFilenameToClipboard()<CR>
+nnoremap <Leader>cp :call g:CopyFilepathToClipboard()<CR>
 
 
 inoremap <C-Space> <C-x><C-o>
