@@ -137,3 +137,6 @@ format_pb_json() {
 help() {
   curl cheat.sh/$@
 }
+
+alias k8s="kubectl"
+compdef k8s=kubectl
