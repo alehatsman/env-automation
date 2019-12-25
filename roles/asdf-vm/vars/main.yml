@@ -1,0 +1,15 @@
+---
+version: v0.7.6
+
+deps:
+  - coreutils
+  - automake
+  - autoconf
+  - openssl
+  - libyaml
+  - readline
+  - libxslt
+  - libtool
+  - unixodbc
+  - unzip
+  - curl

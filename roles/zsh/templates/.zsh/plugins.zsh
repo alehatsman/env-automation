@@ -15,6 +15,9 @@ zplug "zsh-users/zsh-history-substring-search"
 
 zplug "lukechilds/zsh-nvm"
 
+zplug "asdf-vm/asdf", \
+  use:asdf.sh
+
 if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then

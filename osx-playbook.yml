@@ -11,6 +11,7 @@
     - {role: 'git', tags: 'git'}
     - {role: 'python', tags: 'python'}
     - {role: 'ssh', tags: 'ssh'}
+    - {role: 'asdf-vm', tags: 'asdf-vm'}
     - {role: 'zsh', tags: 'zsh'}
     - {role: 'tmux', tags: 'tmux'}
     - {role: 'vim', tags: 'vim'}
