@@ -71,6 +71,7 @@ alias gf="git fetch"
 alias gfo="git fetch origin"
 
 alias gra="git reset ."
+alias grh="git reset --hard"
 
 alias gmt="git mergetool"
 
@@ -140,3 +141,5 @@ help() {
 
 alias k8s="kubectl"
 compdef k8s=kubectl
+
+alias my_ip="curl ifconfig.me/ip"
