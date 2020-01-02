@@ -4,8 +4,6 @@ homebrew_url: https://raw.githubusercontent.com/Homebrew/install/master/install
 taps:
   - caskroom/fonts
   - homebrew/cask
-  - jesseduffield/lazygit
-  - wagoodman/dive
   - wata727/tflint
   - adoptopenjdk/openjdk
   - borkdude/brew
@@ -17,29 +15,21 @@ apps:
   - autoenv
   - bat
   - caddy
-  - clj-kondo
   - cmake
   - dep
-  - dive
   - exa
   - fd
   - fzf
-  - git
   - go
   - graphviz
   - htop
   - hub
   - imagemagick
   - jq
-  - kubernetes-cli
   - lastpass-cli
   - mosh
-  - neovim
   - nmap
   - packer
-  - pyenv
-  - python
-  - python@2
   - ripgrep
   - rustup
   - sshfs
@@ -55,28 +45,19 @@ apps:
   - xsv
   - yamllint
   - yarn
-  - zplug
-  - zsh
-  - zsh-completions
 
 cask_apps:
   - adobe-acrobat-reader
   - adoptopenjdk8
-  - alacritty
   - amazon-workspaces
-  - boot-clj
-  - clojure
   - dash
-  - docker
   - figma
   - flux
   - font-fira-code
+  - gimp
   - google-backup-and-sync
   - google-chrome
   - google-cloud-sdk
-  - kdiff3
-  - leiningen
-  - minikube
   - osxfuse
   - pgadmin4
   - slack

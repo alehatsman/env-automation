@@ -1,4 +1,10 @@
 ---
+- name: Make sure neovim is installed
+  homebrew:
+    name:
+      - neovim
+    state: present
+
 - name: Make sure autoload directory exists
   file:
     path: '{{ autoload_path }}'

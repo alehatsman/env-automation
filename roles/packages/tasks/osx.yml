@@ -13,7 +13,7 @@
 - name: Install homebrew applications
   homebrew:
     name: '{{ apps }}'
-    state: latest
+    state: present
 
 - name: Install homebrew cask applications
   homebrew_cask:

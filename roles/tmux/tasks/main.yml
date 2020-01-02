@@ -1,5 +1,10 @@
 ---
-- name: Make sure folders are present
+- name: Make sure tmux is installed
+  homebrew:
+    name: tmux
+    state: present
+
+- name: Make sure config folders are present
   file:
     path: '{{ item }}'
     state: directory

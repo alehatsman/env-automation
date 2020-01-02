@@ -1,4 +1,10 @@
 ---
+- name: Make sure zsh in instaled
+  homebrew:
+    name:
+      - zsh
+      - zplug
+
 - name: Make sure variables are included
   include_vars:
     file: "{{ ansible_distribution }}.yml"

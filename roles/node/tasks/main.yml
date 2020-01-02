@@ -1,20 +1,17 @@
 ---
 - name: Install nodejs
   homebrew:
-    name: node
-    state: latest
+    name:
+      - node
+      - nvm
+    state: present
 
-- name: Install nvm
-  homebrew:
-    name: nvm
-    state: latest
-
-- name: Create nvm folder
+- name: Make sure nvm folder present
   file:
     path: ~/.nvm
     state: directory
 
-- name: Install npm modules
+- name: Make sure global npm packages are present
   npm:
     name: '{{ item }}'
     global: true

@@ -2,6 +2,7 @@
 - hosts: local
   vars_files:
     - vars/variables.yml
+    - vars/global_env.yml
   pre_tasks:
     - name: Inport get home dir
       import_tasks: ./tasks/get-home-dir.yml

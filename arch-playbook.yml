@@ -2,6 +2,7 @@
 - hosts: playground
   become_user: alehatsman
   vars_files:
+    - vars/global_env.yml
     - vars/variables.yml
   roles:
     - {role: 'packages', tags: 'packages'}

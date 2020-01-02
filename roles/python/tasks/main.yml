@@ -1,10 +1,17 @@
 ---
-- name: Install pipenv
+- name: Make sure python is installed
+  homebrew:
+    name:
+      - pyenv
+      - python@2
+      - python
+
+- name: Make sure pipenv is installed
   pip:
     name: pipenv
     state: latest
 
-- name: Install virtualenv
+- name: Make sure virtualenv is installed
   pip:
     name: virtualenv
     state: latest
