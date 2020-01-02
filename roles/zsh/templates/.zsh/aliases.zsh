@@ -68,6 +68,7 @@ alias gd="git diff"
 alias gds="git diff --staged"
 
 alias gf="git fetch"
+alias gfa="git fetch --all"
 alias gfo="git fetch origin"
 
 alias gra="git reset ."
