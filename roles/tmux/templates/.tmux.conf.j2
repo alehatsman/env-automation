@@ -22,8 +22,11 @@ unbind '"'
 unbind %
 bind c new-window -c '#{pane_current_path}' # Create new window
 
+bind h set -g status
+
 # Config reload
-bind r source-file '{{ tmux_config_path }}'
+bind r source-file 
+bind r source-file {{ tmux_config_path }} \; display-message "{{ tmux_config_path }} reloaded"
 
 # Status bar styles
 set-window-option -g status-left ""
