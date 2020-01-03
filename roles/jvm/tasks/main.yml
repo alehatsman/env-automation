@@ -1,10 +1,20 @@
 ---
-- name: Make sure java is installed
-  homebrew_cask:
-    name: [java, visualvm]
+- name: Make sure openjdk tap is present
+  homebrew_tap:
+    name:
+      - adoptopenjdk/openjdk
     state: present
 
-- name: Make sure scala is installled
+- name: Make sure java is installed
+  homebrew_cask:
+    name:
+      - adoptopenjdk8
+      - visualvm
+    state: present
+
+- name: Make sure scala is installed
   homebrew:
-    name: [scala, sbt]
+    name:
+      - sbt
+      - scala
     state: present

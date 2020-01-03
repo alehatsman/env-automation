@@ -1,4 +1,10 @@
 ---
+- name: Make sure golang related packages are present
+  homebrew:
+    name:
+      - go
+      - dep
+
 - name: Make sure golang workspaceis exists
   file:
     path: '{{ GOPATH }}'

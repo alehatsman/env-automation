@@ -5,7 +5,6 @@ taps:
   - caskroom/fonts
   - homebrew/cask
   - wata727/tflint
-  - adoptopenjdk/openjdk
   - borkdude/brew
 
 apps:
@@ -16,11 +15,9 @@ apps:
   - bat
   - caddy
   - cmake
-  - dep
   - exa
   - fd
   - fzf
-  - go
   - graphviz
   - htop
   - hub
@@ -44,7 +41,6 @@ apps:
   - wget
   - xsv
   - yamllint
-  - yarn
 
 cask_apps:
   - adobe-acrobat-reader

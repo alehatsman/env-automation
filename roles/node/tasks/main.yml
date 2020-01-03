@@ -4,6 +4,7 @@
     name:
       - node
       - nvm
+      - yarn
     state: present
 
 - name: Make sure nvm folder present
