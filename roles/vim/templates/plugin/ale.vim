@@ -8,6 +8,7 @@ nnoremap <leader>ad :ALEDetail<cr>
 let g:ale_linters = {
       \ 'clojure': ['clj-kondo', 'joker'],
       \ 'typescript': ['eslint', 'tsserver'],
+      \ 'typescriptreact': ['eslint', 'tsserver'],
       \ 'javascript': ['eslint', 'tsserver'],
       \ 'rust': ['rls'],
       \ 'yaml': ['yamllint'],
@@ -15,6 +16,7 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
       \ 'typescript': ['prettier', 'eslint'],
+      \ 'typescriptreact': ['prettier', 'eslint'],
       \ 'javascript': ['prettier', 'eslint'],
       \ 'json': ['jq'],
       \ 'rust': ['rustfmt'],
