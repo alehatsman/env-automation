@@ -19,11 +19,11 @@
   pip:
     virtualenv: '{{ python_venv_path }}'
     name: '{{ python_libs }}'
-    state: latest
+    state: present
 
 - name: Make sure neovim libs are intalled to python3 venv
   pip:
     virtualenv: '{{ python3_venv_path }}'
     virtualenv_python: python3
     name: '{{ python3_libs }}'
-    state: latest
+    state: present
