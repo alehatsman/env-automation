@@ -1,10 +1,10 @@
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-open'
+source '{{ tmux_config_path }}/vim-tmux-navigator.tmux'
 
 set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
 
@@ -25,7 +25,6 @@ bind c new-window -c '#{pane_current_path}' # Create new window
 bind h set -g status
 
 # Config reload
-bind r source-file 
 bind r source-file {{ tmux_config_path }} \; display-message "{{ tmux_config_path }} reloaded"
 
 # Status bar styles
