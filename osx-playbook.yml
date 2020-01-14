@@ -7,7 +7,7 @@
     - name: Inport get home dir
       import_tasks: ./tasks/get-home-dir.yml
   roles:
-    - {role: 'osx', tags: 'osx'}
+    - {role: 'macos', tags: 'macos'}
     - {role: 'packages', tags: 'packages'}
     - {role: 'git', tags: 'git'}
     - {role: 'python', tags: 'python'}
