@@ -3,7 +3,7 @@
   include_vars:
     file: "{{ ansible_distribution }}.yml"
 
-- include: osx.yml
+- include: macos.yml
   when: ansible_distribution == 'MacOSX'
   tags: packages
 

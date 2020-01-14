@@ -1,5 +1,5 @@
 ---
-- name: OSX config
+- name: Make sure macos configuration is set
   shell: '{{ item }}'
   with_items:
     # Disable window animations ('new window' scale effect)

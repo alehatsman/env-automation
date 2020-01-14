@@ -1,6 +1,6 @@
 [![MIT License][license-image]][license-url]
 
-# Developer Workstation Automation
+# Development Environment Automation
 
 My lovely developer enviroment. 
 

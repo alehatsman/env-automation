@@ -21,4 +21,4 @@
     state: present
   with_items: '{{ cask_apps }}'
 
-- include: osx/rust.yml
+- include: macos/rust.yml

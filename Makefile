@@ -3,10 +3,10 @@ lint:
 	ansible-lint -x ANSIBLE0010 playbook.yml
 
 install:
-	ansible-playbook --vault-id @prompt -i hosts osx-playbook.yml --ask-become-pass
+	ansible-playbook --vault-id @prompt -i hosts playbook.yml --ask-become-pass
 
 install-only:
-	ansible-playbook --vault-id @prompt -i hosts osx-playbook.yml --tags=vars,$(tags) --ask-become-pass
+	ansible-playbook --vault-id @prompt -i hosts playbook.yml --tags=vars,$(tags) --ask-become-pass
 
 install-arch:
 	TF_STATE=./digitalocean/terraform.tfstate ansible-playbook \

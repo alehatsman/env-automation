@@ -17,4 +17,6 @@ else
   echo "ansible is already installed. Skipping..."
 fi
 
+make install
+
 echo "Done."
