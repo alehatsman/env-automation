@@ -144,3 +144,31 @@ alias k8s="kubectl"
 compdef k8s=kubectl
 
 alias my_ip="curl ifconfig.me/ip"
+
+# fzf_npm_script - opens fzf for npm script
+# selection. Prints selected script back
+fzf_npm_script() {
+  local npm_script
+  npm_script=$(cat ./package.json | jq -r '.scripts | keys | .[]' | fzf)
+  echo "$npm_script"
+}
+
+# nr - npm run script
+# Opens fzf with list of available scripts
+# runs selected script
+nr() {
+  local npm_script
+  npm_script=$(fzf_npm_script)
+  echo "npm run $npm_script"
+  npm run "$npm_script"
+}
+
+# yr - yarn run script
+# Opens fzf with list of available scripts
+# runs selected script
+yr() {
+  local npm_script
+  npm_script=$(fzf_npm_script)
+  echo "yarn run $npm_script"
+  yarn run "$npm_script"
+}
