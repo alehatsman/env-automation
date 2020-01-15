@@ -5,7 +5,7 @@
       - lazygit
     state: present
 
-- name: Make sure git is present
+- name: Make sure git related brew packages are present
   homebrew:
     name:
       - git

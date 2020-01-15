@@ -21,12 +21,12 @@
   with_filetree: templates/.zsh
   when: item.state == 'file'
 
-- name: Install config
+- name: Make sure zshrc is present
   template:
     src: templates/.zshrc.j2
     dest: ~/.zshrc
 
-- name: Install global ignore for ag
+- name: Make sure global .ignore is present
   template:
     src: templates/.ignore.j2
     dest: ~/.ignore
