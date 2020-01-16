@@ -18,7 +18,7 @@
       - kdiff3
     state: present
 
-- name: Create .gitconfig
+- name: Make .gitconfig is present
   template:
     src: templates/.gitconfig.j2
     dest: ~/.gitconfig
