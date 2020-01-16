@@ -14,8 +14,8 @@
 
 - name: Make sure vim navigation config is present
   template:
-    src: templates/vim-tmux-navigator.tmux
-    dest: '{{ tmux_path }}/vim-tmux-navigator.tmux'
+    src: templates/vim_tmux_navigator.tmux
+    dest: '{{ tmux_path }}/vim_tmux_navigator.tmux'
 
 - name: Make sure config is generated
   template:

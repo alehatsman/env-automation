@@ -4,7 +4,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-open'
-source '{{ tmux_config_path }}/vim-tmux-navigator.tmux'
+source-file {{ tmux_path }}/vim_tmux_navigator.tmux
 
 set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
 
