@@ -2,10 +2,10 @@
 - name: Check if vim-plug is installed
   stat:
     path: '{{ autoload_path }}/plug.vim'
-  register: is_vim_plug_installed
+  register: vim_plug_folder
 
 - name: Make sure vim-plug is installed
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: '{{ autoload_path }}/plug.vim'
-  when: not is_vim_plug_installed
+  when: not vim_plug_folder.stat.exists
