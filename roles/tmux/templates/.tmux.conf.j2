@@ -1,48 +1,120 @@
-# List of plugins
+#---------------------------------------------
+# Plugins 
+#---------------------------------------------
+
+# tmp - plugin manager
+# Prefix + I - install plugins
+# Prefix + U - update plugins
 set -g @plugin 'tmux-plugins/tpm'
+
+# predefined settings
 set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# copy to system clipboard
 set -g @plugin 'tmux-plugins/tmux-yank'
+
+# regex search
 set -g @plugin 'tmux-plugins/tmux-copycat'
+
+# open highlighted selection
 set -g @plugin 'tmux-plugins/tmux-open'
+
+# seamless navigation between tmux and vim
 source-file {{ tmux_path }}/vim_tmux_navigator.tmux
 
 set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
 
+# Run tmp
 run '{{ tmux_path }}/plugins/tpm/tpm'
+
+
+#---------------------------------------------
+# Configuration
+#---------------------------------------------
+
+# fix terminal colors
+set -g default-terminal xterm-256color
+set-option -sg escape-time 0
+
+# use vim key bindings
+setw -g mode-keys vi
+
+# disable mouse
+set -g mouse off
+
+# decrease command delay (increases vim responsiveness)
+set -sg escape-time 1
+
+# start windows at 1, not 0
+set -g base-index 1
+
+# start panes at 1, not 0
+setw -g pane-base-index 1
+
+# re-number windows when one is closed
+set -g renumber-windows on
+
+
+#---------------------------------------------
+# Status bar styles
+#---------------------------------------------
+
+setw -g status-left ""
+setw -g status-right ""
+
+setw -g status-bg black
+setw -g status-fg white
+
+setw -g window-status-format " #I: #W "
+setw -g window-status-current-format " #I: #W "
+
+set -g window-status-current-style fg=white,bg=colour8
+
+
+#---------------------------------------------
+# Bindings
+#---------------------------------------------
 
 # Remap prefix from 'C-b' to 'C-a'
 unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
-# New pane / window logic
-bind | split-window -h -c "#{pane_current_path}"
-bind - split-window -v -c "#{pane_current_path}"
-unbind '"'
-unbind %
-bind c new-window -c '#{pane_current_path}' # Create new window
-
-bind h set -g status
-
-# Config reload
+# reload config
 bind r source-file {{ tmux_config_path }} \; display-message "{{ tmux_config_path }} reloaded"
 
-# Status bar styles
-set-window-option -g status-left ""
-set-window-option -g status-right ""
+# split window vertically
+bind | split-window -h -c "#{pane_current_path}" 
 
-set-window-option -g status-bg black
-set-window-option -g status-fg white
+# split window horizontally
+bind - split-window -v -c "#{pane_current_path}" 
+unbind '"' 
+unbind %
 
-set-window-option -g window-status-format " #I: #W "
+#---------------------------------------------
+# Panes
+#---------------------------------------------
 
-set-window-option -g window-status-current-format " #I: #W "
+# create new pane
+bind c new-window -c '#{pane_current_path}' 
 
-set -g window-status-current-style fg=white,bg=colour8
+# toggle panes line
+bind h set -g status 
 
-# Start windows and panes at 1, not 0
-set -g base-index 1
-setw -g pane-base-index 1
+#---------------------------------------------
+# Copy / Paste vim
+#---------------------------------------------
 
-set -g default-terminal xterm-256color
-set-option -sg escape-time 0
+# starts selection mode
+bind C-[ copy-mode
+bind -T copy-mode-vi 'v' send -X begin-selection
+
+# copy with 'enter' or 'y' and send to mac os clipboard: http://goo.gl/2Bfn8
+unbind -T copy-mode-vi Enter
+bind -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+
+# paste
+bind p paste-buffer
+
+# paste from system clipboard MacOS
+bind C-v run \"tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux paste-buffer"
