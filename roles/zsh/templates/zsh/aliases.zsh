@@ -99,12 +99,9 @@ fgcb() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-fe() {
-  local files
-  IFS=$"\n" files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
-}
-
+#---------------------------------------------
+# Lastpass
+#---------------------------------------------
 flpass() {
   lpass login {{ EMAIL }}
   lpass show -c --password $(lpass ls  | fzf | awk "{print $(NF)}" | sed "s/\]//g")
@@ -130,24 +127,25 @@ tm() {
 
 alias tmks="tmux kill-server"
 
-alias jcsm="jest --changedSince master"
-
-format_pb_json() {
-  pbpaste | jq | pbcopy
-}
-
-help() {
+cheat() {
   curl cheat.sh/$@
 }
+
+alias hm="man"
+alias hc="cheat"
 
 alias k8s="kubectl"
 compdef k8s=kubectl
 
 alias my_ip="curl ifconfig.me/ip"
 
+#---------------------------------------------
+# npm / yarn 
+#---------------------------------------------
+
 # fzf_npm_script - opens fzf for npm script
 # selection. Prints selected script back
-fzf_npm_script() {
+_fzf_npm_script() {
   local npm_script
   npm_script=$(cat ./package.json | jq -r '.scripts | keys | .[]' | fzf)
   echo "$npm_script"
@@ -158,7 +156,7 @@ fzf_npm_script() {
 # runs selected script
 nr() {
   local npm_script
-  npm_script=$(fzf_npm_script)
+  npm_script=$(_fzf_npm_script)
   echo "npm run $npm_script"
   npm run "$npm_script"
 }
@@ -168,7 +166,7 @@ nr() {
 # runs selected script
 yr() {
   local npm_script
-  npm_script=$(fzf_npm_script)
+  npm_script=$(_fzf_npm_script)
   echo "yarn run $npm_script"
   yarn run "$npm_script"
 }
