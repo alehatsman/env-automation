@@ -1,35 +1,13 @@
-" Mappings
+"---------------------------------------------
+" Mappings 
+"---------------------------------------------
+" set <leader> to space
 let mapleader="\<space>"
 let maplocalleader="\<space>"
 
-" uppercase current word
-nnoremap <leader><c-u> viwU
-" open vimrc file
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-" reload vimrc file
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" wrap current word in \"
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-" wrap current word in '
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-" wrap selection in "
-vnoremap <leader>" xi"<esc>pa"<esc>
-" wrap selection in '
-vnoremap <leader>' xi'<esc>pa'<esc>
-
-" go to the start of line
-nnoremap <leader>H ^
-
-" go to the end of line
-nnoremap <leader>L $
-
-inoremap <esc> <nop>
-inoremap <c-[> <esc>
-
-" open command promp
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
-
+"---------------------------------------------
+" File test
+"---------------------------------------------
 function! g:CopyFilepathToClipboard()
   let path = expand("%")
   let @+ = path
@@ -42,19 +20,50 @@ function! g:CopyFilenameToClipboard()
   echo path
 endfunction
 
-nnoremap <Leader>cn :call g:CopyFilenameToClipboard()<CR>
-nnoremap <Leader>cp :call g:CopyFilepathToClipboard()<CR>
+" copy filename to clipboard
+nnoremap <leader>cfn :call g:CopyFilenameToClipboard()<CR>
+" copy filepath to clipboard
+nnoremap <leader>cfp :call g:CopyFilepathToClipboard()<CR>
 
 
+"---------------------------------------------
+" Autocomplete
+"---------------------------------------------
+
+" Remap ctrl-x ctrl-o to ctrl space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 
-nnoremap <Leader>tt :tabnew<CR>
-nnoremap <Leader>tp :tabprev<CR>
-nnoremap <Leader>tn :tabnext<CR>
 
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gpr :Gpull -r<CR>
+"---------------------------------------------
+" Nerd tree
+"---------------------------------------------
+" open / close nerd tree
+nnoremap <leader>fe :NERDTreeToggle<cr>
+" find current file in nerdtree
+nnoremap <leader>ff :NERDTreeFind<cr>
+
+
+"---------------------------------------------
+" Splits
+"---------------------------------------------
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-\> <c-w>w
+
+" close all splits except focused one
+nnoremap <c-w>o <c-w><c-o>
+
+
+"---------------------------------------------
+" Tabs mappings 
+"---------------------------------------------
+nnoremap <leader>tt :tabnew<CR>
+nnoremap <leader>tp :tabprev<CR>
+nnoremap <leader>tn :tabnext<CR>
+nnoremap <leader>to :tabonly<CR>
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -66,3 +75,31 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
+
+
+"---------------------------------------------
+" Git mappings 
+"---------------------------------------------
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gpr :Gpull -r<CR>
+nnoremap <leader>gl :GV<CR>
+nnoremap <leader>gd :Gvdiffsplit<CR>
+
+
+"---------------------------------------------
+" Linting / Formatting
+"---------------------------------------------
+nnoremap <leader>lt :ALELint<cr>
+nnoremap <leader>fx :ALEFix<cr>
+nnoremap <leader>de :ALEDetail<cr>
+
+
+"---------------------------------------------
+" Navigation
+"---------------------------------------------
+" go to the beginning of the line
+nnoremap H ^
+" go to the end of the line
+nnoremap L g_

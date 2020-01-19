@@ -8,34 +8,31 @@ Plug 'vim-scripts/LargeFile'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux' " Run commands from vim in tmux
 
 " File explorer and tabs
 Plug 'scrooloose/nerdtree'
 
+" Comments
+Plug 'preservim/nerdcommenter'
+
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 
-" Syntax / Linter
+" Linters / Formatters
 Plug 'w0rp/ale'
 
 " Status bar
 Plug 'bling/vim-airline'
 
-" Navigation
+" Search and Navigation
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 
-" Python
-
 " Autocomplete
 function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
     !python3 ./install.py --clang-completer --go-completer --ts-completer 
   endif
@@ -69,12 +66,7 @@ Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
 " Scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'ensime/ensime-vim', { 'for': 'scala' }
 
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-
-" Plug 'neovim/nvim-lsp'
 call plug#end()
