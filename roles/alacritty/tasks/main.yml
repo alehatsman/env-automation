@@ -1,15 +1,15 @@
 ---
-- name: Make sure alacritty is installed
+- name: Make sure alacritty is present
   homebrew_cask:
     name: alacritty
     state: present
 
-- name: Make sure config exists
+- name: Make sure config directory is present
   file:
     path: ~/.config/alacritty
     state: directory
 
-- name: Make sure alacritty config is created
+- name: Make sure config file is present
   template:
     src: templates/alacritty.yml.j2
     dest: ~/.config/alacritty/alacritty.yml
