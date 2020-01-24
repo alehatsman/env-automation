@@ -41,6 +41,8 @@ alias gc!="git commit --no-verify -v"
 alias gca!="git commit --amend --no-verify -v"
 alias gcm!="git commit --no-verify -v -m"
 
+alias gct="git checkout"
+
 gcb() {
   if [[ $# > 0 ]]; then
     git checkout $@
@@ -151,22 +153,26 @@ _fzf_npm_script() {
   echo "$npm_script"
 }
 
+_run_npm_script() {
+  local npm_script
+  npm_script=$(_fzf_npm_script)
+  if [ -z "$npm_script" ]; then 
+    return 0
+  fi
+  echo "$1 run $npm_script"
+  "$1" run "$npm_script"
+}
+
 # nr - npm run script
 # Opens fzf with list of available scripts
 # runs selected script
 nr() {
-  local npm_script
-  npm_script=$(_fzf_npm_script)
-  echo "npm run $npm_script"
-  npm run "$npm_script"
+  _run_npm_script "npm"
 }
 
 # yr - yarn run script
 # Opens fzf with list of available scripts
 # runs selected script
 yr() {
-  local npm_script
-  npm_script=$(_fzf_npm_script)
-  echo "yarn run $npm_script"
-  yarn run "$npm_script"
+  _run_npm_script "yarn"
 }

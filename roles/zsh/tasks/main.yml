@@ -1,15 +1,16 @@
 ---
-- name: Make sure zsh in instaled
+- name: Make sure zsh and zplug are present
   homebrew:
     name:
       - zsh
       - zplug
+    state: present
 
 - name: Make sure variables are included
   include_vars:
     file: "{{ ansible_distribution }}.yml"
 
-- name: Make sure directories are created
+- name: Make sure directories are present
   file:
     path: '{{ config_path }}'
     state: directory
