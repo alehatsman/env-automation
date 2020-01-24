@@ -1,8 +1,11 @@
 ---
-- name: Make sure tmux is installed
+- name: Make sure tmux is present
   homebrew:
-    name: tmux
+    name: '{{ item }}'
     state: present
+  with_items:
+    - tmux
+    - reattach-to-user-namespace
 
 - name: Make sure config folders are present
   file:
@@ -12,18 +15,18 @@
     - '{{ tmux_path }}'
     - '{{ tmux_path }}/plugins'
 
+- name: Make sure tmp is present
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: '{{ tmux_path }}/plugins/tpm'
+    depth: 1
+
 - name: Make sure vim navigation config is present
   template:
     src: templates/vim_tmux_navigator.tmux
     dest: '{{ tmux_path }}/vim_tmux_navigator.tmux'
 
-- name: Make sure config is generated
+- name: Make sure .tmux.conf is present
   template:
     src: templates/.tmux.conf.j2
     dest: '{{ tmux_config_path }}'
-
-- name: Make sure tmp is installed
-  git:
-    repo: https://github.com/tmux-plugins/tpm
-    dest: '{{ tmux_path }}/plugins/tpm'
-    depth: 1
