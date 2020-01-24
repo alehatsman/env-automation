@@ -1,1 +1,2 @@
-autocmd FileType clojure nmap <buffer> <C-]> ]<C-D>
+" Go into using fireplace
+nmap <buffer> <C-]> ]<C-D>

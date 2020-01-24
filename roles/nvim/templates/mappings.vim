@@ -20,9 +20,7 @@ function! g:CopyFilenameToClipboard()
   echo path
 endfunction
 
-" copy filename to clipboard
 nnoremap <leader>cfn :call g:CopyFilenameToClipboard()<CR>
-" copy filepath to clipboard
 nnoremap <leader>cfp :call g:CopyFilepathToClipboard()<CR>
 
 
@@ -91,9 +89,9 @@ nnoremap <leader>gd :Gvdiffsplit<CR>
 "---------------------------------------------
 " Linting / Formatting
 "---------------------------------------------
-nnoremap <leader>lt :ALELint<cr>
-nnoremap <leader>fx :ALEFix<cr>
-nnoremap <leader>de :ALEDetail<cr>
+nnoremap <leader>al :ALELint<cr>
+nnoremap <leader>af :ALEFix<cr>
+nnoremap <leader>ad :ALEDetail<cr>
 
 
 "---------------------------------------------

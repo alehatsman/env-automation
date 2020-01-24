@@ -1,3 +1,6 @@
+"---------------------------------------------
+" Python configuration
+"---------------------------------------------
 let g:ycm_python_binary_path = 'python'
 let g:ycm_python_sys_path = []
 let g:ycm_extra_conf_vim_data = [

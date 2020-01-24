@@ -50,7 +50,7 @@ Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
 " Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'typescript'] }
-Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': 'javascript' }
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': 'javascript' }
 Plug 'posva/vim-vue', { 'for': 'javascript' }
 Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
 Plug 'Shougo/neosnippet', { 'for': 'javascript' }
