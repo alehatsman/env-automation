@@ -6,6 +6,7 @@ alias ag="ag --path-to-ignore ~/.ignore"
 alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias ls="exa"
+alias l="ls -1"
 alias c="clear"
 alias n="cd ~/Projects/atsman/notes; e"
 alias vimdiff="nvim -d"
@@ -154,6 +155,11 @@ _fzf_npm_script() {
 }
 
 _run_npm_script() {
+  if [[ ! -f './package.json' ]]; then
+    echo "no package.json file!"
+    return 0
+  fi 
+
   local npm_script
   npm_script=$(_fzf_npm_script)
   if [ -z "$npm_script" ]; then 
