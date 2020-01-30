@@ -18,8 +18,11 @@ set splitbelow " put the new window below the current one
 set splitright " put the new window right of the current one
 
 " Dracula theme settings
-let g:dracula_colorterm=0
+set termguicolors
+set t_Co=256
+set background=dark
 colorscheme dracula
+let g:dracula_colorterm=0
 color dracula
 
 set autoindent " copy indent from current line when starting a new line
@@ -35,7 +38,8 @@ set foldcolumn=1 " width of fold column
 set foldlevelstart=99 " don't close folds
 
 " Autocomplete
-set completeopt=menu,preview
+"set completeopt=menu,preview
+set completeopt=menuone,preview
 autocmd CompleteDone * pclose
 
 "---------------------------------------------
