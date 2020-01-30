@@ -33,7 +33,10 @@ run '{{ tmux_path }}/plugins/tpm/tpm'
 #---------------------------------------------
 
 # fix terminal colors
-set -g default-terminal xterm-256color
+set -g default-terminal "screen-256color" # colors!
+# tell Tmux that outside terminal supports true color
+set -ga terminal-overrides ",xterm-256color*:Tc"
+
 set-option -sg escape-time 0
 
 # use vim key bindings
