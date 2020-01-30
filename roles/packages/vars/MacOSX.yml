@@ -25,6 +25,7 @@ apps:
   - jq
   - lastpass-cli
   - libpq
+  - mitmproxy
   - mosh
   - nmap
   - packer
@@ -42,6 +43,7 @@ apps:
   - wget
   - xsv
   - yamllint
+  - yq
 
 cask_apps:
   - adobe-acrobat-reader
