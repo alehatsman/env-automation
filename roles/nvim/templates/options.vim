@@ -60,6 +60,7 @@ EOF
 " Nerd tree
 "---------------------------------------------
 let NERDTreeShowHidden=1 " show hidden files
+let g:NERDTreeAutoDeleteBuffer = 1
 
 "---------------------------------------------
 " Airline options for tabs
