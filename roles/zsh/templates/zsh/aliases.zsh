@@ -96,9 +96,9 @@ gbd!() { # git delete branch force
 
 fgcb() {
   local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
+  branches=$(git branch --all | rg -v HEAD) &&
   branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+           fzf-tmux --height 40% -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 

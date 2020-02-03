@@ -123,7 +123,7 @@ bind C-v run \"tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux p
 # Vim like navigation
 #---------------------------------------------
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|fzf|n?vim?x?)(diff)?$'"
+    | rg -iq -e '^[^TXZ ]+ +(\S+)?g?(view|fzf|n?vim?x?)(diff)?$'"
 
 bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
 bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
