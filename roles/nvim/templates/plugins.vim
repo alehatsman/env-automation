@@ -16,14 +16,14 @@ Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
 
 " Git
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive' " git commands
+Plug 'junegunn/gv.vim' " git commit browser
+Plug 'airblade/vim-gitgutter' " git diff sign
 
 " Linters / Formatters
 Plug 'w0rp/ale'
 
-" Status bar
+" Status line and Tabs
 Plug 'bling/vim-airline'
 
 " Search and Navigation
