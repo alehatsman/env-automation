@@ -43,6 +43,9 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 
+" Repeating
+Plug 'tpope/vim-repeat'
+
 " Golang
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 
