@@ -82,7 +82,7 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gpr :Gpull -r<CR>
-nnoremap <leader>gl :GV<CR>
+nnoremap <leader>gl :GV!<CR>
 nnoremap <leader>gd :Gvdiffsplit<CR>
 
 
