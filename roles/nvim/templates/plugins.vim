@@ -37,7 +37,13 @@ function! BuildYCM(info)
     !python3 ./install.py --clang-completer --go-completer --ts-completer 
   endif
 endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
 " Quoting / Parenthesizing
 Plug 'tpope/vim-surround'
