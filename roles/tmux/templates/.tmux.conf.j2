@@ -34,6 +34,9 @@ set -g default-terminal "screen-256color" # colors!
 # tell Tmux that outside terminal supports true color
 set -ga terminal-overrides ",xterm-256color*:Tc"
 
+# change color of session selection line
+set -wg mode-style bg=colour8,fg=white
+
 set-option -sg escape-time 0
 
 # use vim key bindings
