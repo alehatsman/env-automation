@@ -42,6 +42,8 @@ set foldlevelstart=99 " don't close folds
 set completeopt=menuone,preview
 autocmd CompleteDone * pclose
 
+set conceallevel=0
+
 "---------------------------------------------
 " Python provider
 "---------------------------------------------
