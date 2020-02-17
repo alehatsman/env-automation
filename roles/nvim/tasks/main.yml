@@ -30,3 +30,8 @@
 - name: Make sure plugins are installed
   shell:
     nvim +PlugInstall +qall
+
+- name: Make sure vim-language-server is present
+  npm:
+    name: 'vim-language-server'
+    global: true

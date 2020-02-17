@@ -38,12 +38,14 @@ function! BuildYCM(info)
   endif
 endfunction
 
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'neovim/nvim-lsp'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/neosnippet.vim'
+"Plug 'Shougo/neosnippet-snippets'
+"Plug 'Shougo/deoplete-lsp'
+"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
 " Quoting / Parenthesizing
 Plug 'tpope/vim-surround'
@@ -78,4 +80,5 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+
 call plug#end()

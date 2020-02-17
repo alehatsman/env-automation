@@ -93,7 +93,6 @@ nnoremap <leader>al :ALELint<cr>
 nnoremap <leader>af :ALEFix<cr>
 nnoremap <leader>ad :ALEDetail<cr>
 
-
 "---------------------------------------------
 " Navigation
 "---------------------------------------------
