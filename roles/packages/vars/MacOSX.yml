@@ -18,6 +18,7 @@ apps:
   - exa
   - fd
   - fzf
+  - gnu-sed
   - graphviz
   - htop
   - hub

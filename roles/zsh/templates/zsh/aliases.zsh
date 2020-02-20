@@ -11,6 +11,7 @@ alias c="clear"
 alias n="cd ~/Projects/atsman/notes; e"
 alias vimdiff="nvim -d"
 alias r="source ~/.zshrc"
+alias sed=gsed
 
 # Docker
 alias docker_clean="docker system prune --all --volumes"
@@ -65,7 +66,10 @@ alias gp!="gp --no-verify"
 alias gpf="gp --force-with-lease"
 alias gpf!="gp! --force-with-lease"
 
-alias gs="git show"
+alias gsh="git show"
+
+alias gs="git stash"
+alias gsp="git stash pop"
 
 alias gd="git diff"
 alias gds="git diff --staged"
@@ -182,3 +186,10 @@ nr() {
 yr() {
   _run_npm_script "yarn"
 }
+
+
+#---------------------------------------------
+# Docker
+#---------------------------------------------
+
+alias dps="docker ps"
