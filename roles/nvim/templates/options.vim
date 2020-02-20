@@ -67,6 +67,11 @@ let g:NERDTreeAutoDeleteBuffer = 1 " delete buffer when delete file
 "---------------------------------------------
 " Airline options for tabs
 "---------------------------------------------
+let g:airline_section_c = '%t'
+let g:airline_section_z = ''
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#hunks#enabled=0
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#tab_min_count = 2
