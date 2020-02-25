@@ -144,3 +144,17 @@ bind-key -T copy-mode-vi 'C-j' select-pane -D
 bind-key -T copy-mode-vi 'C-k' select-pane -U
 bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l
+
+#---------------------------------------------
+# Vim like pane resize 
+#---------------------------------------------
+
+bind-key J resize-pane -D 5
+bind-key K resize-pane -U 5
+bind-key H resize-pane -L 5
+bind-key L resize-pane -R 5
+
+bind-key M-j resize-pane -D
+bind-key M-k resize-pane -U
+bind-key M-h resize-pane -L
+bind-key M-l resize-pane -R
