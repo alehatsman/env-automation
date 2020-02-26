@@ -3,15 +3,22 @@
 #---------------------------------------------
 
 alias ag="ag --path-to-ignore ~/.ignore"
-alias mkdir="mkdir -p"
-alias e="$EDITOR"
-alias ls="exa"
-alias l="ls -1"
-alias c="clear"
 alias n="cd ~/Projects/atsman/notes; e"
 alias vimdiff="nvim -d"
 alias r="source ~/.zshrc"
+
+#---------------------------------------------
+# Apps
+#---------------------------------------------
+
+alias e="$EDITOR"
 alias sed=gsed
+alias cat=bat
+alias ls=exa
+
+alias l="ls -1"
+alias c="clear"
+alias md="mkdir -p"
 
 # Docker
 alias docker_clean="docker system prune --all --volumes"
