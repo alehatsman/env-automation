@@ -17,6 +17,7 @@ else
   echo "ansible is already installed. Skipping..."
 fi
 
+git clone https://github.com/atsman/env-automation
+cd ./env-automation
 make install
-
 echo "Done."
