@@ -6,6 +6,10 @@ My lovely developer enviroment.
 
 ## Installation
 
+```
+bash <(curl -s https://github.com/atsman/env-automation/init.sh)
+```
+
 If you install it from scratch, you would need some dependencies to be installed first. Use init.sh or manually install:
 
 1. [Xcode Command Line Tools](http://railsapps.github.io/xcode-command-line-tools.html).
