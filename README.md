@@ -7,7 +7,7 @@ My lovely developer enviroment.
 ## Installation
 
 ```
-bash <(curl -s https://github.com/atsman/env-automation/init.sh)
+curl -s https://raw.githubusercontent.com/atsman/env-automation/master/init.sh | zsh
 ```
 
 If you install it from scratch, you would need some dependencies to be installed first. Use init.sh or manually install:
