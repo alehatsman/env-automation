@@ -9,6 +9,8 @@ taps:
 
 apps:
   - ansible
+  - awscli
+  - aws-iam-authenticator
   - aria2
   - autoenv
   - bat
@@ -50,6 +52,7 @@ cask_apps:
   - google-chrome
   - google-cloud-sdk
   - pgadmin4
+  - postman
   - slack
   - spectacle
   - spotify

@@ -15,7 +15,6 @@
     - {role: 'node', tags: 'node'}
     - {role: 'nvim', tags: 'nvim'}
     - {role: 'alacritty', tags: 'alacritty'}
-    - {role: 'aws', tags: 'aws'}
     - {role: 'golang', tags: 'golang'}
     - {role: 'jvm', tags: 'jvm'}
     - {role: 'clojure', tags: 'clojure'}

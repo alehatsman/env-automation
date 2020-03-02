@@ -1,6 +1,0 @@
----
-- name: Install awscli
-  pip:
-    name: awscli
-    executable: /usr/local/bin/pip3
-    state: latest
