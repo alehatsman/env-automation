@@ -2,14 +2,13 @@
 homebrew_url: https://raw.githubusercontent.com/Homebrew/install/master/install
 
 taps:
-  - caskroom/fonts
   - homebrew/cask
+  - homebrew/cask-fonts
   - wata727/tflint
   - borkdude/brew
 
 apps:
   - ansible
-  - ansible-lint
   - aria2
   - autoenv
   - bat
@@ -26,17 +25,13 @@ apps:
   - jq
   - lastpass-cli
   - libpq
-  - mitmproxy
   - mosh
   - nmap
   - packer
   - ripgrep
   - rustup
-  - sshfs
   - terraform
   - terraform-inventory
-  - tflint
-  - the_silver_searcher
   - tldr
   - tor
   - tree
@@ -48,30 +43,22 @@ apps:
 
 cask_apps:
   - adobe-acrobat-reader
-  - adoptopenjdk8
   - amazon-workspaces
-  - dash
-  - figma
   - flux
   - font-fira-code
-  - gimp
   - google-backup-and-sync
   - google-chrome
   - google-cloud-sdk
-  - osxfuse
   - pgadmin4
   - slack
   - spectacle
   - spotify
   - teamviewer
   - telegram
-  - torbrowser
+  - tor-browser
   - transmission
   - tunnelblick
-  - vagrant
   - veracrypt
-  - virtualbox
   - visual-studio-code
   - vlc
-  - wireshark
   - xmind

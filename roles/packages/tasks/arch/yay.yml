@@ -1,8 +1,0 @@
----
-- name: Make sure yay is installed
-  aur:
-    name: yay
-    use: makepkg
-    skip_installed: true
-    become_user: aur_builder
-  when: not is_yay_installed

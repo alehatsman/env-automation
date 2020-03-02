@@ -1,21 +1,8 @@
 ---
-- name: Make sure git related taps are present
-  homebrew_tap:
-    name:
-      - lazygit
-    state: present
-
 - name: Make sure git related brew packages are present
   homebrew:
     name:
       - git
-      - lazygit
-    state: present
-
-- name: Make sure mergetool is present
-  homebrew_cask:
-    name:
-      - kdiff3
     state: present
 
 - name: Make .gitconfig is present

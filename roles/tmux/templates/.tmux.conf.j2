@@ -28,6 +28,7 @@ run '{{ tmux_path }}/plugins/tpm/tpm'
 #---------------------------------------------
 # Configuration
 #---------------------------------------------
+set-option -g default-shell /usr/local/bin/zsh
 
 # fix terminal colors
 set -g default-terminal "screen-256color" # colors!
@@ -120,7 +121,7 @@ bind -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "reattach-to-user-namespac
 bind p paste-buffer
 
 # paste from system clipboard MacOS
-bind C-v run \"tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux paste-buffer"
+# bind-key -n 'C-v' run \"tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux paste-buffer"
 
 #---------------------------------------------
 # Vim like navigation

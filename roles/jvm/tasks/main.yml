@@ -2,7 +2,7 @@
 - name: Make sure openjdk tap is present
   homebrew_tap:
     name:
-      - adoptopenjdk/openjdk
+      - AdoptOpenJDK/openjdk
     state: present
 
 - name: Make sure java is installed

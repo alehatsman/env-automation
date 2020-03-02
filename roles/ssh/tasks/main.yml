@@ -1,10 +1,10 @@
 ---
 - name: Make sure .ssh folder exists
   file:
-    path: '{ssh_path}'
+    path: '{{ ssh_path }}'
     state: directory
 
 - name: Make sure ssh-key is generated
   openssh_keypair:
-    path: '{ssh_path}/id_rsa'
+    path: '{{ ssh_path }}/id_rsa'
     size: 4096

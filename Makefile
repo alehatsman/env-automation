@@ -7,14 +7,3 @@ install:
 
 install-only:
 	ansible-playbook --vault-id @prompt -i hosts playbook.yml --tags=vars,$(tags) --ask-become-pass
-
-install-arch:
-	TF_STATE=./digitalocean/terraform.tfstate ansible-playbook \
-					 		--user root \
-							--vault-id @prompt \
-							--inventory-file $(shell which terraform-inventory) \
-							arch-playbook.yml
-
-ssh-remote:
-	cd ./digitalocean; \
-	ssh root@$(./do_ip.sh)

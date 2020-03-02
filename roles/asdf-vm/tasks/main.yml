@@ -5,5 +5,7 @@
     state: latest
 
 - name: Make sure .asdf is cloned
-  shell: |
-    'git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch {{version}}'
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: ~/.asdf
+    version: '{{version}}'

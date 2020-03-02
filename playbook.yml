@@ -12,6 +12,7 @@
     - {role: 'asdf-vm', tags: 'asdf-vm'}
     - {role: 'zsh', tags: 'zsh'}
     - {role: 'tmux', tags: 'tmux'}
+    - {role: 'node', tags: 'node'}
     - {role: 'nvim', tags: 'nvim'}
     - {role: 'alacritty', tags: 'alacritty'}
     - {role: 'aws', tags: 'aws'}
@@ -19,4 +20,3 @@
     - {role: 'jvm', tags: 'jvm'}
     - {role: 'clojure', tags: 'clojure'}
     - {role: 'docker', tags: 'docker'}
-    - {role: 'node', tags: 'node'}

@@ -35,5 +35,5 @@
 - name: Make sure to set brew zsh as default shell
   shell:
     dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
+    chsh -s /usr/local/bin/zsh
   become: true
-  when: ansible_distribution == 'MacOSX'

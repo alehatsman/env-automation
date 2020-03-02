@@ -16,5 +16,5 @@
   homebrew_cask:
     name:
       - docker
-      - minikube
+    #  - minikube
     state: present

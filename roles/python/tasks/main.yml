@@ -2,16 +2,16 @@
 - name: Make sure python is installed
   homebrew:
     name:
-      - pyenv
-      - python@2
       - python
 
 - name: Make sure pipenv is installed
   pip:
     name: pipenv
+    executable: /usr/local/bin/pip3
     state: latest
 
 - name: Make sure virtualenv is installed
   pip:
     name: virtualenv
+    executable: /usr/local/bin/pip3
     state: latest

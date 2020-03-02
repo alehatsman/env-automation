@@ -1,1 +1,0 @@
-terraform output playground_id_addr

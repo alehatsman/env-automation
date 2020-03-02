@@ -1,12 +1,22 @@
 ---
-- name: Make sure variables are included
-  include_vars:
-    file: "{{ ansible_distribution }}.yml"
+- name: Make sure homebrew is updated
+  homebrew:
+    state: latest
+    update_homebrew: true
 
-- include: macos.yml
-  when: ansible_distribution == 'MacOSX'
-  tags: packages
+- name: Make sure all homebrew taps are present
+  homebrew_tap:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ taps }}'
 
-- include: arch.yml
-  when: ansible_distribution == 'Archlinux'
-  tags: packages
+- name: Make sure all apps
+  homebrew:
+    name: '{{ apps }}'
+    state: present
+
+- name: Make sure all homebrew cask applications are present
+  homebrew_cask:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ cask_apps }}'

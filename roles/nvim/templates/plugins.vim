@@ -39,7 +39,7 @@ function! BuildYCM(info)
 endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-Plug 'neovim/nvim-lsp'
+" Plug 'neovim/nvim-lsp'
 
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'Shougo/neosnippet.vim'
