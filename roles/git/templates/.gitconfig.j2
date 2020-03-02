@@ -3,13 +3,13 @@
   email = {{ EMAIL }}
   editor = nvim
 [merge]
-  tool = kdiff3
-  guitool = kdiff3
-[mergetool "kdiff3"]
-  path = /usr/local/bin/kdiff3
+  tool = vimdiff
+  guitool = vimdiff
+  conflictstyle = diff3
+[mergetool "vimdiff"]
   trustExitCode = false
+  prompt = false
 [diff]
-  guitool = kdiff3
-[difftool "kdiff3"]
-  path = /usr/local/bin/kdiff3
+  guitool = vimdiff
+[difftool "vimdiff"]
   trustExitCode = false
