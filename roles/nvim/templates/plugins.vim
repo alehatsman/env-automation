@@ -2,7 +2,6 @@ call plug#begin('{{ plug_path }}')
 " General
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dracula/vim'
-Plug 'junegunn/goyo.vim'
 
 Plug 'vim-scripts/LargeFile'
 
@@ -40,12 +39,6 @@ endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 " Plug 'neovim/nvim-lsp'
-
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Shougo/neosnippet.vim'
-"Plug 'Shougo/neosnippet-snippets'
-"Plug 'Shougo/deoplete-lsp'
-"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
 " Quoting / Parenthesizing
 Plug 'tpope/vim-surround'
