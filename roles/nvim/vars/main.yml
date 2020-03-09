@@ -12,13 +12,11 @@ python3_venv_path: '{{ config_path }}/python3_venv'
 
 python_libs:
   - neovim
-  - flake8
   - websocket-client
   - sexpdata
 
 python3_libs:
   - pynvim
   - neovim
-  - flake8
   - websocket-client
   - sexpdata
