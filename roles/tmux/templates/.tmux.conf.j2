@@ -150,12 +150,7 @@ bind-key -T copy-mode-vi 'C-\' select-pane -l
 # Vim like pane resize 
 #---------------------------------------------
 
-bind-key J resize-pane -D 5
-bind-key K resize-pane -U 5
-bind-key H resize-pane -L 5
-bind-key L resize-pane -R 5
-
-bind-key M-j resize-pane -D
-bind-key M-k resize-pane -U
-bind-key M-h resize-pane -L
-bind-key M-l resize-pane -R
+bind-key -n 'M-j' if-shell "$is_vim" 'send-keys M-j'  'resize-pane -D 3'
+bind-key -n 'M-k' if-shell "$is_vim" 'send-keys M-k'  'resize-pane -U 3'
+bind-key -n 'M-h' if-shell "$is_vim" 'send-keys M-h'  'resize-pane -L 3'
+bind-key -n 'M-l' if-shell "$is_vim" 'send-keys M-l'  'resize-pane -R 3'

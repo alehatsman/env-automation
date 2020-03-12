@@ -77,10 +77,10 @@ noremap <leader>0 :tablast<cr>
 "---------------------------------------------
 " Splits resizing 
 "---------------------------------------------
-map <silent> <A-h> <C-w><
-map <silent> <A-j> <C-W>-
-map <silent> <A-k> <C-W>+
-map <silent> <A-l> <C-w>>
+map <silent> <A-h> <C-w>>
+map <silent> <A-j> <C-W>+
+map <silent> <A-k> <C-W>-
+map <silent> <A-l> <C-w><
 
 
 "---------------------------------------------
