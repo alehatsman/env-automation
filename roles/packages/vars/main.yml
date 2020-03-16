@@ -47,6 +47,7 @@ cask_apps:
   - adobe-acrobat-reader
   - amazon-workspaces
   - flux
+  - fork
   - font-fira-code
   - google-backup-and-sync
   - google-chrome
