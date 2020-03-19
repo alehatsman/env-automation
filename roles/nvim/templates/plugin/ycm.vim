@@ -1,6 +1,10 @@
 "---------------------------------------------
 " Python configuration
 "---------------------------------------------
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_enable_diagnostic_signs = 0 
+let g:ycm_enable_diagnostic_highlighting = 0
+
 let g:ycm_python_binary_path = 'python'
 let g:ycm_python_sys_path = []
 let g:ycm_extra_conf_vim_data = [
