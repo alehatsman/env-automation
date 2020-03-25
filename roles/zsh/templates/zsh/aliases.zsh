@@ -67,6 +67,7 @@ alias gcpc="git cherry-pick --continue"
 
 alias gpr="git pull -r"
 alias gl="git log"
+alias glm="git log --author='{{ FULLNAME }}'"
 
 alias gp="git push -u origin HEAD"
 alias gp!="gp --no-verify"
