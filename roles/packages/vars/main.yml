@@ -46,6 +46,7 @@ apps:
 cask_apps:
   - adobe-acrobat-reader
   - alfred
+  - anki
   - amazon-workspaces
   - flux
   - fork
