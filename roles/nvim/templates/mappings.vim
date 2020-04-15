@@ -108,3 +108,8 @@ nnoremap <leader>ad :ALEDetail<cr>
 nnoremap H ^
 " go to the end of the line
 nnoremap L g_
+
+"---------------------------------------------
+" Visual
+"---------------------------------------------
+vnoremap <silent> <leader>s :'<,'>sort<cr>

@@ -206,3 +206,4 @@ npm_uninstall_globals() {
 alias dps="docker ps"
 
 alias ..='cd ..'
+alias ....='cd ../../'
