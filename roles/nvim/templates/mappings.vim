@@ -100,6 +100,7 @@ nnoremap <leader>gd :Gvdiffsplit<CR>
 nnoremap <leader>al :ALELint<cr>
 nnoremap <leader>af :ALEFix<cr>
 nnoremap <leader>ad :ALEDetail<cr>
+nnoremap <leader>ar :ALERename<cr>
 
 "---------------------------------------------
 " Navigation

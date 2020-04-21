@@ -52,13 +52,12 @@ Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': 'javascript' }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
-" Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'typescript'] }
-" Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': 'javascript' }
+Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main',
+"   \ 'for': ['typescript', 'typescriptreact'] }
 Plug 'posva/vim-vue', { 'for': 'javascript' }
-Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
-Plug 'Shougo/neosnippet', { 'for': 'javascript' }
-Plug 'Shougo/neosnippet-snippets', { 'for': 'javascript' }
 Plug 'jxnblk/vim-mdx-js', { 'for': 'markdown.mdx' }
 Plug 'jparise/vim-graphql'
 
