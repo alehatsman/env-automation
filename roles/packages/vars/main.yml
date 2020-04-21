@@ -9,10 +9,10 @@ taps:
 
 apps:
   - ansible
-  - awscli
-  - aws-iam-authenticator
   - aria2
   - autoenv
+  - aws-iam-authenticator
+  - awscli
   - bat
   - caddy
   - cmake
@@ -32,8 +32,11 @@ apps:
   - packer
   - ripgrep
   - rustup
+  - shellcheck
+  - shfmt
   - terraform
   - terraform-inventory
+  - tig
   - tldr
   - tor
   - tree
@@ -46,14 +49,15 @@ apps:
 cask_apps:
   - adobe-acrobat-reader
   - alfred
-  - anki
   - amazon-workspaces
+  - anki
   - flux
-  - fork
   - font-fira-code
+  - fork
   - google-backup-and-sync
   - google-chrome
   - google-cloud-sdk
+  - kap
   - pgadmin4
   - postman
   - slack
