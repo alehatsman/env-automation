@@ -36,7 +36,7 @@ set -g default-terminal "screen-256color" # colors!
 set -ga terminal-overrides ",xterm-256color*:Tc"
 
 # change color of session selection line
-set -wg mode-style bg=colour8,fg=white
+set -wg mode-style bg={{ tmux.status.bg }},fg={{ tmux.status.fg }}
 
 set-option -sg escape-time 0
 

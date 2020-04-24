@@ -1,0 +1,15 @@
+---
+colors:
+  grey: '#212122'
+  
+vim:
+  bg: '{{ colors.grey }}'
+
+alacritty:
+  bg: '{{ colors.grey }}'
+  fg: '#eaeaea'
+
+tmux:
+  status:
+    bg: colour234
+    fg: white

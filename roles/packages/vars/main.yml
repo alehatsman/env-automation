@@ -11,6 +11,7 @@ apps:
   - ansible
   - aria2
   - autoenv
+  - autojump
   - aws-iam-authenticator
   - awscli
   - bat

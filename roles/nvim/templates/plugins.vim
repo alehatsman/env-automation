@@ -1,12 +1,12 @@
 call plug#begin('{{ plug_path }}')
-" General
-Plug 'editorconfig/editorconfig-vim'
-Plug 'dracula/vim'
+
+Plug 'atsman/dracula-vim'
 
 Plug 'vim-scripts/LargeFile'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 
 " File explorer and tabs
 Plug 'scrooloose/nerdtree'
@@ -48,13 +48,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 
 " Golang
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': 'javascript' }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
-Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+" Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 " Plug 'styled-components/vim-styled-components', { 'branch': 'main',
 "   \ 'for': ['typescript', 'typescriptreact'] }
 Plug 'posva/vim-vue', { 'for': 'javascript' }
@@ -67,10 +67,12 @@ Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 " Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 
-" Scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 
-" Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+
+" Devops
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'jvirtanen/vim-hcl', { 'for': 'hcl' }
 
 call plug#end()

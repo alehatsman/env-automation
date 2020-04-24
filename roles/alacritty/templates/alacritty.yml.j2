@@ -27,7 +27,7 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 2
+    x: 0
     y: 2
 
   # Spread additional padding evenly around the terminal content.
@@ -126,8 +126,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x0c0c0c'
-    foreground: '0xeaeaea'
+    background: '{{ alacritty.bg }}'
+    foreground: '{{ alacritty.fg }}'
 
     # Bright and dim foreground colors
     #

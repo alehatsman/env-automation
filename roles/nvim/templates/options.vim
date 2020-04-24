@@ -24,6 +24,7 @@ set background=dark
 colorscheme dracula
 let g:dracula_colorterm=0
 color dracula
+let g:vim_jsx_pretty_enable_jsx_highlight=0
 
 set autoindent " copy indent from current line when starting a new line
 set smarttab " <Tab> in front of a line inserts blanks according to 'shiftwidth'
