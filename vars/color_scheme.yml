@@ -1,13 +1,11 @@
 ---
 colors:
-  grey: '#212122'
+  black: '#212122'
+  white: '#CECECE'
   
-vim:
-  bg: '{{ colors.grey }}'
-
 alacritty:
-  bg: '{{ colors.grey }}'
-  fg: '#eaeaea'
+  bg: '{{ colors.black }}'
+  fg: '{{ colors.white }}'
 
 tmux:
   status:

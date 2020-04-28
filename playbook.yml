@@ -3,6 +3,7 @@
   vars_files:
     - vars/variables.yml
     - vars/global_env.yml
+    - vars/color_scheme.yml
   roles:
     - {role: 'macos', tags: 'macos'}
     - {role: 'packages', tags: 'packages'}

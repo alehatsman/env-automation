@@ -21,9 +21,9 @@ set splitright " put the new window right of the current one
 set termguicolors
 set t_Co=256
 set background=dark
-colorscheme dracula
-let g:dracula_colorterm=0
-color dracula
+colorscheme runo
+let g:runo_colorterm=0
+color runo
 let g:vim_jsx_pretty_enable_jsx_highlight=0
 
 set autoindent " copy indent from current line when starting a new line
@@ -37,6 +37,8 @@ set tabstop=2 " the number of spaces that a tab equates to
 set foldmethod=syntax " fold is defined by syntax
 set foldcolumn=1 " width of fold column
 set foldlevelstart=99 " don't close folds
+
+let g:yats_host_keyword = 0
 
 " Autocomplete
 "set completeopt=menu,preview
