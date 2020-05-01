@@ -6,7 +6,7 @@ source $ZPLUG_HOME/init.zsh
 
 zplug "atsman/runo-color-scheme", as:theme
 
-# zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/fzf", from:oh-my-zsh
 
 zplug "zsh-users/zsh-autosuggestions"
