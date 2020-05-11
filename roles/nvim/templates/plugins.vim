@@ -4,6 +4,7 @@ Plug 'atsman/runo-color-scheme'
 Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'vim-scripts/LargeFile'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
