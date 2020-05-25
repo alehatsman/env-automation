@@ -158,6 +158,19 @@ alias my_ip="curl ifconfig.me/ip"
 # npm / yarn 
 #---------------------------------------------
 
+# search for file recursively up
+{% raw %}
+upsearch() {
+  slashes=${PWD//[^\/]/}
+  directory="$PWD"
+  for (( n=${#slashes}; n>0; --n ))
+  do
+    test -e "$directory/$1" && echo "$directory/$1" && return 
+    directory="$directory/.."
+  done
+}
+{% endraw %}
+
 # fzf_npm_script - opens fzf for npm script
 # selection. Prints selected script back
 _fzf_npm_script() {
@@ -181,18 +194,25 @@ _run_npm_script() {
   "$1" run "$npm_script"
 }
 
+_get_npm_client() {
+  if [[ $(upsearch 'yarn.lock') ]]; then
+    echo 'yarn'
+    return 1
+  fi
+
+  if [[ $(upsearch 'package-lock.json') ]]; then
+    echo 'npm'
+    return 1
+  fi
+
+  return 0
+}
+
 # nr - npm run script
 # Opens fzf with list of available scripts
 # runs selected script
 nr() {
-  _run_npm_script "npm"
-}
-
-# yr - yarn run script
-# Opens fzf with list of available scripts
-# runs selected script
-yr() {
-  _run_npm_script "yarn"
+  _run_npm_script $(_get_npm_client)
 }
 
 npm_uninstall_globals() {
