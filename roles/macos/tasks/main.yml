@@ -1,48 +1,52 @@
 ---
 - name: Make sure macos configuration is set
-  shell: '{{ item }}'
-  with_items:
+  shell: |
     # Disable window animations ('new window' scale effect)
-    - defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-
-    - defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+    defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+    defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
     # Show icons for hard drives, servers, and removable media on the desktop
-    - defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-    - defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-    - defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-    - defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+    defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+    defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+    defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+    defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
     # Show hidden files by default
-    - defaults write com.apple.finder AppleShowAllFiles -bool true
+    defaults write com.apple.finder AppleShowAllFiles -bool true
 
     # Save to disk (not to iCloud) by default
-    - defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+    defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
     # Automatically quit printer app once the print jobs complete
-    - defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+    defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
     # Disable the “Are you sure you want to open this application?” dialog
-    - defaults write com.apple.LaunchServices LSQuarantine -bool false
+    defaults write com.apple.LaunchServices LSQuarantine -bool false
 
     # Require password immediately after sleep or screen saver begins
-    - defaults write com.apple.screensaver askForPassword -int 1
-    - defaults write com.apple.screensaver askForPasswordDelay -int 0
+    defaults write com.apple.screensaver askForPassword -int 1
+    defaults write com.apple.screensaver askForPasswordDelay -int 0
 
     # Save screenshots to the desktop
-    - defaults write com.apple.screencapture location -string "$HOME/Desktop"
+    defaults write com.apple.screencapture location -string "$HOME/Desktop"
 
     # Save screenshots in PNG format
-    - defaults write com.apple.screencapture type -string "png"
+    defaults write com.apple.screencapture type -string "png"
 
     # Trackpack secordary click right and two finger
-    - defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-    - defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 
-    - defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-    - defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+    defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+    defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
-    - defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
-    - defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
+    defaults write com.apple.systemuiserver menuExtras -array \
+      "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+      "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+      "/System/Library/CoreServices/Menu Extras/Clock.menu" \
+      "/System/Library/CoreServices/Menu Extras/Displays.menu" \
+      "/System/Library/CoreServices/Menu Extras/Volume.menu"
   become: true
   become_method: sudo

@@ -52,7 +52,6 @@ cask_apps:
   - alfred
   - amazon-workspaces
   - anki
-  # - flux
   - font-fira-code
   - fork
   - google-backup-and-sync
@@ -64,6 +63,7 @@ cask_apps:
   - slack
   - spectacle
   - spotify
+  - sublime-merge
   - teamviewer
   - telegram
   - tor-browser

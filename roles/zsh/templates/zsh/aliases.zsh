@@ -227,3 +227,17 @@ alias dps="docker ps"
 
 alias ..='cd ..'
 alias ....='cd ../../'
+
+#---------------------------------------------
+# Fzf roles select
+#---------------------------------------------
+
+run_ansible_role() {
+  local role
+  role=$(l ./roles | fzf)
+  make install-only tags="$role"
+}
+
+ar() {
+  run_ansible_role
+}
