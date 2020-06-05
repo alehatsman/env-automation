@@ -37,3 +37,7 @@
     dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
     chsh -s /usr/local/bin/zsh
   become: true
+
+- name: Make sure insecure dir problem fixed
+  shell:
+    compaudit | xargs chmod g-w

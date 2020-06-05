@@ -21,9 +21,10 @@ set splitright " put the new window right of the current one
 set termguicolors
 set t_Co=256
 set background=dark
-colorscheme runo
+silent!colorscheme runo
 let g:runo_colorterm=0
-color runo
+silent! color runo
+
 let g:vim_jsx_pretty_enable_jsx_highlight=0
 
 set autoindent " copy indent from current line when starting a new line

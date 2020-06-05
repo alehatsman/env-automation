@@ -52,7 +52,7 @@ cask_apps:
   - alfred
   - amazon-workspaces
   - anki
-  - flux
+  # - flux
   - font-fira-code
   - fork
   - google-backup-and-sync
