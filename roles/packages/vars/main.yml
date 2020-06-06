@@ -20,6 +20,7 @@ apps:
   - exa
   - fd
   - fzf
+  - frpc
   - gnu-sed
   - graphviz
   - htop
@@ -73,3 +74,4 @@ cask_apps:
   - visual-studio-code
   - vlc
   - xmind
+  - zoomus
