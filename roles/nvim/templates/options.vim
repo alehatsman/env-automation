@@ -20,10 +20,12 @@ set splitright " put the new window right of the current one
 " Dracula theme settings
 set termguicolors
 set t_Co=256
-set background=dark
+set background=light
 silent!colorscheme runo
 let g:runo_colorterm=0
 silent! color runo
+
+set cursorline " highlight current line
 
 let g:vim_jsx_pretty_enable_jsx_highlight=0
 
