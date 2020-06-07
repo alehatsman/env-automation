@@ -1,0 +1,42 @@
+---
+colors:
+  bg: 
+    0: '#e4e5e5'
+    1: '#eeefef'
+    2: '#f8f9f9'
+    3: '#ffffff'
+    4: '#ffffff'
+  fg:
+    0: '#1d1e1e'
+    1: '#272828'
+    2: '#313232'
+    3: '#555656'
+    4: '#888989'
+  brand: 
+    0: '#566D89'
+    1: '#acc3df'
+    2: '#b6cde9'
+    3: '#B4D8FD'
+    4: '#DBF1FF'
+  sub_brand: 
+    0: '#c43879'
+    1: '#ce4283'
+    2: '#d84c8d'
+    3: '#e25697'
+    4: '#F9E0FF'
+  positive: 
+    0: '#98b990'
+    1: '#a2c39a'
+    2: '#accda4'
+    3: '#b6d7ae'
+    4: '#F1FADF'
+  negative: 
+    0: '#d3a8a7'
+    1: '#ddb2b1'
+    2: '#e7bcbb'
+    3: '#f1c6c5'
+    4: '#FFE0E0'
+  neutral:
+    2: '#FFFABC'
+  attention:
+    2: '#FFBC5D'

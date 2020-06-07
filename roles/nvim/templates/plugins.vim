@@ -1,6 +1,6 @@
 call plug#begin('{{ plug_path }}')
 
-Plug 'atsman/runo-color-scheme'
+Plug '~/.config/nvim/plugged/runo-color-scheme'
 Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'vim-scripts/LargeFile'

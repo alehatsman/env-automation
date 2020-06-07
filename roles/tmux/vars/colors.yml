@@ -1,0 +1,5 @@
+---
+colors:
+  status:
+    bg: colour234
+    fg: white
