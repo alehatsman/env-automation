@@ -93,9 +93,9 @@ let g:airline#themes#runo#palette = {
 \       },
 \     ),
 \   'visual_modified': s:color_map(
-\       ['bg_2', 'neutral_2'],
-\       ['fg_2', 'sub_brand_0'],
-\       ['fg_2', 'fg_0'],
+\       ['fg_2', 'neutral_2'],
+\       ['fg_2', 'neutral_2'],
+\       ['fg_2', 'bg_1'],
 \       {
 \         'airline_warning': s:clr('bg_2', 'negative_4'),
 \         'airline_error': s:clr('bg_2', 'negative_2'),
@@ -124,15 +124,15 @@ let g:airline#themes#runo#palette = {
 " Tabline
 if get(g:, 'airline#extensions#tabline#enabled', 0)
   let g:airline#themes#runo#palette.tabline = {
-        \ 'airline_tabfill': s:clr('bg_2', 'bg_1'),
+        \ 'airline_tabfill': s:clr('bg_2', 'fg_3'),
         \
-        \ 'airline_tab': s:clr('sub_brand_0', 'bg_2'),
-        \ 'airline_tabsel': s:clr('bg_2', 'sub_brand_2'),
-        \ 'airline_tabmod': s:clr('positive_2', 'bg_2'),
+        \ 'airline_tab': s:clr('bg_2', 'fg_3'),
+        \ 'airline_tabsel': s:clr('fg_2', 'bg_2'),
+        \ 'airline_tabmod': s:clr('positive_0', 'bg_2'),
         \
         \ 'airline_tab_right': s:clr('sub_brand_0', 'bg_2'),
-        \ 'airline_tabsel_right': s:clr('fg_2', 'bg_2'),
-        \ 'airline_tabmod_right': s:clr('positive_2', 'bg_2'),
+        \ 'airline_tabsel_right': s:clr('positive_0', 'bg_2'),
+        \ 'airline_tabmod_right': s:clr('positive_0', 'bg_2'),
         \}
 endif
 

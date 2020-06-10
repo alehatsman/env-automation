@@ -19,7 +19,7 @@ if b:current_syntax ==# 'mkd'
   hi! link mkdItalic      RunoYellowItalic
   hi! link mkdLink        RunoFg
   hi! link mkdListItem    RunoFg
-  hi! link mkdRule        RunoYellow
+  hi! link mkdRule        RunoFg
   hi! link mkdUrl         RunoFg
 
 elseif b:current_syntax ==# 'markdown'
@@ -41,7 +41,7 @@ elseif b:current_syntax ==# 'markdown'
   hi! link markdownLinkText          RunoGlobalDef
   hi! link markdownListMarker        RunoFg
   hi! link markdownOrderedListMarker RunoFg
-  hi! link markdownRule              RunoYellow
+  hi! link markdownRule              RunoFg
   hi! link markdownUrl               RunoFg
   hi! link markdownIdDeclaration     RunoGlobalDef
 endif
