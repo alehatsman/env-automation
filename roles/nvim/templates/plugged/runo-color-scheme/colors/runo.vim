@@ -1,4 +1,4 @@
-" Configuration:
+" Configuration
 
 if v:version > 580
   highlight clear
@@ -13,7 +13,7 @@ if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 
   finish
 endif
 
-" Palette:
+" Terminal ANSI colors
 
 let s:none      = ['NONE', 'NONE']
 
@@ -30,7 +30,7 @@ if has('terminal')
   endfor
 endif
 
-" User Configuration:
+" User Configuration
 
 if !exists('g:runo_bold')
   let g:runo_bold = 1
@@ -56,7 +56,7 @@ if !exists('g:runo_colorterm')
   let g:runo_colorterm = 1
 endif
 
-" Script Helpers:
+" Script Helpers
 
 let s:attrs = {
       \ 'bold': g:runo_bold == 1 ? 'bold' : 0,
@@ -92,7 +92,7 @@ function! s:h(scope, fg, ...) " bg, attr_list, special
   execute join(l:hl_string, ' ')
 endfunction
 
-" Runo Highlight Groups:
+" Runo Highlight Groups
 
 " Color groups
 
@@ -110,6 +110,9 @@ call s:h('RunoString', g:runo#palette.fg_2, g:runo#palette.positive_4)
 call s:h('RunoComment', g:runo#palette.fg_2, g:runo#palette.neutral_2)
 call s:h('RunoConstant', g:runo#palette.fg_2, g:runo#palette.sub_brand_4)
 call s:h('RunoGlobalDef', g:runo#palette.fg_2, g:runo#palette.brand_4)
+
+call s:h('RunoDiffAdd', g:runo#palette.fg_1, g:runo#palette.positive_3)
+call s:h('RunoDiffDelete', g:runo#palette.fg_1, g:runo#palette.negative_3)
 
 call s:h('RunoGreen', g:runo#palette.positive_2)
 call s:h('RunoGreenBold', g:runo#palette.positive_2, s:none, [s:attrs.bold])
@@ -144,14 +147,10 @@ call s:h('RunoErrorLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.ne
 call s:h('RunoWarnLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.negative_4)
 call s:h('RunoInfoLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.positive_2)
 
-call s:h('RunoSearch', g:runo#palette.attention_2, s:none, [s:attrs.inverse])
+call s:h('RunoSearch', g:runo#palette.attention_2, g:runo#palette.fg_2, [s:attrs.inverse])
 call s:h('RunoLink', g:runo#palette.brand_2, s:none, [s:attrs.underline])
 
-call s:h('RunoDiffChange', g:runo#palette.negative_4, s:none)
-call s:h('RunoDiffText', g:runo#palette.bg_2, g:runo#palette.negative_4)
-call s:h('RunoDiffDelete', g:runo#palette.negative_2, g:runo#palette.bg_1)
-
-" User Interface:
+" User Interface
 
 set background=dark
 
@@ -169,12 +168,12 @@ call s:h('SignColumn', g:runo#palette.brand_2)
 hi! link ColorColumn  RunoBgDark
 hi! link CursorColumn CursorLine
 hi! link CursorLineNr RunoFg
-hi! link DiffAdd      RunoGreen
-hi! link DiffAdded    DiffAdd
-hi! link DiffChange   RunoOrange
+hi! link DiffAdd      RunoDiffAdd
+hi! link DiffAdded    RunoDiffAdd
+hi! link DiffChange   RunoDiffAdd
 hi! link DiffDelete   RunoDiffDelete
-hi! link DiffRemoved  DiffDelete
-hi! link DiffText     RunoDiffText
+hi! link DiffRemoved  RunoDiffDelete
+hi! link DiffText     RunoDiffAdd
 hi! link Directory    RunoPinkBold
 hi! link ErrorMsg     RunoRedInverse
 hi! link FoldColumn   RunoSubtle

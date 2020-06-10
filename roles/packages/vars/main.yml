@@ -57,6 +57,7 @@ cask_apps:
   - fork
   - google-backup-and-sync
   - google-chrome
+  - chromium
   - google-cloud-sdk
   - kap
   - pgadmin4

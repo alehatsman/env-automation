@@ -7,9 +7,12 @@ hi! link cssAttrRegion        RunoPink
 hi! link cssAttributeSelector RunoGreenItalic
 hi! link cssBraces            Delimiter
 hi! link cssFunctionComma     Delimiter
-hi! link cssNoise             RunoPink
-hi! link cssProp              RunoPink
-hi! link cssPseudoClass       RunoPink
+hi! link cssNoise             RunoFg
+hi! link cssProp              RunoFg
+hi! link cssFontProp 		  RunoFg
+hi! link cssPseudoClass       RunoFg
 hi! link cssPseudoClassId     RunoGreenItalic
-hi! link cssUnitDecorators    RunoPink
+hi! link cssUnitDecorators    RunoFg
 hi! link cssVendor            RunoGreenItalic
+hi! link cssFunctionName	  RunoFg
+hi! link cssBackgroundAttr    RunoFg

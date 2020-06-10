@@ -3,3 +3,5 @@ if runo#should_abort('javascriptreact')
 endif
 
 hi! link jsxTagName RunoFg
+hi! link jsxOpenPunct RunoFg 
+hi! link jsxComponentName RunoFg
