@@ -1,7 +1,7 @@
 "---------------------------------------------
 " Basic options 
 "---------------------------------------------
-filetype indent plugin on "detect ft, load ftpfile and indent
+filetype indent plugin on " detect ft, load ftpfile and indent
 syntax on " syntax highlighting on
 
 set langmenu=en_US
@@ -17,11 +17,10 @@ set secure " disable write/shell commands in those files
 set splitbelow " put the new window below the current one
 set splitright " put the new window right of the current one
 
-" Dracula theme settings
-set termguicolors
+set termguicolors " use gui 24-bit colors, gui attrs instead of cterm
 set t_Co=256
 set background=light
-silent!colorscheme runo
+silent! colorscheme runo
 let g:runo_colorterm=0
 silent! color runo
 
@@ -29,12 +28,14 @@ set cursorline " highlight current line
 
 let g:vim_jsx_pretty_enable_jsx_highlight=0
 
+" Identation
 set autoindent " copy indent from current line when starting a new line
 set smarttab " <Tab> in front of a line inserts blanks according to 'shiftwidth'
 set expandtab " spaces instead of tabs
 set softtabstop=2 " the number of spaces to use when expanding tabs
 set shiftwidth=2 " the number of spaces to use when indenting -- or de-indenting -- a line
 set tabstop=2 " the number of spaces that a tab equates to
+let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
 
 " Folding
 set foldmethod=syntax " fold is defined by syntax
@@ -44,11 +45,10 @@ set foldlevelstart=99 " don't close folds
 let g:yats_host_keyword = 0
 
 " Autocomplete
-"set completeopt=menu,preview
 set completeopt=menuone,preview
 autocmd CompleteDone * pclose
 
-set conceallevel=0
+set conceallevel=0 " don't hide syntax elements (quotes in json for example)
 
 "---------------------------------------------
 " Python provider
@@ -87,7 +87,6 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_count = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
-
 "---------------------------------------------
 " Autopair
 "---------------------------------------------
@@ -98,3 +97,6 @@ let g:AutoPairsShortcutToggle = ''
 " Git
 "---------------------------------------------
 set updatetime=500 " update time for git gutter
+
+" Clojure
+let g:clojure_highlight_local_vars = 0

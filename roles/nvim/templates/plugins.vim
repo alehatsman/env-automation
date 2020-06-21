@@ -16,6 +16,8 @@ Plug 'scrooloose/nerdtree'
 " Comments
 Plug 'preservim/nerdcommenter'
 
+Plug 'Yggdroot/indentLine'
+
 " Git
 Plug 'tpope/vim-fugitive' " git commands
 Plug 'junegunn/gv.vim' " git commit browser
@@ -64,10 +66,12 @@ Plug 'jxnblk/vim-mdx-js', { 'for': 'markdown.mdx' }
 Plug 'jparise/vim-graphql'
 
 " Clojure
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 " Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
+Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
 
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 

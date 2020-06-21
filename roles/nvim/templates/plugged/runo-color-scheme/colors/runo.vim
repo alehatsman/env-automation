@@ -96,89 +96,92 @@ endfunction
 
 " Color groups
 
-call s:h('RunoBgDarker', s:none, g:runo#palette.bg_0)
-call s:h('RunoBgDark', s:none, g:runo#palette.bg_1)
-call s:h('RunoBg', s:none, g:runo#palette.bg_2)
-call s:h('RunoBgLight', s:none, g:runo#palette.bg_3)
-call s:h('RunoBgLighter', s:none, g:runo#palette.bg_4)
+call s:h('RunoBgDarker', s:none, g:runo#palette.gray_0)
+call s:h('RunoBgDark', s:none, g:runo#palette.gray_1)
+call s:h('RunoBg', s:none, g:runo#palette.gray_2)
+call s:h('RunoBgLight', s:none, g:runo#palette.gray_3)
+call s:h('RunoBgLighter', s:none, g:runo#palette.gray_4)
 
-call s:h('RunoFg', g:runo#palette.fg_2)
-call s:h('RunoFgUnderline', g:runo#palette.fg_2, s:none, [s:attrs.underline])
-call s:h('RunoFgBold', g:runo#palette.fg_2, s:none, [s:attrs.bold])
+call s:h('RunoFg', g:runo#palette.black_2)
+call s:h('RunoFgUnderline', g:runo#palette.black_2, s:none, [s:attrs.underline])
+call s:h('RunoFgBold', g:runo#palette.black_2, s:none, [s:attrs.bold])
 
-call s:h('RunoString', g:runo#palette.fg_2, g:runo#palette.positive_4)
-call s:h('RunoComment', g:runo#palette.fg_2, g:runo#palette.neutral_2)
-call s:h('RunoConstant', g:runo#palette.fg_2, g:runo#palette.sub_brand_4)
-call s:h('RunoGlobalDef', g:runo#palette.fg_2, g:runo#palette.brand_4)
+call s:h('RunoString', g:runo#palette.black_2, g:runo#palette.green_4)
+call s:h('RunoComment', g:runo#palette.black_2, g:runo#palette.yellow_2)
+call s:h('RunoConstant', g:runo#palette.black_2, g:runo#palette.pink_4)
+call s:h('RunoGlobalDef', g:runo#palette.black_2, g:runo#palette.blue_4)
 
-call s:h('RunoDiffAdd', g:runo#palette.fg_1, g:runo#palette.positive_3)
-call s:h('RunoDiffDelete', g:runo#palette.fg_1, g:runo#palette.negative_3)
+call s:h('RunoDiffAdd', g:runo#palette.black_1, g:runo#palette.green_3)
+call s:h('RunoDiffDelete', g:runo#palette.black_1, g:runo#palette.red_3)
 
-call s:h('RunoGreen', g:runo#palette.positive_2)
-call s:h('RunoGreenBold', g:runo#palette.positive_2, s:none, [s:attrs.bold])
+call s:h('RunoGreen', g:runo#palette.green_2)
+call s:h('RunoGreenBold', g:runo#palette.green_2, s:none, [s:attrs.bold])
 
-call s:h('RunoOrange', g:runo#palette.attention_2)
-call s:h('RunoOrangeBold', g:runo#palette.attention_2, s:none, [s:attrs.bold])
-call s:h('RunoOrangeInverse', g:runo#palette.fg_2, g:runo#palette.attention_2)
+call s:h('RunoOrange', g:runo#palette.yellow_0)
+call s:h('RunoOrangeBold', g:runo#palette.yellow_0, s:none, [s:attrs.bold])
+call s:h('RunoOrangeInverse', g:runo#palette.black_2, g:runo#palette.yellow_0)
 
-call s:h('RunoPink', g:runo#palette.sub_brand_2)
-call s:h('RunoPinkBold', g:runo#palette.sub_brand_2, s:none, [s:attrs.bold])
+call s:h('RunoPink', g:runo#palette.pink_2)
+call s:h('RunoPinkBold', g:runo#palette.pink_2, s:none, [s:attrs.bold])
 
-call s:h('RunoRed', g:runo#palette.negative_2)
-call s:h('RunoRedInverse', g:runo#palette.fg_2, g:runo#palette.negative_2)
+call s:h('RunoRed', g:runo#palette.red_2)
+call s:h('RunoRedInverse', g:runo#palette.black_2, g:runo#palette.red_2)
 
-call s:h('RunoYellow', g:runo#palette.neutral_2)
+call s:h('RunoYellow', g:runo#palette.yellow_2)
 
-call s:h('RunoBlue_1', g:runo#palette.brand_0)
+call s:h('RunoBlue_1', g:runo#palette.blue_0)
 
-call s:h('RunoBlue_2', g:runo#palette.brand_2)
-call s:h('RunoBlueBold', g:runo#palette.brand_2, s:none, [s:attrs.bold])
+call s:h('RunoBlue_2', g:runo#palette.blue_2)
+call s:h('RunoBlueBold', g:runo#palette.blue_2, s:none, [s:attrs.bold])
 
-call s:h('RunoSx', g:runo#palette.fg_1)
-call s:h('RunoSxUnderline', g:runo#palette.fg_1, s:none, [s:attrs.underline])
-call s:h('RunoSxBold', g:runo#palette.fg_1, s:none, [s:attrs.bold])
+call s:h('RunoSx', g:runo#palette.black_1)
+call s:h('RunoSxUnderline', g:runo#palette.black_1, s:none, [s:attrs.underline])
+call s:h('RunoSxBold', g:runo#palette.black_1, s:none, [s:attrs.bold])
 
-call s:h('RunoSelection', s:none, g:runo#palette.brand_3)
-call s:h('RunoSubtle', g:runo#palette.bg_4)
+call s:h('RunoSelection', s:none, g:runo#palette.blue_3)
+call s:h('RunoSubtle', g:runo#palette.gray_4)
 
-call s:h('RunoError', g:runo#palette.fg_2, g:runo#palette.negative_2, [], g:runo#palette.negative_2)
+call s:h('RunoError', g:runo#palette.black_2, g:runo#palette.red_2, [], g:runo#palette.red_2)
 
-call s:h('RunoErrorLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.negative_2)
-call s:h('RunoWarnLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.negative_4)
-call s:h('RunoInfoLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.positive_2)
+call s:h('RunoErrorLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.red_2)
+call s:h('RunoWarnLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.red_4)
+call s:h('RunoInfoLine', s:none, s:none, [s:attrs.undercurl], g:runo#palette.green_2)
 
-call s:h('RunoSearch', g:runo#palette.attention_2, g:runo#palette.fg_2, [s:attrs.inverse])
-call s:h('RunoLink', g:runo#palette.brand_2, s:none, [s:attrs.underline])
+call s:h('RunoSearch', g:runo#palette.yellow_0, g:runo#palette.black_2, [s:attrs.inverse])
+call s:h('RunoSearchInc', g:runo#palette.yellow_0, g:runo#palette.black_2, [s:attrs.inverse, s:attrs.underline])
+call s:h('RunoLink', g:runo#palette.black_2, s:none, [s:attrs.underline])
 
 " User Interface
 
-set background=dark
+" set background=light
 
 " Required as some plugins will overwrite
-call s:h('Normal', g:runo#palette.fg_2, g:runo_colorterm || has('gui_running') ? g:runo#palette.bg_2 : s:none )
-call s:h('StatusLine', s:none, g:runo#palette.bg_4, [s:attrs.bold])
-call s:h('StatusLineNC', s:none, g:runo#palette.bg_3)
-call s:h('StatusLineTerm', s:none, g:runo#palette.bg_4, [s:attrs.bold])
-call s:h('StatusLineTermNC', s:none, g:runo#palette.bg_3)
-call s:h('WildMenu', g:runo#palette.bg_2, g:runo#palette.sub_brand_2, [s:attrs.bold])
-call s:h('CursorLine', s:none, g:runo#palette.bg_1)
-call s:h('LineNr', g:runo#palette.fg_4, g:runo#palette.bg_1)
-call s:h('SignColumn', g:runo#palette.brand_2)
+call s:h('Normal', g:runo#palette.black_2, g:runo_colorterm || has('gui_running') ? g:runo#palette.gray_2 : s:none )
+call s:h('StatusLine', s:none, g:runo#palette.gray_4, [s:attrs.bold])
+call s:h('StatusLineNC', s:none, g:runo#palette.gray_3)
+call s:h('StatusLineTerm', s:none, g:runo#palette.gray_4, [s:attrs.bold])
+call s:h('StatusLineTermNC', s:none, g:runo#palette.gray_3)
+call s:h('WildMenu', g:runo#palette.gray_2, g:runo#palette.pink_2, [s:attrs.bold])
+call s:h('CursorLine', s:none, g:runo#palette.gray_1)
+call s:h('LineNr', g:runo#palette.black_4, g:runo#palette.gray_1)
+call s:h('SignColumn', g:runo#palette.blue_2)
 
 hi! link ColorColumn  RunoBgDark
 hi! link CursorColumn CursorLine
 hi! link CursorLineNr RunoFg
+
 hi! link DiffAdd      RunoDiffAdd
 hi! link DiffAdded    RunoDiffAdd
 hi! link DiffChange   RunoDiffAdd
 hi! link DiffDelete   RunoDiffDelete
 hi! link DiffRemoved  RunoDiffDelete
 hi! link DiffText     RunoDiffAdd
-hi! link Directory    RunoPinkBold
+
+hi! link Directory    RunoFgBold
 hi! link ErrorMsg     RunoRedInverse
 hi! link FoldColumn   RunoSubtle
 hi! link Folded       RunoBlue_1
-hi! link IncSearch    RunoOrangeInverse
+hi! link IncSearch    RunoSearchInc
 hi! link MoreMsg      RunoFgBold
 hi! link NonText      RunoSubtle
 hi! link Pmenu        RunoBgDark
@@ -187,9 +190,10 @@ hi! link PmenuSel     RunoSelection
 hi! link PmenuThumb   RunoSelection
 hi! link Question     RunoFgBold
 hi! link Search       RunoSearch
+hi! link TabLineSel   Normal
 hi! link TabLine      RunoBlue_1
 hi! link TabLineFill  RunoBgDarker
-hi! link TabLineSel   Normal
+ 
 hi! link Title        RunoGreenBold
 hi! link VertSplit    RunoBlue_1
 hi! link Visual       RunoSelection
@@ -199,8 +203,8 @@ hi! link WarningMsg   RunoOrangeInverse
 " Syntax
 
 " Required as some plugins will overwrite
-call s:h('MatchParen', g:runo#palette.positive_2, s:none, [s:attrs.underline])
-call s:h('Conceal', g:runo#palette.positive_2, s:none)
+call s:h('MatchParen', g:runo#palette.black_2, g:runo#palette.green_2, [s:attrs.underline])
+call s:h('Conceal', g:runo#palette.green_2, s:none)
 
 " Neovim uses SpecialKey for escape characters only. Vim uses it for that, plus whitespace.
 if has('nvim')
