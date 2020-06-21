@@ -30,92 +30,92 @@ endfunc
 
 let g:airline#themes#runo#palette = {
 \   'normal': s:color_map(
-\       ['fg_2', 'brand_3'],
-\       ['fg_2', 'brand_3'],
-\       ['fg_2', 'bg_1'],
+\       ['black_2', 'blue_3'],
+\       ['black_2', 'blue_3'],
+\       ['black_2', 'gray_1'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('black_2', 'red_4'),
+\         'airline_error': s:clr('black_2', 'red_2'),
 \       },
 \     ),
 \   'normal_modified': s:color_map(
-\       ['fg_2', 'brand_3'],
-\       ['fg_2', 'brand_3'],
-\       ['fg_2', 'neutral_2'],
+\       ['black_2', 'blue_3'],
+\       ['black_2', 'blue_3'],
+\       ['black_2', 'yellow_2'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('black_2', 'red_4'),
+\         'airline_error': s:clr('black_2', 'red_2'),
 \       },
 \     ),
 \   'insert': s:color_map(
-\       ['fg_2', 'positive_2'],
-\       ['fg_2', 'positive_2'],
-\       ['fg_2', 'bg_1'],
+\       ['black_2', 'green_2'],
+\       ['black_2', 'green_2'],
+\       ['black_2', 'gray_1'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('black_2', 'red_4'),
+\         'airline_error': s:clr('black_2', 'red_2'),
 \       },
 \     ),
 \   'insert_modified': s:color_map(
-\       ['fg_2', 'positive_2'],
-\       ['fg_2', 'positive_2'],
-\       ['fg_2', 'neutral_2'],
+\       ['black_2', 'green_2'],
+\       ['black_2', 'green_2'],
+\       ['black_2', 'yellow_2'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('black_2', 'red_4'),
+\         'airline_error': s:clr('black_2', 'red_2'),
 \       },
 \     ),
 \   'replace': s:color_map(
-\       ['bg_2', 'negative_4'],
-\       ['fg_2', 'sub_brand_0'],
-\       ['fg_2', 'bg_1'],
+\       ['gray_2', 'red_4'],
+\       ['black_2', 'pink_0'],
+\       ['black_2', 'gray_1'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('black_2', 'red_4'),
+\         'airline_error': s:clr('black_2', 'red_2'),
 \       },
 \     ),
 \   'replace_modified': s:color_map(
-\       ['bg_2', 'negative_4'],
-\       ['fg_2', 'sub_brand_0'],
-\       ['fg_2', 'fg_0'],
+\       ['gray_2', 'red_4'],
+\       ['black_2', 'pink_0'],
+\       ['black_2', 'black_0'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('black_2', 'red_4'),
+\         'airline_error': s:clr('black_2', 'red_2'),
 \       },
 \     ),
 \   'visual': s:color_map(
-\       ['fg_2', 'neutral_2'],
-\       ['fg_2', 'neutral_2'],
-\       ['fg_2', 'bg_1'],
+\       ['black_2', 'yellow_2'],
+\       ['black_2', 'yellow_2'],
+\       ['black_2', 'gray_1'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('black_2', 'red_4'),
+\         'airline_error': s:clr('black_2', 'red_2'),
 \       },
 \     ),
 \   'visual_modified': s:color_map(
-\       ['fg_2', 'neutral_2'],
-\       ['fg_2', 'neutral_2'],
-\       ['fg_2', 'bg_1'],
+\       ['black_2', 'yellow_2'],
+\       ['black_2', 'yellow_2'],
+\       ['black_2', 'gray_1'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('gray_2', 'red_4'),
+\         'airline_error': s:clr('gray_2', 'red_2'),
 \       },
 \     ),
 \   'inactive': s:color_map(
-\       ['fg_2', 'bg_1'],
-\       ['fg_2', 'bg_1'],
-\       ['fg_2', 'bg_1'],
+\       ['black_2', 'gray_1'],
+\       ['black_2', 'gray_1'],
+\       ['black_2', 'gray_1'],
 \       {
-\         'airline_warning': s:clr('bg_2', 'negative_4'),
-\         'airline_error': s:clr('bg_2', 'negative_2'),
+\         'airline_warning': s:clr('gray_2', 'red_4'),
+\         'airline_error': s:clr('gray_2', 'red_2'),
 \       },
 \     ),
 \   'terminal': s:color_map(
-\       ['bg_2', 'sub_brand_2'],
-\       ['fg_2', 'sub_brand_0'],
-\       ['fg_2', 'bg_1'],
+\       ['gray_2', 'pink_2'],
+\       ['black_2', 'pink_0'],
+\       ['black_2', 'gray_1'],
 \       {
-\         'airline_term': s:clr('fg_2', 'bg_1'),
+\         'airline_term': s:clr('black_2', 'gray_1'),
 \       },
 \     ),
 \}
@@ -124,24 +124,24 @@ let g:airline#themes#runo#palette = {
 " Tabline
 if get(g:, 'airline#extensions#tabline#enabled', 0)
   let g:airline#themes#runo#palette.tabline = {
-        \ 'airline_tabfill': s:clr('bg_2', 'fg_3'),
+        \ 'airline_tabfill': s:clr('gray_2', 'black_3'),
         \
-        \ 'airline_tab': s:clr('bg_2', 'fg_3'),
-        \ 'airline_tabsel': s:clr('fg_2', 'bg_2'),
-        \ 'airline_tabmod': s:clr('positive_0', 'bg_2'),
+        \ 'airline_tab': s:clr('gray_2', 'black_3'),
+        \ 'airline_tabsel': s:clr('black_2', 'gray_2'),
+        \ 'airline_tabmod': s:clr('green_0', 'gray_2'),
         \
-        \ 'airline_tab_right': s:clr('sub_brand_0', 'bg_2'),
-        \ 'airline_tabsel_right': s:clr('positive_0', 'bg_2'),
-        \ 'airline_tabmod_right': s:clr('positive_0', 'bg_2'),
+        \ 'airline_tab_right': s:clr('pink_0', 'gray_2'),
+        \ 'airline_tabsel_right': s:clr('green_0', 'gray_2'),
+        \ 'airline_tabmod_right': s:clr('green_0', 'gray_2'),
         \}
 endif
 
 " CtrlP:
 if exists('g:loaded_ctrlp')
   let g:airline#themes#runo#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
-        \ s:clr('fg_2', 'bg_1'),
-        \ s:clr('fg_2', 'sub_brand_0'),
-        \ s:clr('fg_2', 'sub_brand_2'),
+        \ s:clr('black_2', 'gray_1'),
+        \ s:clr('black_2', 'pink_0'),
+        \ s:clr('black_2', 'pink_2'),
         \)
 endif
 

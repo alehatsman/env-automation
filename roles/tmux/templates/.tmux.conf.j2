@@ -35,7 +35,7 @@ set -g default-terminal "screen-256color" # colors!
 set -ga terminal-overrides ",xterm-256color*:Tc"
 
 # change color of session selection line
-set -wg mode-style bg={{ colors.bg.2 }},fg={{ colors.fg.2}}
+set -wg mode-style bg={{ colors.gray.2 }},fg={{ colors.black.2}}
 
 set-option -sg escape-time 0
 
@@ -59,30 +59,20 @@ set -g renumber-windows on
 
 
 #---------------------------------------------
-# Status bar styles
+# Status bar styles (tabs)
 #---------------------------------------------
 setw -g status-left ""
 setw -g status-right ""
 
 setw -g status-fg white
-set -wg mode-style bg={{ colors.bg.1 }},fg={{ colors.fg.2 }}
+set -wg mode-style bg={{ colors.gray.1 }},fg={{ colors.black.2 }}
 
 setw -g window-status-format " #I: #W "
 setw -g window-status-current-format " #I: #W "
 
-setw -g status-bg "{{ colors.fg.3 }}"
-set -g window-status-style fg=white,bg="{{ colors.fg.3 }}"
-set -g window-status-current-style fg="{{ colors.fg.3 }}",bg="{{ colors.bg.1 }}"
-
-#---------------------------------------------
-# Message colors
-#---------------------------------------------
-set -g message-command-attr bright
-set -g message-command-bg "{{ colors.bg.2 }}"
-set -g message-command-fg "{{ colors.fg.2 }}"
-set -g message-attr bright
-set -g message-bg "{{ colors.bg.2 }}"
-set -g message-fg "{{ colors.fg.2 }}"
+setw -g status-bg "{{ colors.black.3 }}"
+set -g window-status-style fg=white,bg="{{ colors.black.3 }}"
+set -g window-status-current-style fg="{{ colors.black.3 }}",bg="{{ colors.gray.1 }}"
 
 #---------------------------------------------
 # Bindings

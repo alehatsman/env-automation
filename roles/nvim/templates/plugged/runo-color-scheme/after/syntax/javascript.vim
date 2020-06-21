@@ -19,7 +19,7 @@ hi! link jsDocTypeBrackets         RunoPink
 hi! link jsFuncArgOperator         Operator
 hi! link jsFunction                Keyword
 hi! link jsTemplateBraces          Special 
-hi! link jsFuncCall 			   RunoFg
+hi! link jsFuncCall 			         RunoFg
 hi! link jsGlobalNodeObjects       RunoFg
 hi! link jsGlobalObjects           RunoFg
 
