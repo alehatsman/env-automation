@@ -241,3 +241,5 @@ run_ansible_role() {
 ar() {
   run_ansible_role
 }
+
+alias serve='browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000'
