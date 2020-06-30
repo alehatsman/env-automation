@@ -19,7 +19,7 @@ set -g @plugin 'tmux-plugins/tmux-copycat'
 # open highlighted selection
 set -g @plugin 'tmux-plugins/tmux-open'
 
-set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
+# set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
 
 # Run tmp
 run '{{ tmux_path }}/plugins/tpm/tpm'
@@ -27,7 +27,7 @@ run '{{ tmux_path }}/plugins/tpm/tpm'
 #---------------------------------------------
 # Configuration
 #---------------------------------------------
-set-option -g default-shell /usr/local/bin/zsh
+set-option -g default-shell $SHELL
 
 # fix terminal colors
 set -g default-terminal "screen-256color" # colors!
@@ -57,21 +57,22 @@ setw -g pane-base-index 1
 # re-number windows when one is closed
 set -g renumber-windows on
 
-
 #---------------------------------------------
 # Status bar styles (tabs)
 #---------------------------------------------
 setw -g status-left ""
 setw -g status-right ""
 
-setw -g status-fg white
+# active session selection
 set -wg mode-style bg={{ colors.gray.1 }},fg={{ colors.black.2 }}
 
 setw -g window-status-format " #I: #W "
 setw -g window-status-current-format " #I: #W "
 
+setw -g status-fg "{{ colors.gray.1 }}"
 setw -g status-bg "{{ colors.black.3 }}"
-set -g window-status-style fg=white,bg="{{ colors.black.3 }}"
+
+set -g window-status-style fg="{{ colors.gray.1 }}",bg="{{ colors.black.3 }}"
 set -g window-status-current-style fg="{{ colors.black.3 }}",bg="{{ colors.gray.1 }}"
 
 #---------------------------------------------

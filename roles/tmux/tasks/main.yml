@@ -1,12 +1,4 @@
 ---
-- name: Make sure tmux is present
-  homebrew:
-    name: '{{ item }}'
-    state: present
-  with_items:
-    - tmux
-    - reattach-to-user-namespace
-
 - name: Make sure config folders are present
   file:
     path: '{{ item }}'

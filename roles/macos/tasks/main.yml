@@ -50,3 +50,4 @@
       "/System/Library/CoreServices/Menu Extras/Volume.menu"
   become: true
   become_method: sudo
+  when: ansible_distribution == 'Darwin'

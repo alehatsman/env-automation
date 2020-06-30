@@ -1,10 +1,4 @@
 ---
-- name: Make sure neovim is installed
-  homebrew:
-    name:
-      - neovim
-    state: present
-
 - name: Make sure autoload directory exists
   file:
     path: '{{ autoload_path }}'
@@ -17,14 +11,14 @@
   file:
     path: '{{ config_path }}/{{ item.path }}'
     state: directory
-  with_filetree: templates/
+  with_filetree: '{{ role_path }}/templates/'
   when: item.state == 'directory'
 
 - name: Make sure config files are generated
   template:
     src: '{{ item.src }}'
     dest: '{{ config_path }}/{{ item.path }}'
-  with_filetree: templates/
+  with_filetree: '{{ role_path }}/templates/'
   when: item.state == 'file'
 
 - name: Make sure plugins are installed
@@ -35,3 +29,4 @@
   npm:
     name: 'vim-language-server'
     global: true
+  when: ansible_distribution == 'Darwin'

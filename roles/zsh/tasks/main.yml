@@ -1,26 +1,19 @@
 ---
-- name: Make sure zsh and zplug are present
-  homebrew:
-    name:
-      - zsh
-      - zplug
-    state: present
-
 - name: Make sure variables are included
   include_vars:
     file: "{{ ansible_distribution }}.yml"
+
+- name: Make sure zplug is installed
+  shell: |
+    if [ ! -d ~/.zplug ];
+    then
+      curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    fi
 
 - name: Make sure directories are present
   file:
     path: '{{ config_path }}'
     state: directory
-
-- name: Make sure config files are generated
-  template:
-    src: '{{ item.src }}'
-    dest: '{{ config_path }}/{{ item.path }}'
-  with_filetree: templates/zsh
-  when: item.state == 'file'
 
 - name: Make sure zshrc is present
   template:
@@ -37,7 +30,15 @@
     dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
     chsh -s /usr/local/bin/zsh
   become: true
+  when: ansible_distribution == 'Darwin'
+
+- name: Make sure to set zsh as default shell
+  shell:
+    chsh -s $(which zsh)
+  become: true
+  when: ansible_distribution == 'Archlinux'
 
 - name: Make sure insecure dir problem fixed
   shell:
     compaudit | xargs chmod g-w
+  when: ansible_distribution == 'Darwin'

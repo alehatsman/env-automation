@@ -1,13 +1,4 @@
 ---
-- name: Make sure clojure related apps are present
-  homebrew:
-    name:
-      - clojure
-      - leiningen
-      - boot-clj
-      - clj-kondo
-    state: present
-
 - name: Make sure .lein folder present
   file:
     path: ~/.lein

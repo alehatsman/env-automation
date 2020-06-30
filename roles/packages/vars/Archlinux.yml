@@ -1,0 +1,43 @@
+---
+apps:
+  - bat
+  - cmake
+  - ctags
+  - fzf
+  - git
+  - graphviz
+  - htop
+  - imagemagick
+  - jq
+  - lastpass-cli
+  - mosh
+  - nmap
+  - otf-fira-code
+  - python
+  - python-pip
+  - python2
+  - sshfs
+  - the_silver_searcher
+  - tldr
+  - tmux
+  - tor
+  - tree
+  - wget
+  - yamllint
+
+  # Neovim
+  - neovim
+  - ripgrep
+  
+  # Node
+  - nodejs
+  - yarn
+  - npm
+
+  # Zsh
+  - zsh
+  - exa
+
+  # Docker
+  - docker
+  - kubectl

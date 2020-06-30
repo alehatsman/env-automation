@@ -1,12 +1,4 @@
 ---
-- name: Install nodejs
-  homebrew:
-    name:
-      - node
-      - nvm
-      - yarn
-    state: present
-
 - name: Make sure nvm folder present
   file:
     path: ~/.nvm
@@ -24,3 +16,4 @@
     - now
     - ndb
     - gatsby
+  when: ansible_distribution == 'Darwin'
