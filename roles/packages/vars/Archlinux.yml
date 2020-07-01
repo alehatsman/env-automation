@@ -4,6 +4,7 @@ apps:
   - cmake
   - ctags
   - fzf
+  - dos2unix
   - git
   - graphviz
   - htop

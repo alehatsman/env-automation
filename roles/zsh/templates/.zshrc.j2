@@ -90,7 +90,11 @@ alias vimdiff="nvim -d"
 alias r="source ~/.zshrc"
 
 alias e="$EDITOR"
+
+{% if ansible_distribution == 'Darwin' %}
 alias sed=gsed
+{% endif %}
+
 alias cat=bat
 alias ls=exa
 
@@ -222,8 +226,10 @@ cheat() {
 alias hm="man"
 alias hc="cheat"
 
-alias k8s="kubectl"
-compdef k8s=kubectl
+if type "$kubectl" > /dev/null; then
+  alias k8s="kubectl"
+  compdef k8s=kubectl
+fi
 
 alias my_ip="curl ifconfig.me/ip"
 
