@@ -9,7 +9,7 @@ sudo pacman-key --populate archlinux
 sudo pacman-key --refresh-keys
 # sudo pacman -Syyu
 
-if [[ -f "pacman-static" ]]; then
+if [[ ! -f "pacman-static" ]]; then
 	wget https://pkgbuild.com/~eschwartz/repo/x86_64-extracted/pacman-static
 fi
 
