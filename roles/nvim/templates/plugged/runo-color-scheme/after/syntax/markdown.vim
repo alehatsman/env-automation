@@ -6,7 +6,7 @@ if b:current_syntax ==# 'mkd'
 " plasticboy/vim-markdown
   hi! link htmlBold       RunoOrangeBold
   hi! link htmlBoldItalic RunoOrangeBoldItalic
-  hi! link htmlH1         RunoPinkBold
+  hi! link htmlH1         RunoGlobalDef
   hi! link htmlItalic     RunoYellowItalic
   hi! link mkdBlockquote  RunoYellowItalic
   hi! link mkdBold        RunoOrangeBold

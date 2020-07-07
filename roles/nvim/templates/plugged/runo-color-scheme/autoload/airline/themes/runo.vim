@@ -128,11 +128,11 @@ if get(g:, 'airline#extensions#tabline#enabled', 0)
         \
         \ 'airline_tab': s:clr('gray_2', 'black_3'),
         \ 'airline_tabsel': s:clr('black_2', 'gray_2'),
-        \ 'airline_tabmod': s:clr('green_0', 'gray_2'),
+        \ 'airline_tabmod': s:clr('black_2', 'green_0'),
         \
         \ 'airline_tab_right': s:clr('pink_0', 'gray_2'),
-        \ 'airline_tabsel_right': s:clr('green_0', 'gray_2'),
-        \ 'airline_tabmod_right': s:clr('green_0', 'gray_2'),
+        \ 'airline_tabsel_right': s:clr('black_2', 'green_3'),
+        \ 'airline_tabmod_right': s:clr('black_2', 'green_3'),
         \}
 endif
 
