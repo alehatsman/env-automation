@@ -19,7 +19,6 @@ Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 " File explorer and tabs
 Plug 'scrooloose/nerdtree'
 
-" Comments
 Plug 'preservim/nerdcommenter'
 
 Plug 'Yggdroot/indentLine'
@@ -57,35 +56,9 @@ Plug 'jiangmiao/auto-pairs'
 " Repeating
 Plug 'tpope/vim-repeat'
 
-" Golang
-Plug 'fatih/vim-go', { 'for': 'go' }
-
-" JavaScript
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'MaxMEllon/vim-jsx-pretty', { 'for': 'javascript' }
-Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
-" Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
-" Plug 'styled-components/vim-styled-components', { 'branch': 'main',
-"   \ 'for': ['typescript', 'typescriptreact'] }
-Plug 'posva/vim-vue', { 'for': 'javascript' }
-Plug 'jxnblk/vim-mdx-js', { 'for': 'markdown.mdx' }
-Plug 'jparise/vim-graphql'
-
-" Clojure
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'sheerun/vim-polyglot'
+Plug 'mbbill/undotree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
-" Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
-Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
-Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
-
-Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-
-" Devops
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-Plug 'jvirtanen/vim-hcl', { 'for': 'hcl' }
 
 call plug#end()
 
@@ -140,7 +113,7 @@ let g:yats_host_keyword = 0
 set completeopt=menuone,preview
 autocmd CompleteDone * pclose
 
-set conceallevel=0 " don't hide syntax elements (quotes in json for example)
+set conceallevel=0 " don't hide syntax elements (quotes in json for example
 
 "---------------------------------------------
 " Python provider
@@ -244,13 +217,11 @@ endfunction
 nnoremap <leader>cfn :call g:CopyFilenameToClipboard()<CR>
 nnoremap <leader>cfp :call g:CopyFilepathToClipboard()<CR>
 
-
 " Autocomplete
 
 " Remap ctrl-x ctrl-o to ctrl space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
-
 
 " Nerd tree
 " open / close nerd tree
@@ -258,14 +229,12 @@ nnoremap <leader>fe :NERDTreeToggle<cr>
 " find current file in nerdtree
 nnoremap <leader>ff :NERDTreeFind<cr>
 
-
 " Splits
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-\> <c-w>w
-
 " close all splits except focused one
 nnoremap <c-w>o <c-w><c-o>
 
@@ -293,6 +262,7 @@ map <silent> <A-k> <C-W>-
 map <silent> <A-l> <C-w><
 
 " Git mappings 
+nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gb :Gblame<CR>
@@ -319,6 +289,9 @@ vnoremap <silent> <leader>s :'<,'>sort<cr>
 map <leader>sx :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+
+nnoremap <leader>u :UndotreeShow<CR> 
 
 "---------------------------------------------
 "  Autocommands
