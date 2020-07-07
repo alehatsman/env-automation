@@ -19,7 +19,6 @@ COMPLETION_WAITING_DOTS=true
 #---------------------------------------------
 # Exports
 #---------------------------------------------
-
 export GPG_TTY=$(tty)
 export LANG=en_US.UTF-8
 
@@ -29,7 +28,7 @@ export GCPATH={{ GCP_PATH }}
 export JAVA_HOME={{ JAVA_HOME }}
 export CARGO_HOME=~/.cargo
 export ZPLUG_HOME={{ ZPLUG_HOME }}
-export PATH=$HOME/bin:/usr/local/bin:$PATH:"$(yarn global bin)":$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN:$CARGO_HOME/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN:$CARGO_HOME/bin:$PATH
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
@@ -41,6 +40,10 @@ export SSH_KEY_PATH=~/.ssh/rsa_id
 
 export FZF_BASE={{ FZF_BASE }}
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
+
+{% if ansible_distribution == 'Archlinux' %}
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 
+{% endif %}
 
 #---------------------------------------------
 # Plugins 
@@ -58,7 +61,6 @@ zplug "zsh-users/zsh-history-substring-search"
 # zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "lukechilds/zsh-nvm"
-
 
 zplug "asdf-vm/asdf", \
   use:asdf.sh
