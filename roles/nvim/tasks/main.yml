@@ -7,6 +7,11 @@
 - include: vim_plug.yml
 - include: python_venv.yml
 
+- name: Make sure undo dir is present
+  file:
+    path: '~/.config/nvim/undodir'
+    state: directory
+
 - name: Create directories
   file:
     path: '{{ config_path }}/{{ item.path }}'

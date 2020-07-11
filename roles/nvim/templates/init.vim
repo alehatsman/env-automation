@@ -29,7 +29,8 @@ Plug 'junegunn/gv.vim' " git commit browser
 Plug 'airblade/vim-gitgutter' " git diff sign
 
 " Linters / Formatters
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Status line and Tabs
 Plug 'bling/vim-airline'
@@ -46,8 +47,7 @@ function! BuildYCM(info)
   endif
 endfunction
 
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-" Plug 'neovim/nvim-lsp'
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Quoting / Parenthesizing
 Plug 'tpope/vim-surround'
@@ -65,8 +65,8 @@ call plug#end()
 "---------------------------------------------
 " Basic options 
 "---------------------------------------------
-filetype indent plugin on " detect ft, load ftpfile and indent
-syntax on " syntax highlighting on
+filetype indent plugin on
+syntax on 
 
 set fileformat=unix
 set langmenu=en_US
@@ -75,12 +75,18 @@ set showcmd " shows command in the last line
 set nostartofline " some command move to the first non-blank line
 set number " line number on
 set clipboard=unnamedplus " allow copy paste system <-> nvim
-
 set exrc " enable project specific .nvimrc files
 set secure " disable write/shell commands in those files
-
 set splitbelow " put the new window below the current one
 set splitright " put the new window right of the current one
+
+" disable backup files
+set noswapfile
+set nobackup
+set nowritebackup
+set undodir=~/.config/nvim/undodir
+
+set incsearch
 
 set termguicolors " use gui 24-bit colors, gui attrs instead of cterm
 set t_Co=256
@@ -110,10 +116,13 @@ set foldlevelstart=99 " don't close folds
 let g:yats_host_keyword = 0
 
 " Autocomplete
-set completeopt=menuone,preview
+"set completeopt=menuone,preview
 autocmd CompleteDone * pclose
 
 set conceallevel=0 " don't hide syntax elements (quotes in json for example
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 
 "---------------------------------------------
 " Python provider
@@ -148,33 +157,10 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_count = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
-" Ale
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_delay = 0
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_text_changed = 0
-let g:ale_linters_explicit = 1
-let g:ale_open_list = 0
-let g:ale_set_highlights = 0
-let g:ale_set_loclist = 1
-let g:ale_set_quickfix = 0
-let g:ale_set_signs = 1
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '•'
-let g:ale_sign_offset = 1000000
-let g:ale_sign_warning = '•'
-let g:ale_python_auto_pipenv = 1
-set signcolumn="yes:[1]"
-nmap <buffer> <S-k> :ALEHover<cr>
-nmap <buffer> <C-]> :ALEGoToDefinition<cr>
-
 " Fzf
-nnoremap <c-p> :Files<cr>
-nnoremap <c-b> :Buffers<cr>
-nnoremap <c-f> :Rg<cr>
+nmap <c-p> :Files<cr>
+nmap <c-b> :Buffers<cr>
+nmap <c-f> :Rg<cr>
 
 command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=never --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
@@ -197,7 +183,6 @@ let g:clojure_highlight_local_vars = 0
 "---------------------------------------------
 " Mappings 
 "---------------------------------------------
-" set <leader> to space
 let mapleader="\<space>"
 let maplocalleader="\<space>"
 
@@ -214,8 +199,8 @@ function! g:CopyFilenameToClipboard()
   echo path
 endfunction
 
-nnoremap <leader>cfn :call g:CopyFilenameToClipboard()<CR>
-nnoremap <leader>cfp :call g:CopyFilepathToClipboard()<CR>
+nmap <leader>cfn :call g:CopyFilenameToClipboard()<CR>
+nmap <leader>cfp :call g:CopyFilepathToClipboard()<CR>
 
 " Autocomplete
 
@@ -225,24 +210,24 @@ inoremap <C-@> <C-Space>
 
 " Nerd tree
 " open / close nerd tree
-nnoremap <leader>fe :NERDTreeToggle<cr>
+nmap <leader>fe :NERDTreeToggle<cr>
 " find current file in nerdtree
-nnoremap <leader>ff :NERDTreeFind<cr>
+nmap <leader>ff :NERDTreeFind<cr>
 
 " Splits
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-nnoremap <c-\> <c-w>w
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
+nmap <c-\> <c-w>w
 " close all splits except focused one
-nnoremap <c-w>o <c-w><c-o>
+nmap <c-w>o <c-w><c-o>
 
 " Tabs mappings 
-nnoremap <leader>tt :tabnew<CR>
-nnoremap <leader>tp :tabprev<CR>
-nnoremap <leader>tn :tabnext<CR>
-nnoremap <leader>to :tabonly<CR>
+nmap <leader>tt :tabnew<CR>
+nmap <leader>tp :tabprev<CR>
+nmap <leader>tn :tabnext<CR>
+nmap <leader>to :tabonly<CR>
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -262,25 +247,47 @@ map <silent> <A-k> <C-W>-
 map <silent> <A-l> <C-w><
 
 " Git mappings 
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gp :Gpush<CR>
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gpr :Gpull -r<CR>
-nnoremap <leader>gl :GV!<CR>
-nnoremap <leader>gd :Gvdiffsplit<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Gpush<CR>
+nmap <leader>gb :Gblame<CR>
+nmap <leader>gpr :Gpull -r<CR>
+nmap <leader>gl :GV!<CR>
+nmap <leader>gd :Gvdiffsplit<CR>
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+inoremap <silent><expr> <C-space> coc#refresh()
 
 " Linting / Formatting
-nnoremap <leader>al :ALELint<cr>
-nnoremap <leader>af :ALEFix<cr>
-nnoremap <leader>ad :ALEDetail<cr>
-nnoremap <leader>ar :ALERename<cr>
+nmap <C-]> <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+nmap <leader>g] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+nmap <leader>cr :CocRestart
+
+nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Navigation
 " go to the beginning of the line
-nnoremap H ^
+nmap H ^
 " go to the end of the line
-nnoremap L g_
+nmap L g_
 
 " Visual
 vnoremap <silent> <leader>s :'<,'>sort<cr>
@@ -290,8 +297,7 @@ map <leader>sx :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-
-nnoremap <leader>u :UndotreeShow<CR> 
+nmap <leader>u :UndotreeShow<CR> 
 
 "---------------------------------------------
 "  Autocommands
