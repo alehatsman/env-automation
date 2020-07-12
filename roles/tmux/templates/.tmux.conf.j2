@@ -19,7 +19,11 @@ set -g @plugin 'tmux-plugins/tmux-copycat'
 # open highlighted selection
 set -g @plugin 'tmux-plugins/tmux-open'
 
-# set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
+
+{% if ansible_distribution == 'MacOSX' %}
+set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
+set-option -g default-shell /usr/local/bin/zsh
+{% endif %}
 
 # Run tmp
 run '{{ tmux_path }}/plugins/tpm/tpm'
@@ -27,7 +31,9 @@ run '{{ tmux_path }}/plugins/tpm/tpm'
 #---------------------------------------------
 # Configuration
 #---------------------------------------------
+{% if ansible_distribution == 'Archlinux' %}
 set-option -g default-shell $SHELL
+{% endif %}
 
 # fix terminal colors
 set -g default-terminal "screen-256color" # colors!

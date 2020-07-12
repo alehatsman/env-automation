@@ -207,7 +207,7 @@ nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>cr :CocRestart
 
-nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>pws :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
 
