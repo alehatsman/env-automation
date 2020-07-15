@@ -209,6 +209,8 @@ inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 
 " Nerd tree
+let NERDTreeMinimalUI=1
+
 " open / close nerd tree
 nmap <leader>fe :NERDTreeToggle<cr>
 " find current file in nerdtree
