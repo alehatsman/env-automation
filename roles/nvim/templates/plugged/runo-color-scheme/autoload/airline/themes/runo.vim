@@ -66,8 +66,8 @@ let g:airline#themes#runo#palette = {
 \       },
 \     ),
 \   'replace': s:color_map(
-\       ['gray_2', 'red_4'],
-\       ['black_2', 'pink_0'],
+\       ['black_2', 'red_2'],
+\       ['black_2', 'pink_4'],
 \       ['black_2', 'gray_1'],
 \       {
 \         'airline_warning': s:clr('black_2', 'red_4'),
@@ -75,9 +75,9 @@ let g:airline#themes#runo#palette = {
 \       },
 \     ),
 \   'replace_modified': s:color_map(
-\       ['gray_2', 'red_4'],
-\       ['black_2', 'pink_0'],
-\       ['black_2', 'black_0'],
+\       ['black_2', 'red_2'],
+\       ['black_2', 'pink_4'],
+\       ['black_2', 'gray_1'],
 \       {
 \         'airline_warning': s:clr('black_2', 'red_4'),
 \         'airline_error': s:clr('black_2', 'red_2'),

@@ -29,7 +29,6 @@ Plug 'junegunn/gv.vim' " git commit browser
 Plug 'airblade/vim-gitgutter' " git diff sign
 
 " Linters / Formatters
-" Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Status line and Tabs
