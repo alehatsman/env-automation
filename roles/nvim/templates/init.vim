@@ -1,70 +1,7 @@
-set nocompatible
-
-"---------------------------------------------
-"  Plugins
-"---------------------------------------------
-
-call plug#begin('{{ plug_path }}')
-
-Plug '~/.config/nvim/plugged/runo-color-scheme'
-Plug 'norcalli/nvim-colorizer.lua'
-
-Plug 'vim-scripts/LargeFile'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-
-" Tmux
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
-
-" File explorer and tabs
-Plug 'scrooloose/nerdtree'
-
-Plug 'preservim/nerdcommenter'
-Plug 'Yggdroot/indentLine' " show identation lines
-
-" Git
-Plug 'tpope/vim-fugitive' " git commands
-Plug 'junegunn/gv.vim' " git commit browser
-Plug 'airblade/vim-gitgutter' " git diff sign
-
-" Linters / Formatters
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Status line and Tabs
-Plug 'bling/vim-airline'
-
-" Search and Navigation
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" Autocomplete
-function! BuildYCM(info)
-  if a:info.status == 'installed' || a:info.force
-    !python3 ./install.py --clang-completer --go-completer --ts-completer 
-  endif
-endfunction
-
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-
-" Quoting / Parenthesizing
-Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
-
-" Repeating
-Plug 'tpope/vim-repeat'
-
-Plug 'sheerun/vim-polyglot'
-Plug 'mbbill/undotree'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-call plug#end()
-
-"---------------------------------------------
-" Basic options 
-"---------------------------------------------
-filetype indent plugin on
 syntax on 
+filetype indent plugin on
 
+set nocompatible
 set fileformat=unix
 set langmenu=en_US
 set hidden " be able to switch buffers without file save
@@ -76,26 +13,22 @@ set exrc " enable project specific .nvimrc files
 set secure " disable write/shell commands in those files
 set splitbelow " put the new window below the current one
 set splitright " put the new window right of the current one
-
-" disable backup files
+set incsearch
+set cursorline " highlight current line
+set shortmess+=c " Don't pass messages to |ins-completion-menu|.
+set updatetime=50
+" Disable backup files
 set noswapfile
 set nobackup
 set nowritebackup
 set undodir=~/.config/nvim/undodir
-
-set incsearch
-
+" Terminal colors
 set termguicolors " use gui 24-bit colors, gui attrs instead of cterm
 set t_Co=256
 set background=light
 silent! colorscheme runo
 let g:runo_colorterm=0
 silent! color runo
-
-set cursorline " highlight current line
-
-let g:vim_jsx_pretty_enable_jsx_highlight=0
-
 " Identation
 set autoindent " copy indent from current line when starting a new line
 set smarttab " <Tab> in front of a line inserts blanks according to 'shiftwidth'
@@ -104,22 +37,35 @@ set softtabstop=2 " the number of spaces to use when expanding tabs
 set shiftwidth=2 " the number of spaces to use when indenting -- or de-indenting -- a line
 set tabstop=2 " the number of spaces that a tab equates to
 let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
-
 " Folding
 set foldmethod=syntax " fold is defined by syntax
 set foldcolumn=1 " width of fold column
 set foldlevelstart=99 " don't close folds
 
-let g:yats_host_keyword = 0
+call plug#begin('{{ plug_path }}')
+Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
+Plug 'mbbill/undotree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'preservim/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/LargeFile'
+Plug '~/.config/nvim/plugged/runo-color-scheme'
+call plug#end()
 
-" Autocomplete
-"set completeopt=menuone,preview
+" ->> Autocomplete
 autocmd CompleteDone * pclose
-
-set conceallevel=0 " don't hide syntax elements (quotes in json for example
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 
 "---------------------------------------------
 " Python provider
@@ -143,7 +89,6 @@ let g:NERDTreeAutoDeleteBuffer = 1 " delete buffer when delete file
 let g:airline_section_c = '%t'
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#hunks#enabled=0
-
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#tab_min_count = 2
@@ -170,12 +115,9 @@ lua require'colorizer'.setup()
 
 " Autopair
 let g:AutoPairsShortcutToggle = ''
-
-" Git
-set updatetime=500 " update time for git gutter
-
-" Clojure
 let g:clojure_highlight_local_vars = 0
+let g:yats_host_keyword = 0
+let g:vim_jsx_pretty_enable_jsx_highlight=0
 
 "---------------------------------------------
 " Mappings 
@@ -263,10 +205,6 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rr <Plug>(coc-rename)
-nmap <leader>g[ <Plug>(coc-diagnostic-prev)
-nmap <leader>g] <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
-nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 nmap <leader>cr :CocRestart
 
 nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
@@ -288,17 +226,13 @@ nmap H ^
 " go to the end of the line
 nmap L g_
 
-" Visual
 vnoremap <silent> <leader>s :'<,'>sort<cr>
 
-"syntax
+" Dispay syntax tree
 map <leader>sx :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 nmap <leader>u :UndotreeShow<CR> 
 
-"---------------------------------------------
-"  Autocommands
-"---------------------------------------------
 autocmd BufRead,BufNewFile *.mdx set filetype=markdown
