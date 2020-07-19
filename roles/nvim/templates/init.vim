@@ -28,7 +28,6 @@ set t_Co=256
 set background=light
 silent! colorscheme runo
 let g:runo_colorterm=0
-silent! color runo
 " Identation
 set autoindent " copy indent from current line when starting a new line
 set smarttab " <Tab> in front of a line inserts blanks according to 'shiftwidth'
@@ -43,6 +42,7 @@ set foldcolumn=1 " width of fold column
 set foldlevelstart=99 " don't close folds
 
 call plug#begin('{{ plug_path }}')
+Plug '~/.config/nvim/plugged/runo-color-scheme'
 Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
@@ -64,6 +64,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
 Plug '~/.config/nvim/plugged/runo-color-scheme'
 call plug#end()
+
+silent! color runo
 
 " ->> Autocomplete
 autocmd CompleteDone * pclose
