@@ -43,6 +43,7 @@ set foldcolumn=1 " width of fold column
 set foldlevelstart=99 " don't close folds
 
 call plug#begin('{{ plug_path }}')
+Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
@@ -113,7 +114,7 @@ autocmd  FileType fzf set laststatus=0 showtabline=0 noshowmode noruler
 " Nvim colorizer
 lua require'colorizer'.setup()
 
-" Autopair
+let g:polyglot_disabled=['clojure']
 let g:AutoPairsShortcutToggle = ''
 let g:clojure_highlight_local_vars = 0
 let g:yats_host_keyword = 0

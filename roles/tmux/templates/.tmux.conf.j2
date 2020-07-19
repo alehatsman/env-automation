@@ -108,8 +108,8 @@ unbind %
 # create new pane
 bind c new-window -c '#{pane_current_path}' 
 
-# toggle panes line
-bind h set -g status 
+bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
+bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
 
 #---------------------------------------------
 # Vim like copy / paste 
