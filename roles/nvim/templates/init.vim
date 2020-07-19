@@ -20,8 +20,7 @@ Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'scrooloose/nerdtree'
 
 Plug 'preservim/nerdcommenter'
-
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine' " show identation lines
 
 " Git
 Plug 'tpope/vim-fugitive' " git commands
@@ -35,9 +34,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bling/vim-airline'
 
 " Search and Navigation
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'easymotion/vim-easymotion'
 
 " Autocomplete
 function! BuildYCM(info)
