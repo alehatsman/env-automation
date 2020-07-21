@@ -8,3 +8,15 @@
   template:
     src: templates/.profile.clj.j2
     dest: ~/.lein/profiles.clj
+
+- name: Make sure .clojure folder present
+  file:
+    path: ~/.clojure
+    state: directory
+
+- name: Make sure .clojure files generated
+  template:
+    src: '{{ item.src }}'
+    dest: '~/.clojure/{{ item.path }}'
+  with_filetree: '{{ role_path }}/templates/.clojure'
+  when: item.state == 'file'

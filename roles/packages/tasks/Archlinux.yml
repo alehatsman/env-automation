@@ -4,3 +4,11 @@
     name: '{{ apps }}'
     state: latest
   become: true
+
+- name: Make sure yay is installed
+  shell: |
+    git clone https://aur.archlinux.org/yay.git ~/tmp/yay
+    cd ~/tmp/yay
+    makepkg -si
+    cd ~/
+    rm -rf ~/tmp/yay

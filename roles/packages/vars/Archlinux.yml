@@ -1,5 +1,7 @@
 ---
 apps:
+  - clojure
+  - rlwrap
   - bat
   - cmake
   - ctags
@@ -29,7 +31,7 @@ apps:
   # Neovim
   - neovim
   - ripgrep
-  
+
   # Node
   - nodejs
   - yarn

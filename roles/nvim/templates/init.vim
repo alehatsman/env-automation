@@ -63,7 +63,44 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
 Plug '~/.config/nvim/plugged/runo-color-scheme'
+Plug 'dense-analysis/ale'
 call plug#end()
+
+" ->> Ale
+let g:ale_linters = {
+\   'typescript': ['eslint', 'tsserver'], 
+\   'python': ['pyls', 'black', 'mypy'],
+\   'yaml': ['yamllint'],
+\}
+
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['prettier', 'eslint'],
+\   'json': ['jq'],
+\}
+
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_delay = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_text_changed = 0
+let g:ale_linters_explicit = 1
+let g:ale_open_list = 0
+let g:ale_set_highlights = 0
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
+let g:ale_set_signs = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '•'
+let g:ale_sign_offset = 1000000
+let g:ale_sign_warning = '•'
+let g:ale_python_auto_pipenv = 1
+let g:ale_completion_tsserver_autoimport = 1
+set signcolumn="yes:[1]"
 
 silent! color runo
 
@@ -208,7 +245,7 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rr <Plug>(coc-rename)
-nmap <leader>cr :CocRestart
+nmap <leader>cr :CocRestart<CR>
 
 nmap <leader>pws :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>

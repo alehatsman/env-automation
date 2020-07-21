@@ -36,7 +36,9 @@
  ;; }
  :aliases {:nREPL {:extra-deps {nrepl/nrepl {:mvn/version "0.7.0"}}}
            :new   {:extra-deps {seancorfield/clj-new {:mvn/version "1.0.199"}}
-                   :main-opts ["-m" "clj-new.create"]}}
+                   :main-opts ["-m" "clj-new.create"]}
+           :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
+                   :main-opts  ["-m" "rebel-readline.main"]}}
  ;; Provider attributes
 
  ;; :mvn/repos {
