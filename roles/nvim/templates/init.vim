@@ -1,4 +1,4 @@
-syntax on 
+syntax on
 filetype indent plugin on
 
 set nocompatible
@@ -64,15 +64,15 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
 Plug '~/.config/nvim/plugged/runo-color-scheme'
 Plug 'dense-analysis/ale'
+Plug 'vim-scripts/paredit.vim'
 call plug#end()
 
 " ->> Ale
 let g:ale_linters = {
-\   'typescript': ['eslint', 'tsserver'], 
+\   'typescript': ['eslint', 'tsserver'],
 \   'python': ['pyls', 'black', 'mypy'],
 \   'yaml': ['yamllint'],
 \}
-
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -101,6 +101,9 @@ let g:ale_sign_warning = '•'
 let g:ale_python_auto_pipenv = 1
 let g:ale_completion_tsserver_autoimport = 1
 set signcolumn="yes:[1]"
+
+let g:paredit_electric_return=0
+let g:paredit_shortmaps=1
 
 silent! color runo
 
@@ -160,7 +163,7 @@ let g:yats_host_keyword = 0
 let g:vim_jsx_pretty_enable_jsx_highlight=0
 
 "---------------------------------------------
-" Mappings 
+" Mappings
 "---------------------------------------------
 let mapleader="\<space>"
 let maplocalleader="\<space>"
@@ -204,7 +207,7 @@ nmap <c-\> <c-w>w
 " close all splits except focused one
 nmap <c-w>o <c-w><c-o>
 
-" Tabs mappings 
+" Tabs mappings
 nmap <leader>tt :tabnew<CR>
 nmap <leader>tp :tabprev<CR>
 nmap <leader>tn :tabnext<CR>
@@ -221,13 +224,13 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-" Splits resizing 
+" Splits resizing
 map <silent> <A-h> <C-w>>
 map <silent> <A-j> <C-W>+
 map <silent> <A-k> <C-W>-
 map <silent> <A-l> <C-w><
 
-" Git mappings 
+" Git mappings
 nmap <leader>gs :Gstatus<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Gpush<CR>
@@ -273,6 +276,6 @@ map <leader>sx :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-nmap <leader>u :UndotreeShow<CR> 
+nmap <leader>u :UndotreeShow<CR>
 
 autocmd BufRead,BufNewFile *.mdx set filetype=markdown
