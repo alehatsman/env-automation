@@ -35,7 +35,6 @@ set expandtab " spaces instead of tabs
 set softtabstop=2 " the number of spaces to use when expanding tabs
 set shiftwidth=2 " the number of spaces to use when indenting -- or de-indenting -- a line
 set tabstop=2 " the number of spaces that a tab equates to
-let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
 " Folding
 set foldmethod=syntax " fold is defined by syntax
 set foldcolumn=1 " width of fold column
@@ -67,9 +66,13 @@ Plug 'dense-analysis/ale'
 Plug 'vim-scripts/paredit.vim'
 call plug#end()
 
+let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
+let g:indentLine_fileTypeExclude = ['json', 'markdown', 'yaml']
+
 " ->> Ale
 let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
+\   'typescriptreact': ['eslint', 'tsserver'],
 \   'python': ['pyls', 'black', 'mypy'],
 \   'yaml': ['yamllint'],
 \}
@@ -78,6 +81,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier', 'eslint'],
 \   'typescript': ['prettier', 'eslint'],
+\   'typescriptreact': ['prettier', 'eslint'],
 \   'json': ['jq'],
 \}
 
