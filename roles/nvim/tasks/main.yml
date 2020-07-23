@@ -35,3 +35,8 @@
     name: 'vim-language-server'
     global: true
   when: ansible_distribution == 'Darwin'
+
+- name: Make sure coc extensions are present
+  shell:
+    nvim -c 'CocInstall -sync coc-json coc-html coc-css coc-tsserver | q'
+  ignore_errors: yes

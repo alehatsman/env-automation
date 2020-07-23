@@ -69,12 +69,15 @@ call plug#end()
 let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
 let g:indentLine_fileTypeExclude = ['json', 'markdown', 'yaml']
 
+let g:ale_enabled=1
+
 " ->> Ale
 let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
 \   'typescriptreact': ['eslint', 'tsserver'],
 \   'python': ['pyls', 'black', 'mypy'],
 \   'yaml': ['yamllint'],
+\   'clojure': ['clj-kondo']
 \}
 
 let g:ale_fixers = {
@@ -84,6 +87,8 @@ let g:ale_fixers = {
 \   'typescriptreact': ['prettier', 'eslint'],
 \   'json': ['jq'],
 \}
+
+" :Piggieback (figwheel.main.api/repl-env "dev")
 
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
