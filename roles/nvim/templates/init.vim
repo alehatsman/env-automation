@@ -88,8 +88,6 @@ let g:ale_fixers = {
 \   'json': ['jq'],
 \}
 
-" :Piggieback (figwheel.main.api/repl-env "dev")
-
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_delay = 0
@@ -111,8 +109,9 @@ let g:ale_python_auto_pipenv = 1
 let g:ale_completion_tsserver_autoimport = 1
 set signcolumn="yes:[1]"
 
-" let g:paredit_electric_return=0
-" let g:paredit_shortmaps=1
+let g:paredit_electric_return=0
+let g:paredit_shortmaps=1
+" let g:paredit_mode=0
 
 silent! color runo
 
@@ -288,3 +287,6 @@ map <leader>sx :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 nmap <leader>u :UndotreeShow<CR>
 
 autocmd BufRead,BufNewFile *.mdx set filetype=markdown
+
+" Clojure
+nnoremap <leader>pb :Piggieback (figwheel.main.api/repl-env "dev")
