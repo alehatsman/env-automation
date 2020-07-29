@@ -41,12 +41,13 @@ set foldcolumn=1 " width of fold column
 set foldlevelstart=99 " don't close folds
 
 call plug#begin('{{ plug_path }}')
-Plug '~/.config/nvim/plugged/runo-color-scheme'
-Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
+Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dense-analysis/ale'
+Plug 'guns/vim-sexp'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -59,11 +60,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
 Plug '~/.config/nvim/plugged/runo-color-scheme'
-Plug 'dense-analysis/ale'
-Plug 'vim-scripts/paredit.vim'
 call plug#end()
 
 let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
@@ -111,8 +111,8 @@ let g:ale_python_auto_pipenv = 1
 let g:ale_completion_tsserver_autoimport = 1
 set signcolumn="yes:[1]"
 
-let g:paredit_electric_return=0
-let g:paredit_shortmaps=1
+" let g:paredit_electric_return=0
+" let g:paredit_shortmaps=1
 
 silent! color runo
 

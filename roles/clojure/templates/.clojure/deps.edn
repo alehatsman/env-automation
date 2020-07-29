@@ -34,7 +34,8 @@
  ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.8.677"}}}
  ;;   :test {:extra-paths ["test"]}
  ;; }
- :aliases {:nREPL {:extra-deps {nrepl/nrepl {:mvn/version "0.7.0"}}}
+ :aliases {:nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.7.0"}}
+                   :main-opts ["-m" "nrepl.cmdline"]}
            :new   {:extra-deps {seancorfield/clj-new {:mvn/version "1.0.199"}}
                    :main-opts ["-m" "clj-new.create"]}
            :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
