@@ -41,6 +41,7 @@ set foldcolumn=1 " width of fold column
 set foldlevelstart=99 " don't close folds
 
 call plug#begin('{{ plug_path }}')
+Plug '~/.config/nvim/plugged/runo-color-scheme'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
@@ -63,7 +64,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
-Plug '~/.config/nvim/plugged/runo-color-scheme'
 call plug#end()
 
 let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
