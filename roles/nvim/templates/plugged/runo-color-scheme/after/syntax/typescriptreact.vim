@@ -11,7 +11,7 @@ hi! link tsxTag              RunoFg
 hi! link tsxTagName          RunoFg
 hi! link htmlTag             RunoFg
 hi! link jsxTagName          RunoFg
-hi! link jsxOpenPunct 		 RunoFg 
+hi! link jsxOpenPunct 		   RunoFg
 hi! link jsxComponentName 	 RunoFg
-hi! link jsxTag 		     RunoFg
-hi! link jsxCloseString		 RunoFg
+hi! link jsxTag 		         RunoFg
+hi! link jsxCloseString		   RunoFg
