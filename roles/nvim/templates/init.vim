@@ -44,7 +44,6 @@ call plug#begin('{{ plug_path }}')
 Plug '~/.config/nvim/plugged/runo-color-scheme'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
@@ -59,7 +58,9 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'Olical/conjure', {'tag': 'v4.3.1'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
@@ -174,7 +175,7 @@ let g:vim_jsx_pretty_enable_jsx_highlight=0
 " Mappings
 "---------------------------------------------
 let mapleader="\<space>"
-let maplocalleader="\<space>"
+let maplocalleader="\<tab>"
 
 " File test
 function! g:CopyFilepathToClipboard()
@@ -251,7 +252,6 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 inoremap <silent><expr> <C-space> coc#refresh()
 
 " Linting / Formatting
-nmap <C-]> <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)

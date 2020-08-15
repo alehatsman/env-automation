@@ -19,6 +19,9 @@ set -g @plugin 'tmux-plugins/tmux-copycat'
 # open highlighted selection
 set -g @plugin 'tmux-plugins/tmux-open'
 
+# persistent tmux sessons
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 
 {% if ansible_distribution == 'MacOSX' %}
 set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
@@ -85,10 +88,10 @@ set -g window-status-current-style fg="{{ colors.black.3 }}",bg="{{ colors.gray.
 # Bindings
 #---------------------------------------------
 
-# Remap prefix from 'C-b' to 'C-a'
+# Remap prefix from 'C-b' to 'C-t'
 unbind C-b
 set-option -g prefix C-t
-bind-key C-a send-prefix
+bind-key C-t send-prefix
 
 # reload config
 bind r source-file {{ tmux_config_path }} \; display-message "{{ tmux_config_path }} reloaded"
@@ -111,9 +114,6 @@ bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
 
 # create new pane
 bind c new-window -c '#{pane_current_path}'
-
-bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
-bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
 
 #---------------------------------------------
 # Vim like copy / paste
