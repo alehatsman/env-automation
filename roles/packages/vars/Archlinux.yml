@@ -27,6 +27,7 @@ apps:
   - tree
   - wget
   - yamllint
+  - unzip
 
   # Neovim
   - neovim

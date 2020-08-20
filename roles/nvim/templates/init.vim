@@ -60,12 +60,17 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'plugin/auto-pairs.vim'
 Plug 'Olical/conjure', {'tag': 'v4.3.1'}
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
+" Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
+Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim'
 call plug#end()
+
+let g:AutoPairsFlyMode = 1
 
 let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
 let g:indentLine_fileTypeExclude = ['json', 'markdown', 'yaml']
@@ -110,9 +115,9 @@ let g:ale_python_auto_pipenv = 1
 let g:ale_completion_tsserver_autoimport = 1
 set signcolumn="yes:[1]"
 
-let g:paredit_electric_return=0
-let g:paredit_shortmaps=1
-" let g:paredit_mode=0
+"let g:paredit_electric_return=0
+"let g:paredit_shortmaps=1
+"let g:paredit_mode=1
 
 silent! color runo
 
@@ -252,15 +257,9 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 inoremap <silent><expr> <C-space> coc#refresh()
 
 " Linting / Formatting
-nmap <leader>gy <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>cr :CocRestart<CR>
-
-nmap <leader>pws :CocSearch <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cs :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -290,3 +289,5 @@ autocmd BufRead,BufNewFile *.mdx set filetype=markdown
 
 " Clojure
 nnoremap <leader>pb :Piggieback (figwheel.main.api/repl-env "dev")
+
+nnoremap <leader>wm :Goyo<CR>
