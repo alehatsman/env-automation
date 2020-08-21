@@ -23,6 +23,8 @@ set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 
+set -g @continuum-restore 'on'
+
 {% if ansible_distribution == 'MacOSX' %}
 set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
 set-option -g default-shell /usr/local/bin/zsh
