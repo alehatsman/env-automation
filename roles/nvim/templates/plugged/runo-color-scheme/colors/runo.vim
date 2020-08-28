@@ -193,8 +193,8 @@ hi! link Search       RunoSearch
 hi! link TabLineSel   Normal
 hi! link TabLine      RunoBlue_1
 hi! link TabLineFill  RunoBgDarker
- 
-hi! link Title        RunoGreenBold
+
+hi! link Title        RunoGlobalDef
 hi! link VertSplit    RunoBlue_1
 hi! link Visual       RunoSelection
 hi! link VisualNOS    Visual

@@ -37,7 +37,7 @@
   shell:
     chsh -s $(which zsh)
   become: true
-  when: ansible_distribution == 'Archlinux'
+  when: ansible_distribution != 'MacOSX'
 
 - name: Make sure insecure dir problem fixed
   shell:

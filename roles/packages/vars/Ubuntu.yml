@@ -1,0 +1,41 @@
+---
+apps:
+  - clojure
+  - rlwrap
+  - make
+  - cmake
+  - ctags
+  - fzf
+  - dos2unix
+  - git
+  - graphviz
+  - htop
+  - imagemagick
+  - jq
+  - lastpass-cli
+  - mosh
+  - nmap
+  - python
+  - sshfs
+  - tldr
+  - tmux
+  - tor
+  - tree
+  - wget
+  - yamllint
+  - unzip
+
+  # Neovim
+  - neovim
+  - ripgrep
+
+  # Node
+  - nodejs
+  - yarn
+  - npm
+
+  # Zsh
+  - zsh
+
+  # Docker
+  - docker

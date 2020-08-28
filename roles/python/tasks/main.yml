@@ -2,7 +2,7 @@
 - name: Make sure pipenv is installed
   pip:
     name: pipenv
-    executable: /usr/local/bin/pip3 
+    executable: pip3
     state: latest
   with_items:
     - pipenv

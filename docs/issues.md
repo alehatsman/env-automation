@@ -2,14 +2,7 @@
 
 ## Color scheme
 
-### Gitcommit
-
-* diffFile - RunoGreen - bad contrast
-* diffNewFile - RunoRed - bad constrast and should it be red?
-* DiffRemoved - RunoRed - bad constrast
-* DiffAdded - RunoGreen - bad constrast
-* gitcommitSelectedFile - RunoConstant ? - should be just RunoFg
-* gitcommitBranch - RunoSx - should be just RunoFg or RunoComment
+* ale errors colors and coc-errors colors out of sync
 
 ### Fzf buffers
 

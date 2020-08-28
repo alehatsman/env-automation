@@ -60,7 +60,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'plugin/auto-pairs.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'Olical/conjure', {'tag': 'v4.3.1'}
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-sexp-mappings-for-regular-people'

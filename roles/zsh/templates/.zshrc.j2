@@ -41,12 +41,12 @@ export SSH_KEY_PATH=~/.ssh/rsa_id
 export FZF_BASE={{ FZF_BASE }}
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
 
-{% if ansible_distribution == 'Archlinux' %}
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 
+{% if ansible_distribution != 'MacOSX' %}
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 {% endif %}
 
 #---------------------------------------------
-# Plugins 
+# Plugins
 #---------------------------------------------
 export NVM_LAZY_LOAD=true
 source $ZPLUG_HOME/init.zsh
@@ -97,8 +97,8 @@ alias e="$EDITOR"
 alias sed=gsed
 {% endif %}
 
-alias cat=bat
-alias ls=exa
+# alias cat=bat
+# alias ls=exa
 
 alias l="ls -1"
 alias c="clear"
@@ -182,7 +182,7 @@ gbd() { # git delete branch
   git push origin --delete $@
 }
 
-gbd!() { # git delete branch force 
+gbd!() { # git delete branch force
   git branch -D $@
   git push origin --delete --force $@
 }
@@ -202,17 +202,17 @@ flpass() {
 }
 
 fkill() {
-  local pid 
+  local pid
   if [ "$UID" != "0" ]; then
       pid=$(ps -f -u $UID | sed 1d | fzf -m | awk "{print $2}")
   else
       pid=$(ps -ef | sed 1d | fzf -m | awk "{print $2}")
-  fi  
+  fi
 
   if [ "x$pid" != "x" ]
   then
       echo $pid | xargs kill -${1:-9}
-  fi  
+  fi
 }
 
 tm() {
@@ -235,7 +235,7 @@ fi
 
 alias my_ip="curl ifconfig.me/ip"
 
-# npm / yarn 
+# npm / yarn
 
 # search for file recursively up
 {% raw %}
@@ -244,7 +244,7 @@ upsearch() {
   directory="$PWD"
   for (( n=${#slashes}; n>0; --n ))
   do
-    test -e "$directory/$1" && echo "$directory/$1" && return 
+    test -e "$directory/$1" && echo "$directory/$1" && return
     directory="$directory/.."
   done
 }
@@ -262,11 +262,11 @@ _run_npm_script() {
   if [[ ! -f './package.json' ]]; then
     echo "no package.json file!"
     return 0
-  fi 
+  fi
 
   local npm_script
   npm_script=$(_fzf_npm_script)
-  if [ -z "$npm_script" ]; then 
+  if [ -z "$npm_script" ]; then
     return 0
   fi
   echo "$1 run $npm_script"
