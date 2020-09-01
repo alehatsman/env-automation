@@ -1,5 +1,6 @@
 ---
 apps:
+  - curl
   - clojure
   - rlwrap
   - make
