@@ -5,4 +5,4 @@ Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
 
 wsl --set-default-version 2
 
-choco install alacritty git googlechrome steam discord nodejs sublimetext3 sublimemerge vlc spotify autohotkey.portable wsl-archlinux docker slack adobereader
+choco install alacritty git googlechrome steam discord nodejs sublimetext3 sublimemerge vlc spotify autohotkey.portable wsl-archlinux docker slack adobereader xmind
