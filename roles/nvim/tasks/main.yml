@@ -38,5 +38,5 @@
 
 - name: Make sure coc extensions are present
   shell:
-    nvim -c 'CocInstall -sync coc-json coc-html coc-css coc-tsserver | q'
+    nvim -c 'CocInstall -sync coc-json coc-html coc-css coc-tsserver | qall'
   ignore_errors: yes

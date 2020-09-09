@@ -130,13 +130,8 @@ call s:h('RunoRedInverse', g:runo#palette.black_2, g:runo#palette.red_2)
 call s:h('RunoYellow', g:runo#palette.yellow_2)
 
 call s:h('RunoBlue_1', g:runo#palette.blue_0)
-
 call s:h('RunoBlue_2', g:runo#palette.blue_2)
 call s:h('RunoBlueBold', g:runo#palette.blue_2, s:none, [s:attrs.bold])
-
-call s:h('RunoSx', g:runo#palette.black_1)
-call s:h('RunoSxUnderline', g:runo#palette.black_1, s:none, [s:attrs.underline])
-call s:h('RunoSxBold', g:runo#palette.black_1, s:none, [s:attrs.bold])
 
 call s:h('RunoSelection', s:none, g:runo#palette.blue_3)
 call s:h('RunoSubtle', g:runo#palette.gray_4)
@@ -189,10 +184,11 @@ hi! link PmenuSbar    RunoBgDark
 hi! link PmenuSel     RunoSelection
 hi! link PmenuThumb   RunoSelection
 hi! link Question     RunoFgBold
-hi! link Search       RunoSearch
-hi! link TabLineSel   Normal
-hi! link TabLine      RunoBlue_1
-hi! link TabLineFill  RunoBgDarker
+hi! link Search       RunoSearch| "last search pattern highlighting
+
+hi! link TabLineSel   Normal| "tab pages line, active tab page label
+hi! link TabLine      RunoBlue_1| "tab pages line, not active tab page label
+hi! link TabLineFill  RunoBgDarker|   "tab pages line, where there are no labels
 
 hi! link Title        RunoGlobalDef
 hi! link VertSplit    RunoBlue_1
@@ -242,29 +238,29 @@ hi! link Float RunoConstant
 hi! link Identifier RunoGlobalDef
 hi! link Function RunoGlobalDef
 
-hi! link Statement RunoSx
-hi! link Conditional RunoSx
-hi! link Repeat RunoSx
+hi! link Statement RunoFg
+hi! link Conditional RunoFg
+hi! link Repeat RunoFg
 hi! link Label RunoFg
-hi! link Operator RunoSx
-hi! link Keyword RunoSx
-hi! link Exception RunoSx
+hi! link Operator RunoFg
+hi! link Keyword RunoFg
+hi! link Exception RunoFg
 
-hi! link PreProc RunoSx
-hi! link Include RunoSx
-hi! link Define RunoSx
-hi! link Macro RunoSx
-hi! link PreCondit RunoSx
-hi! link StorageClass RunoSx
-hi! link Structure RunoSx
+hi! link PreProc RunoFg
+hi! link Include RunoFg
+hi! link Define RunoFg
+hi! link Macro RunoFg
+hi! link PreCondit RunoFg
+hi! link StorageClass RunoFg
+hi! link Structure RunoFg
 hi! link Typedef RunoPink
 
-hi! link Type RunoSx
-hi! link Delimiter RunoSx
+hi! link Type RunoFg
+hi! link Delimiter RunoFg
 
-hi! link Special RunoSx
+hi! link Special RunoFg
 hi! link SpecialComment RunoPink
-hi! link Tag RunoSx
+hi! link Tag RunoFg
 hi! link helpHyperTextJump RunoLink
 hi! link helpCommand RunoComment
 hi! link helpExample RunoComment

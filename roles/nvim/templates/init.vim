@@ -68,6 +68,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim'
+Plug 'cocopon/colorswatch.vim'
 call plug#end()
 
 let g:AutoPairsFlyMode = 1
