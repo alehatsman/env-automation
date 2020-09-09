@@ -1,6 +1,6 @@
 *runo.txt*           For Vim version 8               Last change: 2020 Apr 26
 *runo* *vim-runo*
-                             A dark theme for vim
+                             A light theme for vim
 
 ==============================================================================
 CONTENTS                                                      *runo-contents*
@@ -17,7 +17,7 @@ CONTENTS                                                      *runo-contents*
 ==============================================================================
 INTRO                                                            *runo-intro*
 
-Dracula is a vim plugin that contains
+Runo is a vim plugin that contains
 
     - a dark colorscheme for vim
     - a similarly-themed colorscheme for the vim plugin airline
@@ -32,7 +32,7 @@ in your vimrc! See also |runo_runtimepath|.
 
 If you are an airline user, you can also do >
     let g:airline_theme='runo'
-to have airline use Dracula.
+to have airline use Runo.
 
                                                            *runo_runtimepath*
 
@@ -54,7 +54,7 @@ to make sure you put runo on the 'runtimepath' before loading it.
 ==============================================================================
 CONFIGURATION                                            *runo-configuration*
 
-There are a couple of variables used by Dracula that you might want to adjust
+There are a couple of variables used by Runo that you might want to adjust
 depending on your terminal's capabilities.
 
 Default values are shown.
@@ -89,7 +89,7 @@ Include background fill colors >
 ==============================================================================
 CUSTOMIZATION                                            *runo-customization*
 
-Like all colorschemes, Dracula is easy to customize with |autocmd|. Make use
+Like all colorschemes, Runo is easy to customize with |autocmd|. Make use
 of the |ColorScheme| event as in the following examples.
 
 It would be a good idea to put all of your personal changes in an |augroup|,
@@ -121,7 +121,7 @@ https://github.com/atsman/runo
 ==============================================================================
 CONTRIBUTING                                              *runo-contributing*
 
-Want to submit a new feature, bugfix, or hack on Dracula?
+Want to submit a new feature, bugfix, or hack on Runo?
 Submit pull requests to
 https://github.com/atsman/runo
 

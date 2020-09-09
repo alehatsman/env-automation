@@ -4,18 +4,18 @@ filetype indent plugin on
 set nocompatible
 set fileformat=unix
 set langmenu=en_US
-set hidden " be able to switch buffers without file save
-set showcmd " shows command in the last line
-set nostartofline " some command move to the first non-blank line
-set number " line number on
-set clipboard=unnamedplus " allow copy paste system <-> nvim
-set exrc " enable project specific .nvimrc files
-set secure " disable write/shell commands in those files
-set splitbelow " put the new window below the current one
-set splitright " put the new window right of the current one
+set hidden                 " be able to switch buffers without file save
+set showcmd                " shows command in the last line
+set nostartofline          " some command move to the first non-blank line
+set number                 " line number on
+set clipboard=unnamedplus  " allow copy paste system <-> nvim
+set exrc                   " enable project specific .nvimrc files
+set secure                 " disable write/shell commands in those files
+set splitbelow             " put the new window below the current one
+set splitright             " put the new window right of the current one
 set incsearch
-set cursorline " highlight current line
-set shortmess+=c " Don't pass messages to |ins-completion-menu|.
+set cursorline             " highlight current line
+set shortmess+=c           " Don't pass messages to |ins-completion-menu|.
 set updatetime=50
 " Disable backup files
 set noswapfile
@@ -47,28 +47,67 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
-"Plug 'guns/vim-sexp'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'Olical/conjure', {'tag': 'v4.3.1'}
 Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim'
+Plug 'cocopon/colorswatch.vim'
+
+Plug 'neovim/nvim-lsp'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
+
+" LSP
+
+let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
+inoremap <silent><expr> <C-space> completion#trigger_completion()
+set omnifunc=v:lua.vim.lsp.omnifunc
+
+lua << END
+  local nvim_lsp = require'nvim_lsp'
+  local completion = require'completion'
+
+  nvim_lsp.tsserver.setup{on_attach=completion.on_attach}
+  nvim_lsp.clojure_lsp.setup{on_attach=completion.on_attach}
+
+  vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
+END
+
+nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    lua vim.lsp.buf.hover()
+  endif
+endfunction
+
+" Treesitter
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",     -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
 
 let g:AutoPairsFlyMode = 1
 
@@ -114,10 +153,6 @@ let g:ale_sign_warning = '•'
 let g:ale_python_auto_pipenv = 1
 let g:ale_completion_tsserver_autoimport = 1
 set signcolumn="yes:[1]"
-
-"let g:paredit_electric_return=0
-"let g:paredit_shortmaps=1
-"let g:paredit_mode=1
 
 silent! color runo
 
@@ -170,7 +205,7 @@ autocmd  FileType fzf set laststatus=0 showtabline=0 noshowmode noruler
 " Nvim colorizer
 lua require'colorizer'.setup()
 
-let g:polyglot_disabled=['clojure']
+let g:polyglot_disabled=['clojure', 'bash', 'c', 'css', 'fennel', 'go', 'html', 'java', 'json', 'lua', 'python']
 let g:AutoPairsShortcutToggle = ''
 let g:clojure_highlight_local_vars = 0
 let g:yats_host_keyword = 0
@@ -253,23 +288,6 @@ nmap <leader>gpr :Gpull -r<CR>
 nmap <leader>gl :GV!<CR>
 nmap <leader>gd :Gvdiffsplit<CR>
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-inoremap <silent><expr> <C-space> coc#refresh()
-
-" Linting / Formatting
-nmap <leader>rr <Plug>(coc-rename)
-nmap <leader>cr :CocRestart<CR>
-nmap <leader>cs :CocSearch <C-R>=expand("<cword>")<CR><CR>
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 " Navigation
 " go to the beginning of the line
 nmap H ^
@@ -282,6 +300,7 @@ vnoremap <silent> <leader>s :'<,'>sort<cr>
 map <leader>sx :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+map <leader>tx :echo nvim_treesitter#statusline(90)<CR>
 
 nmap <leader>u :UndotreeShow<CR>
 

@@ -30,13 +30,7 @@
   shell:
     nvim +PlugInstall +qall
 
-- name: Make sure vim-language-server is present
-  npm:
-    name: 'vim-language-server'
-    global: true
-  when: ansible_distribution == 'Darwin'
-
-- name: Make sure coc extensions are present
-  shell:
-    nvim -c 'CocInstall -sync coc-json coc-html coc-css coc-tsserver | q'
-  ignore_errors: yes
+- name: Make sure tree sitter parsers are installed
+  shell: |
+    nvim -c 'TSInstall bash c css fennel go html java javascript json lua python typescript | qall'
+  ignore_errors: true
