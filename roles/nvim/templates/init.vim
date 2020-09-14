@@ -76,6 +76,7 @@ call plug#end()
 let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
 inoremap <silent><expr> <C-space> completion#trigger_completion()
 set omnifunc=v:lua.vim.lsp.omnifunc
+set completeopt=menuone,noinsert,noselect
 
 lua << END
   local nvim_lsp = require'nvim_lsp'
