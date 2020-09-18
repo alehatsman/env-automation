@@ -44,7 +44,7 @@ call plug#begin('{{ plug_path }}')
 Plug '~/.config/nvim/plugged/runo-color-scheme'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -101,19 +101,10 @@ endfunction
 
 " Treesitter
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",     -- one of "all", "language", or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-  },
-}
-EOF
-
 let g:AutoPairsFlyMode = 1
 
 let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
-let g:indentLine_fileTypeExclude = ['json', 'markdown', 'yaml']
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
 
 let g:ale_enabled=1
 
@@ -206,7 +197,7 @@ autocmd  FileType fzf set laststatus=0 showtabline=0 noshowmode noruler
 " Nvim colorizer
 lua require'colorizer'.setup()
 
-let g:polyglot_disabled=['clojure', 'bash', 'c', 'css', 'fennel', 'go', 'html', 'java', 'json', 'lua', 'python']
+let g:polyglot_disabled=['clojure']
 let g:AutoPairsShortcutToggle = ''
 let g:clojure_highlight_local_vars = 0
 let g:yats_host_keyword = 0

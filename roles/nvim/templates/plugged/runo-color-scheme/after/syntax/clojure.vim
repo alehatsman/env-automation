@@ -4,5 +4,5 @@ endif
 
 hi! link clojureFunc Normal
 hi! link clojureSymbol Normal
-hi! link clojureDefineName Function
+hi! link clojureDefineName RunoGlobalDef
 hi! link clojureKeyword RunoConstant
