@@ -266,8 +266,8 @@ hi! link Special RunoFg
 hi! link SpecialComment RunoComment
 hi! link Tag RunoFg
 hi! link helpHyperTextJump RunoLink
-hi! link helpCommand RunoComment
-hi! link helpExample RunoComment
+hi! link helpCommand RunoString
+hi! link helpExample RunoString
 hi! link helpBacktick Special
 
 " vim: fdm=marker ts=2 sts=2 sw=2:

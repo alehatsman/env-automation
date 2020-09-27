@@ -104,8 +104,17 @@ call sign_define("LspDiagnosticsInformationSign", {"text" : "•", "texthl" : "L
 call sign_define("LspDiagnosticsHintSign", {"text" : "•", "texthl" : "LspDiagnosticsHint"})
 
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent><c-]> :call <SID>definition()<CR>
+nnoremap <silent>K :call <SID>show_documentation()<CR>
+
+function! s:definition()
+  if (index(['vim','help'], &filetype) >= 0)
+    tjump
+  else
+    lua vim.lsp.buf.definition()
+  endif
+endfunction
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -120,7 +129,7 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {"json", "yaml"},
   highlight = {
-    enable = true,
+    enable = true,  -- false will disable the whole extension
   },
 }
 EOF
@@ -221,6 +230,7 @@ autocmd  FileType fzf set laststatus=0 showtabline=0 noshowmode noruler
 " Nvim colorizer
 lua require'colorizer'.setup()
 
+let g:polyglot_disabled=['clojure', 'json', 'yaml']
 let g:AutoPairsShortcutToggle = ''
 let g:clojure_highlight_local_vars = 0
 let g:yats_host_keyword = 0
