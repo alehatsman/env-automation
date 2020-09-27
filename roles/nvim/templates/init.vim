@@ -115,6 +115,15 @@ endfunction
 
 " Treesitter
 
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = ["json", "yaml"],
+  highlight = {
+    enable = true,
+  },
+}
+EOF
+
 let g:AutoPairsFlyMode = 1
 
 let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
