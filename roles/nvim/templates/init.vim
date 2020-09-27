@@ -23,28 +23,31 @@ set nobackup
 set nowritebackup
 set undodir=~/.config/nvim/undodir
 " Terminal colors
-set termguicolors " use gui 24-bit colors, gui attrs instead of cterm
+set termguicolors          " use gui 24-bit colors, gui attrs instead of cterm
 set t_Co=256
 set background=light
 silent! colorscheme runo
 let g:runo_colorterm=0
 " Identation
-set autoindent " copy indent from current line when starting a new line
-set smarttab " <Tab> in front of a line inserts blanks according to 'shiftwidth'
-set expandtab " spaces instead of tabs
-set softtabstop=2 " the number of spaces to use when expanding tabs
-set shiftwidth=2 " the number of spaces to use when indenting -- or de-indenting -- a line
-set tabstop=2 " the number of spaces that a tab equates to
+set autoindent             " copy indent from current line when starting a new line
+set smarttab               " <Tab> in front of a line inserts blanks according to 'shiftwidth'
+set expandtab              " spaces instead of tabs
+set softtabstop=2          " the number of spaces to use when expanding tabs
+set shiftwidth=2           " the number of spaces to use when indenting -- or de-indenting -- a line
+set tabstop=2              " the number of spaces that a tab equates to
 " Folding
-set foldmethod=syntax " fold is defined by syntax
-set foldcolumn=1 " width of fold column
-set foldlevelstart=99 " don't close folds
+set foldmethod=syntax      " fold is defined by syntax
+set foldcolumn=1           " width of fold column
+set foldlevelstart=99      " don't close folds
+set colorcolumn=80
+
+let g:polyglot_disabled=['clojure']
 
 call plug#begin('{{ plug_path }}')
 Plug '~/.config/nvim/plugged/runo-color-scheme'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
+Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -69,24 +72,35 @@ Plug 'cocopon/colorswatch.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-lua/diagnostic-nvim'
 call plug#end()
 
 " LSP
 
 let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 inoremap <silent><expr> <C-space> completion#trigger_completion()
-set omnifunc=v:lua.vim.lsp.omnifunc
 set completeopt=menuone,noinsert,noselect
-
+let g:diagnostic_enable_underline = 1
+let g:diagnostic_insert_delay = 1
 lua << END
   local nvim_lsp = require'nvim_lsp'
-  local completion = require'completion'
+  local api = vim.api
 
-  nvim_lsp.tsserver.setup{on_attach=completion.on_attach}
-  nvim_lsp.clojure_lsp.setup{on_attach=completion.on_attach}
+  function on_attach(client, bufnr)
+    require'diagnostic'.on_attach()
+    require'completion'.on_attach()
+    api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  end
 
-  vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
+  nvim_lsp.tsserver.setup{on_attach=on_attach}
+  nvim_lsp.clojure_lsp.setup{on_attach=on_attach}
 END
+
+call sign_define("LspDiagnosticsErrorSign", {"text" : "•", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "•", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsInformationSign", {"text" : "•", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "•", "texthl" : "LspDiagnosticsHint"})
 
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
@@ -197,7 +211,6 @@ autocmd  FileType fzf set laststatus=0 showtabline=0 noshowmode noruler
 " Nvim colorizer
 lua require'colorizer'.setup()
 
-let g:polyglot_disabled=['clojure']
 let g:AutoPairsShortcutToggle = ''
 let g:clojure_highlight_local_vars = 0
 let g:yats_host_keyword = 0

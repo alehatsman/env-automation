@@ -207,7 +207,7 @@ if has('nvim')
   hi! link SpecialKey RunoRed
 
   hi! link LspDiagnosticsError RunoError
-  hi! link LspDiagnosticsErrorSign RunoError
+  hi! link LspDiagnosticsErrorSign RunoRed
   hi! link LspDiagnosticsErrorFloating RunoError
 
   hi! link LspDiagnosticsUnderline RunoFgUnderline

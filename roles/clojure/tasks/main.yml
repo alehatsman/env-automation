@@ -4,11 +4,6 @@
     path: ~/.lein
     state: directory
 
-- name: Create global user profile
-  template:
-    src: templates/.profile.clj.j2
-    dest: ~/.lein/profiles.clj
-
 - name: Make sure .clojure folder present
   file:
     path: ~/.clojure

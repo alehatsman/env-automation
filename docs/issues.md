@@ -7,3 +7,9 @@
 ### Fzf buffers
 
 * strange yellow color at the bottom of the screen
+
+### Ideas
+
+* file differ, json, yaml etc
+  * take source, format, sort keys, show diff
+* rewrite configuration for nvim in fennel
