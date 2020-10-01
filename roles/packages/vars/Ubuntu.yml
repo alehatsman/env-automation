@@ -40,3 +40,5 @@ apps:
 
   # Docker
   - docker
+
+  - lua5.1
