@@ -109,7 +109,7 @@ nnoremap <silent>K :call <SID>show_documentation()<CR>
 
 function! s:definition()
   if (index(['vim','help'], &filetype) >= 0)
-    tjump
+    execute 'tjump '.expand('<cword>')
   else
     lua vim.lsp.buf.definition()
   endif
