@@ -39,6 +39,7 @@ set tabstop=2              " the number of spaces that a tab equates to
 set foldmethod=syntax      " fold is defined by syntax
 set foldcolumn=1           " width of fold column
 set foldlevelstart=99      " don't close folds
+autocmd FileType nerdtree setlocal colorcolumn&
 set colorcolumn=80
 
 let g:polyglot_disabled=['clojure']
@@ -117,7 +118,7 @@ endfunction
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = ["json", "yaml"],
+  ensure_installed = {"json", "yaml"},
   highlight = {
     enable = true,
   },
