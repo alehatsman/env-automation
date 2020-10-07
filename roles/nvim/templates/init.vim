@@ -312,6 +312,7 @@ nmap <leader>gb :Gblame<CR>
 nmap <leader>gpr :Gpull -r<CR>
 nmap <leader>gl :GV!<CR>
 nmap <leader>gd :Gvdiffsplit<CR>
+nmap <leader>gm :Gvdiffsplit!<CR>
 
 " Navigation
 " go to the beginning of the line

@@ -8,13 +8,6 @@
   * https://github.com/cherryramatis/vim-sorcerer
   * https://github.com/liuchengxu/vim-better-default
 
-* rewrite provisioning in lua
-  * just fennel files with instructions
-  * create file
-  * create dir
-  * generate template
-  * execute shell
-
 * ubuntu install everything with nix
 
 https://fennel-lang.org/reference
