@@ -69,7 +69,7 @@ Plug 'vim-scripts/LargeFile'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim'
 Plug 'cocopon/colorswatch.vim'
-
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -287,6 +287,7 @@ nmap <leader>tt :tabnew<CR>
 nmap <leader>tp :tabprev<CR>
 nmap <leader>tn :tabnext<CR>
 nmap <leader>to :tabonly<CR>
+nmap <leader>tc :tabclose<CR>
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
