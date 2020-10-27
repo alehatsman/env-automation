@@ -9,6 +9,16 @@
     path: ~/.clojure
     state: directory
 
+- name: Make sure deps.edn present
+  template:
+    src: templates/deps.edn.j2
+    dest: ~/.clojure/deps.edn
+
+- name: Make sure rebel_readline.edn present
+  template:
+    src: templates/rebel_readline.edn.j2
+    dest: ~/.clojure/rebel_readline.edn
+
 - name: Make sure .clojure files generated
   template:
     src: '{{ item.src }}'

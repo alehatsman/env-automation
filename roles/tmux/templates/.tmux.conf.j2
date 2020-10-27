@@ -166,3 +166,29 @@ bind-key -n 'M-j' if-shell "$is_vim" 'send-keys M-j'  'resize-pane -D 3'
 bind-key -n 'M-k' if-shell "$is_vim" 'send-keys M-k'  'resize-pane -U 3'
 bind-key -n 'M-h' if-shell "$is_vim" 'send-keys M-h'  'resize-pane -L 3'
 bind-key -n 'M-l' if-shell "$is_vim" 'send-keys M-l'  'resize-pane -R 3'
+
+# Monokai is best theme.
+# Adapted from: https://github.com/ZachMassia/dotfiles/blob/master/tmux.conf
+
+# Monokai/Molokai hex colors.
+# http://www.colourlovers.com/lover/Monokai/colors
+#   cyan - #00b9d7
+#   gold/brown - #abaa98
+#   green - #82cdb9
+#   off-white #f5f5f5
+#   orange - #f37259
+#   pink  - #ff3d70
+#   pink/magenta - #f7208b
+#   yellow - #f9f5c2
+
+# Denote window activity
+set-window-option -g monitor-activity on
+set-window-option -g window-status-activity-attr none
+
+set -g status-style bg=colour237,fg=colour187,dim
+set -g window-status-style bg=colour237,fg=colour187,dim
+set -g window-status-current-style bg='#abaa98',fg='#000000',dim
+set -g pane-active-border-style bg='#101010',fg='#87d700'
+set -g pane-border-style bg='#101010',fg='#505050'
+set -g mode-style bg='#000000',fg=colour187
+set -g message-style bg='#000000',fg=colour187

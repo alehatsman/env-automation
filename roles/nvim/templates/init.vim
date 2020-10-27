@@ -74,6 +74,9 @@ Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-lua/diagnostic-nvim'
+
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'crusoexia/vim-monokai'
 call plug#end()
 
 let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup

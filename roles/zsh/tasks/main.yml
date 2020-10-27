@@ -27,7 +27,7 @@
     dest: ~/.ignore
 
 - name: Make sure to set brew zsh as default shell
-  shell:
+  shell: |
     dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
     chsh -s /usr/local/bin/zsh
     chsh -s $(which zsh) # Make sure to set zsh as default shell
