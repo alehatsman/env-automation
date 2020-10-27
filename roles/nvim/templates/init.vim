@@ -21,11 +21,10 @@ set nobackup               " don't create backup files
 set nowritebackup          " for more info see backup table
 set undodir=~/.config/nvim/undodir
 
+" Color
 set termguicolors          " use gui 24-bit colors, gui attrs instead of cterm
 set t_Co=256
-set background=light
-silent! colorscheme runo
-let g:runo_colorterm=0
+set background=dark
 
 " Identation
 set autoindent             " copy indent from current line when starting a new line
@@ -78,6 +77,9 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'crusoexia/vim-monokai'
 call plug#end()
 
+silent! colorscheme monokai
+silent! color monokai
+
 let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 inoremap <silent><expr> <C-space> completion#trigger_completion()
@@ -127,7 +129,10 @@ endfunction
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"json", "yaml"},
+  ensure_installed = {"all"},
+  ident = {
+    enable = true,
+  },
   highlight = {
     enable = true,  -- false will disable the whole extension
   },
@@ -179,7 +184,6 @@ let g:ale_python_auto_pipenv = 1
 let g:ale_completion_tsserver_autoimport = 1
 set signcolumn="yes:[1]"
 
-silent! color runo
 
 " ->> Autocomplete
 autocmd CompleteDone * pclose
