@@ -9,7 +9,7 @@
 
 - name: Make sure undo dir is present
   file:
-    path: '~/.config/nvim/undodir'
+    path: '{{ config_path }}/undodir'
     state: directory
 
 - name: Create directories

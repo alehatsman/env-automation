@@ -1,9 +1,8 @@
-syntax on
-filetype indent plugin on
-
-set nocompatible
-set fileformat=unix
-set langmenu=en_US
+syntax on                  " enable sytax highlight
+filetype indent plugin on  " enable loading of ident files
+set nocompatible           " nvim is nocompatible by default
+set fileformat=unix        " always use unix <EOL>
+set langmenu=en_US         " use en as language menu
 set hidden                 " be able to switch buffers without file save
 set showcmd                " shows command in the last line
 set nostartofline          " some command move to the first non-blank line
@@ -13,21 +12,21 @@ set exrc                   " enable project specific .nvimrc files
 set secure                 " disable write/shell commands in those files
 set splitbelow             " put the new window below the current one
 set splitright             " put the new window right of the current one
-set incsearch
+set incsearch              " search as you type
 set cursorline             " highlight current line
-set shortmess+=c           " Don't pass messages to |ins-completion-menu|.
+set shortmess+=c           " don't give completion messages
 set updatetime=50
-" Disable backup files
-set noswapfile
-set nobackup
-set nowritebackup
+set noswapfile             " don't create swap files
+set nobackup               " don't create backup files
+set nowritebackup          " for more info see backup table
 set undodir=~/.config/nvim/undodir
-" Terminal colors
+
 set termguicolors          " use gui 24-bit colors, gui attrs instead of cterm
 set t_Co=256
 set background=light
 silent! colorscheme runo
 let g:runo_colorterm=0
+
 " Identation
 set autoindent             " copy indent from current line when starting a new line
 set smarttab               " <Tab> in front of a line inserts blanks according to 'shiftwidth'
@@ -39,10 +38,11 @@ set tabstop=2              " the number of spaces that a tab equates to
 set foldmethod=syntax      " fold is defined by syntax
 set foldcolumn=1           " width of fold column
 set foldlevelstart=99      " don't close folds
-autocmd FileType nerdtree setlocal colorcolumn&
-set colorcolumn=80
+set colorcolumn=80         " visualize max line width
 
-let g:polyglot_disabled=['clojure']
+autocmd FileType nerdtree setlocal colorcolumn& " fixes colorcolumn with open nerdtree
+
+let g:polyglot_disabled=['clojure'] " disable clojure in favor of vim-clojure-static
 
 call plug#begin('{{ plug_path }}')
 Plug '~/.config/nvim/plugged/runo-color-scheme'
@@ -75,8 +75,6 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-lua/diagnostic-nvim'
 call plug#end()
-
-" LSP
 
 let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']

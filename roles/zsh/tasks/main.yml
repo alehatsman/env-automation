@@ -30,16 +30,7 @@
   shell:
     dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
     chsh -s /usr/local/bin/zsh
+    chsh -s $(which zsh) # Make sure to set zsh as default shell
+    compaudit | xargs chmod g-w # Make sure insecure dir problem fixed
   become: true
-  when: ansible_distribution == 'MacOSX'
-
-- name: Make sure to set zsh as default shell
-  shell:
-    chsh -s $(which zsh)
-  become: true
-  when: ansible_distribution != 'MacOSX'
-
-- name: Make sure insecure dir problem fixed
-  shell:
-    compaudit | xargs chmod g-w
   when: ansible_distribution == 'MacOSX'
