@@ -45,7 +45,6 @@ autocmd FileType nerdtree setlocal colorcolumn& " fixes colorcolumn with open ne
 let g:polyglot_disabled=['clojure'] " disable clojure in favor of vim-clojure-static
 
 call plug#begin('{{ plug_path }}')
-Plug '~/.config/nvim/plugged/runo-color-scheme'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
