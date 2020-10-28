@@ -1,89 +1,82 @@
 {
-    "$schema": "https://aka.ms/terminal-profiles-schema",
-
-    "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-
-    "copyOnSelect": false,
-
-    "copyFormatting": false,
-    
-    "profiles": {
-        "defaults": {
-            "fontFace": "JetBrains Mono",
-            "fontSize": 12,
-            "colorScheme": "Monokai",
-            "cursorShape": "filledBox"
-        },
-        "list":
-        [
-            {
-                // Make changes here to the powershell.exe profile.
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "name": "Windows PowerShell",
-                "commandline": "powershell.exe",
-                "hidden": false
-            },
-            {
-                // Make changes here to the cmd.exe profile.
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "name": "Command Prompt",
-                "commandline": "cmd.exe",
-                "hidden": false
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
-                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
-                "hidden": false,
-                "name": "Arch",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "guid": "{f4356e75-9cdf-5558-95f2-bc47899ab780}",
-                "hidden": false,
-                "name": "Arch_Linux",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-                "hidden": false,
-                "name": "Ubuntu-20.04",
-                "source": "Windows.Terminal.Wsl"
-            }
-        ]
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+  "copyOnSelect": false,
+  "copyFormatting": false,
+  "alwaysShowTabs": false,
+  "profiles": {
+    "defaults": {
+      "fontFace": "JetBrains Mono",
+      "fontSize": 12,
+      "colorScheme": "Monokai",
+      "cursorShape": "filledBox",
     },
-
-    "schemes": [
-        {
-            "name": "Monokai",
-            "black": "#272822",
-            "red": "#F92672",
-            "green": "#A6E22E",
-            "yellow": "#F4BF75",
-            "blue": "#66D9EF",
-            "purple": "#AE81FF",
-            "cyan": "#A1EFE4",
-            "white": "#F8F8F2",
-            "brightBlack": "#75715E",
-            "brightRed": "#F92672",
-            "brightGreen": "#A6E22E",
-            "brightYellow": "#FFBC5D",
-            "brightBlue": "#66D9EF",
-            "brightPurple": "#AE81FF",
-            "brightCyan": "#A1EFE4",
-            "brightWhite": "#F9F8F5",
-            "background": "#272822",
-            "foreground": "#F8F8F2",
-            "cursorColor": "#616363"
-        }
-    ],
-
-    "keybindings": [
-        { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
-        { "command": "paste", "keys": "ctrl+v" }
+    "list": [
+      {
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "name": "Windows PowerShell",
+        "commandline": "powershell.exe",
+        "hidden": false
+      },
+      {
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "name": "Command Prompt",
+        "commandline": "cmd.exe",
+        "hidden": false
+      },
+      {
+        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+        "hidden": false,
+        "name": "Azure Cloud Shell",
+        "source": "Windows.Terminal.Azure"
+      },
+      {
+        "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+        "hidden": false,
+        "name": "Arch",
+        "source": "Windows.Terminal.Wsl"
+      },
+      {
+        "guid": "{f4356e75-9cdf-5558-95f2-bc47899ab780}",
+        "hidden": false,
+        "name": "Arch_Linux",
+        "source": "Windows.Terminal.Wsl"
+      },
+      {
+        "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+        "hidden": false,
+        "name": "Ubuntu-20.04",
+        "source": "Windows.Terminal.Wsl"
+      }
     ]
+  },
+
+  "schemes": [{
+    "name": "Monokai",
+    "black": "#272822",
+    "red": "#F92672",
+    "green": "#A6E22E",
+    "yellow": "#F4BF75",
+    "blue": "#66D9EF",
+    "purple": "#AE81FF",
+    "cyan": "#A1EFE4",
+    "white": "#F8F8F2",
+    "brightBlack": "#75715E",
+    "brightRed": "#F92672",
+    "brightGreen": "#A6E22E",
+    "brightYellow": "#FFBC5D",
+    "brightBlue": "#66D9EF",
+    "brightPurple": "#AE81FF",
+    "brightCyan": "#A1EFE4",
+    "brightWhite": "#F9F8F5",
+    "background": "#272822",
+    "foreground": "#F8F8F2",
+    "cursorColor": "#616363",
+  }],
+
+  "keybindings": [
+    { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+    { "command": "paste", "keys": "ctrl+v" },
+    { "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+d" }
+  ]
 }
