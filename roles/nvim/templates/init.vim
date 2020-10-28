@@ -37,7 +37,7 @@ set tabstop=2              " the number of spaces that a tab equates to
 " Folding
 set foldmethod=expr        " fold is defined by treesiter expressions
 set foldexpr=nvim_treesitter#foldexpr()
-set foldcolumn=1           " width of fold column
+set foldcolumn=0           " width of fold column
 set foldlevelstart=99      " don't close folds
 set colorcolumn=80         " visualize max line width
 
