@@ -97,7 +97,7 @@ alias e="$EDITOR"
 alias sed=gsed
 {% endif %}
 
-alias cat=bat
+alias cat="bat --theme bat"
 alias ls=exa
 
 alias l="ls -1"
@@ -339,4 +339,4 @@ export FZF_DEFAULT_OPTS='
   --color info:144,prompt:161,spinner:135,pointer:135,marker:118
 '
 
-export FZF_PREVIEW_COMMAND='bat --color=never {}'
+export FZF_PREVIEW_COMMAND='cat {}'

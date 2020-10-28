@@ -42,3 +42,7 @@ apps:
   - docker
 
   - lua5.1
+
+cargo:
+  - exa
+  - bat

@@ -40,13 +40,9 @@ run '{{ tmux_path }}/plugins/tpm/tpm'
 set-option -g default-shell $SHELL
 {% endif %}
 
-# fix terminal colors
 set -g default-terminal "screen-256color" # colors!
 # tell Tmux that outside terminal supports true color
 set -ga terminal-overrides ",xterm-256color*:Tc"
-
-# change color of session selection line
-set -wg mode-style bg={{ colors.gray.2 }},fg={{ colors.black.2}}
 
 set-option -sg escape-time 0
 
@@ -74,17 +70,8 @@ set -g renumber-windows on
 setw -g status-left ""
 setw -g status-right ""
 
-# active session selection
-set -wg mode-style bg={{ colors.gray.1 }},fg={{ colors.black.2 }}
-
 setw -g window-status-format " #I: #W "
 setw -g window-status-current-format " #I: #W "
-
-setw -g status-fg "{{ colors.gray.1 }}"
-setw -g status-bg "{{ colors.black.3 }}"
-
-set -g window-status-style fg="{{ colors.gray.1 }}",bg="{{ colors.black.3 }}"
-set -g window-status-current-style fg="{{ colors.black.3 }}",bg="{{ colors.gray.1 }}"
 
 #---------------------------------------------
 # Bindings

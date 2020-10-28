@@ -41,8 +41,6 @@ set colorcolumn=80         " visualize max line width
 
 autocmd FileType nerdtree setlocal colorcolumn& " fixes colorcolumn with open nerdtree
 
-let g:polyglot_disabled=['clojure'] " disable clojure in favor of vim-clojure-static
-
 call plug#begin('{{ plug_path }}')
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
@@ -57,7 +55,7 @@ Plug 'mbbill/undotree'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'Olical/conjure', {'tag': 'v4.3.1'}
@@ -68,10 +66,16 @@ Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim'
 Plug 'cocopon/colorswatch.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-lua/diagnostic-nvim'
+
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'romgrk/nvim-treesitter-context'
 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'crusoexia/vim-monokai'
@@ -141,7 +145,7 @@ EOF
 
 let g:AutoPairsFlyMode = 1
 
-let g:indentLine_color_gui = '{{ colors.gray.0 }}' " set color of identation symbols |
+let g:indentLine_color_gui = '#abaa98' " set color of identation symbols |
 let g:indentLine_fileTypeExclude = ['json', 'markdown']
 
 let g:ale_enabled=1
