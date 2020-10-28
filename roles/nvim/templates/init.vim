@@ -33,8 +33,10 @@ set expandtab              " spaces instead of tabs
 set softtabstop=2          " the number of spaces to use when expanding tabs
 set shiftwidth=2           " the number of spaces to use when indenting -- or de-indenting -- a line
 set tabstop=2              " the number of spaces that a tab equates to
+
 " Folding
-set foldmethod=syntax      " fold is defined by syntax
+set foldmethod=expr        " fold is defined by treesiter expressions
+set foldexpr=nvim_treesitter#foldexpr()
 set foldcolumn=1           " width of fold column
 set foldlevelstart=99      " don't close folds
 set colorcolumn=80         " visualize max line width

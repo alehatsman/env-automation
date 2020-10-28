@@ -97,7 +97,7 @@ alias e="$EDITOR"
 alias sed=gsed
 {% endif %}
 
-alias cat="bat --theme bat"
+alias cat="bat --theme Monokai Extended Origin"
 alias ls=exa
 
 alias l="ls -1"
@@ -335,8 +335,8 @@ PROMPT+='%f%b'
 
 # Monokai
 export FZF_DEFAULT_OPTS='
-  --color fg:252,bg:233,hl:67,fg+:252,bg+:235,hl+:81
+  --color fg:#F8F8F2,bg:#272822,hl:67,fg+:252,bg+:235,hl+:81
   --color info:144,prompt:161,spinner:135,pointer:135,marker:118
 '
 
-export FZF_PREVIEW_COMMAND='cat {}'
+export FZF_PREVIEW_COMMAND='bat --theme Monokai Extended Origin {}'
