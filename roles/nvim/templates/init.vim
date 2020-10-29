@@ -1,3 +1,6 @@
+"---------------------------------------------
+" General configuration
+"---------------------------------------------
 syntax on                  " enable sytax highlight
 filetype indent plugin on  " enable loading of ident files
 set nocompatible           " nvim is nocompatible by default
@@ -19,7 +22,9 @@ set updatetime=50
 set noswapfile             " don't create swap files
 set nobackup               " don't create backup files
 set nowritebackup          " for more info see backup table
+set signcolumn="yes:[1]"   " always show sign column
 set undodir=~/.config/nvim/undodir
+set completeopt=menuone,noinsert,noselect
 
 " Color
 set termguicolors          " use gui 24-bit colors, gui attrs instead of cterm
@@ -41,8 +46,16 @@ set foldcolumn=0           " width of fold column
 set foldlevelstart=99      " don't close folds
 set colorcolumn=80         " visualize max line width
 
-autocmd FileType nerdtree setlocal colorcolumn& " fixes colorcolumn with open nerdtree
+let g:AutoPairsFlyMode = 1
+let g:indentLine_color_gui = '#abaa98' " set color of identation symbols |
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
 
+let mapleader="\<space>"
+let maplocalleader="\<tab>"
+
+"---------------------------------------------
+" Plugins
+"---------------------------------------------
 call plug#begin('{{ plug_path }}')
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
@@ -67,6 +80,7 @@ Plug 'vim-scripts/LargeFile'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim'
 Plug 'cocopon/colorswatch.vim'
+Plug 'crusoexia/vim-monokai'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 Plug 'neovim/nvim-lsp'
@@ -81,25 +95,14 @@ Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'romgrk/nvim-treesitter-context'
 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'crusoexia/vim-monokai'
 call plug#end()
 
 silent! colorscheme monokai
 silent! color monokai
 
-let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-inoremap <silent><expr> <C-space> completion#trigger_completion()
-set completeopt=menuone,noinsert,noselect
-
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_trimmed_virtual_text = '40'
-let g:diagnostic_enable_underline = 1
-let g:diagnostic_insert_delay = 1
-autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
-nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
-nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
-
+"---------------------------------------------
+" Language Server Protocol
+"---------------------------------------------
 lua << END
   local nvim_lsp = require'nvim_lsp'
   local api = vim.api
@@ -114,6 +117,23 @@ lua << END
   nvim_lsp.clojure_lsp.setup{on_attach=on_attach}
   nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
 END
+
+" autocomplete
+let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+" remap ctrl-x ctrl-o to ctrl space
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+inoremap <silent><expr> <C-space> completion#trigger_completion()
+
+autocmd CompleteDone * pclose
+
+" diagnostics
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_trimmed_virtual_text = '40'
+let g:diagnostic_enable_underline = 1
+let g:diagnostic_insert_delay = 1
 
 call sign_define("LspDiagnosticsErrorSign", {"text" : "•", "texthl" : "LspDiagnosticsError"})
 call sign_define("LspDiagnosticsWarningSign", {"text" : "•", "texthl" : "LspDiagnosticsWarning"})
@@ -132,6 +152,10 @@ nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent>gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
+nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+nnoremap <silent> sd <cmd>lua vim.lsp.util.show_line_diagnostics()<cr>
+
 function! s:definition()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'tjump '.expand('<cword>')
@@ -148,28 +172,25 @@ function! s:show_documentation()
   endif
 endfunction
 
+"---------------------------------------------
 " Treesitter
-
+"---------------------------------------------
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
-  ident = {
-    enable = true,
-  },
-  highlight = {
-    enable = true,  -- false will disable the whole extension
-  },
-}
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "maintained",
+    ident = {
+      enable = true,
+    },
+    highlight = {
+      enable = true,  -- false will disable the whole extension
+    },
+  }
 EOF
 
-let g:AutoPairsFlyMode = 1
-
-let g:indentLine_color_gui = '#abaa98' " set color of identation symbols |
-let g:indentLine_fileTypeExclude = ['json', 'markdown']
-
+"---------------------------------------------
+" Ale linter
+"---------------------------------------------
 let g:ale_enabled=1
-
-" ->> Ale
 let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
 \   'typescriptreact': ['eslint', 'tsserver'],
@@ -205,11 +226,6 @@ let g:ale_sign_offset = 1000000
 let g:ale_sign_warning = '•'
 let g:ale_python_auto_pipenv = 1
 let g:ale_completion_tsserver_autoimport = 1
-set signcolumn="yes:[1]"
-
-
-" ->> Autocomplete
-autocmd CompleteDone * pclose
 
 "---------------------------------------------
 " Python provider
@@ -225,11 +241,21 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 
+"---------------------------------------------
 " Nerd tree
-let NERDTreeShowHidden=1 " show hidden files
+"---------------------------------------------
+let g:NERDTreeShowHidden=1 " show hidden files
 let g:NERDTreeAutoDeleteBuffer = 1 " delete buffer when delete file
+let g:NERDTreeMinimalUI=1
 
-" Airline options for tabs
+nmap <leader>fe :NERDTreeToggle<cr>
+nmap <leader>ff :NERDTreeFind<cr>
+
+autocmd FileType nerdtree setlocal colorcolumn& " fixes colorcolumn with open nerdtree
+
+"---------------------------------------------
+" Airline
+"---------------------------------------------
 let g:airline_section_c = '%t'
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#hunks#enabled=0
@@ -243,7 +269,9 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_count = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
-" Fzf
+"---------------------------------------------
+" FZF
+"---------------------------------------------
 nmap <c-p> :Files<cr>
 nmap <c-b> :Buffers<cr>
 nmap <c-f> :Rg<cr>
@@ -260,14 +288,10 @@ lua require'colorizer'.setup()
 let g:polyglot_disabled=['clojure', 'json', 'yaml']
 let g:AutoPairsShortcutToggle = ''
 let g:clojure_highlight_local_vars = 0
-let g:yats_host_keyword = 0
-let g:vim_jsx_pretty_enable_jsx_highlight=0
 
 "---------------------------------------------
 " Mappings
 "---------------------------------------------
-let mapleader="\<space>"
-let maplocalleader="\<tab>"
 
 " File test
 function! g:CopyFilepathToClipboard()
@@ -285,20 +309,6 @@ endfunction
 nmap <leader>cfn :call g:CopyFilenameToClipboard()<CR>
 nmap <leader>cfp :call g:CopyFilepathToClipboard()<CR>
 
-" Autocomplete
-
-" Remap ctrl-x ctrl-o to ctrl space
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
-
-" Nerd tree
-let NERDTreeMinimalUI=1
-
-" open / close nerd tree
-nmap <leader>fe :NERDTreeToggle<cr>
-" find current file in nerdtree
-nmap <leader>ff :NERDTreeFind<cr>
-
 " Splits
 nmap <c-h> <c-w>h
 nmap <c-j> <c-w>j
@@ -315,6 +325,7 @@ nmap <leader>tn :tabnext<CR>
 nmap <leader>to :tabonly<CR>
 nmap <leader>tc :tabclose<CR>
 
+" Space 1 -> focus tab 1
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
