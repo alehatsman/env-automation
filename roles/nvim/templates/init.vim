@@ -70,6 +70,7 @@ Plug 'cocopon/colorswatch.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 Plug 'neovim/nvim-lsp'
+Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 
@@ -90,8 +91,15 @@ let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 inoremap <silent><expr> <C-space> completion#trigger_completion()
 set completeopt=menuone,noinsert,noselect
+
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_trimmed_virtual_text = '40'
 let g:diagnostic_enable_underline = 1
 let g:diagnostic_insert_delay = 1
+autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+
 lua << END
   local nvim_lsp = require'nvim_lsp'
   local api = vim.api
@@ -104,6 +112,7 @@ lua << END
 
   nvim_lsp.tsserver.setup{on_attach=on_attach}
   nvim_lsp.clojure_lsp.setup{on_attach=on_attach}
+  nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
 END
 
 call sign_define("LspDiagnosticsErrorSign", {"text" : "•", "texthl" : "LspDiagnosticsError"})
@@ -114,6 +123,14 @@ call sign_define("LspDiagnosticsHintSign", {"text" : "•", "texthl" : "LspDiagn
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent><c-]> :call <SID>definition()<CR>
 nnoremap <silent>K :call <SID>show_documentation()<CR>
+
+nnoremap <silent>ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent>gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent><c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent>1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent>g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent>gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 function! s:definition()
   if (index(['vim','help'], &filetype) >= 0)
