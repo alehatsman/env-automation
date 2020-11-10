@@ -2,6 +2,8 @@
 
 ## Todo list
 
+* new tab in the end
+
 * nvim config into fennel
   * https://github.com/Olical/conjure
   * https://github.com/nanotee/nvim-lua-guide
