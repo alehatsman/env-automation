@@ -6,7 +6,7 @@
   "alwaysShowTabs": false,
   "profiles": {
     "defaults": {
-      "fontFace": "JetBrains Mono",
+      "fontFace": "JetBrains Mono NL",
       "fontSize": 12,
       "colorScheme": "Monokai",
       "cursorShape": "filledBox",

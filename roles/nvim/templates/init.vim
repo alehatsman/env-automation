@@ -83,7 +83,7 @@ Plug 'cocopon/colorswatch.vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
