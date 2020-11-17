@@ -59,7 +59,7 @@ let maplocalleader="\<tab>"
 call plug#begin('{{ plug_path }}')
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -104,7 +104,7 @@ silent! color monokai
 " Language Server Protocol
 "---------------------------------------------
 lua << END
-  local nvim_lsp = require'nvim_lsp'
+  local lspconfig = require'lspconfig'
   local api = vim.api
 
   function on_attach(client, bufnr)
@@ -113,9 +113,9 @@ lua << END
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   end
 
-  nvim_lsp.tsserver.setup{on_attach=on_attach}
-  nvim_lsp.clojure_lsp.setup{on_attach=on_attach}
-  nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
+  lspconfig.tsserver.setup{on_attach=on_attach}
+  lspconfig.clojure_lsp.setup{on_attach=on_attach}
+  lspconfig.rust_analyzer.setup{on_attach=on_attach}
 END
 
 " autocomplete
