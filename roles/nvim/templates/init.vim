@@ -71,7 +71,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 " Plug 'sheerun/vim-polyglot'
-Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
+" Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'Olical/conjure', {'tag': 'v4.3.1'}
 Plug 'tpope/vim-fugitive'
@@ -86,7 +86,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
@@ -107,8 +106,15 @@ lua << END
   local lspconfig = require'lspconfig'
   local api = vim.api
 
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = true,
+      signs = true,
+      update_in_insert = false,
+    }
+  )
+
   function on_attach(client, bufnr)
-    require'diagnostic'.on_attach()
     require'completion'.on_attach()
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   end
