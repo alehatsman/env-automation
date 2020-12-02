@@ -70,8 +70,6 @@ Plug 'mbbill/undotree'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-" Plug 'sheerun/vim-polyglot'
-" Plug 'atsman/vim-clojure-static', { 'for': 'clojure' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'Olical/conjure', {'tag': 'v4.3.1'}
 Plug 'tpope/vim-fugitive'
@@ -87,7 +85,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
@@ -115,7 +113,7 @@ lua << END
   )
 
   function on_attach(client, bufnr)
-    require'completion'.on_attach()
+    require'completion'.on_attach(client, bufnr)
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   end
 
@@ -136,11 +134,6 @@ inoremap <silent><expr> <C-space> completion#trigger_completion()
 autocmd CompleteDone * pclose
 
 " diagnostics
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_trimmed_virtual_text = '40'
-let g:diagnostic_enable_underline = 1
-let g:diagnostic_insert_delay = 1
-
 call sign_define("LspDiagnosticsErrorSign", {"text" : "•", "texthl" : "LspDiagnosticsError"})
 call sign_define("LspDiagnosticsWarningSign", {"text" : "•", "texthl" : "LspDiagnosticsWarning"})
 call sign_define("LspDiagnosticsInformationSign", {"text" : "•", "texthl" : "LspDiagnosticsInformation"})
@@ -182,13 +175,14 @@ endfunction
 " Treesitter
 "---------------------------------------------
 lua <<EOF
+  require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained",
     ident = {
       enable = true,
     },
     highlight = {
-      enable = true,  -- false will disable the whole extension
+      enable = true,
     },
   }
 EOF
