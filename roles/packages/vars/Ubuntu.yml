@@ -46,3 +46,4 @@ apps:
 cargo:
   - exa
   - bat
+  - delta

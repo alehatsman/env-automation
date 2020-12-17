@@ -7,7 +7,7 @@ taps:
   - wata727/tflint
   - borkdude/brew
   - wagoodman/dive
-  - AdoptOpenJDK/openjdk 
+  - AdoptOpenJDK/openjdk
 
 apps:
   - ansible
@@ -25,6 +25,7 @@ apps:
   - gnu-sed
   - graphviz
   - git
+  - git-delta
   - htop
   - hub
   - imagemagick
