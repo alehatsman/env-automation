@@ -170,7 +170,7 @@ bind-key -n 'M-l' if-shell "$is_vim" 'send-keys M-l'  'resize-pane -R 3'
 
 # Denote window activity
 set-window-option -g monitor-activity on
-set-window-option -g window-status-activity-attr none
+setw -g window-status-activity none
 
 set -g status-style bg=colour237,fg=colour187,dim
 set -g window-status-style bg=colour237,fg=colour187,dim
