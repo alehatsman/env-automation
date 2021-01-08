@@ -19,3 +19,6 @@
   guitool = vimdiff
 [difftool "vimdiff"]
   trustExitCode = false
+[credential]
+    helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
+    UseHttpPath = true
