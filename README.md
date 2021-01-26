@@ -2,7 +2,7 @@
 
 # Development Environment Automation
 
-My lovely developer enviroment. 
+My lovely developer enviroment.
 
 ## Installation
 

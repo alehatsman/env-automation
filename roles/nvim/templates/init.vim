@@ -69,21 +69,22 @@ Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'Olical/conjure', {'tag': 'v4.3.1'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
 Plug 'cocopon/colorswatch.vim'
 Plug 'crusoexia/vim-monokai'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
+Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
@@ -111,6 +112,7 @@ lua << END
       update_in_insert = false,
     }
   )
+  vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 
   function on_attach(client, bufnr)
     require'completion'.on_attach(client, bufnr)
@@ -175,7 +177,7 @@ endfunction
 " Treesitter
 "---------------------------------------------
 lua <<EOF
-  require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
+  require "nvim-treesitter.parsers".get_parser_configs().markdown = {}
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained",
     ident = {
