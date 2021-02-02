@@ -23,6 +23,7 @@ set noswapfile             " don't create swap files
 set nobackup               " don't create backup files
 set nowritebackup          " for more info see backup table
 set signcolumn="yes:[1]"   " always show sign column
+set noshowmode             " hide --INSERT--
 set undodir=~/.config/nvim/undodir
 set completeopt=menuone,noinsert,noselect
 
@@ -59,7 +60,7 @@ let maplocalleader="\<tab>"
 call plug#begin('{{ plug_path }}')
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -71,7 +72,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
-Plug 'Olical/conjure', {'tag': 'v4.3.1'}
+Plug 'Olical/conjure', {'tag': 'v4.13.0'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/LargeFile'
@@ -79,12 +80,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
 Plug 'cocopon/colorswatch.vim'
 Plug 'crusoexia/vim-monokai'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
-Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
@@ -254,22 +254,6 @@ nmap <leader>fe :NERDTreeToggle<cr>
 nmap <leader>ff :NERDTreeFind<cr>
 
 autocmd FileType nerdtree setlocal colorcolumn& " fixes colorcolumn with open nerdtree
-
-"---------------------------------------------
-" Airline
-"---------------------------------------------
-let g:airline_section_c = '%t'
-let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#tabs_label = ''
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_tab_count = 0
-let g:airline#extensions#tabline#show_close_button = 0
 
 "---------------------------------------------
 " FZF
