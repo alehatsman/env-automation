@@ -256,6 +256,14 @@ nmap <leader>ff :NERDTreeFind<cr>
 autocmd FileType nerdtree setlocal colorcolumn& " fixes colorcolumn with open nerdtree
 
 "---------------------------------------------
+" Lightline
+"---------------------------------------------
+let g:lightline = {}
+let g:lightline.tabline = {
+ \ 'left': [ ['tabs'] ],
+ \ 'right': [ [] ] }
+
+"---------------------------------------------
 " FZF
 "---------------------------------------------
 nmap <c-p> :Files<cr>
