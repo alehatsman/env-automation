@@ -81,6 +81,7 @@ Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
 Plug 'cocopon/colorswatch.vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
@@ -112,7 +113,7 @@ lua << END
       update_in_insert = false,
     }
   )
-  vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
   function on_attach(client, bufnr)
     require'completion'.on_attach(client, bufnr)
