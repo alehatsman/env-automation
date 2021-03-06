@@ -129,6 +129,7 @@ END
 let g:completion_enable_auto_popup = 0 " disable automatic autocomplete popup
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
+
 " remap ctrl-x ctrl-o to ctrl space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
@@ -348,25 +349,4 @@ nmap <leader>gl :GV!<CR>
 nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gm :Gvdiffsplit!<CR>
 
-" Navigation
-" go to the beginning of the line
-nmap H ^
-" go to the end of the line
-nmap L g_
-
-vnoremap <silent> <leader>s :'<,'>sort<cr>
-
-" Dispay syntax tree
-map <leader>sx :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-map <leader>tx :echo nvim_treesitter#statusline(90)<CR>
-
-nmap <leader>u :UndotreeShow<CR>
-
 autocmd BufRead,BufNewFile *.mdx set filetype=markdown
-
-" Clojure
-nnoremap <leader>pb :Piggieback (figwheel.main.api/repl-env "dev")
-
-nnoremap <leader>wm :Goyo<CR>

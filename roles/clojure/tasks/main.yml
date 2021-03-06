@@ -9,6 +9,11 @@
     path: ~/.clojure
     state: directory
 
+- name: Make sure .m2 folder present
+  file:
+    path: ~/.m2
+    state: directory
+
 - name: Make sure deps.edn present
   template:
     src: templates/deps.edn.j2
@@ -18,6 +23,11 @@
   template:
     src: templates/rebel_readline.edn.j2
     dest: ~/.clojure/rebel_readline.edn
+
+- name: Make sure settings xl present
+  template:
+    src: template/settings.xml
+    dest: ~/.m2/settings.xml
 
 - name: Make sure .clojure files generated
   template:

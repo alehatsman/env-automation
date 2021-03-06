@@ -1,0 +1,9 @@
+<settings>
+  <servers>
+    <server>
+       <id>cognitect-dev-tools</id>
+       <username>aleh.atsman@gmail.com</username>
+       <password>{{ cognitec_dev_tools_password }}</password>
+    </server>
+  </servers>
+</settings>
