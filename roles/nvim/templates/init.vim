@@ -120,6 +120,15 @@ lua << END
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   end
 
+  local python_venv = require('my_python_venv')
+  python_venv.get_python_venv_path(function(venv_path)
+    lspconfig.pyls.setup{
+      cmd = {venv_path .. "/bin/pyls"},
+      on_attach=on_attach
+    }
+  end)
+
+  lspconfig.pyls.setup{on_attach=on_attach}
   lspconfig.tsserver.setup{on_attach=on_attach}
   lspconfig.clojure_lsp.setup{on_attach=on_attach}
   lspconfig.rust_analyzer.setup{on_attach=on_attach}
@@ -194,7 +203,7 @@ EOF
 "---------------------------------------------
 " Ale linter
 "---------------------------------------------
-let g:ale_enabled=1
+let g:ale_enabled = 1
 let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
 \   'typescriptreact': ['eslint', 'tsserver'],
