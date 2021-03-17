@@ -86,20 +86,21 @@ bind-key C-t send-prefix
 bind r source-file {{ tmux_config_path }} \; display-message "{{ tmux_config_path }} reloaded"
 
 # split window vertically
-bind | split-window -h -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
+bind s split-window -v -c "#{pane_current_path}"
 
-# split window horizontally
-bind - split-window -v -c "#{pane_current_path}"
 unbind '"'
 unbind %
+
+bind w choose-session
 
 #---------------------------------------------
 # Panes
 #---------------------------------------------
 
 # move pane left and right
-bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
-bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
+bind-key -n S-Left swap-window -t -1\; select-window -t -1
+bind-key -n S-Right swap-window -t +1\; select-window -t +1
 
 # create new pane
 bind c new-window -c '#{pane_current_path}'
