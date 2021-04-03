@@ -359,3 +359,5 @@ nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gm :Gvdiffsplit!<CR>
 
 autocmd BufRead,BufNewFile *.mdx set filetype=markdown
+
+command! -nargs=1 -complete=file Vdiffsplit vertical diffsplit <args>
