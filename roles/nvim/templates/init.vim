@@ -243,16 +243,16 @@ let g:ale_completion_tsserver_autoimport = 1
 "---------------------------------------------
 " Python provider
 "---------------------------------------------
-let g:python_host_prog = '{{ python_venv_path | expanduser }}/bin/python'
-let g:python3_host_prog = '{{ python3_venv_path | expanduser }}/bin/python'
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+"let g:python_host_prog = '{{ python_venv_path | expanduser }}/bin/python'
+"let g:python3_host_prog = '{{ python3_venv_path | expanduser }}/bin/python'
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+  "project_base_dir = os.environ['VIRTUAL_ENV']
+  "activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  "execfile(activate_this, dict(__file__=activate_this))
+"EOF
 
 "---------------------------------------------
 " Nerd tree
@@ -280,6 +280,7 @@ let g:lightline.tabline = {
 nmap <c-p> :Files<cr>
 nmap <c-b> :Buffers<cr>
 nmap <c-f> :Rg<cr>
+nmap <c-h> :Help<cr>
 
 command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=never --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
@@ -354,7 +355,7 @@ nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Gpush<CR>
 nmap <leader>gb :Gblame<CR>
 nmap <leader>gpr :Gpull -r<CR>
-nmap <leader>gl :GV!<CR>
+nmap <leader>gl :Glog -- %<CR>
 nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gm :Gvdiffsplit!<CR>
 

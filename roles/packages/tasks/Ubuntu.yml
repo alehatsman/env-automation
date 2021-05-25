@@ -1,4 +1,9 @@
 ---
+- name: Make sure keys are updated
+  shell:
+    apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
+  become: true
+
 - name: Make sure apt packages are installed
   apt:
     name: '{{ apps }}'
