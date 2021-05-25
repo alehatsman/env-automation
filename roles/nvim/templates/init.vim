@@ -188,9 +188,9 @@ endfunction
 " Treesitter
 "---------------------------------------------
 lua <<EOF
-  require "nvim-treesitter.parsers".get_parser_configs().markdown = {}
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained",
+    ignore_install = { "markdown" },
     ident = {
       enable = true,
     },
