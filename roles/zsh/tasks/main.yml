@@ -3,13 +3,13 @@
   include_vars:
     file: "{{ ansible_distribution }}.yml"
 
-- name: Make sure zplug is installed
-  shell: |
-    if [ ! -d ~/.zplug ];
-    then
-      curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-    fi
-  skip: true
+#- name: Make sure zplug is installed
+  #shell: |
+    #if [ ! -d ~/.zplug ];
+    #then
+      #curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    #fi
+  #skip: true
 
 - name: Make sure directories are present
   file:

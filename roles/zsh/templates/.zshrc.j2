@@ -255,24 +255,14 @@ upsearch() {
 # fzf_npm_script - opens fzf for npm script
 # selection. Prints selected script back
 _fzf_npm_script() {
-  local npm_script
-  npm_script=$(cat ./package.json | jq -r '.scripts | keys | .[]' | fzf)
-  echo "$npm_script"
-}
-
-_run_npm_script() {
   if [[ ! -f './package.json' ]]; then
     echo "no package.json file!"
     return 0
   fi
 
   local npm_script
-  npm_script=$(_fzf_npm_script)
-  if [ -z "$npm_script" ]; then
-    return 0
-  fi
-  echo "$1 run $npm_script"
-  "$1" run "$npm_script"
+  npm_script=$(cat ./package.json | jq -r '.scripts | keys | .[]' | fzf)
+  echo "$npm_script"
 }
 
 _get_npm_client() {
@@ -293,7 +283,32 @@ _get_npm_client() {
 # Opens fzf with list of available scripts
 # runs selected script
 nr() {
-  _run_npm_script $(_get_npm_client)
+  local npm_client
+  npm_client = $(_get_npm_client)
+  if [ -z "$npm_client" ]; then
+    echo "no package-lock.json or yarn.lock"
+    return 0
+  fi
+
+  local npm_script
+  npm_script=$(_fzf_npm_script)
+  if [ -z "$npm_script" ]; then
+    return 0
+  fi
+  echo "$1 run $npm_script"
+  "$1" run "$npm_script"
+}
+
+ni() {
+  local npm_client
+  npm_client=$(_get_npm_client)
+  if [ -z "$npm_client" ]; then
+    echo "no package-lock.json or yarn.lock"
+    return 0
+  fi
+
+  echo "$npm_client" install
+  "$npm_client" install
 }
 
 npm_uninstall_globals() {
