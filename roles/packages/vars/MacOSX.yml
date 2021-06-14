@@ -80,6 +80,8 @@ apps:
   # Zsh
   - zsh
 
+  - xsv
+
 cask_apps:
   - adobe-acrobat-reader
   - alacritty

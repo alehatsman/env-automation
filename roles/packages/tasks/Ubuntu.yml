@@ -10,3 +10,8 @@
     state: latest
     update_cache: true
   become: true
+
+- name: Make sure all cargo deps are installed
+  shell:
+    cargo install {{ item }}
+  with_items: '{{ cargo }}'
