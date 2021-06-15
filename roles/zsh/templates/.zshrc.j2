@@ -284,7 +284,7 @@ _get_npm_client() {
 # runs selected script
 nr() {
   local npm_client
-  npm_client = $(_get_npm_client)
+  npm_client=$(_get_npm_client)
   if [ -z "$npm_client" ]; then
     echo "no package-lock.json or yarn.lock"
     return 0
@@ -295,8 +295,8 @@ nr() {
   if [ -z "$npm_script" ]; then
     return 0
   fi
-  echo "$1 run $npm_script"
-  "$1" run "$npm_script"
+  echo "$npm_client run $npm_script"
+  "$npm_client" run "$npm_script"
 }
 
 ni() {
