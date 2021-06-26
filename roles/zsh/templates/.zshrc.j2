@@ -16,6 +16,8 @@ DISABLE_AUTO_TITLE=false
 ENABLE_CORRECTION=false
 COMPLETION_WAITING_DOTS=true
 
+setopt ignore_eof # don't exit on ctrl-d
+
 #---------------------------------------------
 # Exports
 #---------------------------------------------
@@ -362,3 +364,5 @@ nn() {
 }
 
 alias uuid='uuidgen'
+
+alias cargo_installed='cargo install --list'
