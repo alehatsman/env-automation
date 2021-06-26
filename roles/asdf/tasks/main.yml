@@ -1,0 +1,6 @@
+---
+- name: Make sure asdf is present
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: ~/.asdf
+    depth: 1
