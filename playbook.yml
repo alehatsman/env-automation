@@ -16,4 +16,3 @@
     - {role: 'alacritty', tags: 'alacritty'}
     - {role: 'golang', tags: 'golang'}
     - {role: 'clojure', tags: 'clojure'}
-    - {role: 'asdf', tags: 'asdf'}
