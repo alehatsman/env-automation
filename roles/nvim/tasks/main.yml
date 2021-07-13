@@ -4,8 +4,7 @@
     path: '{{ autoload_path }}'
     state: directory
 
-- include: vim_plug.yml
-- include: python_venv.yml
+- include: packer.yml
 
 - name: Make sure undo dir is present
   file:

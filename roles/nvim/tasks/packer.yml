@@ -1,0 +1,12 @@
+---
+- name: Check if packer is installed
+  stat:
+    path: '~/.local/share/nvim/site/pack/packer/start/packer.nvim'
+  register: vim_packer_folder
+
+- name: Make sure packer is installed
+  git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: '~/.local/share/nvim/site/pack/packer/start/packer.nvim'
+    depth: 1
+  when: not vim_packer_folder.stat.exists

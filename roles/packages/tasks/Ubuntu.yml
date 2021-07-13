@@ -1,7 +1,8 @@
 ---
 - name: Make sure keys are updated
-  shell:
+  shell: |
     apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
+    add-apt-repository ppa:longsleep/golang-backports
   become: true
 
 - name: Make sure apt packages are installed

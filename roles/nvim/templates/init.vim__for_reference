@@ -80,7 +80,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
 Plug 'cocopon/colorswatch.vim'
 Plug 'crusoexia/vim-monokai'
-Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 Plug 'neovim/nvim-lspconfig'
@@ -128,6 +128,7 @@ lua << END
     }
   end)
 
+  lspconfig.gopls.setup{on_attach=on_attach}
   lspconfig.pyls.setup{on_attach=on_attach}
   lspconfig.tsserver.setup{on_attach=on_attach}
   lspconfig.clojure_lsp.setup{on_attach=on_attach}

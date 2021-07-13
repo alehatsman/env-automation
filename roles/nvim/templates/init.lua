@@ -1,4 +1,53 @@
--- filetype indent plugin on  " enable loading of ident files
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+
+vim.api.nvim_exec(
+  [[
+  augroup Packer
+    autocmd!
+    autocmd BufWritePost init.lua PackerCompile
+  augroup end
+]],
+  false
+)
+
+local use = require('packer').use
+require('packer').startup(function()
+  use 'Yggdroot/indentLine'
+  use 'airblade/vim-gitgutter'
+  use 'itchyny/lightline.vim'
+  use 'christoomey/vim-tmux-navigator'
+  use 'dense-analysis/ale'
+  use 'jeffkreeftmeijer/vim-numbertoggle'
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
+  use 'junegunn/gv.vim'
+  use 'mbbill/undotree'
+  use 'norcalli/nvim-colorizer.lua'
+  use 'preservim/nerdcommenter'
+  use 'scrooloose/nerdtree'
+  use 'jiangmiao/auto-pairs'
+  use {'Olical/conjure', tag = 'v4.21.0', ft = { 'clj', 'cljs' }}
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-surround'
+  use 'vim-scripts/LargeFile'
+  use 'cocopon/colorswatch.vim'
+  use 'crusoexia/vim-monokai'
+
+  use 'neovim/nvim-lspconfig'
+  use 'tjdevries/lsp_extensions.nvim'
+  use 'nvim-lua/completion-nvim'
+
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'nvim-treesitter/playground'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'nvim-treesitter/nvim-treesitter-refactor'
+  use 'romgrk/nvim-treesitter-context'
+end)
+
 ---------------------------------------------
 -- General configuration
 ---------------------------------------------
@@ -21,14 +70,14 @@ vim.o.updatetime=50
 vim.o.swapfile= false              -- don't create swap files
 vim.o.backup = false               -- don't create backup files
 vim.o.writebackup = false          -- for more info see backup table
-vim.o.signcolumn='yes:[1]'          -- always show sign column
+--vim.o.signcolumn='yes:[1]'          -- always show sign column
 vim.o.showmode = false             -- hide --INSERT--
 vim.o.undodir = '~/.config/nvim/undodir'
 vim.o.completeopt='menuone,noinsert,noselect'
 
 -- Color
 vim.o.termguicolors = true          -- use gui 24-bit colors, gui attrs instead of cterm
-vim.o.t_Co='256'
+vim.go.t_Co='256'
 vim.o.background='dark'
 
 -- Identation
@@ -51,7 +100,7 @@ vim.g.indentLine_color_gui = '#abaa98' -- set color of identation symbols |
 vim.g.indentLine_fileTypeExclude = { 'json', 'markdown' }
 
 vim.g.mapleader = ' '
-vim.g.maplocalleader = '<tab>'
+vim.g.maplocalleader = vim.api.nvim_replace_termcodes('<tab>', true, true, true) -- wtf is this
 
 vim.g.colors_name = 'monokai'
 
@@ -59,53 +108,10 @@ vim.g.colors_name = 'monokai'
 vim.g.completion_enable_auto_popup = 0 -- disable automatic autocomplete popup
 vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 
-vim.api.nvim_exec(
-[[
-call plug#begin('~/.config/nvim/plugged')
-Plug 'Yggdroot/indentLine'
-Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'dense-analysis/ale'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/gv.vim'
-Plug 'mbbill/undotree'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'preservim/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'jiangmiao/auto-pairs'
-Plug 'Olical/conjure', {'tag': 'v4.13.0'}
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'vim-scripts/LargeFile'
-Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
-Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
-Plug 'cocopon/colorswatch.vim'
-Plug 'crusoexia/vim-monokai'
-Plug 'fatih/vim-go', { 'for': 'go' }
-
-Plug 'neovim/nvim-lspconfig'
-Plug 'tjdevries/lsp_extensions.nvim'
-Plug 'nvim-lua/completion-nvim'
-
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
-Plug 'romgrk/nvim-treesitter-context'
-
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-call plug#end()
-]],
-false)
-
 ---------------------------------------------
 -- Language Server Protocol
 ---------------------------------------------
 local lspconfig = require'lspconfig'
-local completion = require'completion'
 local api = vim.api
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -115,16 +121,27 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
   }
 )
-vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
 function on_attach(client, bufnr)
-  completion.on_attach(client, bufnr)
+  require'completion'.on_attach(client, bufnr)
   api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
+local python_venv = require('my_python_venv')
+python_venv.get_python_venv_path(function(venv_path)
+  lspconfig.pyls.setup{
+    cmd = {venv_path .. "/bin/pyls"},
+    on_attach=on_attach
+  }
+end)
+
+lspconfig.gopls.setup{on_attach=on_attach}
+lspconfig.pyls.setup{on_attach=on_attach}
 lspconfig.tsserver.setup{on_attach=on_attach}
 lspconfig.clojure_lsp.setup{on_attach=on_attach}
 lspconfig.rust_analyzer.setup{on_attach=on_attach}
+
 
 -- remap ctrl-x ctrl-o to ctrl space
 vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
@@ -150,9 +167,9 @@ vim.api.nvim_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>
 ---------------------------------------------
 -- Treesitter
 ---------------------------------------------
-require "nvim-treesitter.parsers".get_parser_configs().markdown = {}
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
+  ignore_install = { "markdown" },
   ident = {
     enable = true,
   },
@@ -226,12 +243,20 @@ vim.g.lightline = {
 ---------------------------------------------
 -- FZF
 ---------------------------------------------
+vim.api.nvim_exec(
+[[
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=never --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+]],
+true
+)
+
 vim.api.nvim_set_keymap('n', '<c-p>', ':Files<cr>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<c-b>', ':Buffers<cr>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<c-f>', ':Rg<cr>', { noremap = false })
+vim.api.nvim_set_keymap('n', '<c-h>', ':Help<cr>', { noremap = false })
 
 -- Nvim colorizer
--- require'colorizer'.setup()
+require'colorizer'.setup()
 
 -- Splits
 vim.api.nvim_set_keymap('n', '<c-h>', '<c-w>h', { noremap = false })
