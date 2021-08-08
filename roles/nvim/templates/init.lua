@@ -103,6 +103,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = vim.api.nvim_replace_termcodes('<tab>', true, true, true) -- wtf is this
 
 vim.g.colors_name = 'monokai'
+vim.cmd [[
+  silent! colorscheme monokai
+]]
 
 -- autocomplete
 vim.g.completion_enable_auto_popup = 0 -- disable automatic autocomplete popup
