@@ -2,7 +2,7 @@
 
 # Development Environment Automation
 
-My lovely developer enviroment.
+My lovely developer environment.
 
 ## Installation
 
@@ -17,7 +17,7 @@ If you install it from scratch, you would need some dependencies to be installed
 3. Install Git `brew install git`
 4. Install Ansible `brew install ansible`
 
-If you have one machine that is already provisioned. You can setup a fresh one remotelly.
+If you have one machine that is already provisioned. You can setup a fresh one remotely.
 
 ```
 make install
@@ -28,7 +28,7 @@ make install
 * OSX defaults configuration
 * Apps installation via brew
 * Drakula theme for NVIM, ZSH, Alacrity
-* ZSH configuration, aliases, mappings, completition etc.
+* ZSH configuration, aliases, mappings, completion etc.
 * VIM configuration, mappings, custom functions etc.
 * Alacritty as main terminal app
 * Tmux configuration, plugins, keybindings (terminal tabs)

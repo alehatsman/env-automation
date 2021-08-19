@@ -340,28 +340,36 @@ alias serve='browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000
 #---------------------------------------------
 setopt PROMPT_SUBST
 
-RUNO_ARROW_ICON=${RUNO_ARROW_ICON:-➜ }
+export COLOR_SCHEME = "molokai"
 
-PROMPT="%(?:%F{green}:%F{red})"
-PROMPT+='${RUNO_ARROW_ICON}'
-PROMPT+="%F{red}%B%c "
-PROMPT+='%f%b'
-
-# export EXA_COLORS="di=35"
-
-# Monokai
-export FZF_DEFAULT_OPTS='
-  --reverse
-  --color fg:#F8F8F2,bg:#272822,hl:67,fg+:252,bg+:235,hl+:81
-  --color info:144,prompt:161,spinner:135,pointer:135,marker:118
-'
-
-export FZF_PREVIEW_COMMAND='bat --theme Monokai Extended Origin {}'
-
-nn() {
-  nn-auth aws --no-proxy -p nnip --session=4h
-}
+# Molokai
+if [ "$COLOR_SCHEME" == "molokai" ]
+then
+  RUNO_ARROW_ICON=${RUNO_ARROW_ICON:-➜ }
+  PROMPT="%(?:%F{green}:%F{red})"
+  PROMPT+='${RUNO_ARROW_ICON}'
+  PROMPT+="%F{red}%B%c "
+  PROMPT+='%f%b'
+  export FZF_DEFAULT_OPTS='
+    --reverse
+    --color fg:#F8F8F2,bg:#272822,hl:67,fg+:252,bg+:235,hl+:81
+    --color info:144,prompt:161,spinner:135,pointer:135,marker:118
+  '
+  export FZF_PREVIEW_COMMAND='bat --theme Monokai Extended Origin {}'
+else
+  RUNO_ARROW_ICON=${RUNO_ARROW_ICON:-➜ }
+  PROMPT="%(?:%F{green}:%F{red})"
+  PROMPT+='${RUNO_ARROW_ICON}'
+  PROMPT+="%F{blue}%B%c "
+  PROMPT+='%f%b'
+  export FZF_DEFAULT_OPTS='
+    --color=fg:#313232,bg:#f8f9f9,hl:#FFBC5D
+    --color=fg+:#313232,bg+:#eeefef,hl+:#FFBC5D
+    --color=info:#313232,border:#313232,prompt:#313232
+    --color=pointer:#313232,marker:#313232,spinner:#313232
+    --color=header:#FFFABC
+  '
+fi
 
 alias uuid='uuidgen'
-
 alias cargo_installed='cargo install --list'

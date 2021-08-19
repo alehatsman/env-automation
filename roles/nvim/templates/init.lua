@@ -36,6 +36,8 @@ require('packer').startup(function()
   use 'vim-scripts/LargeFile'
   use 'cocopon/colorswatch.vim'
   use 'crusoexia/vim-monokai'
+  use '~/.config/nvim/plugged/vim-runo'
+  use 'tjdevries/colorbuddy.nvim'
 
   use 'neovim/nvim-lspconfig'
   use 'tjdevries/lsp_extensions.nvim'
@@ -140,7 +142,7 @@ python_venv.get_python_venv_path(function(venv_path)
 end)
 
 lspconfig.gopls.setup{on_attach=on_attach}
-lspconfig.pyls.setup{on_attach=on_attach}
+--lspconfig.pyls.setup{on_attach=on_attach}
 lspconfig.tsserver.setup{on_attach=on_attach}
 lspconfig.clojure_lsp.setup{on_attach=on_attach}
 lspconfig.rust_analyzer.setup{on_attach=on_attach}
@@ -303,3 +305,5 @@ autocmd BufRead,BufNewFile *.mdx set filetype=markdown
 ]],
 true
 )
+
+vim.api.nvim_set_keymap('n', '<leader>sx', ':TSHighlightCapturesUnderCursor<CR>', { noremap = true })
