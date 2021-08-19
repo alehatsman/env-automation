@@ -30,7 +30,7 @@ require('packer').startup(function()
   use 'preservim/nerdcommenter'
   use 'scrooloose/nerdtree'
   use 'jiangmiao/auto-pairs'
-  use {'Olical/conjure', tag = 'v4.21.0', ft = { 'clj', 'cljs' }}
+  use {'Olical/conjure', tag = 'v4.21.0', ft = { 'clj', 'cljs', 'clojure' }}
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use 'vim-scripts/LargeFile'
@@ -117,18 +117,18 @@ vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 local lspconfig = require'lspconfig'
 local api = vim.api
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
     signs = true,
     update_in_insert = false,
   }
 )
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
 
 function on_attach(client, bufnr)
   require'completion'.on_attach(client, bufnr)
-  api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 local python_venv = require('my_python_venv')
@@ -145,7 +145,6 @@ lspconfig.tsserver.setup{on_attach=on_attach}
 lspconfig.clojure_lsp.setup{on_attach=on_attach}
 lspconfig.rust_analyzer.setup{on_attach=on_attach}
 
-
 -- remap ctrl-x ctrl-o to ctrl space
 vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-@>', '<C-Space>', { noremap = true })
@@ -160,8 +159,8 @@ vim.call('sign_define', 'LspDiagnosticsHintSign', {text = "•", texthl = "LspDi
 
 -- lsp
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'K', '<cmd>lua require"func".show_documentation()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-]>', '<cmd>lua require"func".definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
