@@ -4,6 +4,7 @@
   "copyOnSelect": false,
   "copyFormatting": false,
   "alwaysShowTabs": false,
+  "showTabsInTitlebar": false,
   "profiles": {
     "defaults": {
       "fontFace": "JetBrains Mono NL",

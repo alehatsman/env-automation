@@ -43,6 +43,8 @@ require('packer').startup(function()
   use 'tjdevries/lsp_extensions.nvim'
   use 'nvim-lua/completion-nvim'
 
+
+
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -281,6 +283,9 @@ vim.api.nvim_set_keymap('n', '<leader>tp', ':tabprev<CR>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<leader>tn', ':tabnext<CR>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<leader>to', ':tabonly<CR>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<leader>tc', ':tabclose<CR>', { noremap = false })
+
+vim.api.nvim_set_keymap('n', '<leader>tl', ':tabm +1<CR>', { noremap = false })
+vim.api.nvim_set_keymap('n', '<leader>th', ':tabm -1<CR>', { noremap = false })
 
 -- Tab focus
 vim.api.nvim_set_keymap('n', '<leader>0', ':tablast', { noremap = true })

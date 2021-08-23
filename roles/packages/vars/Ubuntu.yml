@@ -44,6 +44,8 @@ apps:
   - lua5.1
   - golang-go
 
+  - httpie
+
 cargo:
   - exa
   - bat

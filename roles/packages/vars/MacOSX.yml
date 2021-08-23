@@ -82,6 +82,8 @@ apps:
 
   - xsv
 
+  - httpie
+
 cask_apps:
   - adobe-acrobat-reader
   - alacritty
