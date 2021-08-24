@@ -4,6 +4,8 @@
 
 My lovely developer environment.
 
+![screenshot](./docs/screenshot.png)
+
 ## Installation
 
 ```
