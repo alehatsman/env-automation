@@ -27,7 +27,7 @@ make install
 
 * OSX defaults configuration
 * Apps installation via brew
-* Drakula theme for NVIM, ZSH, Alacrity
+* Monokai theme for NVIM, ZSH, Alacrity
 * ZSH configuration, aliases, mappings, completion etc.
 * VIM configuration, mappings, custom functions etc.
 * Alacritty as main terminal app
