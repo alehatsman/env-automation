@@ -17,8 +17,6 @@ If you install it from scratch, you would need some dependencies to be installed
 3. Install Git `brew install git`
 4. Install Ansible `brew install ansible`
 
-If you have one machine that is already provisioned. You can setup a fresh one remotely.
-
 ```
 make install
 ```
