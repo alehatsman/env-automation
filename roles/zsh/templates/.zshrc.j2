@@ -346,7 +346,7 @@ setopt PROMPT_SUBST
 export COLOR_SCHEME=molokai
 
 # Molokai
-if [ "$COLOR_SCHEME" == "molokai" ]
+if [ $COLOR_SCHEME = "molokai" ]
 then
   RUNO_ARROW_ICON=${RUNO_ARROW_ICON:-➜ }
   PROMPT="%(?:%F{green}:%F{red})"
