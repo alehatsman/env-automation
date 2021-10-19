@@ -298,7 +298,7 @@ end
 vim.api.nvim_set_keymap('n', '<leader>gs', ':Gstatus<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gc', ':Gcommit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Gpush<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gb', ':Gblame<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gpr', ':Gpull -r<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gl', ':GV!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', { noremap = true })
