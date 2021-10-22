@@ -116,6 +116,42 @@ vim.g.completion_enable_auto_popup = 0 -- disable automatic autocomplete popup
 vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 
 ---------------------------------------------
+-- Autocomplete
+---------------------------------------------
+local cmp = require'cmp'
+
+cmp.setup({
+  completion = {
+    autocomplete = false
+  },
+  experimental = {
+    native_menu = false,
+    ghost_text = true
+  },
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true, }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+---------------------------------------------
 -- Language Server Protocol
 ---------------------------------------------
 local lspconfig = require'lspconfig'
@@ -131,23 +167,26 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
 
 function on_attach(client, bufnr)
-  require'completion'.on_attach(client, bufnr)
-  api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  --require'completion'.on_attach(client, bufnr)
+  --api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
-local python_venv = require('my_python_venv')
-python_venv.get_python_venv_path(function(venv_path)
-  lspconfig.pylsp.setup{
-    cmd = {venv_path .. "/bin/pylsp"},
-    on_attach=on_attach
-  }
-end)
+--[[local python_venv = require('my_python_venv')]]
+--[[python_venv.get_python_venv_path(function(venv_path)]]
+  --[[lspconfig.pylsp.setup{]]
+    --[[cmd = {venv_path .. "/bin/pylsp"},]]
+    --[[on_attach=on_attach]]
+  --[[}]]
+--[[end)]]
 
-lspconfig.gopls.setup{on_attach=on_attach}
---lspconfig.pylsp.setup{on_attach=on_attach}
-lspconfig.tsserver.setup{on_attach=on_attach}
-lspconfig.clojure_lsp.setup{on_attach=on_attach}
-lspconfig.rust_analyzer.setup{on_attach=on_attach}
+local setup_config = {on_attach=on_attach, capabilities=capabilities}
+
+lspconfig.gopls.setup(setup_config)
+--lspconfig.pyls.setup{on_attach=on_attach}
+lspconfig.tsserver.setup(setup_config)
+lspconfig.clojure_lsp.setup(setup_config)
+lspconfig.rust_analyzer.setup(setup_config)
+
 
 -- remap ctrl-x ctrl-o to ctrl space
 vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
