@@ -51,7 +51,7 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 #---------------------------------------------
 # Plugins
 #---------------------------------------------
-export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD=false
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -164,8 +164,8 @@ alias gsh="git show"
 alias gs="git stash"
 alias gsp="git stash pop"
 
-alias gd="git diff"
-alias gds="git diff --staged"
+alias gd="git --no-pager diff"
+alias gds="git --no-pager diff --staged"
 
 alias gf="git fetch"
 alias gfa="git fetch --all"

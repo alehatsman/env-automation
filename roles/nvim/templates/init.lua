@@ -43,7 +43,12 @@ require('packer').startup(function()
   use 'tjdevries/lsp_extensions.nvim'
   use 'nvim-lua/completion-nvim'
 
-
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
 
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
@@ -77,7 +82,7 @@ vim.o.writebackup = false          -- for more info see backup table
 --vim.o.signcolumn='yes:[1]'          -- always show sign column
 vim.o.showmode = false             -- hide --INSERT--
 vim.o.undodir = '~/.config/nvim/undodir'
-vim.o.completeopt='menuone,noinsert,noselect'
+vim.o.completeopt='menu,menuone,noinsert'
 
 -- Color
 vim.o.termguicolors = true          -- use gui 24-bit colors, gui attrs instead of cterm
@@ -120,13 +125,23 @@ vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 ---------------------------------------------
 local cmp = require'cmp'
 
+local tabnine = require('cmp_tabnine.config')
+tabnine:setup({
+    max_lines = 1000;
+    max_num_results = 20;
+    sort = true;
+    run_on_every_keystroke = true;
+    snippet_placeholder = '..';
+})
+
 cmp.setup({
   completion = {
-    autocomplete = false
+    autocomplete = false,
+    completeopt = 'menu,menuone,noinsert'
   },
   experimental = {
     native_menu = false,
-    ghost_text = true
+    ghost_text = false
   },
   snippet = {
     expand = function(args)
@@ -142,8 +157,7 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-  }, {
+    { name = 'cmp_tabnine' },
     { name = 'buffer' },
   })
 })
@@ -334,7 +348,7 @@ for i=1,9 do
 end
 
 -- Git mappings
-vim.api.nvim_set_keymap('n', '<leader>gs', ':Gstatus<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gs', ':Git<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gc', ':Gcommit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Gpush<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
