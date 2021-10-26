@@ -50,6 +50,8 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
 
+  use 'ray-x/lsp_signature.nvim'
+
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -156,9 +158,17 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true, }),
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'cmp_tabnine' },
-    { name = 'buffer' },
+    {
+      name = 'nvim_lsp',
+    },
+    {
+      name = 'cmp_tabnine',
+      max_item_count = 4,
+    },
+    {
+      name = 'buffer',
+      max_item_count = 4,
+    },
   })
 })
 
@@ -180,9 +190,20 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
 
+local lsp_signature = require'lsp_signature'
+lsp_signature.setup({
+  hint_prefix = '',
+  hint_enable = false,
+  handler_opts = {
+    border = 'none'
+  },
+  hi_parameter = "Visual"
+})
+
 function on_attach(client, bufnr)
   --require'completion'.on_attach(client, bufnr)
   --api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  lsp_signature.on_attach()
 end
 
 --[[local python_venv = require('my_python_venv')]]
