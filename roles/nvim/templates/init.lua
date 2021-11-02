@@ -29,8 +29,9 @@ require('packer').startup(function()
   use 'norcalli/nvim-colorizer.lua'
   use 'preservim/nerdcommenter'
   use 'scrooloose/nerdtree'
-  use 'jiangmiao/auto-pairs'
-  use {'Olical/conjure', tag = 'v4.21.0', ft = { 'clj', 'cljs', 'clojure' }}
+  --use 'jiangmiao/auto-pairs'
+  use 'windwp/nvim-autopairs'
+  use {'Olical/conjure', ft = { 'clj', 'cljs', 'clojure' }}
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use 'vim-scripts/LargeFile'
@@ -118,6 +119,8 @@ vim.cmd [[
   silent! colorscheme monokai
 ]]
 
+require('nvim-autopairs').setup{}
+
 -- autocomplete
 vim.g.completion_enable_auto_popup = 0 -- disable automatic autocomplete popup
 vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
@@ -126,6 +129,7 @@ vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 -- Autocomplete
 ---------------------------------------------
 local cmp = require'cmp'
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 local tabnine = require('cmp_tabnine.config')
 tabnine:setup({
@@ -171,6 +175,8 @@ cmp.setup({
     },
   })
 })
+
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
