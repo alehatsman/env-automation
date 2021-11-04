@@ -119,7 +119,9 @@ vim.cmd [[
   silent! colorscheme monokai
 ]]
 
-require('nvim-autopairs').setup{}
+require('nvim-autopairs').setup{
+  enable_check_bracket_line=false
+}
 
 -- autocomplete
 vim.g.completion_enable_auto_popup = 0 -- disable automatic autocomplete popup
