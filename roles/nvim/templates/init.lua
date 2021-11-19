@@ -58,6 +58,14 @@ require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/nvim-treesitter-refactor'
   use 'romgrk/nvim-treesitter-context'
+
+  use 'github/copilot.vim'
+
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 end)
 
 ---------------------------------------------
@@ -329,19 +337,41 @@ vim.g.lightline = {
 }
 
 ---------------------------------------------
--- FZF
+-- Telescope
 ---------------------------------------------
-vim.api.nvim_exec(
-[[
-command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=never --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-]],
-true
-)
+local telescope = require('telescope')
+require('telescope').setup{
+  defaults = {
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
+    mappings = {
 
-vim.api.nvim_set_keymap('n', '<c-p>', ':Files<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-b>', ':Buffers<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-f>', ':Rg<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-h>', ':Help<cr>', { noremap = false })
+    }
+  },
+  pickers = {
+    -- Default configuration for builtin pickers goes here:
+    -- picker_name = {
+    --   picker_config_key = value,
+    --   ...
+    -- }
+    -- Now the picker_config_key will be applied every time you call this
+    -- builtin picker
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+
+vim.api.nvim_set_keymap('n', '<c-p>', ':Telescope find_files<cr>', { noremap = false })
+vim.api.nvim_set_keymap('n', '<c-b>', ':Telescope buffers<cr>', { noremap = false })
+vim.api.nvim_set_keymap('n', '<c-f>', ':Telescope live_grep<cr>', { noremap = false })
+vim.api.nvim_set_keymap('n', '<c-h>', ':Telescope help_tags<cr>', { noremap = false })
 
 -- Nvim colorizer
 require'colorizer'.setup()
