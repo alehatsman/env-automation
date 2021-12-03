@@ -24,6 +24,7 @@ require('packer').startup(function()
   use 'jeffkreeftmeijer/vim-numbertoggle'
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
+  use 'ojroques/nvim-lspfuzzy'
   use 'junegunn/gv.vim'
   use 'mbbill/undotree'
   use 'norcalli/nvim-colorizer.lua'
@@ -142,7 +143,7 @@ local cmp = require'cmp'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 local tabnine = require('cmp_tabnine.config')
-tabnine:setup({
+tabnine.setup({
     max_lines = 1000;
     max_num_results = 20;
     sort = true;
@@ -174,14 +175,15 @@ cmp.setup({
   sources = cmp.config.sources({
     {
       name = 'nvim_lsp',
+      max_item_count = 2,
     },
     {
       name = 'cmp_tabnine',
-      max_item_count = 4,
+      max_item_count = 2,
     },
     {
       name = 'buffer',
-      max_item_count = 4,
+      max_item_count = 2,
     },
   })
 })
@@ -402,6 +404,8 @@ vim.api.nvim_set_keymap('n', '<c-p>', ':Files<cr>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<c-b>', ':Buffers<cr>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<c-f>', ':Rg<cr>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<c-h>', ':Help<cr>', { noremap = false })
+
+require('lspfuzzy').setup {}
 
 -- Nvim colorizer
 require'colorizer'.setup()
