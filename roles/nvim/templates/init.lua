@@ -143,12 +143,12 @@ local cmp = require'cmp'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 local tabnine = require('cmp_tabnine.config')
-tabnine.setup({
-    max_lines = 1000;
-    max_num_results = 20;
-    sort = true;
-    run_on_every_keystroke = true;
-    snippet_placeholder = '..';
+tabnine:setup({
+    max_lines = 1000,
+    max_num_results = 20,
+    sort = true,
+    run_on_every_keystroke = true,
+    snippet_placeholder = '..'
 })
 
 cmp.setup({
@@ -175,11 +175,11 @@ cmp.setup({
   sources = cmp.config.sources({
     {
       name = 'nvim_lsp',
-      max_item_count = 2,
+      max_item_count = 5,
     },
     {
       name = 'cmp_tabnine',
-      max_item_count = 2,
+      max_item_count = 3,
     },
     {
       name = 'buffer',
@@ -220,7 +220,7 @@ lsp_signature.setup({
   hint_prefix = '',
   hint_enable = false,
   handler_opts = {
-    border = 'none'
+    border = 'single'
   },
   hi_parameter = "Visual"
 })
@@ -265,7 +265,7 @@ vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', { n
 vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
 
