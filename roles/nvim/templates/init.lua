@@ -32,7 +32,7 @@ require('packer').startup(function()
   use 'scrooloose/nerdtree'
   --use 'jiangmiao/auto-pairs'
   use 'windwp/nvim-autopairs'
-  use {'Olical/conjure', ft = { 'clj', 'cljs', 'clojure' }}
+  use {'Olical/conjure', branch = 'develop', ft = { 'clj', 'cljs', 'clojure' }}
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use 'vim-scripts/LargeFile'
@@ -201,7 +201,7 @@ local api = vim.api
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true,
+    virtual_text = false,
     signs = true,
     update_in_insert = false,
   }
