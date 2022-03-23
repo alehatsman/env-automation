@@ -6,11 +6,11 @@ end
 
 vim.api.nvim_exec(
   [[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-  augroup end
-]],
+    augroup Packer
+      autocmd!
+      autocmd BufWritePost init.lua PackerCompile
+    augroup end
+  ]],
   false
 )
 
@@ -30,7 +30,6 @@ require('packer').startup(function()
   use 'norcalli/nvim-colorizer.lua'
   use 'preservim/nerdcommenter'
   use 'scrooloose/nerdtree'
-  --use 'jiangmiao/auto-pairs'
   use 'windwp/nvim-autopairs'
   use {'Olical/conjure', branch = 'develop', ft = { 'clj', 'cljs', 'clojure' }}
   use 'tpope/vim-fugitive'
@@ -60,13 +59,10 @@ require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter-refactor'
   use 'romgrk/nvim-treesitter-context'
 
-  use 'github/copilot.vim'
+  use 'zeertzjq/nvim-paste-fix'
 
-  --use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  --[[use {]]
-    --[['nvim-telescope/telescope.nvim',]]
-    --[[requires = { {'nvim-lua/plenary.nvim'} }]]
-  --[[}]]
+  use 'github/copilot.vim'
+  --use 'projekt0n/github-nvim-theme'
 end)
 
 ---------------------------------------------
@@ -175,11 +171,11 @@ cmp.setup({
   sources = cmp.config.sources({
     {
       name = 'nvim_lsp',
-      max_item_count = 5,
+      max_item_count = 8,
     },
     {
       name = 'cmp_tabnine',
-      max_item_count = 3,
+      max_item_count = 2,
     },
     {
       name = 'buffer',
@@ -201,12 +197,13 @@ local api = vim.api
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
+    underline = false,
+    virtual_text = { spacing = 4 },
     signs = true,
     update_in_insert = false,
   }
 )
-vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
+--vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
  vim.lsp.handlers.hover, {
@@ -255,10 +252,10 @@ vim.api.nvim_set_keymap('i', '<expr> <C-space>', 'completion#trigger_completion(
 vim.api.nvim_exec('autocmd CompleteDone * pclose', true)
 
 -- diagnostics
-vim.call('sign_define', 'LspDiagnosticsErrorSign', {text = "•", texthl = "LspDiagnosticsError"})
-vim.call('sign_define', 'LspDiagnosticsWarningSign', {text = "•", texthl = "LspDiagnosticsWarning"})
-vim.call('sign_define', 'LspDiagnosticsInformationSign', {text = "•", texthl = "LspDiagnosticsInformation"})
-vim.call('sign_define', 'LspDiagnosticsHintSign', {text = "•", texthl = "LspDiagnosticsHint"})
+vim.call('sign_define', 'DiagnosticSignError', {text = "•", texthl = "DiagnosticSignError"})
+vim.call('sign_define', 'DiagnosticSignWarn', {text = "•", texthl = "DiagnosticSignWarn"})
+vim.call('sign_define', 'DiagnosticSignInfo', {text = "•", texthl = "DiagnosticSignInfo"})
+vim.call('sign_define', 'DiagnosticSignHint', {text = "•", texthl = "DiagnosticSignHint"})
 
 -- lsp
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
@@ -347,49 +344,6 @@ vim.g.lightline = {
   }
 }
 
----------------------------------------------
--- Telescope
----------------------------------------------
---[[local telescope = require('telescope')]]
---[[local actions = require('telescope.actions')]]
-
---[[require('telescope').setup{]]
-  --[[defaults = {]]
-    --[[-- Default configuration for telescope goes here:]]
-    --[[-- config_key = value,]]
-    --[[mappings = {]]
-      --[[i = {]]
-        --[[['<C-j>'] = actions.move_selection_next,]]
-        --[[['<C-k>'] = actions.move_selection_previous,]]
-        --[[--['<CR>'] = actions.send_selected_to_qflist + actions.open_qflist,]]
-        --[[['<ESC>'] = actions.close,]]
-      --[[}]]
-    --[[}]]
-  --[[},]]
-  --[[pickers = {]]
-    --[[-- Default configuration for builtin pickers goes here:]]
-    --[[-- picker_name = {]]
-    --[[--   picker_config_key = value,]]
-    --[[--   ...]]
-    --[[-- }]]
-    --[[-- Now the picker_config_key will be applied every time you call this]]
-    --[[-- builtin picker]]
-  --[[},]]
-  --[[extensions = {]]
-    --[[fzf = {]]
-      --[[fuzzy = true,                    -- false will only do exact matching]]
-      --[[override_generic_sorter = true,  -- override the generic sorter]]
-      --[[override_file_sorter = true,     -- override the file sorter]]
-      --[[case_mode = "smart_case",        -- or "ignore_case" or "respect_case"]]
-                                       --[[-- the default case_mode is "smart_case"]]
-    --[[}]]
-  --[[}]]
---[[}]]
-
---[[vim.api.nvim_set_keymap('n', '<c-p>', ':Telescope find_files<cr>', { noremap = false })]]
---[[vim.api.nvim_set_keymap('n', '<c-b>', ':Telescope buffers<cr>', { noremap = false })]]
---[[vim.api.nvim_set_keymap('n', '<c-f>', ':Telescope live_grep<cr>', { noremap = false })]]
---[[vim.api.nvim_set_keymap('n', '<c-h>', ':Telescope help_tags<cr>', { noremap = false })]]
 
 ---------------------------------------------
 -- FZF

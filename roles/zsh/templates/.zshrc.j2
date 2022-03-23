@@ -159,7 +159,9 @@ alias gp!="gp --no-verify"
 alias gpf="gp --force-with-lease"
 alias gpf!="gp! --force-with-lease"
 
-alias gsh="git show"
+gsh() {
+  git show -- $@ ':!Pipfile.lock' ':!package-lock.json' ':!yarn.lock'
+}
 
 alias gs="git stash"
 alias gsp="git stash pop"
@@ -343,7 +345,7 @@ alias serve='browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000
 #---------------------------------------------
 setopt PROMPT_SUBST
 
-export COLOR_SCHEME=molokai
+export COLOR_SCHEME='molokai'
 
 # Molokai
 if [ $COLOR_SCHEME = "molokai" ]
@@ -359,7 +361,8 @@ then
     --color info:144,prompt:161,spinner:135,pointer:135,marker:118
   '
   export FZF_PREVIEW_COMMAND='bat --theme Monokai Extended Origin {}'
-else
+elif [ $COLOR_SCHEME = "runo" ]
+then
   RUNO_ARROW_ICON=${RUNO_ARROW_ICON:-➜ }
   PROMPT="%(?:%F{green}:%F{red})"
   PROMPT+='${RUNO_ARROW_ICON}'
@@ -372,6 +375,14 @@ else
     --color=pointer:#313232,marker:#313232,spinner:#313232
     --color=header:#FFFABC
   '
+elif [ $COLOR_SCHEME = "github-light" ]
+then
+  RUNO_ARROW_ICON=${RUNO_ARROW_ICON:-➜ }
+  PROMPT="%(?:%F{green}:%F{red})"
+  PROMPT+='${RUNO_ARROW_ICON}'
+  PROMPT+="%F{red}%B%c "
+  PROMPT+='%f%b'
+export FZF_DEFAULT_OPTS='--color=fg:#24292f,bg:#ffffff,hl:#0366d6 --color=fg+:#24292f,bg+:#ffffff,hl+:#0366d6 --color=info:#24292f,prompt:#d73a49,pointer:#24292f --color=marker:#28a745,spinner:#5a32a3,header:#24292f'
 fi
 
 alias uuid='uuidgen'
