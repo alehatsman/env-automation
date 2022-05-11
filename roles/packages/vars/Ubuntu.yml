@@ -49,5 +49,5 @@ apps:
 cargo:
   - exa
   - bat
-  - delta
+  - git-delta
   - xsv

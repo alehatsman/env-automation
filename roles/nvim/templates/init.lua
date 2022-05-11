@@ -24,8 +24,13 @@ require('packer').startup(function()
   use 'jeffkreeftmeijer/vim-numbertoggle'
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
-  use 'ojroques/nvim-lspfuzzy'
-  use 'junegunn/gv.vim'
+  use {
+    'ojroques/nvim-lspfuzzy',
+    requires = {
+      {'junegunn/fzf'},
+      {'junegunn/fzf.vim'},
+    }
+  }
   use 'mbbill/undotree'
   use 'norcalli/nvim-colorizer.lua'
   use 'preservim/nerdcommenter'
@@ -40,11 +45,11 @@ require('packer').startup(function()
   use '~/.config/nvim/plugged/vim-runo'
   use 'tjdevries/colorbuddy.nvim'
 
+  use {'fatih/vim-go', ft = {'go'} }
+
   use 'neovim/nvim-lspconfig'
   use 'tjdevries/lsp_extensions.nvim'
-  use 'nvim-lua/completion-nvim'
 
-  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
@@ -138,15 +143,6 @@ vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 local cmp = require'cmp'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
-local tabnine = require('cmp_tabnine.config')
-tabnine:setup({
-    max_lines = 1000,
-    max_num_results = 20,
-    sort = true,
-    run_on_every_keystroke = true,
-    snippet_placeholder = '..'
-})
-
 cmp.setup({
   completion = {
     autocomplete = false,
@@ -162,7 +158,20 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-n>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        cmp.complete()
+      end
+    end, { 'i', 's' }),
+    ['<C-p>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        cmp.complete()
+      end
+    end, { 'i', 's' }),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
@@ -172,10 +181,6 @@ cmp.setup({
     {
       name = 'nvim_lsp',
       max_item_count = 8,
-    },
-    {
-      name = 'cmp_tabnine',
-      max_item_count = 2,
     },
     {
       name = 'buffer',
@@ -246,10 +251,10 @@ lspconfig.rust_analyzer.setup(setup_config)
 
 
 -- remap ctrl-x ctrl-o to ctrl space
-vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-@>', '<C-Space>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<expr> <C-space>', 'completion#trigger_completion()', { noremap = true, silent = true })
-vim.api.nvim_exec('autocmd CompleteDone * pclose', true)
+--vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
+--vim.api.nvim_set_keymap('i', '<C-@>', '<C-Space>', { noremap = true })
+--vim.api.nvim_set_keymap('i', '<expr> <C-space>', 'completion#trigger_completion()', { noremap = true, silent = true })
+--vim.api.nvim_exec('autocmd CompleteDone * pclose', true)
 
 -- diagnostics
 vim.call('sign_define', 'DiagnosticSignError', {text = "•", texthl = "DiagnosticSignError"})
@@ -272,7 +277,7 @@ vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', 
 -- Treesitter
 ---------------------------------------------
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   ignore_install = { "markdown" },
   ident = {
     enable = true,
@@ -402,7 +407,7 @@ vim.api.nvim_set_keymap('n', '<leader>gc', ':Gcommit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Gpush<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gpr', ':Gpull -r<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gl', ':GV!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gl', 'Gclog %<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gm', ':Gvdiffsplit!<CR>', { noremap = true })
 

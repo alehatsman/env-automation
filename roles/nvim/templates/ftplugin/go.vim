@@ -16,3 +16,4 @@ nnoremap <buffer> <Leader>gr :GoRename<CR>
 
 "let g:go_def_mode='gopls'
 "let g:go_info_mode='gopls'
+let g:go_doc_keywordprg_enabled = 0
