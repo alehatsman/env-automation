@@ -263,15 +263,13 @@ vim.call('sign_define', 'DiagnosticSignInfo', {text = "•", texthl = "Diagnosti
 vim.call('sign_define', 'DiagnosticSignHint', {text = "•", texthl = "DiagnosticSignHint"})
 
 -- lsp
-vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
-
+vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>')
+vim.keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', '<c-]>', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
 ---------------------------------------------
 -- Treesitter
