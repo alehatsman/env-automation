@@ -117,6 +117,8 @@ vim.o.foldcolumn='0'           -- width of fold column
 vim.o.foldlevelstart=99      -- don't close folds
 vim.o.colorcolumn='80'         -- visualize max line width
 
+vim.o.laststatus = 3
+
 vim.g.AutoPairsFlyMode = 1
 vim.g.indentLine_color_gui = '#abaa98' -- set color of identation symbols |
 vim.g.indentLine_fileTypeExclude = { 'json', 'markdown' }
