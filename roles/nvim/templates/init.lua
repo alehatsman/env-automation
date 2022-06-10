@@ -250,6 +250,31 @@ lspconfig.gopls.setup(setup_config)
 lspconfig.tsserver.setup(setup_config)
 lspconfig.clojure_lsp.setup(setup_config)
 lspconfig.rust_analyzer.setup(setup_config)
+lspconfig.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 
 -- remap ctrl-x ctrl-o to ctrl space
@@ -407,7 +432,7 @@ vim.api.nvim_set_keymap('n', '<leader>gc', ':Gcommit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Gpush<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gpr', ':Gpull -r<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gl', 'Gclog %<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gl', ':Gclog %<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gm', ':Gvdiffsplit!<CR>', { noremap = true })
 
