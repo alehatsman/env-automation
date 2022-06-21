@@ -79,23 +79,23 @@ vim.o.langmenu      = 'en_US'       -- use en as language menu
 vim.o.hidden        = true          -- be able to switch buffers without file save
 vim.o.showcmd       = true          -- shows command in the last line
 vim.o.startofline   = false         -- some command move to the first non-blank line
-vim.wo.number        = true         -- line number on
+vim.wo.number       = true          -- line number on
 vim.o.clipboard     = 'unnamedplus' -- allow copy paste system <-> nvim
 vim.o.exrc          = true          -- enable project specific .nvimrc files
 vim.o.secure        = true          -- disable write/shell commands in those files
 vim.o.splitbelow    = true          -- put the new window below the current one
 vim.o.splitright    = true          -- put the new window right of the current one
-vim.o.incsearch = true              -- search as you type
-vim.o.cursorline = true             -- highlight current line
-vim.o.shortmess = vim.o.shortmess .. 'c'                -- don't give completion messages
-vim.o.updatetime=50
-vim.o.swapfile= false              -- don't create swap files
-vim.o.backup = false               -- don't create backup files
-vim.o.writebackup = false          -- for more info see backup table
---vim.o.signcolumn='yes:[1]'          -- always show sign column
-vim.o.showmode = false             -- hide --INSERT--
-vim.o.undodir = '~/.config/nvim/undodir'
-vim.o.completeopt='menu,menuone,noinsert'
+vim.o.incsearch     = true              -- search as you type
+vim.o.cursorline    = true             -- highlight current line
+vim.o.shortmess     = vim.o.shortmess .. 'c'                -- don't give completion messages
+vim.o.updatetime    = 50
+vim.o.swapfile      = false              -- don't create swap files
+vim.o.backup        = false               -- don't create backup files
+vim.o.writebackup   = false          -- for more info see backup table
+vim.go.signcolumn   = 'yes'          -- always show sign column
+vim.o.showmode      = false             -- hide --INSERT--
+vim.o.undodir       = '~/.config/nvim/undodir'
+vim.o.completeopt   ='menu,menuone,noinsert'
 
 -- Color
 vim.o.termguicolors = true          -- use gui 24-bit colors, gui attrs instead of cterm
@@ -182,7 +182,6 @@ cmp.setup({
   sources = cmp.config.sources({
     {
       name = 'nvim_lsp',
-      max_item_count = 8,
     },
     {
       name = 'buffer',
@@ -205,7 +204,7 @@ local api = vim.api
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = false,
-    virtual_text = { spacing = 4 },
+    virtual_text = false, --{ spacing = 4 },
     signs = true,
     update_in_insert = false,
   }
@@ -297,6 +296,8 @@ vim.keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', '<c-]>', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+
 
 ---------------------------------------------
 -- Treesitter

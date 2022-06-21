@@ -1,5 +1,7 @@
 ---
+
 apps:
+  - gnupg
   - curl
   - clojure
   - rlwrap
@@ -45,6 +47,10 @@ apps:
   - golang-go
 
   - httpie
+
+  - terraform
+  - software-properties-common
+  - google-cloud-cli
 
 cargo:
   - exa
