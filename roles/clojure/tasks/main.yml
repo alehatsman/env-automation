@@ -26,7 +26,7 @@
 
 - name: Make sure settings xl present
   template:
-    src: template/settings.xml
+    src: templates/settings.xml
     dest: ~/.m2/settings.xml
 
 - name: Make sure .clojure files generated

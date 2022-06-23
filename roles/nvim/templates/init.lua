@@ -1,3 +1,7 @@
+---------------------------------------------
+-- Packer installation
+---------------------------------------------
+
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -14,6 +18,10 @@ vim.api.nvim_exec(
   false
 )
 
+
+---------------------------------------------
+-- Plugins installation
+---------------------------------------------
 local use = require('packer').use
 require('packer').startup(function()
   use 'Yggdroot/indentLine'
@@ -68,7 +76,16 @@ require('packer').startup(function()
 
   use 'github/copilot.vim'
   --use 'projekt0n/github-nvim-theme'
+
+  -- debugging
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
+
+  use 'leoluz/nvim-dap-go'
+  use 'mfussenegger/nvim-dap-python'
 end)
+
 
 ---------------------------------------------
 -- General configuration
@@ -139,6 +156,7 @@ require('nvim-autopairs').setup{
 vim.g.completion_enable_auto_popup = 0 -- disable automatic autocomplete popup
 vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 
+
 ---------------------------------------------
 -- Autocomplete
 ---------------------------------------------
@@ -194,6 +212,7 @@ cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex 
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 
 ---------------------------------------------
 -- Language Server Protocol
@@ -275,7 +294,6 @@ lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
 }
 
-
 -- remap ctrl-x ctrl-o to ctrl space
 --vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
 --vim.api.nvim_set_keymap('i', '<C-@>', '<C-Space>', { noremap = true })
@@ -312,6 +330,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+
 
 ---------------------------------------------
 -- Ale linter

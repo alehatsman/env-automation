@@ -48,6 +48,11 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 {% endif %}
 
+export WINDOWS_TERMINAL_CONFIG_LOCATION="/mnt/c/Users/aleha/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+
+export COCKROACH_DB_PASSWORD="{{cockroach_db_password}}"
+export COCKROACH_DB_URL="{{cockroach_db_url}}"
+
 #---------------------------------------------
 # Plugins
 #---------------------------------------------
@@ -231,9 +236,6 @@ cheat() {
   curl cheat.sh/$@
 }
 
-alias hm="man"
-alias hc="cheat"
-
 if type "$kubectl" > /dev/null; then
   alias k8s="kubectl"
   compdef k8s=kubectl
@@ -340,6 +342,9 @@ ar() {
 
 alias serve='browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000'
 
+alias uuid='uuidgen'
+alias cargo_installed='cargo install --list'
+
 #---------------------------------------------
 # Color scheme
 #---------------------------------------------
@@ -384,11 +389,3 @@ then
   PROMPT+='%f%b'
 export FZF_DEFAULT_OPTS='--color=fg:#24292f,bg:#ffffff,hl:#0366d6 --color=fg+:#24292f,bg+:#ffffff,hl+:#0366d6 --color=info:#24292f,prompt:#d73a49,pointer:#24292f --color=marker:#28a745,spinner:#5a32a3,header:#24292f'
 fi
-
-alias uuid='uuidgen'
-alias cargo_installed='cargo install --list'
-
-export WINDOWS_TERMINAL_CONFIG_LOCATION="/mnt/c/Users/aleha/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
-
-export COCKROACH_DB_PASSWORD="{{cockroach_db_password}}"
-export COCKROACH_DB_URL="{{cockroach_db_url}}"
