@@ -157,6 +157,9 @@ vim.g.completion_enable_auto_popup = 0 -- disable automatic autocomplete popup
 vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 
 
+vim.g.vim_json_syntax_conceal = 0
+
+
 ---------------------------------------------
 -- Autocomplete
 ---------------------------------------------
@@ -314,7 +317,8 @@ vim.keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', '<c-]>', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+vim.keymap.set('n', '<space>ds', '<cmd>lua vim.diagnostic.open_float()<CR>')
+vim.keymap.set('n', '<space>dl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 
 
 ---------------------------------------------

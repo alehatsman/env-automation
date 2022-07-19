@@ -71,7 +71,7 @@ apps:
   - nvm
   - yarn
 
-  - neovim
+  #- neovim
 
   # Tmux
   - tmux
@@ -113,7 +113,7 @@ cask_apps:
   - visual-studio-code
   - vlc
   - xmind
-  - zoomus
+  - zoom
 
   # Java
   - adoptopenjdk8
