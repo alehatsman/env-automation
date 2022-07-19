@@ -472,3 +472,4 @@ vim.api.nvim_set_keymap('n', '<leader>sx', ':TSHighlightCapturesUnderCursor<CR>'
 -- Convert next line to nvim lua api
 vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept()', { silent = true, script = true, expr  = true })
 vim.g.copilot_no_tab_map = true
+vim.g.copilot_node_command = '~/.nvm/versions/node/v17.9.1/bin/node'
