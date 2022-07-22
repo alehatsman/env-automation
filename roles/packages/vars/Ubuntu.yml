@@ -50,6 +50,7 @@ apps:
   - terraform
   - software-properties-common
   - google-cloud-cli
+  - weechat
 
 cargo:
   - exa
