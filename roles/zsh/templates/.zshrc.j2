@@ -389,3 +389,8 @@ then
   PROMPT+='%f%b'
 export FZF_DEFAULT_OPTS='--color=fg:#24292f,bg:#ffffff,hl:#0366d6 --color=fg+:#24292f,bg+:#ffffff,hl+:#0366d6 --color=info:#24292f,prompt:#d73a49,pointer:#24292f --color=marker:#28a745,spinner:#5a32a3,header:#24292f'
 fi
+
+{% if ansible_distribution != 'MacOSX' %}
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+{% endif %}
