@@ -1,0 +1,4 @@
+---
+- name: Make sure rustup is installed
+  shell:
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

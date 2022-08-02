@@ -84,6 +84,10 @@ require('packer').startup(function()
 
   use 'leoluz/nvim-dap-go'
   use 'mfussenegger/nvim-dap-python'
+
+  -- rust
+  use 'nvim-lua/plenary.nvim'
+  use 'simrat39/rust-tools.nvim'
 end)
 
 
@@ -110,6 +114,7 @@ vim.o.swapfile      = false              -- don't create swap files
 vim.o.backup        = false               -- don't create backup files
 vim.o.writebackup   = false          -- for more info see backup table
 vim.go.signcolumn   = 'yes'          -- always show sign column
+vim.o.scrolloff = 8
 vim.o.showmode      = false             -- hide --INSERT--
 vim.o.undodir       = '~/.config/nvim/undodir'
 vim.o.completeopt   ='menu,menuone,noinsert'
@@ -267,7 +272,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
  vim.lsp.handlers.hover, {
    -- Use a sharp border with `FloatBorder` highlights
-   border = "rounded"
+   border = 'none'
  }
 )
 
@@ -276,9 +281,11 @@ lsp_signature.setup({
   hint_prefix = '',
   hint_enable = false,
   handler_opts = {
-    border = 'single'
+    border = 'none'
   },
-  hi_parameter = "Visual"
+  hi_parameter = "Visual",
+  trigger_on_newline = false,
+  toggle_key = '<M-x>'
 })
 
 function on_attach(client, bufnr)
@@ -349,7 +356,7 @@ vim.keymap.set('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<space>ds', '<cmd>lua vim.diagnostic.open_float()<CR>')
-vim.keymap.set('n', '<space>dl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+vim.keymap.set('n', '<space>dl', '<cmd>lua vim.diagnostic.setloclist()<CR>')
 
 
 ---------------------------------------------
@@ -504,3 +511,5 @@ vim.api.nvim_set_keymap('n', '<leader>sx', ':TSHighlightCapturesUnderCursor<CR>'
 vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept()', { silent = true, script = true, expr  = true })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_node_command = '~/.nvm/versions/node/v17.9.1/bin/node'
+
+require('rust-tools').setup({})
