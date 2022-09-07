@@ -51,6 +51,8 @@ apps:
   - software-properties-common
   - google-cloud-cli
   - weechat
+  - hexyl
+  - ruby-full
 
 cargo:
   - exa

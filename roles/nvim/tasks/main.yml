@@ -25,6 +25,8 @@
   with_filetree: '{{ role_path }}/templates/'
   when: item.state == 'file'
 
+#- include: python_venv.yml
+
 - name: Make sure plugins are installed
   shell:
     nvim +PlugInstall +qall

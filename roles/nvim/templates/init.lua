@@ -82,12 +82,12 @@ require('packer').startup(function()
   use 'rcarriga/nvim-dap-ui'
   use 'theHamsta/nvim-dap-virtual-text'
 
-  use 'leoluz/nvim-dap-go'
-  use 'mfussenegger/nvim-dap-python'
-
   -- rust
   use 'nvim-lua/plenary.nvim'
   use 'simrat39/rust-tools.nvim'
+
+  use 'leoluz/nvim-dap-go'
+  use 'mfussenegger/nvim-dap-python'
 end)
 
 
@@ -294,18 +294,9 @@ function on_attach(client, bufnr)
   lsp_signature.on_attach()
 end
 
---[[local python_venv = require('my_python_venv')]]
---[[python_venv.get_python_venv_path(function(venv_path)]]
-  --[[lspconfig.pylsp.setup{]]
-    --[[cmd = {venv_path .. "/bin/pylsp"},]]
-    --[[on_attach=on_attach]]
-  --[[}]]
---[[end)]]
-
 local setup_config = {on_attach=on_attach, capabilities=capabilities}
 
 lspconfig.gopls.setup(setup_config)
---lspconfig.pyls.setup{on_attach=on_attach}
 lspconfig.tsserver.setup(setup_config)
 lspconfig.clojure_lsp.setup(setup_config)
 lspconfig.rust_analyzer.setup(setup_config)
@@ -512,4 +503,8 @@ vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept()', { silent = true, scrip
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_node_command = '~/.nvm/versions/node/v17.9.1/bin/node'
 
-require('rust-tools').setup({})
+require('rust-tools').setup({
+  hover_actions = {
+    border = 'none',
+  }
+})

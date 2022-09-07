@@ -84,6 +84,7 @@ apps:
 
   - httpie
   - ninja
+  - hexyl
 
 cask_apps:
   - adobe-acrobat-reader
