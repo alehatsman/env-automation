@@ -59,3 +59,4 @@ cargo:
   - bat
   - git-delta
   - xsv
+  - code-minimap

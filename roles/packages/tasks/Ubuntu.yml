@@ -1,21 +1,44 @@
 ---
-- name: Make sure keys are updated
-  shell: |
-    apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
+- name: Make sure keys are fresh and keyserver added
+  shell: apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
+  become: true
 
-    apt-get update
-    apt-get install -y gnupg software-properties-common curl ca-certificates apt-transport-https
+- name: Make sure default tools are installed
+  apt:
+    name: ['gnupg', 'software-properties-common',
+           'curl', 'ca-certificates', 'apt-transport-https']
+    state: present
+    update_cache: yes
+  become: true
 
-    add-apt-repository ppa:longsleep/golang-backports
+- name: Add golang repository
+  ansible.builtin.apt_repository:
+    repo: ppa:longsleep/golang-backports
+    state: present
+  become: true
 
-    curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+- name: Add hashicorp key
+  ansible.builtin.apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+  become: true
 
+- name: Add hashicorp key
+  ansible.builtin.apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+  become: true
 
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-    apt-add-repository "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main"
-    apt-get update
+- name: Make sure google key is present
+  ansible.builtin.get_url:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    dest: /usr/share/keyrings/cloud.google.gpg
+  become: true
 
+- name: Make sure google repo is
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main"
+    state: present
   become: true
 
 - name: Make sure apt packages are installed

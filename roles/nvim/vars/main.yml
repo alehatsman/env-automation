@@ -12,9 +12,11 @@ python_libs:
   - neovim
   - websocket-client
   - sexpdata
+  - neovim-remote
 
 python3_libs:
   - pynvim
   - neovim
   - websocket-client
   - sexpdata
+  - neovim-remote

@@ -75,7 +75,6 @@ require('packer').startup(function()
   use 'zeertzjq/nvim-paste-fix'
 
   use 'github/copilot.vim'
-  --use 'projekt0n/github-nvim-theme'
 
   -- debugging
   use 'mfussenegger/nvim-dap'
@@ -88,6 +87,10 @@ require('packer').startup(function()
 
   use 'leoluz/nvim-dap-go'
   use 'mfussenegger/nvim-dap-python'
+  use 'kdheepak/lazygit.nvim'
+
+
+  use 'wfxr/minimap.vim'
 end)
 
 
@@ -136,7 +139,7 @@ vim.o.tabstop=2              -- the number of spaces that a tab equates to
 vim.o.foldmethod='expr'        -- fold is defined by treesiter expressions
 vim.o.foldexpr='nvim_treesitter#foldexpr()'
 vim.o.foldcolumn='0'           -- width of fold column
-vim.o.foldlevelstart=99      -- don't close folds
+vim.o.foldlevelstart=99        -- don't close folds
 vim.o.colorcolumn='80'         -- visualize max line width
 
 vim.o.laststatus = 3
@@ -163,6 +166,8 @@ vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 
 
 vim.g.vim_json_syntax_conceal = 0
+
+vim.g.mouse=nil
 
 
 ---------------------------------------------
@@ -508,3 +513,12 @@ require('rust-tools').setup({
     border = 'none',
   }
 })
+
+vim.api.nvim_set_keymap('n', '<leader>gg', ':LazyGit<CR>', { noremap = true })
+
+vim.g.minimap_width = 10
+vim.g.minimap_auto_start = 1
+vim.g.minimap_auto_start_win_enter = 1
+vim.g.minimap_git_colors = 1
+
+vim.api.nvim_set_keymap('n', '<leader>mm', ':MinimapToggle<CR>', { noremap = true })

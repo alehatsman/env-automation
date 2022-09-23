@@ -33,11 +33,20 @@ export JAVA_HOME={{ JAVA_HOME }}
 export CARGO_HOME=~/.cargo
 export ZPLUG_HOME={{ ZPLUG_HOME }}
 export RVM_HOME=~/.rvm/
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN:$CARGO_HOME/bin:$RVM_HOME/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$RVM_HOME/bin:$JAVA_HOME/bin:$GCPATH/bin:$GOPATH/bin:$NODE_MODULES_BIN:$CARGO_HOME/bin:$PATH
 
-if [[ -n $SSH_CONNECTION ]]; then
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    alias nvim=nvr -cc split --remote-wait +'set bufhidden=wipe'
+fi
+
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+    export EDITOR="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+elif [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR="vim"
   export EDITOR="vim"
 else
+  export VISUAL="nvim"
   export EDITOR="nvim"
 fi
 
@@ -51,9 +60,6 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 {% endif %}
 
 export WINDOWS_TERMINAL_CONFIG_LOCATION="/mnt/c/Users/aleha/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
-
-export COCKROACH_DB_PASSWORD="{{cockroach_db_password}}"
-export COCKROACH_DB_URL="{{cockroach_db_url}}"
 
 #---------------------------------------------
 # Plugins
