@@ -1,0 +1,20 @@
+---
+- name: Close nvim or pull latest
+  git:
+    repo: https://github.com/neovim/neovim.git
+    dest: '~/Projects/alehatsman/neovim/'
+    version: master
+    depth: 1
+
+- name: Clean
+  make:
+    chdir: '~/Projects/alehatsman/neovim/'
+    target: clean
+
+- name: Build
+  become: true
+  make:
+    chdir: '~/Projects/alehatsman/neovim/'
+    target: install
+    params:
+      CMAKE_BUILD_TYPE: Release

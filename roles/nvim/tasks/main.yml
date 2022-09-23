@@ -29,4 +29,4 @@
 
 - name: Make sure plugins are installed
   shell:
-    nvim +PlugInstall +qall
+    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

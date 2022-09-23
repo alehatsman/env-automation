@@ -2,3 +2,5 @@
 extends: default
 ignore: |
   /vars/global_env.yml
+rules:
+  line-length: disable
