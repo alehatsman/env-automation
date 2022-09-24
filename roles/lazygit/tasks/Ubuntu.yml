@@ -1,0 +1,28 @@
+---
+- name: Check if lazy is installed
+  shell: "which lazygit"
+  register: which_result
+  ignore_errors: true
+
+- set_fact:
+    not_installed: "{{which_result.rc != 0}}"
+
+- debug: var=not_installed
+
+- name: Get latest lazygit version
+  become: true
+  shell:
+    "curl -s \"https://api.github.com/repos/jesseduffield/lazygit/releases/latest\" | grep -Po '\"tag_name\": \"v\\K[0-35.]+'"
+  register: curl_result
+
+- set_fact:
+    LAZYGIT_VERSION: "{{ curl_result.stdout}}"
+
+- debug: var=LAZYGIT_VERSION
+
+- name: Install lazygit
+  become: true
+  shell: |
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_{{LAZYGIT_VERSION}}_Linux_x86_64.tar.gz"
+    tar xf lazygit.tar.gz -C /usr/local/bin lazygit
+    rm -rf ./lazygit.tar.gz

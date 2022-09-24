@@ -53,6 +53,7 @@ apps:
   - weechat
   - hexyl
   - ruby-full
+  - lazygit
 
 cargo:
   - exa

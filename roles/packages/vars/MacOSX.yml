@@ -86,6 +86,7 @@ apps:
   - ninja
   - hexyl
   - gh
+  - code-minimap
 
 cask_apps:
   - adobe-acrobat-reader
