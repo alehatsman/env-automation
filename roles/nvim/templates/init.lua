@@ -46,16 +46,20 @@ require('packer').startup(function(use)
   use 'preservim/nerdcommenter'
   use 'scrooloose/nerdtree'
   use 'windwp/nvim-autopairs'
-  use {'Olical/conjure', branch = 'develop', ft = { 'clj', 'cljs', 'clojure' }}
+
+  use 'kdheepak/lazygit.nvim'
   use 'tpope/vim-fugitive'
+
   use 'tpope/vim-surround'
   use 'vim-scripts/LargeFile'
-  use 'cocopon/colorswatch.vim'
+  --use 'cocopon/colorswatch.vim'
   use 'crusoexia/vim-monokai'
-  use '~/.config/nvim/plugged/vim-runo'
-  use 'tjdevries/colorbuddy.nvim'
+  --use '~/.config/nvim/plugged/vim-runo'
+  --use 'tjdevries/colorbuddy.nvim'
 
+  use 'simrat39/rust-tools.nvim' { ft = 'rust' }
   use {'fatih/vim-go', ft = {'go'} }
+  use {'Olical/conjure', branch = 'develop', ft = { 'clj', 'cljs', 'clojure' }}
 
   use 'neovim/nvim-lspconfig'
   use 'tjdevries/lsp_extensions.nvim'
@@ -85,15 +89,12 @@ require('packer').startup(function(use)
 
   -- rust
   use 'nvim-lua/plenary.nvim'
-  use 'simrat39/rust-tools.nvim'
 
-  use 'leoluz/nvim-dap-go'
-  use 'mfussenegger/nvim-dap-python'
-  use 'kdheepak/lazygit.nvim'
-
+  use 'leoluz/nvim-dap-go' { ft = 'go' }
+  use 'mfussenegger/nvim-dap-python' { ft = 'python' }
 
   use 'wfxr/minimap.vim'
-
+  use 'wbthomason/packer.nvim'
   if packer_bootstrap then
     require('packer').sync()
   end
@@ -500,6 +501,8 @@ vim.api.nvim_set_keymap('n', '<leader>gl', ':Gclog %<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gm', ':Gvdiffsplit!<CR>', { noremap = true })
 
+vim.api.nvim_set_keymap('n', '<leader>gg', ':LazyGit<CR>', { noremap = true })
+
 vim.api.nvim_exec(
 [[
 autocmd BufRead,BufNewFile *.mdx set filetype=markdown
@@ -509,7 +512,9 @@ true
 
 vim.api.nvim_set_keymap('n', '<leader>sx', ':TSHighlightCapturesUnderCursor<CR>', { noremap = true })
 
--- Convert next line to nvim lua api
+---------------------------------------------
+-- Copilot
+---------------------------------------------
 vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept()', { silent = true, script = true, expr  = true })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_node_command = '~/.nvm/versions/node/v17.9.1/bin/node'
@@ -520,12 +525,28 @@ require('rust-tools').setup({
   }
 })
 
-vim.api.nvim_set_keymap('n', '<leader>gg', ':LazyGit<CR>', { noremap = true })
 
-vim.g.minimap_width = 10
-vim.g.minimap_auto_start = 1
-vim.g.minimap_auto_start_win_enter = 1
+---------------------------------------------
+-- Minimap
+---------------------------------------------
+
+vim.g.minimap_width = 15
+vim.g.minimap_auto_start = 0
+vim.g.minimap_auto_start_win_enter = 0
 vim.g.minimap_git_colors = 1
 vim.g.minimap_block_filetypes = { 'fugitive', 'nerdtree', 'tagbar', 'fzf', '' }
 
 vim.api.nvim_set_keymap('n', '<leader>mm', ':MinimapToggle<CR>', { noremap = true })
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*"},
+  callback = function ()
+    local line_count = vim.api.nvim_buf_line_count(0)
+    local win_height = vim.api.nvim_win_get_height(0)
+
+    if line_count > win_height then
+      vim.api.nvim_command('Minimap')
+    else
+      vim.api.nvim_command('MinimapClose')
+    end
+  end,
+})
