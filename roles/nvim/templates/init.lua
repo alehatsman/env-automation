@@ -57,7 +57,7 @@ require('packer').startup(function(use)
   --use '~/.config/nvim/plugged/vim-runo'
   --use 'tjdevries/colorbuddy.nvim'
 
-  use 'simrat39/rust-tools.nvim' { ft = 'rust' }
+  use 'simrat39/rust-tools.nvim'
   use {'fatih/vim-go', ft = {'go'} }
   use {'Olical/conjure', branch = 'develop', ft = { 'clj', 'cljs', 'clojure' }}
 
@@ -90,8 +90,8 @@ require('packer').startup(function(use)
   -- rust
   use 'nvim-lua/plenary.nvim'
 
-  use 'leoluz/nvim-dap-go' { ft = 'go' }
-  use 'mfussenegger/nvim-dap-python' { ft = 'python' }
+  use 'leoluz/nvim-dap-go'
+  use 'mfussenegger/nvim-dap-python'
 
   use 'wfxr/minimap.vim'
   use 'wbthomason/packer.nvim'
