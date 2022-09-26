@@ -54,6 +54,7 @@ apps:
   - hexyl
   - ruby-full
   - lazygit
+  - postgresql-client
 
 cargo:
   - exa

@@ -21,7 +21,6 @@ vim.api.nvim_exec(
   false
 )
 
-
 ---------------------------------------------
 -- Plugins installation
 ---------------------------------------------
@@ -95,6 +94,7 @@ require('packer').startup(function(use)
 
   use 'wfxr/minimap.vim'
   use 'wbthomason/packer.nvim'
+
   if packer_bootstrap then
     require('packer').sync()
   end
@@ -493,10 +493,10 @@ end
 
 -- Git mappings
 vim.api.nvim_set_keymap('n', '<leader>gs', ':Git<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gc', ':Gcommit<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gp', ':Gpush<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gc', ':Git commit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gpr', ':Gpull -r<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gpr', ':Git pull -r<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gl', ':Gclog %<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gm', ':Gvdiffsplit!<CR>', { noremap = true })
@@ -537,16 +537,20 @@ vim.g.minimap_git_colors = 1
 vim.g.minimap_block_filetypes = { 'fugitive', 'nerdtree', 'tagbar', 'fzf', '' }
 
 vim.api.nvim_set_keymap('n', '<leader>mm', ':MinimapToggle<CR>', { noremap = true })
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*"},
-  callback = function ()
-    local line_count = vim.api.nvim_buf_line_count(0)
-    local win_height = vim.api.nvim_win_get_height(0)
+--[[vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {]]
+  --[[pattern = {"*"},]]
+  --[[callback = function ()]]
+    --[[if vim.bo.filetype == 'minimap' then]]
+      --[[return]]
+    --[[end]]
 
-    if line_count > win_height then
-      vim.api.nvim_command('Minimap')
-    else
-      vim.api.nvim_command('MinimapClose')
-    end
-  end,
-})
+    --[[local line_count = vim.api.nvim_buf_line_count(0)]]
+    --[[local win_height = vim.api.nvim_win_get_height(0)]]
+
+    --[[if line_count > win_height then]]
+      --[[vim.api.nvim_command('Minimap')]]
+    --[[else]]
+      --[[vim.api.nvim_command('MinimapClose')]]
+    --[[end]]
+  --[[end,]]
+--[[})]]
