@@ -95,6 +95,15 @@ require('packer').startup(function(use)
   use 'wfxr/minimap.vim'
   use 'wbthomason/packer.nvim'
 
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  })
+
   if packer_bootstrap then
     require('packer').sync()
   end
@@ -423,6 +432,7 @@ vim.g.ale_completion_tsserver_autoimport = 1
 vim.g.NERDTreeShowHidden = 1 -- show hidden files
 vim.g.NERDTreeAutoDeleteBuffer = 1 -- delete buffer when delete file
 vim.g.NERDTreeMinimalUI = 1
+vim.g.NERDTreeMinimalMenu = 1
 
 vim.api.nvim_set_keymap('n', '<leader>fe', ':NERDTreeToggle<cr>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<leader>ff', ':NERDTreeFind<cr>', { noremap = true })
@@ -537,20 +547,30 @@ vim.g.minimap_git_colors = 1
 vim.g.minimap_block_filetypes = { 'fugitive', 'nerdtree', 'tagbar', 'fzf', '' }
 
 vim.api.nvim_set_keymap('n', '<leader>mm', ':MinimapToggle<CR>', { noremap = true })
---[[vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {]]
-  --[[pattern = {"*"},]]
-  --[[callback = function ()]]
-    --[[if vim.bo.filetype == 'minimap' then]]
-      --[[return]]
-    --[[end]]
 
-    --[[local line_count = vim.api.nvim_buf_line_count(0)]]
-    --[[local win_height = vim.api.nvim_win_get_height(0)]]
+local contains = function(list, item)
+  for _, value in pairs(list) do
+    if value == item then
+      return true
+    end
+  end
+  return false
+end
 
-    --[[if line_count > win_height then]]
-      --[[vim.api.nvim_command('Minimap')]]
-    --[[else]]
-      --[[vim.api.nvim_command('MinimapClose')]]
-    --[[end]]
-  --[[end,]]
---[[})]]
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+  pattern = {"*"},
+  callback = function ()
+    if contains(vim.g.minimap_block_filetypes, vim.bo.filetype) then
+      return
+    end
+
+    local line_count = vim.api.nvim_buf_line_count(0)
+    local win_height = vim.api.nvim_win_get_height(0)
+
+    if line_count > win_height then
+      vim.api.nvim_command('Minimap')
+    else
+      vim.api.nvim_command('MinimapClose')
+    end
+  end,
+})
