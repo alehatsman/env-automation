@@ -83,14 +83,19 @@ require('packer').startup(function(use)
 
   -- debugging
   use 'mfussenegger/nvim-dap'
+  use { "mxsdev/nvim-dap-vscode-js" }
   use 'rcarriga/nvim-dap-ui'
   use 'theHamsta/nvim-dap-virtual-text'
+  use 'leoluz/nvim-dap-go'
+  use 'mfussenegger/nvim-dap-python'
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npm run compile"
+  }
 
   -- rust
   use 'nvim-lua/plenary.nvim'
-
-  use 'leoluz/nvim-dap-go'
-  use 'mfussenegger/nvim-dap-python'
 
   use 'wfxr/minimap.vim'
   use 'wbthomason/packer.nvim'
@@ -574,3 +579,140 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
     end
   end,
 })
+
+---------------------------------------------
+-- DAP, DEBUG
+---------------------------------------------
+
+require("nvim-dap-virtual-text").setup {
+  commented = true,
+}
+
+vim.cmd("hi link DapUIVariable Normal")
+vim.cmd("hi DapUIScope guifg=#F92772")
+vim.cmd("hi DapUIType guifg=#D484FF")
+vim.cmd("hi link DapUIValue Normal")
+vim.cmd("hi DapUIModifiedValue guifg=#66d9ef gui=bold")
+vim.cmd("hi DapUIDecoration guifg=#66d9ef")
+vim.cmd("hi DapUIThread guifg=#A6E22D")
+vim.cmd("hi DapUIStoppedThread guifg=#F92772")
+vim.cmd("hi link DapUIFrameName Normal")
+vim.cmd("hi DapUISource guifg=#D484FF")
+vim.cmd("hi link DapUILineNumber LineNr")
+vim.cmd("hi DapUIFloatBorder guifg=#66d9ef")
+vim.cmd("hi DapUIWatchesEmpty guifg=#F92772")
+vim.cmd("hi DapUIWatchesValue guifg=#A6E22D")
+vim.cmd("hi DapUIWatchesError guifg=#F92772")
+vim.cmd("hi DapUIBreakpointsPath guifg=#66d9ef")
+vim.cmd("hi DapUIBreakpointsInfo guifg=#A6E22D")
+vim.cmd("hi DapUIBreakpointsCurrentLine guifg=#A6E22D gui=bold")
+vim.cmd("hi link DapUIBreakpointsLine DapUILineNumber")
+vim.cmd("hi DapUIBreakpointsDisabledLine guifg=#424242")
+vim.cmd("hi link DapUICurrentFrameName DapUIBreakpointsCurrentLine")
+vim.cmd("hi DapUIStepOver guifg=#00f1f5")
+vim.cmd("hi DapUIStepInto guifg=#00f1f5")
+vim.cmd("hi DapUIStepBack guifg=#00f1f5")
+vim.cmd("hi DapUIStepOut guifg=#00f1f5")
+vim.cmd("hi DapUIStop guifg=#F92772")
+vim.cmd("hi DapUIPlayPause guifg=#A6E22D")
+vim.cmd("hi DapUIRestart guifg=#A6E22D")
+vim.cmd("hi DapUIUnavailable guifg=#424242")
+
+local dap, dapui = require('dap'), require('dapui')
+local dap = require('dap')
+
+vim.keymap.set('n', '<F5>', dap.continue)
+vim.keymap.set('n', '<F29>', dap.run_last)
+vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
+vim.keymap.set('n', '<F10>', dap.step_over)
+vim.keymap.set('n', '<F11>', dap.step_into)
+vim.keymap.set('n', '<F12>', dap.step_out)
+
+dapui.setup({
+  layouts = {
+    {
+      elements = {
+        'stacks',
+        { id = 'scopes', size = 0.75 },
+      },
+      size = 40, -- 40 columns
+      position = 'left',
+    },
+    {
+      elements = {
+        'repl',
+        'console',
+      },
+      size = 0.25, -- 25% of total lines
+      position = 'bottom',
+    },
+  },
+  controls = {
+    icons = {
+      pause = "",
+      play = "",
+      step_into = "",
+      step_over = "",
+      step_out = "",
+      step_back = "",
+      run_last = "↻",
+      terminate = "□",
+    },
+  },
+})
+dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+vim.keymap.set('n', '<Leader>dq', function()
+    dap.disconnect()
+    dap.close()
+    dapui.close({})
+
+    for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+        local name = vim.api.nvim_buf_get_name(buffer)
+        if name:match('.*%[dap%-repl%]') then
+            vim.api.nvim_buf_delete(buffer, { force = true })
+        end
+    end
+end)
+
+require("dap-vscode-js").setup({
+  --node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
+  --debugger_path = "/Users/alehatsman/.local/share/nvim/site/pack/packer/opt/vscode-js-debug", -- Path to vscode-js-debug installation.
+  --debugger_cmd = { "js-debug-adapter" }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
+})
+
+for _, language in ipairs({ "typescript", "javascript" }) do
+  require("dap").configurations[language] = {
+    {
+      type = "pwa-node",
+      request = "launch",
+      name = "Launch file",
+      program = "${file}",
+      cwd = "${workspaceFolder}",
+    },
+    {
+      type = "pwa-node",
+      request = "attach",
+      name = "Attach",
+      processId = require'dap.utils'.pick_process,
+      cwd = "${workspaceFolder}",
+    },
+    {
+      type = "pwa-node",
+      request = "launch",
+      name = "Debug Jest Tests",
+      -- trace = true, -- include debugger info
+      runtimeExecutable = "node",
+      runtimeArgs = {
+        "./node_modules/.bin/jest",
+        "--runInBand",
+      },
+      rootPath = "${workspaceFolder}",
+      cwd = "${workspaceFolder}",
+      console = "integratedTerminal",
+      internalConsoleOptions = "neverOpen",
+    }
+  }
+end

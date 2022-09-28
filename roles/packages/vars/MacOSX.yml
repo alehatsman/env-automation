@@ -121,3 +121,5 @@ cask_apps:
   # Java
   - adoptopenjdk8
   - visualvm
+
+  - font-jetbrains-mono-nerd-font
