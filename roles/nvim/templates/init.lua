@@ -536,10 +536,20 @@ local contains = function(list, item)
   return false
 end
 
-vim.api.nvim_create_autocmd({"BufEnter"}, {
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
   pattern = {"*"},
   callback = function ()
     if contains(vim.g.minimap_block_filetypes, vim.bo.filetype) then
+      return
+    end
+
+    if vim.bo.filetype == 'minimap' then
+      return
+    end
+
+    local width = vim.api.nvim_win_get_width(0)
+    if width < 90 then
+      vim.api.nvim_command('MinimapClose')
       return
     end
 
@@ -554,6 +564,13 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
   end,
 })
 --]]
+
+vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+  pattern = {"*"},
+  callback = function ()
+    vim.api.nvim_command('MinimapClose')
+  end,
+})
 
 ---------------------------------------------
 -- DAP, DEBUG
