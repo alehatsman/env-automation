@@ -523,7 +523,6 @@ vim.g.minimap_auto_start_win_enter = 0
 vim.g.minimap_git_colors = 1
 vim.g.minimap_block_filetypes = { 'fugitive', 'nerdtree', 'tagbar', 'fzf', '' }
 
-vim.api.nvim_set_keymap('n', '<leader>mm', ':MinimapToggle<CR>', { noremap = true })
 
 
 --[[
@@ -535,6 +534,23 @@ local contains = function(list, item)
   end
   return false
 end
+
+local is_minimap_open = false
+local function open_minimap()
+  if not is_minimap_open then
+    vim.cmd('Minimap')
+    is_minimap_open = true
+  end
+end
+
+local function close_minimap()
+  if is_minimap_open then
+    vim.cmd('MinimapClose')
+    is_minimap_open = false
+  end
+end
+
+vim.api.nvim_set_keymap('n', '<leader>mm', open_minimap, { noremap = true })
 
 vim.api.nvim_create_autocmd({"BufWinEnter"}, {
   pattern = {"*"},
@@ -557,9 +573,9 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
     local win_height = vim.api.nvim_win_get_height(0)
 
     if line_count > win_height then
-      vim.api.nvim_command('Minimap')
+      open_minimap()
     else
-      vim.api.nvim_command('MinimapClose')
+      close_minimap()
     end
   end,
 })
@@ -568,7 +584,7 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
 vim.api.nvim_create_autocmd({"BufWinLeave"}, {
   pattern = {"*"},
   callback = function ()
-    vim.api.nvim_command('MinimapClose')
+    close_minimap()
   end,
 })
 
