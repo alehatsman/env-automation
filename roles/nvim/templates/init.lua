@@ -25,11 +25,11 @@ vim.api.nvim_exec(
 -- Plugins installation
 ---------------------------------------------
 require('packer').startup(function(use)
+  use 'nvim-lua/plenary.nvim'
   use 'Yggdroot/indentLine'
   use 'airblade/vim-gitgutter'
   use 'itchyny/lightline.vim'
   use 'christoomey/vim-tmux-navigator'
-  use 'dense-analysis/ale'
   use 'jeffkreeftmeijer/vim-numbertoggle'
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
@@ -51,9 +51,9 @@ require('packer').startup(function(use)
 
   use 'tpope/vim-surround'
   use 'vim-scripts/LargeFile'
-  --use 'cocopon/colorswatch.vim'
+
   use 'crusoexia/vim-monokai'
-  --use '~/.config/nvim/plugged/vim-runo'
+  --use 'cocopon/colorswatch.vim'
   --use 'tjdevries/colorbuddy.nvim'
 
   use 'simrat39/rust-tools.nvim'
@@ -94,8 +94,6 @@ require('packer').startup(function(use)
     run = "npm install --legacy-peer-deps && npm run compile"
   }
 
-  -- rust
-  use 'nvim-lua/plenary.nvim'
 
   use 'wfxr/minimap.vim'
   use 'wbthomason/packer.nvim'
@@ -108,6 +106,8 @@ require('packer').startup(function(use)
     end,
     ft = { "markdown" },
   })
+
+  use "jose-elias-alvarez/null-ls.nvim"
 
   if packer_bootstrap then
     require('packer').sync()
@@ -390,46 +390,19 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-
 ---------------------------------------------
--- Ale linter
+-- Linters / Fixers / Formatters
 ---------------------------------------------
-vim.g.ale_enabled = 1
-vim.g.ale_linters = {
-  typescript = { 'eslint', 'tsserver' },
-  typescriptreact = { 'eslint', 'tsserver' },
-  python = { 'pyls', 'black', 'mypy' },
-  yaml = { 'yamllint' },
-  clojure = { 'clj-kondo' }
-}
-vim.g.ale_fixers = {
-  ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
-  javascript = { 'prettier', 'eslint' },
-  typescript = { 'prettier', 'eslint' },
-  typescriptreact = { 'prettier', 'eslint' },
-  json = { 'jq' }
-}
-
-vim.g.ale_fix_on_save = 1
-vim.g.ale_fix_on_save = 1
-vim.g.ale_lint_on_save = 1
-vim.g.ale_lint_delay = 0
-vim.g.ale_lint_on_enter = 0
-vim.g.ale_lint_on_filetype_changed = 0
-vim.g.ale_lint_on_insert_leave = 0
-vim.g.ale_lint_on_text_changed = 0
-vim.g.ale_linters_explicit = 1
-vim.g.ale_open_list = 0
-vim.g.ale_set_highlights = 0
-vim.g.ale_set_loclist = 1
-vim.g.ale_set_quickfix = 0
-vim.g.ale_set_signs = 1
-vim.g.ale_sign_column_always = 1
-vim.g.ale_sign_error = '•'
-vim.g.ale_sign_offset = 1000000
-vim.g.ale_sign_warning = '•'
-vim.g.ale_python_auto_pipenv = 1
-vim.g.ale_completion_tsserver_autoimport = 1
+local null_ls = require("null-ls")
+null_ls.setup({
+  sources = {
+    null_ls.builtins.diagnostics.tsc,
+    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.formatting.eslint_d,
+    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.jq,
+  }
+})
 
 ---------------------------------------------
 -- Nerd tree
@@ -544,7 +517,6 @@ require('rust-tools').setup({
 ---------------------------------------------
 -- Minimap
 ---------------------------------------------
-
 vim.g.minimap_width = 10
 vim.g.minimap_auto_start = 0
 vim.g.minimap_auto_start_win_enter = 0
@@ -553,6 +525,8 @@ vim.g.minimap_block_filetypes = { 'fugitive', 'nerdtree', 'tagbar', 'fzf', '' }
 
 vim.api.nvim_set_keymap('n', '<leader>mm', ':MinimapToggle<CR>', { noremap = true })
 
+
+--[[
 local contains = function(list, item)
   for _, value in pairs(list) do
     if value == item then
@@ -579,6 +553,7 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
     end
   end,
 })
+--]]
 
 ---------------------------------------------
 -- DAP, DEBUG
