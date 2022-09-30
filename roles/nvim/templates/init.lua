@@ -56,7 +56,18 @@ require('packer').startup(function(use)
   --use 'cocopon/colorswatch.vim'
   --use 'tjdevries/colorbuddy.nvim'
 
-  use 'simrat39/rust-tools.nvim'
+  use {
+    'simrat39/rust-tools.nvim',
+    ft = { 'rust' },
+    config = function()
+      require('rust-tools').setup({
+        hover_actions = {
+          border = 'none',
+        }
+      })
+    end
+  } 
+
   use {'fatih/vim-go', ft = {'go'} }
   use {'Olical/conjure', branch = 'develop', ft = { 'clj', 'cljs', 'clojure' }}
 
@@ -108,6 +119,7 @@ require('packer').startup(function(use)
   })
 
   use "jose-elias-alvarez/null-ls.nvim"
+  use "lukas-reineke/lsp-format.nvim"
 
   if packer_bootstrap then
     require('packer').sync()
@@ -288,7 +300,7 @@ local api = vim.api
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = false,
-    virtual_text = false, --{ spacing = 4 },
+    virtual_text = true, --{ spacing = 4 },
     signs = true,
     update_in_insert = false,
   }
@@ -314,10 +326,14 @@ lsp_signature.setup({
   toggle_key = '<M-x>'
 })
 
+local lsp_format = require("lsp-format")
+lsp_format.setup({})
+
 function on_attach(client, bufnr)
   --require'completion'.on_attach(client, bufnr)
   --api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  lsp_signature.on_attach()
+  lsp_signature.on_attach(client, bufnr)
+  lsp_format.on_attach(client, bufnr)
 end
 
 local setup_config = {on_attach=on_attach, capabilities=capabilities}
@@ -365,15 +381,19 @@ vim.call('sign_define', 'DiagnosticSignInfo', {text = "•", texthl = "Diagnosti
 vim.call('sign_define', 'DiagnosticSignHint', {text = "•", texthl = "DiagnosticSignHint"})
 
 -- lsp
-vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-vim.keymap.set('n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>')
-vim.keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>')
-vim.keymap.set('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+--vim.keymap.set('n', 'gd',        '<cmd>lua vim.lsp.buf.declaration()<CR>')
+--vim.keymap.set('n', 'gi',        '<cmd>lua vim.lsp.buf.implementation()<CR>')
+--vim.keymap.set('n', 'gR',        '<cmd>lua vim.lsp.buf.references()<CR>')
+vim.keymap.set('n', '<c-]>',     '<cmd>lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', '<c-k>',     '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+vim.keymap.set('n', 'K',         '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<space>ds', '<cmd>lua vim.diagnostic.open_float()<CR>')
-vim.keymap.set('n', '<space>dl', '<cmd>lua vim.diagnostic.setloclist()<CR>')
+vim.keymap.set('n', '<leader>ca','<cmd>lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', '<leader>rn','<cmd>lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>')
+
+
 
 
 ---------------------------------------------
@@ -507,11 +527,7 @@ vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept()', { silent = true, scrip
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_node_command = '~/.nvm/versions/node/v17.9.1/bin/node'
 
-require('rust-tools').setup({
-  hover_actions = {
-    border = 'none',
-  }
-})
+
 
 
 ---------------------------------------------
@@ -524,8 +540,6 @@ vim.g.minimap_git_colors = 1
 vim.g.minimap_block_filetypes = { 'fugitive', 'nerdtree', 'tagbar', 'fzf', '' }
 
 
-
---[[
 local contains = function(list, item)
   for _, value in pairs(list) do
     if value == item then
@@ -550,7 +564,7 @@ local function close_minimap()
   end
 end
 
-vim.api.nvim_set_keymap('n', '<leader>mm', open_minimap, { noremap = true })
+vim.keymap.set('n', '<leader>mm', open_minimap, { noremap = true })
 
 vim.api.nvim_create_autocmd({"BufWinEnter"}, {
   pattern = {"*"},
@@ -579,7 +593,6 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
     end
   end,
 })
---]]
 
 vim.api.nvim_create_autocmd({"BufWinLeave"}, {
   pattern = {"*"},
