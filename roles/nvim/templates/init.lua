@@ -40,6 +40,7 @@ require('packer').startup(function(use)
       {'junegunn/fzf.vim'},
     }
   }
+  use {'gfanto/fzf-lsp.nvim'}
   use 'mbbill/undotree'
   use 'norcalli/nvim-colorizer.lua'
   use 'preservim/nerdcommenter'
@@ -119,7 +120,6 @@ require('packer').startup(function(use)
   })
 
   use "jose-elias-alvarez/null-ls.nvim"
-  use "lukas-reineke/lsp-format.nvim"
 
   if packer_bootstrap then
     require('packer').sync()
@@ -326,14 +326,19 @@ lsp_signature.setup({
   toggle_key = '<M-x>'
 })
 
-local lsp_format = require("lsp-format")
-lsp_format.setup({})
+
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*"},
+  callback = function ()
+    vim.lsp.buf.format({ async = true })
+  end
+})
+ 
 
 function on_attach(client, bufnr)
   --require'completion'.on_attach(client, bufnr)
   --api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   lsp_signature.on_attach(client, bufnr)
-  lsp_format.on_attach(client, bufnr)
 end
 
 local setup_config = {on_attach=on_attach, capabilities=capabilities}
@@ -368,6 +373,20 @@ lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
 }
 
+---------------------------------------------
+-- Linters / Fixers / Formatters
+---------------------------------------------
+local null_ls = require("null-ls")
+null_ls.setup({
+  sources = {
+    null_ls.builtins.diagnostics.tsc,
+    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.formatting.eslint_d,
+    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.jq,
+  }
+})
+
 -- remap ctrl-x ctrl-o to ctrl space
 --vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
 --vim.api.nvim_set_keymap('i', '<C-@>', '<C-Space>', { noremap = true })
@@ -387,8 +406,8 @@ vim.call('sign_define', 'DiagnosticSignHint', {text = "•", texthl = "Diagnosti
 vim.keymap.set('n', '<c-]>',     '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', '<c-k>',     '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 vim.keymap.set('n', 'K',         '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<space>ds', '<cmd>lua vim.diagnostic.open_float()<CR>')
-vim.keymap.set('n', '<leader>ca','<cmd>lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', '<leader>ds','<cmd>:Diagnostics<CR>')
+vim.keymap.set('n', '<c-space>', '<cmd>:CodeActions<CR>')
 vim.keymap.set('n', '<leader>rn','<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>')
@@ -409,20 +428,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
-
----------------------------------------------
--- Linters / Fixers / Formatters
----------------------------------------------
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.diagnostics.tsc,
-    null_ls.builtins.diagnostics.eslint_d,
-    null_ls.builtins.formatting.eslint_d,
-    null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.jq,
-  }
-})
 
 ---------------------------------------------
 -- Nerd tree
@@ -464,9 +469,9 @@ vim.api.nvim_set_keymap('n', '<c-b>', ':Buffers<cr>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<c-f>', ':Rg<cr>', { noremap = false })
 vim.api.nvim_set_keymap('n', '<c-h>', ':Help<cr>', { noremap = false })
 
-require('lspfuzzy').setup {}
+require('lspfuzzy').setup()
+--require('fzf_lsp').setup()
 
--- Nvim colorizer
 require'colorizer'.setup()
 
 -- Splits
