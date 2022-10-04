@@ -582,12 +582,13 @@ vim.cmd("hi DapUIUnavailable guifg=#424242")
 local dap, dapui = require('dap'), require('dapui')
 local dap = require('dap')
 
-vim.keymap.set('n', '<F5>', dap.continue)
-vim.keymap.set('n', '<F29>', dap.run_last)
-vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
-vim.keymap.set('n', '<F10>', dap.step_over)
-vim.keymap.set('n', '<F11>', dap.step_into)
-vim.keymap.set('n', '<F12>', dap.step_out)
+vim.keymap.set('n', '<leader>dc', dap.continue)
+--vim.keymap.set('n', '<F29>', dap.run_last)
+vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
+vim.keymap.set('n', '<leader>dj', dap.step_over)
+vim.keymap.set('n', '<leader>di', dap.step_into)
+vim.keymap.set('n', '<leader>do', dap.step_out)
+
 
 dapui.setup({
   layouts = {
