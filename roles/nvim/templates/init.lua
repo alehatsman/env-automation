@@ -53,7 +53,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'vim-scripts/LargeFile'
 
-  use 'crusoexia/vim-monokai'
+  use 'alehatsman/vim-monokai'
   --use 'cocopon/colorswatch.vim'
   --use 'tjdevries/colorbuddy.nvim'
 
@@ -106,7 +106,6 @@ require('packer').startup(function(use)
     run = "npm install --legacy-peer-deps && npm run compile"
   }
 
-
   use 'wfxr/minimap.vim'
   use 'wbthomason/packer.nvim'
 
@@ -125,7 +124,6 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
-
 
 ---------------------------------------------
 -- General configuration
@@ -197,11 +195,9 @@ require('nvim-autopairs').setup{
 vim.g.completion_enable_auto_popup = 0 -- disable automatic autocomplete popup
 vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 
-
 vim.g.vim_json_syntax_conceal = 0
 
 vim.g.mouse=nil
-
 
 ---------------------------------------------
 -- Autocomplete
@@ -326,14 +322,12 @@ lsp_signature.setup({
   toggle_key = '<M-x>'
 })
 
-
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
   pattern = {"*"},
   callback = function ()
     vim.lsp.buf.format({ async = true })
   end
 })
- 
 
 function on_attach(client, bufnr)
   --require'completion'.on_attach(client, bufnr)
