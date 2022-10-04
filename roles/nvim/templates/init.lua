@@ -87,7 +87,7 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/playground'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/nvim-treesitter-refactor'
-  use 'romgrk/nvim-treesitter-context'
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   use 'zeertzjq/nvim-paste-fix'
 
@@ -119,6 +119,7 @@ require('packer').startup(function(use)
   })
 
   use "jose-elias-alvarez/null-ls.nvim"
+  use "lukas-reineke/lsp-format.nvim"
 
   if packer_bootstrap then
     require('packer').sync()
@@ -329,10 +330,14 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
   end
 })
 
+local lsp_format = require("lsp-format")
+lsp_format.setup {} 
+
 function on_attach(client, bufnr)
   --require'completion'.on_attach(client, bufnr)
   --api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   lsp_signature.on_attach(client, bufnr)
+  lsp_format.on_attach(client, bufnr)
 end
 
 local setup_config = {on_attach=on_attach, capabilities=capabilities}
@@ -526,9 +531,6 @@ vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept()', { silent = true, scrip
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_node_command = '~/.nvm/versions/node/v17.9.1/bin/node'
 
-
-
-
 ---------------------------------------------
 -- Minimap
 ---------------------------------------------
@@ -537,68 +539,7 @@ vim.g.minimap_auto_start = 0
 vim.g.minimap_auto_start_win_enter = 0
 vim.g.minimap_git_colors = 1
 vim.g.minimap_block_filetypes = { 'fugitive', 'nerdtree', 'tagbar', 'fzf', '' }
-
-
-local contains = function(list, item)
-  for _, value in pairs(list) do
-    if value == item then
-      return true
-    end
-  end
-  return false
-end
-
-local is_minimap_open = false
-local function open_minimap()
-  if not is_minimap_open then
-    vim.cmd('Minimap')
-    is_minimap_open = true
-  end
-end
-
-local function close_minimap()
-  if is_minimap_open then
-    vim.cmd('MinimapClose')
-    is_minimap_open = false
-  end
-end
-
-vim.keymap.set('n', '<leader>mm', open_minimap, { noremap = true })
-
-vim.api.nvim_create_autocmd({"BufWinEnter"}, {
-  pattern = {"*"},
-  callback = function ()
-    if contains(vim.g.minimap_block_filetypes, vim.bo.filetype) then
-      return
-    end
-
-    if vim.bo.filetype == 'minimap' then
-      return
-    end
-
-    local width = vim.api.nvim_win_get_width(0)
-    if width < 90 then
-      vim.api.nvim_command('MinimapClose')
-      return
-    end
-
-    local line_count = vim.api.nvim_buf_line_count(0)
-    local win_height = vim.api.nvim_win_get_height(0)
-
-    if line_count > win_height then
-      open_minimap()
-    else
-      close_minimap()
-    end
-  end,
-})
-
-vim.api.nvim_create_autocmd({"BufWinLeave"}, {
-  pattern = {"*"},
-  callback = function ()
-    close_minimap()
-  end,
-})
+vim.api.nvim_set_keymap('n', '<leader>mm', ':MinimapToggle<CR>', { noremap = true })
 
 ---------------------------------------------
 -- DAP, DEBUG
