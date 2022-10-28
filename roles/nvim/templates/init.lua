@@ -1,3 +1,6 @@
+---------------------------------------------
+-- Install packer
+---------------------------------------------
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -20,6 +23,7 @@ vim.api.nvim_exec(
   ]],
   false
 )
+
 
 ---------------------------------------------
 -- Plugins installation
@@ -159,6 +163,7 @@ require('packer').startup(function(use)
   end
 end)
 
+
 ---------------------------------------------
 -- General configuration
 ---------------------------------------------
@@ -234,10 +239,10 @@ vim.g.vim_json_syntax_conceal = 0
 
 vim.g.mouse=nil
 
+
 ---------------------------------------------
 -- Autocomplete
 ---------------------------------------------
-
 local cmp = require'cmp'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
@@ -317,8 +322,8 @@ cmp.setup({
 })
 
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 
 ---------------------------------------------
 -- Language Server Protocol
@@ -334,7 +339,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     update_in_insert = false,
   }
 )
---vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
  vim.lsp.handlers.hover, {
@@ -404,6 +408,7 @@ lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
 }
 
+
 ---------------------------------------------
 -- Linters / Fixers / Formatters
 ---------------------------------------------
@@ -468,9 +473,9 @@ require('Comment').setup {
 }
 
 
----------------------------------------------
+---
 -- FileTree
----------------------------------------------
+---
 require('nvim-tree').setup({
   renderer = {
 
@@ -479,6 +484,7 @@ require('nvim-tree').setup({
 
 vim.keymap.set('n', '<leader>fe', ':NvimTreeToggle<cr>')
 vim.keymap.set('n', '<leader>ff', ':NvimTreeFindFile<cr>')
+
 
 ---------------------------------------------
 -- Lightline
