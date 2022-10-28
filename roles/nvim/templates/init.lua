@@ -26,9 +26,30 @@ vim.api.nvim_exec(
 ---------------------------------------------
 require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
-  use 'Yggdroot/indentLine'
-  use 'airblade/vim-gitgutter'
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('indent_blankline').setup({})
+    end
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup({
+        signs = {
+          add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+          change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+          delete       = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+          topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+          changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+        }
+      })
+    end
+  }
+
   use 'itchyny/lightline.vim'
+
   use 'christoomey/vim-tmux-navigator'
   use 'jeffkreeftmeijer/vim-numbertoggle'
   use 'junegunn/fzf'
@@ -43,8 +64,11 @@ require('packer').startup(function(use)
   use {'gfanto/fzf-lsp.nvim'}
   use 'mbbill/undotree'
   use 'norcalli/nvim-colorizer.lua'
-  use 'preservim/nerdcommenter'
-  use 'scrooloose/nerdtree'
+
+  use 'numToStr/Comment.nvim'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  use 'nvim-tree/nvim-tree.lua'
   use 'windwp/nvim-autopairs'
 
   use 'kdheepak/lazygit.nvim'
@@ -157,7 +181,7 @@ vim.o.updatetime    = 50
 vim.o.swapfile      = false              -- don't create swap files
 vim.o.backup        = false               -- don't create backup files
 vim.o.writebackup   = false          -- for more info see backup table
-vim.go.signcolumn   = 'yes'          -- always show sign column
+-- vim.go.signcolumn   = 'auto'          -- always show sign column
 vim.o.scrolloff = 8
 vim.o.showmode      = false             -- hide --INSERT--
 vim.o.undodir       = '~/.config/nvim/undodir'
@@ -186,8 +210,6 @@ vim.o.colorcolumn='80'         -- visualize max line width
 vim.o.laststatus = 3
 
 vim.g.AutoPairsFlyMode = 1
-vim.g.indentLine_color_gui = '#abaa98' -- set color of identation symbols |
-vim.g.indentLine_fileTypeExclude = { 'json', 'markdown' }
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = vim.api.nvim_replace_termcodes('<tab>', true, true, true) -- wtf is this
@@ -196,6 +218,9 @@ vim.g.colors_name = 'monokai'
 vim.cmd [[
   silent! colorscheme monokai
 ]]
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 require('nvim-autopairs').setup{
   enable_check_bracket_line=false
@@ -395,12 +420,6 @@ null_ls.setup({
   }
 })
 
--- remap ctrl-x ctrl-o to ctrl space
---vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true })
---vim.api.nvim_set_keymap('i', '<C-@>', '<C-Space>', { noremap = true })
---vim.api.nvim_set_keymap('i', '<expr> <C-space>', 'completion#trigger_completion()', { noremap = true, silent = true })
---vim.api.nvim_exec('autocmd CompleteDone * pclose', true)
-
 -- diagnostics
 vim.call('sign_define', 'DiagnosticSignError', {text = "•", texthl = "DiagnosticSignError"})
 vim.call('sign_define', 'DiagnosticSignWarn', {text = "•", texthl = "DiagnosticSignWarn"})
@@ -421,8 +440,6 @@ vim.keymap.set('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>'
 vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>')
 
 
-
-
 ---------------------------------------------
 -- Treesitter
 ---------------------------------------------
@@ -435,20 +452,33 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
   },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  }
 }
 
----------------------------------------------
--- Nerd tree
----------------------------------------------
-vim.g.NERDTreeShowHidden = 1 -- show hidden files
-vim.g.NERDTreeAutoDeleteBuffer = 1 -- delete buffer when delete file
-vim.g.NERDTreeMinimalUI = 1
-vim.g.NERDTreeMinimalMenu = 1
 
-vim.api.nvim_set_keymap('n', '<leader>fe', ':NERDTreeToggle<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<leader>ff', ':NERDTreeFind<cr>', { noremap = true })
+---
+-- Comment
+---
 
-vim.api.nvim_exec('autocmd FileType nerdtree setlocal colorcolumn&', true) -- fixes colorcolumn with open nerdtree
+require('Comment').setup {
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+}
+
+
+---------------------------------------------
+-- FileTree
+---------------------------------------------
+require('nvim-tree').setup({
+  renderer = {
+
+  }
+})
+
+vim.keymap.set('n', '<leader>fe', ':NvimTreeToggle<cr>')
+vim.keymap.set('n', '<leader>ff', ':NvimTreeFindFile<cr>')
 
 ---------------------------------------------
 -- Lightline
@@ -472,10 +502,10 @@ command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-hea
 true
 )
 
-vim.api.nvim_set_keymap('n', '<c-p>', ':Files<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-b>', ':Buffers<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-f>', ':Rg<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-h>', ':Help<cr>', { noremap = false })
+vim.keymap.set('n', '<c-p>', ':Files<cr>')
+vim.keymap.set('n', '<c-f>', ':Rg<cr>')
+vim.keymap.set('n', '<c-h>', ':Help<cr>')
+
 
 require('lspfuzzy').setup()
 --require('fzf_lsp').setup()
@@ -483,46 +513,46 @@ require('lspfuzzy').setup()
 require'colorizer'.setup()
 
 -- Splits
-vim.api.nvim_set_keymap('n', '<c-h>', '<c-w>h', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-j>', '<c-w>j', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-k>', '<c-w>k', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-l>', '<c-w>l', { noremap = false })
-vim.api.nvim_set_keymap('n', '<c-w>o', '<c-w><c-o>', { noremap = false })
+vim.keymap.set('n', '<c-h>', '<c-w>h')
+vim.keymap.set('n', '<c-j>', '<c-w>j')
+vim.keymap.set('n', '<c-k>', '<c-w>k')
+vim.keymap.set('n', '<c-l>', '<c-w>l')
+vim.keymap.set('n', '<c-w>o', '<c-w><c-o>')
 
 -- Splits resizing
-vim.api.nvim_set_keymap('', '<A-h>', '<C-w>>', { silent = true })
-vim.api.nvim_set_keymap('', '<A-j>', '<C-W>+', { silent = true })
-vim.api.nvim_set_keymap('', '<A-k>', '<C-W>-', { silent = true })
-vim.api.nvim_set_keymap('', '<A-l>', '<C-w><', { silent = true })
+vim.keymap.set('', '<A-h>', '<C-w>>')
+vim.keymap.set('', '<A-j>', '<C-W>+')
+vim.keymap.set('', '<A-k>', '<C-W>-')
+vim.keymap.set('', '<A-l>', '<C-w><')
 
 -- Tabs mappings
-vim.api.nvim_set_keymap('n', '<leader>tt', ':tabnew<CR>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<leader>tp', ':tabprev<CR>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<leader>tn', ':tabnext<CR>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<leader>to', ':tabonly<CR>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<leader>tc', ':tabclose<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>tt', ':tabnew<CR>')
+vim.keymap.set('n', '<leader>tp', ':tabprev<CR>')
+vim.keymap.set('n', '<leader>tn', ':tabnext<CR>')
+vim.keymap.set('n', '<leader>to', ':tabonly<CR>')
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>')
 
-vim.api.nvim_set_keymap('n', '<leader>tl', ':tabm +1<CR>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<leader>th', ':tabm -1<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>tl', ':tabm +1<CR>')
+vim.keymap.set('n', '<leader>th', ':tabm -1<CR>')
 
 -- Tab focus
-vim.api.nvim_set_keymap('n', '<leader>0', ':tablast', { noremap = true })
+vim.keymap.set('n', '<leader>0', ':tablast')
 
 for i=1,9 do
-  vim.api.nvim_set_keymap('n', '<leader>' .. i, i .. 'gt', { noremap = true })
+  vim.keymap.set('n', '<leader>' .. i, i .. 'gt')
 end
 
 -- Git mappings
-vim.api.nvim_set_keymap('n', '<leader>gs', ':Git<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gc', ':Git commit<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gpr', ':Git pull -r<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gl', ':Gclog %<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gm', ':Gvdiffsplit!<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>gs', ':Git<CR>')
+vim.keymap.set('n', '<leader>gc', ':Git commit<CR>')
+vim.keymap.set('n', '<leader>gp', ':Git push<CR>')
+vim.keymap.set('n', '<leader>gb', ':Git blame<CR>')
+vim.keymap.set('n', '<leader>gpr', ':Git pull -r<CR>')
+vim.keymap.set('n', '<leader>gl', ':Gclog %<CR>')
+vim.keymap.set('n', '<leader>gd', ':Gvdiffsplit<CR>')
+vim.keymap.set('n', '<leader>gm', ':Gvdiffsplit!<CR>')
 
-vim.api.nvim_set_keymap('n', '<leader>gg', ':LazyGit<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>')
 
 vim.api.nvim_exec(
 [[
@@ -531,12 +561,12 @@ autocmd BufRead,BufNewFile *.mdx set filetype=markdown
 true
 )
 
-vim.api.nvim_set_keymap('n', '<leader>sx', ':TSHighlightCapturesUnderCursor<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>sx', ':TSHighlightCapturesUnderCursor<CR>')
 
 ---------------------------------------------
 -- Copilot
 ---------------------------------------------
-vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept()', { silent = true, script = true, expr  = true })
+vim.keymap.set('i', '<C-j>', 'copilot#Accept()', { silent = true, script = true, expr  = true })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_node_command = '~/.nvm/versions/node/v17.9.1/bin/node'
 
@@ -548,7 +578,7 @@ vim.g.minimap_auto_start = 0
 vim.g.minimap_auto_start_win_enter = 0
 vim.g.minimap_git_colors = 1
 vim.g.minimap_block_filetypes = { 'fugitive', 'nerdtree', 'tagbar', 'fzf', '' }
-vim.api.nvim_set_keymap('n', '<leader>mm', ':MinimapToggle<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>mm', ':MinimapToggle<CR>')
 
 ---------------------------------------------
 -- DAP, DEBUG
