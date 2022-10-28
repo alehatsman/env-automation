@@ -80,6 +80,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+  use "rafamadriz/friendly-snippets"
 
   use 'ray-x/lsp_signature.nvim'
 
@@ -120,6 +121,14 @@ require('packer').startup(function(use)
 
   use "jose-elias-alvarez/null-ls.nvim"
   use "lukas-reineke/lsp-format.nvim"
+
+  use ({
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup()
+    end,
+    ft = { "lua" },
+  })
 
   if packer_bootstrap then
     require('packer').sync()
@@ -284,9 +293,7 @@ cmp.setup({
 
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 ---------------------------------------------
 -- Language Server Protocol

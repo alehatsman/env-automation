@@ -123,3 +123,5 @@ cask_apps:
   - visualvm
 
   - font-jetbrains-mono-nerd-font
+
+cargo:
