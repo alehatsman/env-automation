@@ -3,9 +3,9 @@
 ---------------------------------------------
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -42,11 +42,11 @@ require('packer').startup(function(use)
     config = function()
       require('gitsigns').setup({
         signs = {
-          add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-          change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-          delete       = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-          topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-          changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+          add          = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
+          change       = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+          delete       = { hl = 'GitSignsDelete', text = '-', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+          topdelete    = { hl = 'GitSignsDelete', text = '-', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+          changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
         }
       })
     end
@@ -61,11 +61,11 @@ require('packer').startup(function(use)
   use {
     'ojroques/nvim-lspfuzzy',
     requires = {
-      {'junegunn/fzf'},
-      {'junegunn/fzf.vim'},
+      { 'junegunn/fzf' },
+      { 'junegunn/fzf.vim' },
     }
   }
-  use {'gfanto/fzf-lsp.nvim'}
+  use { 'gfanto/fzf-lsp.nvim' }
   use 'mbbill/undotree'
   use 'norcalli/nvim-colorizer.lua'
 
@@ -95,10 +95,10 @@ require('packer').startup(function(use)
         }
       })
     end
-  } 
+  }
 
-  use {'fatih/vim-go', ft = {'go'} }
-  use {'Olical/conjure', branch = 'develop', ft = { 'clj', 'cljs', 'clojure' }}
+  use { 'fatih/vim-go', ft = { 'go' } }
+  use { 'Olical/conjure', branch = 'develop', ft = { 'clj', 'cljs', 'clojure' } }
 
   use 'neovim/nvim-lspconfig'
   use 'tjdevries/lsp_extensions.nvim'
@@ -150,7 +150,7 @@ require('packer').startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim"
   use "lukas-reineke/lsp-format.nvim"
 
-  use ({
+  use({
     "folke/neodev.nvim",
     config = function()
       require("neodev").setup()
@@ -167,50 +167,50 @@ end)
 ---------------------------------------------
 -- General configuration
 ---------------------------------------------
-vim.o.syntax        = 'on'          -- enable sytax highlight
-vim.o.fileformat    = 'unix'        -- always use unix <EOL>
-vim.o.langmenu      = 'en_US'       -- use en as language menu
-vim.o.hidden        = true          -- be able to switch buffers without file save
-vim.o.showcmd       = true          -- shows command in the last line
-vim.o.startofline   = false         -- some command move to the first non-blank line
-vim.wo.number       = true          -- line number on
-vim.o.clipboard     = 'unnamedplus' -- allow copy paste system <-> nvim
-vim.o.exrc          = true          -- enable project specific .nvimrc files
-vim.o.secure        = true          -- disable write/shell commands in those files
-vim.o.splitbelow    = true          -- put the new window below the current one
-vim.o.splitright    = true          -- put the new window right of the current one
-vim.o.incsearch     = true              -- search as you type
-vim.o.cursorline    = true             -- highlight current line
-vim.o.shortmess     = vim.o.shortmess .. 'c'                -- don't give completion messages
-vim.o.updatetime    = 50
-vim.o.swapfile      = false              -- don't create swap files
-vim.o.backup        = false               -- don't create backup files
-vim.o.writebackup   = false          -- for more info see backup table
+vim.o.syntax      = 'on' -- enable sytax highlight
+vim.o.fileformat  = 'unix' -- always use unix <EOL>
+vim.o.langmenu    = 'en_US' -- use en as language menu
+vim.o.hidden      = true -- be able to switch buffers without file save
+vim.o.showcmd     = true -- shows command in the last line
+vim.o.startofline = false -- some command move to the first non-blank line
+vim.wo.number     = true -- line number on
+vim.o.clipboard   = 'unnamedplus' -- allow copy paste system <-> nvim
+vim.o.exrc        = true -- enable project specific .nvimrc files
+vim.o.secure      = true -- disable write/shell commands in those files
+vim.o.splitbelow  = true -- put the new window below the current one
+vim.o.splitright  = true -- put the new window right of the current one
+vim.o.incsearch   = true -- search as you type
+vim.o.cursorline  = true -- highlight current line
+vim.o.shortmess   = vim.o.shortmess .. 'c' -- don't give completion messages
+vim.o.updatetime  = 50
+vim.o.swapfile    = false -- don't create swap files
+vim.o.backup      = false -- don't create backup files
+vim.o.writebackup = false -- for more info see backup table
 -- vim.go.signcolumn   = 'auto'          -- always show sign column
-vim.o.scrolloff = 8
-vim.o.showmode      = false             -- hide --INSERT--
-vim.o.undodir       = '~/.config/nvim/undodir'
-vim.o.completeopt   ='menu,menuone,noinsert'
+vim.o.scrolloff   = 8
+vim.o.showmode    = false -- hide --INSERT--
+vim.o.undodir     = '~/.config/nvim/undodir'
+vim.o.completeopt = 'menu,menuone,noinsert'
 
 -- Color
-vim.o.termguicolors = true          -- use gui 24-bit colors, gui attrs instead of cterm
-vim.go.t_Co='256'
-vim.o.background='dark'
+vim.o.termguicolors = true -- use gui 24-bit colors, gui attrs instead of cterm
+vim.go.t_Co = '256'
+vim.o.background = 'dark'
 
 -- Identation
-vim.o.autoindent = true             -- copy indent from current line when starting a new line
-vim.o.smarttab = true               -- <Tab> in front of a line inserts blanks according to 'shiftwidth'
-vim.o.expandtab = true              -- spaces instead of tabs
-vim.o.softtabstop=2          -- the number of spaces to use when expanding tabs
-vim.o.shiftwidth=2           -- the number of spaces to use when indenting -- or de-indenting -- a line
-vim.o.tabstop=2              -- the number of spaces that a tab equates to
+vim.o.autoindent = true -- copy indent from current line when starting a new line
+vim.o.smarttab = true -- <Tab> in front of a line inserts blanks according to 'shiftwidth'
+vim.o.expandtab = true -- spaces instead of tabs
+vim.o.softtabstop = 2 -- the number of spaces to use when expanding tabs
+vim.o.shiftwidth = 2 -- the number of spaces to use when indenting -- or de-indenting -- a line
+vim.o.tabstop = 2 -- the number of spaces that a tab equates to
 
 -- Folding
-vim.o.foldmethod='expr'        -- fold is defined by treesiter expressions
-vim.o.foldexpr='nvim_treesitter#foldexpr()'
-vim.o.foldcolumn='0'           -- width of fold column
-vim.o.foldlevelstart=99        -- don't close folds
-vim.o.colorcolumn='80'         -- visualize max line width
+vim.o.foldmethod = 'expr' -- fold is defined by treesiter expressions
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldcolumn = '0' -- width of fold column
+vim.o.foldlevelstart = 99 -- don't close folds
+vim.o.colorcolumn = '80' -- visualize max line width
 
 vim.o.laststatus = 3
 
@@ -227,8 +227,8 @@ vim.cmd [[
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require('nvim-autopairs').setup{
-  enable_check_bracket_line=false
+require('nvim-autopairs').setup {
+  enable_check_bracket_line = false
 }
 
 -- autocomplete
@@ -237,13 +237,13 @@ vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 
 vim.g.vim_json_syntax_conceal = 0
 
-vim.g.mouse=nil
+vim.g.mouse = nil
 
 
 ---------------------------------------------
 -- Autocomplete
 ---------------------------------------------
-local cmp = require'cmp'
+local cmp = require 'cmp'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 cmp.setup({
@@ -321,33 +321,33 @@ cmp.setup({
 
 })
 
-cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 ---------------------------------------------
 -- Language Server Protocol
 ---------------------------------------------
-local lspconfig = require'lspconfig'
+local lspconfig = require 'lspconfig'
 local api = vim.api
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = false,
-    virtual_text = true, --{ spacing = 4 },
-    signs = true,
-    update_in_insert = false,
-  }
+  underline = false,
+  virtual_text = true, --{ spacing = 4 },
+  signs = true,
+  update_in_insert = false,
+}
 )
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
- vim.lsp.handlers.hover, {
-   -- Use a sharp border with `FloatBorder` highlights
-   border = 'none'
- }
+  vim.lsp.handlers.hover, {
+  -- Use a sharp border with `FloatBorder` highlights
+  border = 'none'
+}
 )
 
-local lsp_signature = require'lsp_signature'
+local lsp_signature = require 'lsp_signature'
 lsp_signature.setup({
   hint_prefix = '',
   hint_enable = false,
@@ -359,15 +359,15 @@ lsp_signature.setup({
   toggle_key = '<M-x>'
 })
 
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*"},
-  callback = function ()
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  callback = function()
     vim.lsp.buf.format({ async = true })
   end
 })
 
 local lsp_format = require("lsp-format")
-lsp_format.setup {} 
+lsp_format.setup {}
 
 function on_attach(client, bufnr)
   --require'completion'.on_attach(client, bufnr)
@@ -376,7 +376,7 @@ function on_attach(client, bufnr)
   lsp_format.on_attach(client, bufnr)
 end
 
-local setup_config = {on_attach=on_attach, capabilities=capabilities}
+local setup_config = { on_attach = on_attach, capabilities = capabilities }
 
 lspconfig.gopls.setup(setup_config)
 lspconfig.tsserver.setup(setup_config)
@@ -391,7 +391,7 @@ lspconfig.sumneko_lua.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -416,8 +416,8 @@ local null_ls = require("null-ls")
 null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.tsc,
-    null_ls.builtins.diagnostics.eslint_d,
-    null_ls.builtins.formatting.eslint_d,
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.prettier.with({
       extra_filetypes = { "liquid" },
     }),
@@ -426,21 +426,21 @@ null_ls.setup({
 })
 
 -- diagnostics
-vim.call('sign_define', 'DiagnosticSignError', {text = "•", texthl = "DiagnosticSignError"})
-vim.call('sign_define', 'DiagnosticSignWarn', {text = "•", texthl = "DiagnosticSignWarn"})
-vim.call('sign_define', 'DiagnosticSignInfo', {text = "•", texthl = "DiagnosticSignInfo"})
-vim.call('sign_define', 'DiagnosticSignHint', {text = "•", texthl = "DiagnosticSignHint"})
+vim.call('sign_define', 'DiagnosticSignError', { text = "•", texthl = "DiagnosticSignError" })
+vim.call('sign_define', 'DiagnosticSignWarn', { text = "•", texthl = "DiagnosticSignWarn" })
+vim.call('sign_define', 'DiagnosticSignInfo', { text = "•", texthl = "DiagnosticSignInfo" })
+vim.call('sign_define', 'DiagnosticSignHint', { text = "•", texthl = "DiagnosticSignHint" })
 
 -- lsp
 --vim.keymap.set('n', 'gd',        '<cmd>lua vim.lsp.buf.declaration()<CR>')
 --vim.keymap.set('n', 'gi',        '<cmd>lua vim.lsp.buf.implementation()<CR>')
 --vim.keymap.set('n', 'gR',        '<cmd>lua vim.lsp.buf.references()<CR>')
-vim.keymap.set('n', '<c-]>',     '<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n', '<c-k>',     '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.keymap.set('n', 'K',         '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<leader>ds','<cmd>:Diagnostics<CR>')
+vim.keymap.set('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set('n', '<leader>ds', '<cmd>:Diagnostics<CR>')
 vim.keymap.set('n', '<c-space>', '<cmd>:CodeActions<CR>')
-vim.keymap.set('n', '<leader>rn','<cmd>lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>')
 
@@ -448,7 +448,7 @@ vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>')
 ---------------------------------------------
 -- Treesitter
 ---------------------------------------------
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
   ignore_install = { "markdown" },
   ident = {
@@ -492,7 +492,7 @@ vim.keymap.set('n', '<leader>ff', ':NvimTreeFindFile<cr>')
 vim.g.lightline = {
   tabline = {
     left = { { 'tabs' } },
-    right = { {  } }
+    right = { {} }
   }
 }
 
@@ -502,10 +502,10 @@ vim.g.lightline = {
 ---------------------------------------------
 
 vim.api.nvim_exec(
-[[
+  [[
 command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=never --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-]],
-true
+]] ,
+  true
 )
 
 vim.keymap.set('n', '<c-p>', ':Files<cr>')
@@ -516,7 +516,7 @@ vim.keymap.set('n', '<c-h>', ':Help<cr>')
 require('lspfuzzy').setup()
 --require('fzf_lsp').setup()
 
-require'colorizer'.setup()
+require 'colorizer'.setup()
 
 -- Splits
 vim.keymap.set('n', '<c-h>', '<c-w>h')
@@ -544,7 +544,7 @@ vim.keymap.set('n', '<leader>th', ':tabm -1<CR>')
 -- Tab focus
 vim.keymap.set('n', '<leader>0', ':tablast')
 
-for i=1,9 do
+for i = 1, 9 do
   vim.keymap.set('n', '<leader>' .. i, i .. 'gt')
 end
 
@@ -561,10 +561,10 @@ vim.keymap.set('n', '<leader>gm', ':Gvdiffsplit!<CR>')
 vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>')
 
 vim.api.nvim_exec(
-[[
+  [[
 autocmd BufRead,BufNewFile *.mdx set filetype=markdown
-]],
-true
+]] ,
+  true
 )
 
 vim.keymap.set('n', '<leader>sx', ':TSHighlightCapturesUnderCursor<CR>')
@@ -572,7 +572,7 @@ vim.keymap.set('n', '<leader>sx', ':TSHighlightCapturesUnderCursor<CR>')
 ---------------------------------------------
 -- Copilot
 ---------------------------------------------
-vim.keymap.set('i', '<C-j>', 'copilot#Accept()', { silent = true, script = true, expr  = true })
+vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept()', { silent = true, script = true, expr = true })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_node_command = '~/.nvm/versions/node/v17.9.1/bin/node'
 
@@ -641,16 +641,16 @@ dap.listeners.after.event_initialized['dapui_config'] = dapui.open
 dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
 vim.keymap.set('n', '<Leader>dq', function()
-    dap.disconnect()
-    dap.close()
-    dapui.close({})
+  dap.disconnect()
+  dap.close()
+  dapui.close({})
 
-    for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
-        local name = vim.api.nvim_buf_get_name(buffer)
-        if name:match('.*%[dap%-repl%]') then
-            vim.api.nvim_buf_delete(buffer, { force = true })
-        end
+  for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+    local name = vim.api.nvim_buf_get_name(buffer)
+    if name:match('.*%[dap%-repl%]') then
+      vim.api.nvim_buf_delete(buffer, { force = true })
     end
+  end
 end)
 
 require("dap-vscode-js").setup({
@@ -675,7 +675,7 @@ for _, language in ipairs({ "typescript", "javascript" }) do
       type = "pwa-node",
       request = "attach",
       name = "Attach",
-      processId = require'dap.utils'.pick_process,
+      processId = require 'dap.utils'.pick_process,
       cwd = "${workspaceFolder}",
     },
     {
