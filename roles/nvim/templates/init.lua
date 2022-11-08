@@ -477,9 +477,14 @@ require('Comment').setup {
 -- FileTree
 ---
 require('nvim-tree').setup({
-  renderer = {
-
-  }
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "<C-o>", action = "dir_up" },
+      },
+    },
+  },
 })
 
 vim.keymap.set('n', '<leader>fe', ':NvimTreeToggle<cr>')

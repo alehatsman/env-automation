@@ -13,6 +13,7 @@ setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 nnoremap <buffer> <Leader>gt :GoTest<CR>
 nnoremap <buffer> <Leader>gr :GoRename<CR>
+nnoremap <buffer> <Leader>glr :GoBuildTags ''<CR>
 
 "let g:go_def_mode='gopls'
 "let g:go_info_mode='gopls'
