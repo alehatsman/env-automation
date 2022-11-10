@@ -123,5 +123,6 @@ cask_apps:
   - visualvm
 
   - font-jetbrains-mono-nerd-font
+  - lua-language-server
 
 cargo:
