@@ -329,6 +329,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Language Server Protocol
 ---------------------------------------------
 local lspconfig = require 'lspconfig'
+
 local api = vim.api
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
@@ -408,6 +409,11 @@ lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
 }
 
+lspconfig.pylsp.setup({
+  cmd = { "./.venv/bin/pylsp" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 
 ---------------------------------------------
 -- Linters / Fixers / Formatters
