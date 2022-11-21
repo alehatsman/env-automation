@@ -483,6 +483,9 @@ require('Comment').setup {
 -- FileTree
 ---
 require('nvim-tree').setup({
+  git = {
+    ignore = false
+  },
   view = {
     adaptive_size = true,
     mappings = {
