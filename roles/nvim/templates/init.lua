@@ -379,6 +379,7 @@ end
 
 local setup_config = { on_attach = on_attach, capabilities = capabilities }
 
+lspconfig.terraformls.setup(setup_config)
 lspconfig.gopls.setup(setup_config)
 lspconfig.tsserver.setup(setup_config)
 lspconfig.clojure_lsp.setup(setup_config)

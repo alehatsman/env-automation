@@ -8,6 +8,7 @@ taps:
   - borkdude/brew
   - wagoodman/dive
   - AdoptOpenJDK/openjdk
+  - hashicorp/tap/terraform-ls
 
 apps:
   - ansible
@@ -124,5 +125,6 @@ cask_apps:
 
   - font-jetbrains-mono-nerd-font
   - lua-language-server
+  - terraform-ls
 
 cargo:
