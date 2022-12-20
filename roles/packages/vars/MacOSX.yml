@@ -126,5 +126,6 @@ cask_apps:
   - font-jetbrains-mono-nerd-font
   - lua-language-server
   - terraform-ls
+  - virtualbox
 
 cargo:
