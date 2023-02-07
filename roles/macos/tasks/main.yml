@@ -48,6 +48,8 @@
       "/System/Library/CoreServices/Menu Extras/Clock.menu" \
       "/System/Library/CoreServices/Menu Extras/Displays.menu" \
       "/System/Library/CoreServices/Menu Extras/Volume.menu"
+
+    defaults write -g AppleFontSmoothing -int 0
   become: true
   become_method: sudo
   when: ansible_distribution == 'Darwin'
