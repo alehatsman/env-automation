@@ -1,6 +1,0 @@
----
-- name: Install fennel
-  shell: |
-    curl -o /tmp/fennel https://fennel-lang.org/downloads/fennel-0.6.0
-    chmod +x /tmp/fennel
-    mv /tmp/fennel /usr/local/bin

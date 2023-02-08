@@ -419,17 +419,38 @@ lspconfig.pylsp.setup({
 ---------------------------------------------
 -- Linters / Fixers / Formatters
 ---------------------------------------------
+local function has_eslint_config()
+  local eslintrc = vim.fn.glob(".eslintrc*")
+  return eslintrc ~= ""
+end
+
+local function is_prettier_executable()
+  return vim.fn.executable("prettier") == 1 or vim.fn.executable("./node_modules/.bin/prettier") == 1
+end
+
 local null_ls = require("null-ls")
+local null_ls_sources = {
+  null_ls.builtins.diagnostics.tsc,
+  null_ls.builtins.formatting.jq,
+}
+
+if is_prettier_executable() then
+  table.insert(null_ls_sources, null_ls.builtins.formatting.prettier.with({
+    extra_filetypes = { "liquid" },
+  }))
+end
+
+local eslint_config = {
+  command = "./node_modules/.bin/eslint",
+}
+
+if has_eslint_config() then
+  table.insert(null_ls_sources, null_ls.builtins.diagnostics.eslint.with(eslint_config))
+  table.insert(null_ls_sources, null_ls.builtins.formatting.eslint.with(eslint_config))
+end
+
 null_ls.setup({
-  sources = {
-    null_ls.builtins.diagnostics.tsc,
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.formatting.eslint,
-    null_ls.builtins.formatting.prettier.with({
-      extra_filetypes = { "liquid" },
-    }),
-    null_ls.builtins.formatting.jq,
-  }
+  sources = null_ls_sources,
 })
 
 -- diagnostics
